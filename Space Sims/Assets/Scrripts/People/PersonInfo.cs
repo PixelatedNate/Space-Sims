@@ -10,23 +10,31 @@ public class PersonInfo : ScriptableObject
 
     const string MaleNamePath = "TextData/Names/People/male";
     const string FemaleNamePath = "TextData/Names/People/female";
+   
+    [SerializeField]
+    private string _name;
+    public string Name { get { return _name; } set { _name = value; } }
+   
+    [SerializeField]
+    private Gender _gender;
+    public Gender Gender { get { return _gender; } }
+    
+   [SerializeField]
+   private float _s1;
+   public float S1 { get { return Mathf.Floor(_s1); } set{S1 = value;} }
 
-    public string Name;
-    public Gender Gender;
-    public float s1;
-    public float s2;
-    public float s3;
-    public float s4; 
-    public float s5;
-    public float s6;
-   public Sprite Head;
-   public Sprite Body; 
+    [SerializeField]
+    private Sprite _head;
+    public Sprite Head { get { return _head; } }
+    [SerializeField]
+    private Sprite _body; 
+    public Sprite Body { get { return _body; } }
 
 
 
     public void Randomize()
     {
-        Gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female ;
+        _gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female ;
         RandomizeName();
         RandomizeAppereance();
     }
@@ -49,10 +57,8 @@ public class PersonInfo : ScriptableObject
 
     private void RandomizeAppereance()
     {
-        Head = GetRandomSpriteFromPath(HeadPath);
-        Body = GetRandomSpriteFromPath(BodyPath);
-
-
+        _head = GetRandomSpriteFromPath(HeadPath);
+        _body = GetRandomSpriteFromPath(BodyPath);
     }
 
 
