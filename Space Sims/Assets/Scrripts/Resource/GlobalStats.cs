@@ -22,22 +22,12 @@ public class GlobalStats : MonoBehaviour
     
     [SerializeField]
     private GameResources _playerResources;
-
-    GameResources PlayerResources { get { return _playerResources; } 
+    public GameResources PlayerResources { get { return _playerResources; } 
         set {
             _playerResources = value;
             checkResourcesForAlertChanges();
             }
         }
-
-    PersonInfo[] crew;
-
-
-
-
-
-
-
 
     private void checkResourcesForAlertChanges()
     {
@@ -47,7 +37,6 @@ public class GlobalStats : MonoBehaviour
             }
             if(PlayerResources.Fuel < 0)
             {
-
                 AlertManager.Instance.SendAlert(Alerts.LowFuel);
             }
     }
@@ -56,9 +45,9 @@ public class GlobalStats : MonoBehaviour
     private void Start()
     {
         //For tessting.
-        PlayerResources = PlayerResources + new GameResources { Food = 10, Fuel = 100 };
-        PlayerResources = PlayerResources - new GameResources { Food = 10, Fuel = 100 };
-        PlayerResources = PlayerResources - new GameResources { Food = 10, Fuel = 100, Premimum = 3};
+      //  PlayerResources = PlayerResources + new GameResources { Food = 10, Fuel = 100 };
+      //  PlayerResources = PlayerResources - new GameResources { Food = 10, Fuel = 100 };
+      //  PlayerResources = PlayerResources - new GameResources { Food = 10, Fuel = 100, Premimum = 3};
     }
 
 

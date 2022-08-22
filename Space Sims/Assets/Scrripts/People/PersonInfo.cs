@@ -10,7 +10,8 @@ public class PersonInfo : ScriptableObject
 
     const string MaleNamePath = "TextData/Names/People/male";
     const string FemaleNamePath = "TextData/Names/People/female";
-   
+
+
     [SerializeField]
     private string _name;
     public string Name { get { return _name; } set { _name = value; } }
@@ -18,17 +19,22 @@ public class PersonInfo : ScriptableObject
     [SerializeField]
     private Gender _gender;
     public Gender Gender { get { return _gender; } }
-    
-   [SerializeField]
-   private float _s1;
-   public float S1 { get { return Mathf.Floor(_s1); } set{S1 = value;} }
+   
+    [SerializeField]
+    private float _s1;
+    public float S1 { get { return Mathf.Floor(_s1); } set{S1 = value;} }
+
+    [SerializeField]
+    public GameResources Upkeep = new GameResources { Food = 5 };
 
     [SerializeField]
     private Sprite _head;
     public Sprite Head { get { return _head; } }
+    
     [SerializeField]
     private Sprite _body; 
     public Sprite Body { get { return _body; } }
+
 
 
 
