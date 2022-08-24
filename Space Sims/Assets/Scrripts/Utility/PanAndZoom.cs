@@ -23,9 +23,10 @@ public class PanAndZoom : MonoBehaviour
     private float ClickDuration = 0;
 
     [SerializeField]
-    private float PANDEADZONE = 0.25f;
-    bool Paning;
-
+    private float PANDEADZONE = 0.25f;       
+    
+    bool Paning = false;   // maybe can be enum with state.
+    bool Zooming = false;
 
     private float BorderPixelsSize = 100f; // can be changed to a percentage.
     private float EdgePanSpeed = 5.0f;
@@ -46,7 +47,7 @@ public class PanAndZoom : MonoBehaviour
     void Update()
     {
         
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetMouseButtonUp(0) && !Zooming)
         {
            if(!Paning)
             {
@@ -89,6 +90,7 @@ public class PanAndZoom : MonoBehaviour
         }
          if(Input.touchCount == 2)
         {
+            Zooming = true;
             ClickDuration = 0;             
             Paning = false;
             Touch touchZero = Input.GetTouch(0);
@@ -138,6 +140,10 @@ public class PanAndZoom : MonoBehaviour
                     }
                 }
             }
+        }
+         else if(Input.touchCount == 0)
+        {
+            Zooming = false;
         }
 
 
