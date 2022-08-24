@@ -289,6 +289,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minZoom: 1
   MaxZoom: 8
+  SHORT_CLICK_END: 0.5
+  HOLD_TIME_START: 1
+  ClickDuration: 0.1
+  PANDEADZONE: 0.25
 --- !u!1001 &572700273
 PrefabInstance:
   m_ObjectHideFlags: 0
