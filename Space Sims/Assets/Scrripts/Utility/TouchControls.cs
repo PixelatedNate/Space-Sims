@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PanAndZoom : MonoBehaviour
+public class TouchControls : MonoBehaviour
 {
 
     Vector3 TouchStartPos;
@@ -90,24 +90,11 @@ public class PanAndZoom : MonoBehaviour
         }
          if(Input.touchCount == 2)
         {
-            Zooming = true;
-            ClickDuration = 0;             
-            Paning = false;
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
-
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
-
-            float prevMagnitue = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float currentMagnitue = (touchZero.position - touchOne.position).magnitude;
-
-            float diff = currentMagnitue - prevMagnitue;
-
-            Zoom(diff * 0.01f);
+            TouchZoom(); 
         }
          else if(Input.GetMouseButton(0))
         {
+            Zooming = false;
             ClickDuration += Time.deltaTime;
             if (InteractableIsIsHeld)
             {
@@ -119,7 +106,6 @@ public class PanAndZoom : MonoBehaviour
             {
                 Paning = true;
             }
-            //ClickDuration += Time.deltaTime;
             if(Paning)
             {
                 Camera.main.transform.position += dir;
@@ -141,11 +127,10 @@ public class PanAndZoom : MonoBehaviour
                 }
             }
         }
-         else if(Input.touchCount == 0)
+         else if(Zooming && Input.touchCount == 0)
         {
             Zooming = false;
         }
-
 
          //if in editor can zoom with scrollwheel
 #if UNITY_EDITOR
@@ -153,9 +138,29 @@ public class PanAndZoom : MonoBehaviour
         Zoom(Input.GetAxis("Mouse ScrollWheel"));
         
 #endif
-
     }
 
+
+
+
+    private void TouchZoom()
+    {
+        Zooming = true;
+        ClickDuration = 0;
+        Paning = false;
+        Touch touchZero = Input.GetTouch(0);
+        Touch touchOne = Input.GetTouch(1);
+
+        Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+        Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+        float prevMagnitue = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+        float currentMagnitue = (touchZero.position - touchOne.position).magnitude;
+
+        float diff = currentMagnitue - prevMagnitue;
+
+        Zoom(diff * 0.01f);
+    }
 
 
     public void PanAtEdge()
