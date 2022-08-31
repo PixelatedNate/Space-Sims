@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Quests>  
+  <requirements>
+    <Planets_list>
+      <item type="PLANETS"> Water </item>
+      <item type="PLANETS"> Gas </item>
+    </Planets_list>
+    <people count="1">
+      <person>
+        <Skills_Requiment>
+          <Skill type="skill1" requiment="3"/>
+          <InvalidResponse> You do not meet the requiemnt for x  </InvalidResponse>
+          <ValidResposne> <img></img> You do not meet the requiemnt for x  </VaildResponse>
+          <Skill2 type="skill2" requiment="3"/>
+        </Skills_Requiment>
+      </person>
+    </people>
+  </requirements>
+  <QuestData>
+    <Name>Quest 1</Name>
+    <description> This is a template of a Quest and it's layout </description>
+    <Duration>1:00</Duration>
+  </QuestData>
+  <Outcomes_list>
+    <item chance ="0.8">
+      <Resorces>
+        <Food>10</Food>
+      </Resorces>
+    </item>
+    <item chance ="80">
+      <Resorces>
+        <Food value ="10" >
+          <img src="foodIcon"> 10+ </img>
+        </Food>
+      </Resorces>
+    </item>
+    <item chance ="0.4">
+      <Resorces>
+        <Food>10</Food>
+      </Resorces>
+    </item>
+    <item chance ="80">
+      <Resorces>
+        <Food>10</Food>
+      </Resorces>
+    </item>
+  </Outcomes_list>
+  
+  
+  
+</Quests>
