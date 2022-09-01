@@ -23,7 +23,7 @@ public class Person : MonoBehaviour, IInteractables
     void Start()
     {
         TimeTickSystem.OnTick += OnTick;
-        personInfo = ScriptableObject.CreateInstance<PersonInfo>();
+        personInfo = new PersonInfo();
         personInfo.Randomize();
         BodyRender.sprite = personInfo.Body;
         HeadRender.sprite = personInfo.Head;

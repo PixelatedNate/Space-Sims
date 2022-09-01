@@ -2,16 +2,14 @@
 <Quests>  
   <requirements>
     <Planets_list>
-      <item type="PLANETS"> Water </item>
-      <item type="PLANETS"> Gas </item>
+      <item type="Water"/>
+      <item type="Sand"/>
     </Planets_list>
-    <people count="1">
+    <people>
       <person>
         <Skills_Requiment>
-          <Skill type="skill1" requiment="3"/>
-          <InvalidResponse> You do not meet the requiemnt for x  </InvalidResponse>
-          <ValidResposne> <img></img> You do not meet the requiemnt for x  </VaildResponse>
-          <Skill2 type="skill2" requiment="3"/>
+          <Skill  type="skill1" requiment="3"/>
+          <Skill type="skill2" requiment="3"/>
         </Skills_Requiment>
       </person>
     </people>

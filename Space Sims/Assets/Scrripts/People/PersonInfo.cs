@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class PersonInfo : ScriptableObject
-{
+[Serializable]
+public class PersonInfo {
 
     const string HeadPath = "ArtWork/People/Heads";
     const string BodyPath = "ArtWork/People/Bodys";
@@ -12,26 +14,25 @@ public class PersonInfo : ScriptableObject
     const string FemaleNamePath = "TextData/Names/People/female";
 
 
-    [SerializeField]
+    //  [SerializeField]
     private string _name;
     public string Name { get { return _name; } set { _name = value; } }
-   
-    [SerializeField]
+
+   // [SerializeField]
     private Gender _gender;
     public Gender Gender { get { return _gender; } }
-   
+
     [SerializeField]
     private float _s1;
-    public float S1 { get { return Mathf.Floor(_s1); } set{S1 = value;} }
+    public float S1 { get { return Mathf.Floor(_s1); } set { S1 = value; } }
 
-    [SerializeField]
-    public GameResources Upkeep = new GameResources { Food = 5 };
-
-    [SerializeField]
+    // [SerializeField]
+    public GameResources Upkeep { get; set; } = new GameResources { Food = 5 };
+  //  [SerializeField]
     private Sprite _head;
     public Sprite Head { get { return _head; } }
     
-    [SerializeField]
+ //   [SerializeField]
     private Sprite _body; 
     public Sprite Body { get { return _body; } }
 
