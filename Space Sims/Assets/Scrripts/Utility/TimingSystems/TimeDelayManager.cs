@@ -51,9 +51,9 @@ public class TimeDelayManager : MonoBehaviour
 
     private void Start()
     {
+      TimeTickSystem.OnTick += OnTick;
       //  ForTesting
         /*
-        TimeTickSystem.OnTick += OnTick;
         TimeDelayManager.Instance.AddTimer(new Timer(10,testMethodForEndOfTimer));
         */
     }

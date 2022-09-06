@@ -9,18 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eebf4e3bb43c64ca98789dfcfdb888, type: 3}
-  m_Name: Quest
+  m_Script: {fileID: 11500000, guid: e1afc50ea3088ab41908dc5cf01182ef, type: 3}
+  m_Name: Encounter1
   m_EditorClassIdentifier: 
-  Name: 
-  Description: 
-  requiments:
-    PeopleRequiments: []
-  Duration: 0
-  reward:
-    gameResourcesReward:
-      Fuel: 0
-      Food: 0
-      Other1: 0
-      Premimum: 0
-    peopleReward: []
+  Name: QE1
+  Discription: Nothing Happend
+  frequancy: 2
+  PeopleRequiments:
+    _s1: 0
+    _s2: 0
+  gameResources:
+    Fuel: 0
+    Food: 0
+    Other1: 0
+    Premimum: 0

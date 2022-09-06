@@ -9,8 +9,7 @@ public class Person : MonoBehaviour, IInteractables
     private SpriteRenderer HeadRender;
     [SerializeField]
     private SpriteRenderer BodyRender;
-    [SerializeField]
-    PersonInfo personInfo;
+    PersonInfo personInfo = null;
 
 
     [SerializeField]
@@ -23,12 +22,45 @@ public class Person : MonoBehaviour, IInteractables
     void Start()
     {
         TimeTickSystem.OnTick += OnTick;
-        personInfo = new PersonInfo();
-        personInfo.Randomize();
+
+        //testing
+        if (personInfo == null)
+        {
+            PersonInfo person = new PersonInfo();
+            person.Randomize();
+            AssginPerson(person);
+            ReRenderPerson();
+            GlobalStats.Instance.PlayersPeople.Add(personInfo);
+        }
+    }
+
+    public void AssginPerson(PersonInfo person)
+    {
+        if(personInfo != null)
+        {
+    //       throw new Exception("Trying to assgin a person who allready has a personholder");
+        }
+        gameObject.name = person.Name;
+        personInfo = person;
+        person.PersonMonoBehaviour = this;
+        ReRenderPerson();
+    }
+
+
+    private void OnDestroy()
+    {
+        if(IsBeingHeld)
+        {
+            throw new Exception("Trying to destroy a person whilstBeingheld");
+        }
+        personInfo.PersonMonoBehaviour = null;
+    }
+
+    private void ReRenderPerson()
+    {
         BodyRender.sprite = personInfo.Body;
         HeadRender.sprite = personInfo.Head;
     }
-
 
 
     private void OnTick (object source, EventArgs e)

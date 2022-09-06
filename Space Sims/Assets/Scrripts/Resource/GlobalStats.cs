@@ -29,6 +29,10 @@ public class GlobalStats : MonoBehaviour
             }
         }
 
+
+    public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
+
+
     private void checkResourcesForAlertChanges()
     {
             if(PlayerResources.Food < 0)
