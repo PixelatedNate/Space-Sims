@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24eebf4e3bb43c64ca98789dfcfdb888, type: 3}
+  m_Name: Quest
+  m_EditorClassIdentifier: 
+  Name: TestQuest1
+  Description: my first quest
+  requiments:
+    Numpeople: 1
+    PeopleRequiments:
+      _s1: 0
+      _s2: 0
+  Duration: 10
+  reward:
+    gameResourcesReward:
+      Fuel: 86
+      Food: 245
+      Other1: 181
+      Premimum: 1
+    peopleReward: []
+  PeopleAssgined:
+  - skills:
+      _s1: 2
+      _s2: 2
+  PossibleEncounters:
+  - {fileID: 11400000, guid: dadfe02b3df53fa4db2cac6fa393c67f, type: 2}
+  - {fileID: 11400000, guid: ca80c3042d92e4a4db0d15a3047e3f59, type: 2}
+  - {fileID: 11400000, guid: 62610a46d346b4d48a198361928b3a43, type: 2}

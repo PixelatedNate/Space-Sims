@@ -11,6 +11,8 @@ public class GameResources
     public int Other1;
     public int Premimum;
 
+
+    #region Comparators
     public static GameResources operator+ (GameResources a, GameResources b)
     {
         GameResources resources = new GameResources();
@@ -46,6 +48,24 @@ public class GameResources
                 (a.Other1 < b.Food) &&
                  (a.Premimum < b.Premimum) );    
     }
+
+    public static bool operator== (GameResources a, GameResources b)
+    {
+        return( (a.Fuel == b.Fuel) &&
+                (a.Food == b.Food) &&
+                (a.Other1 == b.Food) &&
+                 (a.Premimum == b.Premimum) );    
+    }
+
+    public static bool operator!= (GameResources a, GameResources b)
+    {
+        return ((a.Fuel != b.Fuel) &&
+                (a.Food != b.Food) &&
+                (a.Other1 != b.Food) &&
+                 (a.Premimum != b.Premimum));
+    }
+
+
     public static bool operator<= (GameResources a, GameResources b)
     {
         return(a<b || a==b);    
@@ -55,6 +75,7 @@ public class GameResources
         return(a>b || a==b);    
     }
 
+    #endregion
 
 
 }
