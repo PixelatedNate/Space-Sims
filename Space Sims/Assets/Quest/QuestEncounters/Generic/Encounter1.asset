@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1afc50ea3088ab41908dc5cf01182ef, type: 3}
+  m_Name: Encounter1
+  m_EditorClassIdentifier: 
+  Name: QE1
+  Discription: Nothing Happend
+  frequancy: 2
+  PeopleRequiments:
+    _s1: 0
+    _s2: 0
+  gameResources:
+    Fuel: 0
+    Food: 0
+    Other1: 0
+    Premimum: 0

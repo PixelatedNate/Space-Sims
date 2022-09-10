@@ -334,7 +334,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HeadRender: {fileID: 5306872157971662188}
   BodyRender: {fileID: 5306872157769727578}
-  personInfo: {fileID: 0}
   TempSelected: {fileID: 4891307746359028935}
   IsBeingHeld: 0
 --- !u!61 &2799211130948029251
