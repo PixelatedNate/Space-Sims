@@ -21,7 +21,6 @@ public class TimeTickSystem : MonoBehaviour
         majorTickTimer += Time.deltaTime;
         if(majorTickTimer >= MAJOR_TICK_TIMER)
         {
-            Debug.Log("Major Tick");
             majorTickTimer -= MAJOR_TICK_TIMER;
             if (OnMajorTick != null)
                 OnMajorTick(this, null);
@@ -30,7 +29,6 @@ public class TimeTickSystem : MonoBehaviour
         tickTimer += Time.deltaTime;
         if(tickTimer >= TICK_TIMER)
         {
-            Debug.Log("Raw Tick");
             tickTimer -= TICK_TIMER;
             if (OnTick != null)
                 OnTick(this, null);

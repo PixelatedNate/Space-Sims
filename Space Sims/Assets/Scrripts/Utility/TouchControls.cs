@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TouchControls : MonoBehaviour
 {
@@ -37,9 +38,12 @@ public class TouchControls : MonoBehaviour
     bool InteractableIsIsHeld = false;
 
 
+    private int UILayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        UILayer = LayerMask.NameToLayer("UI");
         ClickDuration = 0;
     }
 
@@ -63,21 +67,31 @@ public class TouchControls : MonoBehaviour
                 {
                     throw new Exception("Interctable Cannot be held when it is not set");
                 }
-                else {
-                    
-                    if(SelectedObject != null)
+                else
+                {
+                    Debug.Log(IsPointerOverUIElement());
+                    if (!IsPointerOverUIElement())
                     {
-                        SelectedObject.OnDeselect();
-                        SelectedObject = null;
-                    }
-                    var selected = GetInteractableUnderMouse();
-                    if(selected != null)
-                    {                  
-                          if (ClickDuration < SHORT_CLICK_END)
-                          {
-                              SelectedObject = selected;
-                              selected.OnSelect();
-                          }                       
+                        if (SelectedObject != null)
+                        {
+                            {
+                                SelectedObject.OnDeselect();
+                                SelectedObject = null;
+                            }
+                        }
+                        var selected = GetInteractableUnderMouse();
+                        if (selected != null)
+                        {
+                            if (ClickDuration < SHORT_CLICK_END)
+                            {
+                                SelectedObject = selected;
+                                selected.OnSelect();
+                            }
+                        }
+                        if (SelectedObject == null)
+                        {
+                            UIManager.Instance.DeselectAll();
+                        }
                     }
                 }
             }
@@ -118,6 +132,7 @@ public class TouchControls : MonoBehaviour
                     InteractableIsIsHeld = selectableHold.OnHold();
                     if (InteractableIsIsHeld)
                     {
+                        UIManager.Instance.DeselectAll();
                         if(SelectedObject != null)
                         {
                         SelectedObject.OnDeselect();
@@ -209,4 +224,52 @@ public class TouchControls : MonoBehaviour
     {
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, minZoom, MaxZoom);
     }
+
+
+
+    //Returns 'true' if we touched or hovering on Unity UI element.
+    public bool IsPointerOverUIElement()
+    {
+        return IsPointerOverUIElement(GetEventSystemRaycastResults());
+    }
+
+
+    //Returns 'true' if we touched or hovering on Unity UI element.
+    private bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    {
+        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        {
+            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+            if (curRaysastResult.gameObject.layer == UILayer)
+            {
+                Debug.Log(curRaysastResult.gameObject.name);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //Gets all event system raycast results of current mouse or touch position.
+    static List<RaycastResult> GetEventSystemRaycastResults()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        List<RaycastResult> raysastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raysastResults);
+        return raysastResults;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

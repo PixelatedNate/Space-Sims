@@ -19,7 +19,7 @@ public class AlertManager : MonoBehaviour
 
     public void SendAlert(Alerts.Alert alert)
     {
-        Debug.Log(alert.message);
+        //Debug.Log(alert.message);
     }
 
 }

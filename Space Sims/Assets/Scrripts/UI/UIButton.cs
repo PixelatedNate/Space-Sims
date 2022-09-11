@@ -13,13 +13,13 @@ public class UIButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void TopLeftButton()
     {
@@ -79,6 +79,37 @@ public class UIButton : MonoBehaviour
             StartCoroutine(RightTabSlidingIn());
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    #region AHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH DON't open ever
+
     public IEnumerator LeftTabSlidingOut()
     {
         slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
@@ -231,4 +262,11 @@ public class UIButton : MonoBehaviour
         rightSliding = false;
         slideBtn[1].interactable = true;
     }
+
+
+
+
+
+
+    #endregion
 }

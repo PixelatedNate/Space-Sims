@@ -88,6 +88,7 @@ public class Person : MonoBehaviour, IInteractables
     {
         TempSelected.SetActive(true);
         Debug.Log("Select: " + gameObject.name);
+        UIManager.Instance.DisplaySelected(personInfo);
     }
 
     public bool OnHold()
