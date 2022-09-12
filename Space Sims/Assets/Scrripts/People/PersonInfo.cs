@@ -18,6 +18,31 @@ public class PersonInfo {
         [SerializeField]
         private float _s2 = 2;
         public float S2 { get { return Mathf.Floor(_s2); } set { S2 = value; } }
+        
+        public float GetSkill(SkillsList skill)
+        {
+            if(skill == SkillsList.s1)
+            {
+                return S1;
+            }
+            if (skill == SkillsList.s2)
+            {
+                return S2;
+            }
+            else return 0;         
+        }
+
+        public void AddToSkill(SkillsList skill,  float value)
+        {
+            if (skill == SkillsList.s1)
+            {
+                S1 += value;
+            }
+            if (skill == SkillsList.s2)
+            {
+                S2 += value;
+            }
+        }
 
         #region Comparators
         public static bool operator >(Skills a, Skills b)
