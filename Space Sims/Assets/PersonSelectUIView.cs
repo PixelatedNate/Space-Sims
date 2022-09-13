@@ -40,24 +40,38 @@ public class PersonSelectUIView : MonoBehaviour
     {
         Name.text = SelectedPerson.Name;
         Age.text = SelectedPerson.Age.ToString();
-        //Room.text = SelectedPerson.Room;
+        if (SelectedPerson.Room != null)
+        {
+            Room.text = SelectedPerson.Room.gameObject.name;
+        }
     }
 
     private void UpdateSkills()
     {
+        UpdateSkill(SkillsList.Strength, Strength);
+        UpdateSkill(SkillsList.Intelligence, Intelligence);
+        UpdateSkill(SkillsList.Dexterity, Dexterity);
+        UpdateSkill(SkillsList.Charisma, Charisma);
+        UpdateSkill(SkillsList.Wisdom, Wisdom);
+
+    }
+
+
+    private void UpdateSkill(SkillsList skill, Transform skillDots)
+    {
         // add my room code here to get skills from an enum;
-        for(int i = 0; i < Strength.childCount; i++)
+        for(int i = 0; i < skillDots.childCount; i++)
         {
-            if (i < SelectedPerson.skills.Strength)
+            if (i < SelectedPerson.skills.GetSkill(skill))
             {
-                Strength.GetChild(i).GetComponent<Image>().color = Color.red;
+                skillDots.GetChild(i).GetComponent<Image>().color = Color.red;
             }
             else
             {
-                Strength.GetChild(i).GetComponent<Image>().color = Color.gray;
-            }
-               
+                skillDots.GetChild(i).GetComponent<Image>().color = Color.gray;
+            }             
         }
+
     }
 
 

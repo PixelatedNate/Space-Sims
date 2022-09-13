@@ -36,26 +36,38 @@ public class PersonInfo {
         
         public float GetSkill(SkillsList skill)
         {
-            if(skill == SkillsList.s1)
+            if(skill == SkillsList.Strength)
             {
-                return S1;
+                return Strength;
             }
-            if (skill == SkillsList.s2)
+            if (skill == SkillsList.Wisdom)
             {
-                return S2;
+                return Wisdom;
+            }
+            if (skill == SkillsList.Dexterity)
+            {
+                return Dexterity;
+            }
+            if (skill == SkillsList.Intelligence)
+            {
+                return Intelligence;
+            }
+            if (skill == SkillsList.Charisma)
+            {
+                return Charisma;
             }
             else return 0;         
         }
 
         public void AddToSkill(SkillsList skill,  float value)
         {
-            if (skill == SkillsList.s1)
+            if (skill == SkillsList.Strength)
             {
-                S1 += value;
+                Strength += value;
             }
-            if (skill == SkillsList.s2)
+            if (skill == SkillsList.Wisdom)
             {
-                S2 += value;
+                Wisdom += value;
             }
         }
 
@@ -205,6 +217,10 @@ public class PersonInfo {
     private void RandomizeSkills()
     {
         skills.Strength = Random.Range(1, 11);
+        skills.Intelligence = Random.Range(1, 11);
+        skills.Wisdom = Random.Range(1, 11);
+        skills.Charisma = Random.Range(1, 11);
+        skills.Dexterity = Random.Range(1, 11);
     }
 
     private void RandomizeAppereance()
