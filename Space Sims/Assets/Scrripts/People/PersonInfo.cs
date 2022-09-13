@@ -116,8 +116,13 @@ public class PersonInfo {
     public bool IsQuesting { get { return CurrentQuest != null; } }
     public Quest CurrentQuest { get; set; }
 
-    public Person PersonMonoBehaviour { get; set; } 
+    public Person PersonMonoBehaviour { get; set; }
 
+
+
+    private Room _room;
+
+    public Room Room { get; set; }
     public void Randomize()
     {
         _gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female ;

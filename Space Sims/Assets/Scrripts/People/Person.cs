@@ -13,7 +13,6 @@ public class Person : MonoBehaviour, IInteractables
     private PersonInfo _personInfo = null;
     public PersonInfo PersonInfo { get { return _personInfo; } }
 
-
     [SerializeField]
     GameObject TempSelected;
 
@@ -46,6 +45,30 @@ public class Person : MonoBehaviour, IInteractables
         _personInfo = person;
         person.PersonMonoBehaviour = this;
         ReRenderPerson();
+    }
+
+    public void AssginRoomToPerson(Room room)
+    {
+        if (room != null && room.addWorker(this))
+        {
+            if (PersonInfo.Room != null) //At somepoint this can be reomved but good to have check for now.
+            {
+                PersonInfo.Room.RemoveWorker(this);
+            }
+            PersonInfo.Room = room;
+            transform.position = room.transform.position;
+        }
+        else
+        {
+            if (PersonInfo.Room != null)
+            {
+                transform.position = room.transform.position;
+            }
+            else
+            {
+                transform.position = Vector3.zero;
+            }
+        }
     }
 
 
@@ -108,7 +131,9 @@ public class Person : MonoBehaviour, IInteractables
 
     public void OnHoldRelease()
     {
-        Debug.Log("OnHoldRelease" + gameObject.name);
+        Room room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
+        AssginRoomToPerson(room);
+        Debug.Log("OnHoldRelease" + gameObject.name);       
         IsBeingHeld = false;
     }
 

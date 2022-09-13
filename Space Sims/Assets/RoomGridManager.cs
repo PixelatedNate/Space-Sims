@@ -5,6 +5,19 @@ using UnityEngine;
 public class RoomGridManager : MonoBehaviour
 {
 
+    public static RoomGridManager Instance;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
 
     [SerializeField]
     GameObject BuildRoomTemplate;
@@ -28,7 +41,16 @@ public class RoomGridManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+
+    public Room GetRoomAtPosition(Vector3 pos)
+    {
+        Vector3Int cellPos = roomGrid.WorldToCell(pos);
+        if(!RoomList.ContainsKey(cellPos)) 
+            return null;
+
+        return RoomList[cellPos];
     }
 
 
@@ -45,9 +67,12 @@ public class RoomGridManager : MonoBehaviour
         
         GameObject room = PrefabSpawner.Instance.SpawnRoom(roomType);
         room.transform.parent = transform;
-        Vector3 CellCenter = roomGrid.CellToLocal(cellPos);
+        Vector3 CellCenter = roomGrid.GetCellCenterWorld(cellPos);
         room.transform.position = CellCenter;
-        RoomList.Add(cellPos,room.GetComponent<Room>());
+        Room roomScript = room.GetComponent<Room>();
+        roomScript.RoomPosition = cellPos;
+        RoomList.Add(cellPos,roomScript);
+
 
         Vector3Int[] adjacentCells = GetAdjacentGridCells(cellPos);
         foreach(Vector3Int adjacentCell in adjacentCells)
@@ -55,7 +80,7 @@ public class RoomGridManager : MonoBehaviour
             if(!RoomList.ContainsKey(adjacentCell) && !BuildCellList.ContainsKey(adjacentCell))
             {
                 GameObject buildTemplate = GameObject.Instantiate(BuildRoomTemplate, transform);
-                buildTemplate.transform.position = roomGrid.CellToLocal(adjacentCell);
+                buildTemplate.transform.position = roomGrid.GetCellCenterWorld(adjacentCell);
                 BuildRoomButton buildRoomButton = buildTemplate.GetComponent<BuildRoomButton>();
                 buildRoomButton.cellPos = adjacentCell;
                 buildRoomButton.roomManager = this;

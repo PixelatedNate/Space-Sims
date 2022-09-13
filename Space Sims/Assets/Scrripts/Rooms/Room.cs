@@ -28,7 +28,7 @@ public class Room : MonoBehaviour
     
     private RoomStats[] Roomlevels;
 
-    public Vector2Int RoomPosition;
+    public Vector3Int RoomPosition;
 
     [SerializeField]
     private RoomType roomType;
@@ -81,7 +81,7 @@ public class Room : MonoBehaviour
         else
         {
             Workers.Add(person.PersonInfo);
-            return false;
+            return true;
         }
     }
 
