@@ -881,6 +881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2477337061329321613}
+  - component: {fileID: 1764118102}
   m_Layer: 5
   m_Name: Person
   m_TagString: Untagged
@@ -914,6 +915,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1764118102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477337061329321614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff4682c238756f24a9ece6367d0c824a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: {fileID: 2477337061530459405}
+  Body: {fileID: 2477337062974756688}
+  Name: {fileID: 2477337062547641727}
+  Age: {fileID: 2477337061475401530}
+  Room: {fileID: 2477337061994117817}
+  Strength: {fileID: 2477337061178033845}
+  Dexterity: {fileID: 2477337062027699705}
+  Intelligence: {fileID: 2477337062049969822}
+  Wisdom: {fileID: 2477337061746611369}
+  Charisma: {fileID: 2477337062187271517}
 --- !u!1 &2477337061340779617
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,7 +1907,7 @@ RectTransform:
   m_GameObject: {fileID: 2477337061530459407}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2477337061213186399}
@@ -1892,8 +1915,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.700195, y: 141.07}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: -9.700195, y: 122.4}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2477337061530459404
 CanvasRenderer:
@@ -1923,7 +1946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4e6f7c48400d38c4595f5a6a7bdad5b1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7030,7 +7053,7 @@ RectTransform:
   m_GameObject: {fileID: 2477337062974756690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 15, y: 15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2477337061213186399}
@@ -7038,8 +7061,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.700195, y: 101.1}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: -9.700195, y: 123.7}
+  m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2477337062974756695
 CanvasRenderer:
@@ -7069,7 +7092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 20a3a794fc2fe1441bcd310b7e94311a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8098,6 +8121,7 @@ GameObject:
   - component: {fileID: 8430711208363463560}
   - component: {fileID: 8430711208363463563}
   - component: {fileID: 8430711208363463562}
+  - component: {fileID: 6241606194108843898}
   m_Layer: 5
   m_Name: Left_Slide_Tab
   m_TagString: Untagged
@@ -8222,6 +8246,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6241606194108843898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8430711208363463556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba062f81897505942a2c5a7f6885c749, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  personView: {fileID: 1764118102}
+  uiButton: {fileID: 0}
 --- !u!1 &8430711208671786825
 GameObject:
   m_ObjectHideFlags: 0
@@ -8239,7 +8277,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8430711208671786830
 RectTransform:
   m_ObjectHideFlags: 0
