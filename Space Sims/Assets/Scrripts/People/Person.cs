@@ -9,8 +9,9 @@ public class Person : MonoBehaviour, IInteractables
     private SpriteRenderer HeadRender;
     [SerializeField]
     private SpriteRenderer BodyRender;
-    PersonInfo personInfo = null;
-
+ 
+    private PersonInfo _personInfo = null;
+    public PersonInfo PersonInfo { get { return _personInfo; } }
 
     [SerializeField]
     GameObject TempSelected;
@@ -24,48 +25,72 @@ public class Person : MonoBehaviour, IInteractables
         TimeTickSystem.OnTick += OnTick;
 
         //testing
-        if (personInfo == null)
+        if (PersonInfo == null)
         {
             PersonInfo person = new PersonInfo();
             person.Randomize();
             AssginPerson(person);
             ReRenderPerson();
-            GlobalStats.Instance.PlayersPeople.Add(personInfo);
+            GlobalStats.Instance.PlayersPeople.Add(PersonInfo);
         }
     }
 
     public void AssginPerson(PersonInfo person)
     {
-        if(personInfo != null)
+        if(PersonInfo != null)
         {
     //       throw new Exception("Trying to assgin a person who allready has a personholder");
         }
         gameObject.name = person.Name;
-        personInfo = person;
+        _personInfo = person;
         person.PersonMonoBehaviour = this;
         ReRenderPerson();
+    }
+
+    public void AssginRoomToPerson(Room room)
+    {
+        if (room != null && room.addWorker(this))
+        {
+            if (PersonInfo.Room != null) //At somepoint this can be reomved but good to have check for now.
+            {
+                PersonInfo.Room.RemoveWorker(this);
+            }
+            PersonInfo.Room = room;
+            transform.position = room.transform.position;
+        }
+        else
+        {
+            if (PersonInfo.Room != null)
+            {
+                transform.position = room.transform.position;
+            }
+            else
+            {
+                transform.position = Vector3.zero;
+            }
+        }
     }
 
 
     private void OnDestroy()
     {
-        if(IsBeingHeld)
+        if (IsBeingHeld)
         {
             throw new Exception("Trying to destroy a person whilstBeingheld");
         }
-        personInfo.PersonMonoBehaviour = null;
+         PersonInfo.PersonMonoBehaviour = null;
     }
 
     private void ReRenderPerson()
     {
-        BodyRender.sprite = personInfo.Body;
-        HeadRender.sprite = personInfo.Head;
+        BodyRender.sprite = PersonInfo.Body;
+        HeadRender.sprite = PersonInfo.Head;
     }
 
 
     private void OnTick (object source, EventArgs e)
     {
-        GlobalStats.Instance.PlayerResources -= personInfo.Upkeep;
+        GlobalStats.Instance.PlayerResources -= PersonInfo.Upkeep;
      //   Debug.Log("PlayerTick");
     }
 
@@ -107,7 +132,9 @@ public class Person : MonoBehaviour, IInteractables
 
     public void OnHoldRelease()
     {
-        Debug.Log("OnHoldRelease" + gameObject.name);
+        Room room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
+        AssginRoomToPerson(room);
+        Debug.Log("OnHoldRelease" + gameObject.name);       
         IsBeingHeld = false;
     }
 

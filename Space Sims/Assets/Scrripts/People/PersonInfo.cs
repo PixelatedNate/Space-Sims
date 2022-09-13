@@ -31,6 +31,33 @@ public class PersonInfo {
         private float _charisma = 2;
         public float Charisma { get { return Mathf.Floor(_charisma); } set { _charisma = value; } }
 
+        private float _s2 = 2;
+        public float S2 { get { return Mathf.Floor(_s2); } set { S2 = value; } }
+        
+        public float GetSkill(SkillsList skill)
+        {
+            if(skill == SkillsList.s1)
+            {
+                return S1;
+            }
+            if (skill == SkillsList.s2)
+            {
+                return S2;
+            }
+            else return 0;         
+        }
+
+        public void AddToSkill(SkillsList skill,  float value)
+        {
+            if (skill == SkillsList.s1)
+            {
+                S1 += value;
+            }
+            if (skill == SkillsList.s2)
+            {
+                S2 += value;
+            }
+        }
 
         #region Comparators
         public static bool operator >(Skills a, Skills b)
@@ -127,8 +154,13 @@ public class PersonInfo {
     public bool IsQuesting { get { return CurrentQuest != null; } }
     public Quest CurrentQuest { get; set; }
 
-    public Person PersonMonoBehaviour { get; set; } 
+    public Person PersonMonoBehaviour { get; set; }
 
+
+
+    private Room _room;
+
+    public Room Room { get; set; }
     public void Randomize()
     {
         _gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female ;

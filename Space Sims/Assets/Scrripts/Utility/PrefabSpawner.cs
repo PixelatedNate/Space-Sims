@@ -19,10 +19,18 @@ public class PrefabSpawner : MonoBehaviour
 
     [SerializeField]
     private GameObject PersonTemplate;
-
+    
+    [SerializeField]
+    private GameObject RoomTemplate;
+ 
     public GameObject SpawnPerson()
     {
        return GameObject.Instantiate(PersonTemplate);
+    }
+
+    public GameObject SpawnRoom(RoomType roomType)
+    {
+        return GameObject.Instantiate(RoomTemplate);
     }
 
 
