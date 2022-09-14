@@ -91,7 +91,6 @@ public class Person : MonoBehaviour, IInteractables
     private void OnTick (object source, EventArgs e)
     {
         GlobalStats.Instance.PlayerResources -= PersonInfo.Upkeep;
-     //   Debug.Log("PlayerTick");
     }
 
 
@@ -112,13 +111,10 @@ public class Person : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         TempSelected.SetActive(true);
-        Debug.Log("Select: " + gameObject.name);
     }
 
     public bool OnHold()
     {
-        Debug.Log("OnHold" + gameObject.name);
-        
         if(IsBeingHeld)
         {
             throw new Exception("Cannot start a hold on someone who is allready being held");
@@ -133,14 +129,12 @@ public class Person : MonoBehaviour, IInteractables
     {
         Room room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
         AssginRoomToPerson(room);
-        Debug.Log("OnHoldRelease" + gameObject.name);       
         IsBeingHeld = false;
     }
 
     public void OnDeselect()
     {
         TempSelected.SetActive(false);
-        Debug.Log("Deselect: " + gameObject.name);
     }
     #endregion
 }
