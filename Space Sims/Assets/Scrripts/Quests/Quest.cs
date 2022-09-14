@@ -72,7 +72,6 @@ public class Quest : ScriptableObject
         }
         PeopleAssgined.Add(person);
         bool requimentsMet = requiments.Ismet(PeopleAssgined.ToArray());
-        Debug.Log(requimentsMet);
     }
 
     public void UnassginPerson(PersonInfo person)
@@ -133,7 +132,6 @@ public class Quest : ScriptableObject
     public void TriggerEncounter(QuestEncounter qe)
     {
         QuestLog.Add(qe);
-        Debug.Log(DateTime.Now.ToShortTimeString() + " " + qe.Name.ToUpper() + ": " + qe.Discription);
     }
 
     public void CompleatQuest()
@@ -146,7 +144,6 @@ public class Quest : ScriptableObject
             p.CompleteQuest(new PersonInfo.Skills());
         }
         QuestManager.Instance.CompleatedQuest.Add(this);
-        Debug.Log("quest Compleat");
     }
 }
 

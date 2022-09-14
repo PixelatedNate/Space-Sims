@@ -104,7 +104,6 @@ public class Room : MonoBehaviour
         //TODO: add modifer for skill of workser
         GlobalStats.Instance.PlayerResources += roomStat.OutPut;
         GlobalStats.Instance.PlayerResources -= roomStat.Upkeep;
-        Debug.Log("RoomTick");
     }
 
 
