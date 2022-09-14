@@ -38,7 +38,6 @@ public class TimeDelayManager : MonoBehaviour
         {
             this.EndTime = DateTime.Now.AddSeconds(timeInSeconds);
             this.EndMethod = endMethod;
-            Debug.Log(this.EndTime);
         }
 
 
@@ -70,7 +69,6 @@ public class TimeDelayManager : MonoBehaviour
     // can be revmoved
     private void testMethodForEndOfTimer()
     {
-        Debug.Log("MethodSpnet");
     }
 
     private void OnTick(object source, EventArgs e)

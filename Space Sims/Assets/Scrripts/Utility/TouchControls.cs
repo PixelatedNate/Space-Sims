@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class TouchControls : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class TouchControls : MonoBehaviour
     [SerializeField]
     private float MaxZoom = 8;
 
+
+    private Button _button;   // prevent trigering of UI buttons when panning or performing other touch related actions
 
     [SerializeField]
     private float SHORT_CLICK_END = 0.5f;
@@ -53,6 +56,11 @@ public class TouchControls : MonoBehaviour
         
         if(Input.GetMouseButtonUp(0) && !Zooming)
         {
+            if(_button != null)
+            {
+                _button.interactable = true;
+                _button = null;
+            }
            if(!Paning)
             {
                 if (InteractableIsIsHeld && SelectedObject != null)
@@ -119,6 +127,11 @@ public class TouchControls : MonoBehaviour
             if (!Paning && Mathf.Abs(dir.magnitude) > PANDEADZONE)
             {
                 Paning = true;
+                if (EventSystem.current.currentSelectedGameObject != null)
+                {
+                    _button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+                    _button.interactable = false;
+                }
             }
             if(Paning)
             {
