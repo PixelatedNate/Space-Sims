@@ -547,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6241606194007251504, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6241606194191212986, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: m_Name
@@ -559,7 +559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6241606194191212986, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6241606194191212990, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: m_Pivot.x
@@ -1335,6 +1335,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5306872157971662188, guid: d3c4bacd7fd46fb4da4f3102e2d01e7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 5306872158417352904, guid: d3c4bacd7fd46fb4da4f3102e2d01e7e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1556,6 +1560,14 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5306872157769727578, guid: d3c4bacd7fd46fb4da4f3102e2d01e7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3bbbdf8f8ecb6a94288c002ff1f5b63e, type: 2}
+    - target: {fileID: 5306872157971662188, guid: d3c4bacd7fd46fb4da4f3102e2d01e7e, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3bbbdf8f8ecb6a94288c002ff1f5b63e, type: 2}
     - target: {fileID: 5306872158417352904, guid: d3c4bacd7fd46fb4da4f3102e2d01e7e, type: 3}
       propertyPath: m_RootOrder
       value: 1

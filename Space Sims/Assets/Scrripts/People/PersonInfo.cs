@@ -83,8 +83,8 @@ public class PersonInfo {
     }
 
 
-    const string HeadPath = "ArtWork/People/Heads";
-    const string BodyPath = "ArtWork/People/Bodys";
+    string HeadPath;
+    string BodyPath;
 
     const string MaleNamePath = "TextData/Names/People/male";
     const string FemaleNamePath = "TextData/Names/People/female";
@@ -99,6 +99,11 @@ public class PersonInfo {
    // [SerializeField]
     private Gender _gender;
     public Gender Gender { get { return _gender; } }
+
+    private Race _race;
+    public Race Race { get { return _race; } }
+
+
 
     [SerializeField]
     public Skills skills = new Skills();
@@ -169,6 +174,17 @@ public class PersonInfo {
 
     private void RandomizeAppereance()
     {
+        if(Gender == Gender.Female)
+        {
+            HeadPath = "ArtWork/People/" + _race + "/Female/Heads";
+            BodyPath = "ArtWork/People/" + _race + "/Female/Bodies";
+        }
+        else
+        {
+            HeadPath = "ArtWork/People/" + _race + "/Male/Heads";
+            BodyPath = "ArtWork/People/" + _race + "/Male/Bodies";
+        }
+
         _head = GetRandomSpriteFromPath(HeadPath);
         _body = GetRandomSpriteFromPath(BodyPath);
     }
