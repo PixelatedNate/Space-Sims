@@ -131,6 +131,7 @@ public class PersonInfo {
     public void Randomize()
     {
         _gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female ;
+        _race = (Race)Random.Range(0, 10);
         RandomizeName();
         RandomizeAppereance();
     }
@@ -187,6 +188,8 @@ public class PersonInfo {
 
         _head = GetRandomSpriteFromPath(HeadPath);
         _body = GetRandomSpriteFromPath(BodyPath);
+
+        Debug.Log(_race);
     }
 
 

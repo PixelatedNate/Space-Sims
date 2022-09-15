@@ -9,7 +9,7 @@ public class Person : MonoBehaviour, IInteractables
     private SpriteRenderer HeadRender;
     [SerializeField]
     private SpriteRenderer BodyRender;
- 
+
     private PersonInfo _personInfo = null;
     public PersonInfo PersonInfo { get { return _personInfo; } }
 
