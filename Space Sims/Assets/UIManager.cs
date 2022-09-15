@@ -31,6 +31,11 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OpenBuildRoomMenu(Vector3Int roomCellPos)
+    {
+        leftPanal.OpenBuildRoomView(roomCellPos);
+    }
+
     public void DeselectAll()
     {
         leftPanal.ClearAllView();
