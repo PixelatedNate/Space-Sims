@@ -30,7 +30,6 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void onClick()
     {
-        Debug.Log("here");
         RoomGridManager.Instance.AddRoom(roomPos, room.RoomType);
         UIManager.Instance.DeselectAll();
     }

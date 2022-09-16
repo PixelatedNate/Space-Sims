@@ -853,7 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   personView: {fileID: 1764118102}
-  buildRoomView: {fileID: 0}
+  buildRoomView: {fileID: 9129726088052250591}
   uiButton: {fileID: 0}
 --- !u!1 &8430711208671786825
 GameObject:
@@ -2361,6 +2361,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildRoomList
       objectReference: {fileID: 0}
+    - target: {fileID: 5360475505645853476, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6512338023001168612, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
       propertyPath: room
       value: 
@@ -2506,6 +2510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46fd06b98e800f14d9eaa2b4e605134a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildRoomListItems: []
 --- !u!114 &3990007787476056890 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6184579655879545510, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
@@ -2515,6 +2520,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9129726088052250591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2033407246993145411, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
+  m_PrefabInstance: {fileID: 7100857882757015964}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2949695634123764408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fd06b98e800f14d9eaa2b4e605134a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &8049772520026514526
