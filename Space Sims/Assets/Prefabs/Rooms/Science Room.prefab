@@ -611,7 +611,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d69a8c053d8c248982fe8776789820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RoomPosition: {x: 0, y: 0}
+  RoomPosition: {x: 0, y: 0, z: 0}
+  _roomName: TemplateRoom
+  _roomDiscription: This Is the templateRoom and only one we have
   roomType: 0
   Workers: []
   DesiredSkill: 0

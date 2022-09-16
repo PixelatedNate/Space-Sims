@@ -9,12 +9,30 @@ public class LeftPanal : MonoBehaviour
     [SerializeField]
     PersonSelectUIView personView;
     [SerializeField]
+    BuildRoomListView buildRoomView;
+    [SerializeField]
     UIButton uiButton;
 
     GameObject ActiveView;
 
     
 
+
+    public void OpenBuildRoomView(Vector3Int roomCellPos)
+    {
+        if (ActiveView != null)
+        {
+            ActiveView.SetActive(false);
+        }
+        if (!uiButton.leftSliding)
+        {
+            uiButton.LeftTabSlideOut();
+        }
+        //ClearAllView();
+        ActiveView = buildRoomView.gameObject;
+        ActiveView.SetActive(true);
+        buildRoomView.EnableView(roomCellPos);
+    }
 
     public void SelectPerson(PersonInfo personInfo)
     {

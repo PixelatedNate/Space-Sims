@@ -24,14 +24,29 @@ public class Room : MonoBehaviour
         private int _maxWorkers;
         public int MaxWorkers { get { return _maxWorkers; } }
 }
+
     private int level { get; set; } = 0; // overide setmethod at somepoint
     
     private RoomStats[] Roomlevels;
 
     public Vector3Int RoomPosition;
+    
+    private Sprite _roomImg;
+
+    public Sprite RoomImg { get { return _roomImg; } }
 
     [SerializeField]
-    private RoomType roomType;
+    private string _roomName; 
+    public string RoomName { get { return _roomName; } }
+
+    [SerializeField, TextArea(10,10)]
+    private string _roomDiscription;
+    public string RoomDiscription { get { return _roomDiscription; } }
+
+    [SerializeField]
+    private RoomType _roomType;
+
+    public RoomType RoomType { get; }
 
     [SerializeField]
     private List<PersonInfo> Workers;
@@ -48,7 +63,7 @@ public class Room : MonoBehaviour
     //enum skin :TODO   
 
 
-    private RoomStats roomStat { get { return Roomlevels[level]; } }
+    public RoomStats RoomStat { get { return Roomlevels[level]; } }
 
     void Start()
     {
@@ -74,7 +89,7 @@ public class Room : MonoBehaviour
 
     public bool addWorker(Person person)
     {
-        if(Workers.Count == roomStat.MaxWorkers)
+        if(Workers.Count == RoomStat.MaxWorkers)
         {
             return false;
         }
@@ -102,8 +117,8 @@ public class Room : MonoBehaviour
     {
 
         //TODO: add modifer for skill of workser
-        GlobalStats.Instance.PlayerResources += roomStat.OutPut;
-        GlobalStats.Instance.PlayerResources -= roomStat.Upkeep;
+        GlobalStats.Instance.PlayerResources += RoomStat.OutPut;
+        GlobalStats.Instance.PlayerResources -= RoomStat.Upkeep;
     }
 
 

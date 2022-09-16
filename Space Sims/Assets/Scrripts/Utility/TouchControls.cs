@@ -77,7 +77,6 @@ public class TouchControls : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log(IsPointerOverUIElement());
                     if (!IsPointerOverUIElement())
                     {
                         if (SelectedObject != null)
@@ -255,7 +254,6 @@ public class TouchControls : MonoBehaviour
             RaycastResult curRaysastResult = eventSystemRaysastResults[index];
             if (curRaysastResult.gameObject.layer == UILayer)
             {
-                Debug.Log(curRaysastResult.gameObject.name);
                 return true;
             }
         }
