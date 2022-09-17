@@ -39,11 +39,8 @@ public class LeftPanal : MonoBehaviour
         if (ActiveView != null)
         {
             ActiveView.SetActive(false);
-        }        
-        if (!uiButton.leftSliding)
-        {
-            uiButton.LeftTabSlideOut();
         }
+        uiButton.LeftTabSlideOut();
         //ClearAllView();
         ActiveView = personView.gameObject;
         ActiveView.SetActive(true);
@@ -56,10 +53,7 @@ public class LeftPanal : MonoBehaviour
         if (ActiveView != null)
         {
             ActiveView.SetActive(false);
-            if (uiButton.leftSliding)
-            {
-                uiButton.LeftTabSlideOut();
-            }
+            uiButton.LeftTabSlideIn();
         }
     }
 
