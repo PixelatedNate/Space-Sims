@@ -111,6 +111,7 @@ public class Person : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         TempSelected.SetActive(true);
+        UIManager.Instance.DisplaySelected(_personInfo);
     }
 
     public bool OnHold()

@@ -82,7 +82,7 @@ public class RoomGridManager : MonoBehaviour
                 GameObject buildTemplate = GameObject.Instantiate(BuildRoomTemplate, transform);
                 buildTemplate.transform.position = roomGrid.GetCellCenterWorld(adjacentCell);
                 BuildRoomButton buildRoomButton = buildTemplate.GetComponent<BuildRoomButton>();
-                buildRoomButton.cellPos = adjacentCell;
+                buildRoomButton.CellPos = adjacentCell;
                 buildRoomButton.roomManager = this;
                 BuildCellList.Add(adjacentCell, buildTemplate);
             }

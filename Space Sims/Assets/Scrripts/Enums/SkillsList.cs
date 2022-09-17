@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum SkillsList{
    
-    s1,
-    s2
-
+    Strength,
+    Wisdom,
+    Dexterity, 
+    Intelligence, 
+    Charisma
 }

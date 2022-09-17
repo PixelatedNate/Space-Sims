@@ -612,6 +612,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RoomPosition: {x: 0, y: 0, z: 0}
+  _roomName: TemplateRoom
+  _roomDiscription: This Is the templateRoom and only one we have
   roomType: 0
   Workers: []
   DesiredSkill: 0

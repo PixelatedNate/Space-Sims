@@ -8,18 +8,17 @@ public class UIButton : MonoBehaviour
     public GameObject[] uiPopup;
     public GameObject[] slideTab;
     public Button[] slideBtn;
-    public bool leftSliding;
-    public bool rightSliding;
+    public Animator leftTabAnim;
     // Start is called before the first frame update
     void Start()
     {
-        
+        leftTabAnim = GameObject.Find("Left_Slide_Tab").GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void TopLeftButton()
     {
@@ -55,180 +54,10 @@ public class UIButton : MonoBehaviour
     }
     public void LeftTabSlideOut()
     {
-        if (!leftSliding)
-        {
-            slideBtn[0].interactable = false;
-            StartCoroutine(LeftTabSlidingOut());
-        }
-        else if (leftSliding)
-        {
-            slideBtn[0].interactable = false;
-            StartCoroutine(LeftTabSlidingIn());
-        }
+        leftTabAnim.SetBool("Open", true);
     }
-    public void RightTabSlideOut()
+    public void LeftTabSlideIn()
     {
-        if (!rightSliding)
-        {
-            slideBtn[1].interactable = false;
-            StartCoroutine(RightTabSlidingOut());
-        }
-        else if (rightSliding)
-        {
-            slideBtn[1].interactable = false;
-            StartCoroutine(RightTabSlidingIn());
-        }
-    }
-    public IEnumerator LeftTabSlidingOut()
-    {
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x + 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        leftSliding = true;
-        slideBtn[0].interactable = true;
-    }
-    public IEnumerator LeftTabSlidingIn()
-    {
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[0].transform.position = new Vector3((slideTab[0].transform.position.x - 24.2f), slideTab[0].transform.position.y, slideTab[0].transform.position.z);
-        leftSliding = false;
-        slideBtn[0].interactable = true;
-    }
-    public IEnumerator RightTabSlidingOut()
-    {
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x - 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        rightSliding = true;
-        slideBtn[1].interactable = true;
-    }
-    public IEnumerator RightTabSlidingIn()
-    {
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        yield return new WaitForSeconds(.02f);
-        slideTab[1].transform.position = new Vector3((slideTab[1].transform.position.x + 24.2f), slideTab[1].transform.position.y, slideTab[1].transform.position.z);
-        rightSliding = false;
-        slideBtn[1].interactable = true;
+        leftTabAnim.SetBool("Open", false);
     }
 }
