@@ -24,10 +24,7 @@ public class LeftPanal : MonoBehaviour
         {
             ActiveView.SetActive(false);
         }
-        if (!uiButton.leftSliding)
-        {
-            uiButton.LeftTabSlideOut();
-        }
+        uiButton.LeftTabSlideOut();
         //ClearAllView();
         ActiveView = buildRoomView.gameObject;
         ActiveView.SetActive(true);
