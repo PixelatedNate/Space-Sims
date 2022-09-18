@@ -38,11 +38,22 @@ public class LeftPanal : MonoBehaviour
             ActiveView.SetActive(false);
         }
         uiButton.LeftTabSlideOut();
-        //ClearAllView();
         ActiveView = personView.gameObject;
         ActiveView.SetActive(true);
         personView.SetPerson(personInfo);
     }
+
+    public void SelectRoom(Room room)
+    {
+        if (ActiveView != null)
+        {
+            ActiveView.SetActive(false);
+        }
+        uiButton.LeftTabSlideOut();
+       // ActiveView = personView.gameObject;
+       // ActiveView.SetActive(true);  
+    }
+
 
 
     public void ClearAllView()

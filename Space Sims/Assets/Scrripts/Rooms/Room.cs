@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class Room : MonoBehaviour, IInteractables
 {
     [Serializable]
     public class RoomStats
@@ -24,6 +24,10 @@ public class Room : MonoBehaviour
         private int _maxWorkers;
         public int MaxWorkers { get { return _maxWorkers; } }
 }
+
+
+    [SerializeField]
+    private GameObject TempSelect;
 
     private int level { get; set; } = 0; // overide setmethod at somepoint
     
@@ -118,4 +122,32 @@ public class Room : MonoBehaviour
     {
         
     }
+
+
+
+#region InteractableInterface
+
+    public void OnSelect()
+    {
+        TempSelect.SetActive(true);
+        UIManager.Instance.DisplaySelected(this);
+    }
+
+    public void OnDeselect()
+    {
+        TempSelect.SetActive(false);
+    }
+
+    public bool OnHold()
+    {
+        return false;
+     //   throw new NotImplementedException();
+    }
+
+    public void OnHoldRelease()
+    {
+       // throw new NotImplementedException();
+    }
+
+    #endregion
 }
