@@ -113,15 +113,6 @@ public class Room : MonoBehaviour
     }
 
 
-    private void OnTick (object source, EventArgs e)
-    {
-
-        //TODO: add modifer for skill of workser
-        GlobalStats.Instance.PlayerResources += RoomStat.OutPut;
-        GlobalStats.Instance.PlayerResources -= RoomStat.Upkeep;
-    }
-
-
     // Update is called once per frame
     void Update()
     {

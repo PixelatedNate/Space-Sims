@@ -18,7 +18,7 @@ public class GameResources
         GameResources resources = new GameResources();
         resources.Fuel = a.Fuel + b.Fuel;
         resources.Food = a.Food + b.Food;
-        resources.Other1 = a.Other1 + b.Food;
+        resources.Other1 = a.Other1 + b.Other1;
         resources.Premimum = a.Premimum + b.Premimum;
 
         return resources;
@@ -28,7 +28,7 @@ public class GameResources
         GameResources resources = new GameResources();
         resources.Fuel = a.Fuel - b.Fuel;
         resources.Food = a.Food - b.Food;
-        resources.Other1 = a.Other1 - b.Food;
+        resources.Other1 = a.Other1 - b.Other1;
         resources.Premimum = a.Premimum - b.Premimum;
 
         return resources;
@@ -37,7 +37,7 @@ public class GameResources
     {
         return( (a.Fuel > b.Fuel) &&
                 (a.Food > b.Food) &&
-                (a.Other1 > b.Food) &&
+                (a.Other1 > b.Other1) &&
                 (a.Premimum > b.Premimum) );
     }
 
@@ -45,7 +45,7 @@ public class GameResources
     {
         return( (a.Fuel < b.Fuel) &&
                 (a.Food < b.Food) &&
-                (a.Other1 < b.Food) &&
+                (a.Other1 < b.Other1) &&
                  (a.Premimum < b.Premimum) );    
     }
 
@@ -53,7 +53,7 @@ public class GameResources
     {
         return( (a.Fuel == b.Fuel) &&
                 (a.Food == b.Food) &&
-                (a.Other1 == b.Food) &&
+                (a.Other1 == b.Other1) &&
                  (a.Premimum == b.Premimum) );    
     }
 
@@ -61,7 +61,7 @@ public class GameResources
     {
         return ((a.Fuel != b.Fuel) &&
                 (a.Food != b.Food) &&
-                (a.Other1 != b.Food) &&
+                (a.Other1 != b.Other1) &&
                  (a.Premimum != b.Premimum));
     }
 
