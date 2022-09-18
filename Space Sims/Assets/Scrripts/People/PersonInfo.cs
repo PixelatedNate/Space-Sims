@@ -154,7 +154,7 @@ public class PersonInfo {
     public Skills skills = new Skills();
 
     // [SerializeField]
-    public GameResources Upkeep { get; set; } = new GameResources { Food = 5 };
+    public GameResources Upkeep { get; set; } = new GameResources { Food = -5 };
   //  [SerializeField]
     private Sprite _head;
     public Sprite Head { get { return _head; } }

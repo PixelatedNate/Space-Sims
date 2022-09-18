@@ -21,7 +21,15 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     LeftPanal leftPanal;
-    
+    [SerializeField]
+    TopBar topBar;
+
+
+
+    public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int people)
+    {
+        topBar.SetValues(currentResources, deltaResources, people);
+    }
 
     public void DisplaySelected<T>(T obj)
     {
