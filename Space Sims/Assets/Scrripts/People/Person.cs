@@ -22,8 +22,6 @@ public class Person : MonoBehaviour, IInteractables
     // Start is called before the first frame update
     void Start()
     {
-        TimeTickSystem.OnTick += OnTick;
-
         //testing
         if (PersonInfo == null)
         {
@@ -44,6 +42,7 @@ public class Person : MonoBehaviour, IInteractables
         gameObject.name = person.Name;
         _personInfo = person;
         person.PersonMonoBehaviour = this;
+        GlobalStats.Instance.AddorUpdatePersonDelta(this, PersonInfo.Upkeep);
         ReRenderPerson();
     }
 
@@ -78,6 +77,7 @@ public class Person : MonoBehaviour, IInteractables
         {
             throw new Exception("Trying to destroy a person whilstBeingheld");
         }
+         GlobalStats.Instance.RemovePersonDelta(this);
          PersonInfo.PersonMonoBehaviour = null;
     }
 
@@ -87,15 +87,6 @@ public class Person : MonoBehaviour, IInteractables
         HeadRender.sprite = PersonInfo.Head;
     }
 
-
-    private void OnTick (object source, EventArgs e)
-    {
-        GlobalStats.Instance.PlayerResources -= PersonInfo.Upkeep;
-    }
-
-
-
-    // Update is called once per frame
 
     private void LateUpdate()
     {
@@ -111,6 +102,7 @@ public class Person : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         TempSelected.SetActive(true);
+        UIManager.Instance.DisplaySelected(_personInfo);
     }
 
     public bool OnHold()

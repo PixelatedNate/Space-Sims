@@ -11,71 +11,118 @@ public class PersonInfo {
     [Serializable]
     public class Skills
     {
+
         [SerializeField]
-        private float _s1 = 2;
-        public float S1 { get { return Mathf.Floor(_s1); } set { S1 = value; } }
+        private float _strength = 2;
+        public float Strength { get { return Mathf.Floor(_strength); } set { _strength = value; } }
         
         [SerializeField]
+        private float _dexterity = 2;
+        public float Dexterity { get { return Mathf.Floor(_dexterity); } set { _dexterity = value; } }
+        [SerializeField]
+        private float _intelligence = 2;
+        public float Intelligence { get { return Mathf.Floor(_intelligence ); } set { _intelligence = value; } }       
+        
+        [SerializeField]
+        private float _wisdom = 2;
+        public float Wisdom { get { return Mathf.Floor(_wisdom); } set { _wisdom = value; } }
+        
+        [SerializeField]
+        private float _charisma = 2;
+        public float Charisma { get { return Mathf.Floor(_charisma); } set { _charisma = value; } }
+
         private float _s2 = 2;
         public float S2 { get { return Mathf.Floor(_s2); } set { S2 = value; } }
         
         public float GetSkill(SkillsList skill)
         {
-            if(skill == SkillsList.s1)
+            if(skill == SkillsList.Strength)
             {
-                return S1;
+                return Strength;
             }
-            if (skill == SkillsList.s2)
+            if (skill == SkillsList.Wisdom)
             {
-                return S2;
+                return Wisdom;
+            }
+            if (skill == SkillsList.Dexterity)
+            {
+                return Dexterity;
+            }
+            if (skill == SkillsList.Intelligence)
+            {
+                return Intelligence;
+            }
+            if (skill == SkillsList.Charisma)
+            {
+                return Charisma;
             }
             else return 0;         
         }
 
         public void AddToSkill(SkillsList skill,  float value)
         {
-            if (skill == SkillsList.s1)
+            if (skill == SkillsList.Strength)
             {
-                S1 += value;
+                Strength += value;
             }
-            if (skill == SkillsList.s2)
+            if (skill == SkillsList.Wisdom)
             {
-                S2 += value;
+                Wisdom += value;
             }
         }
 
         #region Comparators
         public static bool operator >(Skills a, Skills b)
         {
-            return ((a.S1 > b.S2) &&
-                    (a.S2 > b.S2));
+            return ((a.Strength > b.Strength) &&
+                    (a.Dexterity > b.Dexterity) &&
+                    (a.Intelligence > b.Intelligence) &&
+                    (a.Wisdom > b.Wisdom) &&
+                    (a.Charisma > b.Charisma));
         }
 
         public static bool operator <(Skills a, Skills b)
         {
-            return ((a.S2 < b.S1) &&
-                     (a.S2 < b.S2));
+            return ((a.Strength < b.Strength) &&
+                    (a.Dexterity < b.Dexterity) &&
+                    (a.Intelligence < b.Intelligence) &&
+                    (a.Wisdom < b.Wisdom) &&
+                    (a.Charisma < b.Charisma));
         }
 
         public static bool operator ==(Skills a, Skills b)
         {
-            return ((a.S1 == b.S1) &&
-                     (a.S2 == b.S2));
+            return ((a.Strength == b.Strength) &&
+                    (a.Dexterity == b.Dexterity) &&
+                    (a.Intelligence == b.Intelligence) &&
+                    (a.Wisdom == b.Wisdom) &&
+                    (a.Charisma == b.Charisma));
         }
 
         public static bool operator !=(Skills a, Skills b)
         {
-            return ((a.S1 != b.S1) &&
-                    (a.S2 != b.S2));
+            return ((a.Strength != b.Strength) &&
+                    (a.Dexterity != b.Dexterity) &&
+                    (a.Intelligence != b.Intelligence) &&
+                    (a.Wisdom != b.Wisdom) &&
+                    (a.Charisma != b.Charisma));
         }
 
         public static bool operator <=(Skills a, Skills b)
         {
-            return (a < b || a == b);
+            return ((a.Strength < b.Strength) || (a.Strength == b.Strength) &&
+                    (a.Dexterity < b.Dexterity) || ( a.Dexterity == b.Dexterity) &&
+                    (a.Intelligence < b.Intelligence) || ( a.Intelligence == b.Intelligence) &&
+                    (a.Wisdom < b.Wisdom) || ( a.Wisdom == b.Wisdom) &&
+                    (a.Charisma < b.Charisma) || (a.Charisma == b.Charisma));
         }
         public static bool operator >=(Skills a, Skills b)
         {
-            return (a > b || a == b);
+            return ((a.Strength > b.Strength) || (a.Strength == b.Strength) &&
+                    (a.Dexterity > b.Dexterity) || (a.Dexterity == b.Dexterity) &&
+                    (a.Intelligence > b.Intelligence) || (a.Intelligence == b.Intelligence) &&
+                    (a.Wisdom > b.Wisdom) || (a.Wisdom == b.Wisdom) &&
+                    (a.Charisma > b.Charisma) || (a.Charisma == b.Charisma));
         }
 
         #endregion
@@ -104,12 +151,14 @@ public class PersonInfo {
     public Race Race { get { return _race; } }
 
 
+    private short _age;
+    public short Age { get { return _age; } }
 
     [SerializeField]
     public Skills skills = new Skills();
 
     // [SerializeField]
-    public GameResources Upkeep { get; set; } = new GameResources { Food = 5 };
+    public GameResources Upkeep { get; set; } = new GameResources { Food = -5 };
   //  [SerializeField]
     private Sprite _head;
     public Sprite Head { get { return _head; } }
@@ -132,8 +181,10 @@ public class PersonInfo {
     {
         _gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female ;
         _race = (Race)Random.Range(0, 10);
+        _age = (short)Random.Range(20, 80);
         RandomizeName();
         RandomizeAppereance();
+        RandomizeSkills();
     }
 
 
@@ -170,7 +221,11 @@ public class PersonInfo {
 
     private void RandomizeSkills()
     {
-
+        skills.Strength = Random.Range(1, 11);
+        skills.Intelligence = Random.Range(1, 11);
+        skills.Wisdom = Random.Range(1, 11);
+        skills.Charisma = Random.Range(1, 11);
+        skills.Dexterity = Random.Range(1, 11);
     }
 
     private void RandomizeAppereance()

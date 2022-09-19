@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class Room : MonoBehaviour, IInteractables
 {
     [Serializable]
     public class RoomStats
@@ -24,20 +24,41 @@ public class Room : MonoBehaviour
         private int _maxWorkers;
         public int MaxWorkers { get { return _maxWorkers; } }
 }
+
+
+    [SerializeField]
+    private GameObject TempSelect;
+
     private int level { get; set; } = 0; // overide setmethod at somepoint
     
     private RoomStats[] Roomlevels;
 
     public Vector3Int RoomPosition;
+    
+    private Sprite _roomImg;
+
+    public Sprite RoomImg { get { return _roomImg; } }
 
     [SerializeField]
-    private RoomType roomType;
+    private string _roomName; 
+    public string RoomName { get { return _roomName; } }
+
+    [SerializeField, TextArea(10,10)]
+    private string _roomDiscription;
+    public string RoomDiscription { get { return _roomDiscription; } }
 
     [SerializeField]
-    private List<PersonInfo> Workers;
+    private RoomType _roomType;
+
+    public RoomType RoomType { get; }
 
     [SerializeField]
-    private SkillsList DesiredSkill;
+    public List<PersonInfo> Workers;
+
+    [SerializeField]
+    private SkillsList _desiredSkill;
+
+    public SkillsList DesiredSkill { get { return _desiredSkill; } }
 
     [SerializeField]
     private RoomStats Level1RoomStat;
@@ -48,7 +69,11 @@ public class Room : MonoBehaviour
     //enum skin :TODO   
 
 
-    private RoomStats roomStat { get { return Roomlevels[level]; } }
+    [SerializeField]
+    private Camera camera;
+
+
+    public RoomStats RoomStat { get { return Roomlevels[level]; } }
 
     void Start()
     {
@@ -74,7 +99,7 @@ public class Room : MonoBehaviour
 
     public bool addWorker(Person person)
     {
-        if(Workers.Count == roomStat.MaxWorkers)
+        if(Workers.Count == RoomStat.MaxWorkers)
         {
             return false;
         }
@@ -98,18 +123,43 @@ public class Room : MonoBehaviour
     }
 
 
-    private void OnTick (object source, EventArgs e)
-    {
-
-        //TODO: add modifer for skill of workser
-        GlobalStats.Instance.PlayerResources += roomStat.OutPut;
-        GlobalStats.Instance.PlayerResources -= roomStat.Upkeep;
-    }
-
-
     // Update is called once per frame
     void Update()
     {
         
     }
+
+    public void SetCamera(RenderTexture renderTexture)
+    {
+        camera.gameObject.SetActive(true);
+        camera.targetTexture = renderTexture;
+    }
+
+
+#region InteractableInterface
+
+    public void OnSelect()
+    {
+        TempSelect.SetActive(true);
+        UIManager.Instance.DisplaySelected(this);
+    }
+
+    public void OnDeselect()
+    {
+        camera.gameObject.SetActive(false);
+        TempSelect.SetActive(false);
+    }
+
+    public bool OnHold()
+    {
+        return false;
+     //   throw new NotImplementedException();
+    }
+
+    public void OnHoldRelease()
+    {
+       // throw new NotImplementedException();
+    }
+
+    #endregion
 }
