@@ -8,8 +8,59 @@ public class GameResources
 {
     public int Fuel;
     public int Food;
-    public int Other1;
+    public int Minerals;
     public int Premimum;
+
+
+
+
+
+    public GameResources()
+    {
+        Food = 0;
+        Fuel = 0;
+        Minerals = 0;
+        Premimum = 0;
+    }
+
+   public GameResources(ResourcesEnum resourcesEnum,int value)
+    {      
+       SetResorce(resourcesEnum, value);
+    }
+
+
+
+
+
+    public void SetResorce(ResourcesEnum resourcesEnum, int value)
+    {
+        switch (resourcesEnum)
+        {
+            case ResourcesEnum.Fuel: Fuel = value; return;
+            case ResourcesEnum.Food: Food = value; return;
+            case ResourcesEnum.Minerals: Minerals = value; return;
+            case ResourcesEnum.Premimum: Premimum = value; return;
+            default: throw new Exception("Enum Resources Found No corisponding value");
+        }
+    }
+
+
+    public int GetResorce(ResourcesEnum resourcesEnum)
+    {
+        switch (resourcesEnum)
+        {
+            case ResourcesEnum.Fuel: return Fuel;
+            case ResourcesEnum.Food: return Food;
+            case ResourcesEnum.Minerals: return Minerals;
+            case ResourcesEnum.Premimum: return Premimum;
+            default: throw new Exception("Enum Resources returned No corisponding value");
+        }
+    }
+
+
+
+
+
 
 
     #region Comparators
@@ -18,7 +69,7 @@ public class GameResources
         GameResources resources = new GameResources();
         resources.Fuel = a.Fuel + b.Fuel;
         resources.Food = a.Food + b.Food;
-        resources.Other1 = a.Other1 + b.Other1;
+        resources.Minerals = a.Minerals + b.Minerals;
         resources.Premimum = a.Premimum + b.Premimum;
 
         return resources;
@@ -28,7 +79,7 @@ public class GameResources
         GameResources resources = new GameResources();
         resources.Fuel = a.Fuel - b.Fuel;
         resources.Food = a.Food - b.Food;
-        resources.Other1 = a.Other1 - b.Other1;
+        resources.Minerals = a.Minerals - b.Minerals;
         resources.Premimum = a.Premimum - b.Premimum;
 
         return resources;
@@ -37,7 +88,7 @@ public class GameResources
     {
         return( (a.Fuel > b.Fuel) &&
                 (a.Food > b.Food) &&
-                (a.Other1 > b.Other1) &&
+                (a.Minerals > b.Minerals) &&
                 (a.Premimum > b.Premimum) );
     }
 
@@ -45,7 +96,7 @@ public class GameResources
     {
         return( (a.Fuel < b.Fuel) &&
                 (a.Food < b.Food) &&
-                (a.Other1 < b.Other1) &&
+                (a.Minerals < b.Minerals) &&
                  (a.Premimum < b.Premimum) );    
     }
 
@@ -53,7 +104,7 @@ public class GameResources
     {
         return( (a.Fuel == b.Fuel) &&
                 (a.Food == b.Food) &&
-                (a.Other1 == b.Other1) &&
+                (a.Minerals == b.Minerals) &&
                  (a.Premimum == b.Premimum) );    
     }
 
@@ -61,7 +112,7 @@ public class GameResources
     {
         return ((a.Fuel != b.Fuel) &&
                 (a.Food != b.Food) &&
-                (a.Other1 != b.Other1) &&
+                (a.Minerals != b.Minerals) &&
                  (a.Premimum != b.Premimum));
     }
 

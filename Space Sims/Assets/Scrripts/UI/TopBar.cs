@@ -24,7 +24,7 @@ public class TopBar : MonoBehaviour
         {
             DeltaFood.color = Color.red;
         }
-        Minerals.text        =  currentValues.Other1.ToString();
-        DeltaMinerals.text   =  deltaValues.Other1.ToString();
+        Minerals.text        =  currentValues.Minerals.ToString();
+        DeltaMinerals.text   =  deltaValues.Minerals.ToString();
     }
 }
