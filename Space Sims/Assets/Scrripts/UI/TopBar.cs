@@ -15,16 +15,12 @@ public class TopBar : MonoBehaviour
 
     public void SetValues(GameResources currentValues, GameResources deltaValues, int peopleCount)
     {
-        People.text          =  peopleCount.ToString();
-        Fuel.text            =  currentValues.Fuel.ToString();
-        DeltaFuel.text       =  deltaValues.Fuel.ToString();
-        Food.text            =  currentValues.Food.ToString();
-        DeltaFood.text       =  deltaValues.Food.ToString();
-        if(deltaValues.Food < 0)
-        {
-            DeltaFood.color = Color.red;
-        }
-        Minerals.text        =  currentValues.Minerals.ToString();
-        DeltaMinerals.text   =  deltaValues.Minerals.ToString();
+        People.text          =  peopleCount.ToString("+0;-#");
+        Fuel.text            =  currentValues.Fuel.ToString("+0;-#");
+        DeltaFuel.text       =  deltaValues.Fuel.ToString("+0;-#");
+        Food.text            =  currentValues.Food.ToString("+0;-#");
+        DeltaFood.text       =  deltaValues.Food.ToString("+0;-#");
+        Minerals.text        =  currentValues.Minerals.ToString("+0;-#");
+        DeltaMinerals.text   =  deltaValues.Minerals.ToString("+0;-#");
     }
 }

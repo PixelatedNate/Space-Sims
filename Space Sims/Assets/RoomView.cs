@@ -57,7 +57,7 @@ public class RoomView : MonoBehaviour
                 if (outPutFound == true) { Debug.LogWarning("Room " + SelectedRoom.gameObject.name + " has two diffrent Resources used for OutPut"); }
                 outPutFound = true;
                 OutPutImge.sprite = Icons.GetIcon(re);
-                Upkeep.text = SelectedRoom.RoomStat.OutPut.GetResorce(re).ToString();
+                Output.text = SelectedRoom.RoomStat.OutPut.GetResorce(re).ToString();
             }
         }
     }      

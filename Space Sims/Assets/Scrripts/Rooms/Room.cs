@@ -50,7 +50,7 @@ public class Room : MonoBehaviour, IInteractables
     [SerializeField]
     private RoomType _roomType;
 
-    public RoomType RoomType { get; }
+    public RoomType RoomType { get { return _roomType; } }
 
     [SerializeField]
     public List<PersonInfo> Workers;
@@ -78,6 +78,8 @@ public class Room : MonoBehaviour, IInteractables
     void Start()
     {
         Roomlevels = new RoomStats[3] {Level1RoomStat, Level2RoomStat, Level3RoomStat };
+        GlobalStats.Instance.PlyaerRooms.Add(this);
+        GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
     }
 
     public bool Upgrade()

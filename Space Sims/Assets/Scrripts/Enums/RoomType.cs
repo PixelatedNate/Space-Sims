@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum RoomType
 {
-    Room1,
-    Room2,
-    Room3,
+    Food,
+    Fuel,
+    Minerals,
 }

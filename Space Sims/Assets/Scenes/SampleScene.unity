@@ -1392,6 +1392,18 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4842336658876816712, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842336658876816712, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842336658876816712, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4842336658876816712, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.0844142
       objectReference: {fileID: 0}
@@ -1401,7 +1413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4842336658876816712, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.106761485
+      value: -0.10675812
       objectReference: {fileID: 0}
     - target: {fileID: 4842336658876816712, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1439,6 +1451,18 @@ PrefabInstance:
       propertyPath: RoomTemplate
       value: 
       objectReference: {fileID: 4152872870442615271, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
+    - target: {fileID: 4842336659247741131, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
+      propertyPath: FoodRoomTemplate
+      value: 
+      objectReference: {fileID: 4152872870442615271, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
+    - target: {fileID: 4842336659247741131, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
+      propertyPath: FuelRoomTemplate
+      value: 
+      objectReference: {fileID: 4152872870442615271, guid: 233bace08e74f1c4cabec957b004e02a, type: 3}
+    - target: {fileID: 4842336659247741131, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
+      propertyPath: MineralsRoomTemplate
+      value: 
+      objectReference: {fileID: 4152872870442615271, guid: 3057e0f6f3a15a1499da7c2f59e96c06, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4842336658876816712, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
@@ -4881,41 +4905,9 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 2477337062039509060}
     m_Modifications:
-    - target: {fileID: 4288157535746936325, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: room
-      value: 
-      objectReference: {fileID: 4186185918071054093, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
     - target: {fileID: 5360475505645853476, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
       propertyPath: m_Name
       value: BuildRoomList
-      objectReference: {fileID: 0}
-    - target: {fileID: 5360475505645853476, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6512338023001168612, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: room
-      value: 
-      objectReference: {fileID: 4186185918071054093, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
-    - target: {fileID: 6536234013336837644, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.0000012326
-      objectReference: {fileID: 0}
-    - target: {fileID: 6536234013336837644, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 41.34999
-      objectReference: {fileID: 0}
-    - target: {fileID: 6859095020522700675, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: room
-      value: 
-      objectReference: {fileID: 4186185918071054093, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
-    - target: {fileID: 6909999904628833131, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.0000012326
-      objectReference: {fileID: 0}
-    - target: {fileID: 6909999904628833131, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -41.345
       objectReference: {fileID: 0}
     - target: {fileID: 8077333599642308787, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
       propertyPath: m_Pivot.x
@@ -5001,18 +4993,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8923234014323943781, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.0000012326
-      objectReference: {fileID: 0}
-    - target: {fileID: 8923234014323943781, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -124.04
-      objectReference: {fileID: 0}
-    - target: {fileID: 9101927334903367914, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}
-      propertyPath: room
-      value: 
-      objectReference: {fileID: 4186185918071054093, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd33c8779d34ba4ab17ab607ed93969, type: 3}

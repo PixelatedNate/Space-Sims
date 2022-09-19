@@ -31,11 +31,8 @@ public class RoomGridManager : MonoBehaviour
     void Start()
     {
         roomGrid = GetComponent<Grid>();
-        AddRoom(Vector3Int.zero, RoomType.Room1);
-        AddRoom(new Vector3Int(1,0,0), RoomType.Room1);
-        AddRoom(Vector3Int.zero, RoomType.Room1);
-        //PrefabSpawner.Instance.
-        
+        AddRoom(Vector3Int.zero, RoomType.Fuel);
+        AddRoom(new Vector3Int(1,0,0), RoomType.Fuel);
     }
 
     // Update is called once per frame
