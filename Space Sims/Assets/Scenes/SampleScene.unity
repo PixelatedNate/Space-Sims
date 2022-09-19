@@ -5791,7 +5791,7 @@ GameObject:
   - component: {fileID: 1718301527}
   - component: {fileID: 1718301526}
   m_Layer: 5
-  m_Name: FuelImage
+  m_Name: UpkeepImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6350,7 +6350,7 @@ GameObject:
   - component: {fileID: 1825047032}
   - component: {fileID: 1825047031}
   m_Layer: 5
-  m_Name: FuelRequiredTxt
+  m_Name: UpkeepRequiredTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6781,7 +6781,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1957963671}
   - component: {fileID: 1957963673}
-  - component: {fileID: 1957963672}
+  - component: {fileID: 1957963674}
   m_Layer: 5
   m_Name: RoomCameraView
   m_TagString: Untagged
@@ -6807,9 +6807,17 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 55.350014}
-  m_SizeDelta: {x: 100, y: 160}
+  m_SizeDelta: {x: 100, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1957963672
+--- !u!222 &1957963673
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957963670}
+  m_CullTransparentMesh: 1
+--- !u!114 &1957963674
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6818,7 +6826,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1957963670}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
@@ -6829,24 +6837,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1957963673
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1957963670}
-  m_CullTransparentMesh: 1
+  m_Texture: {fileID: 8400000, guid: 6c662033005d9424d8cc674b06e8c690, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!1 &2034740344
 GameObject:
   m_ObjectHideFlags: 0
@@ -13416,13 +13413,36 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2477337062664256714}
+  - component: {fileID: 2477337062664256716}
   m_Layer: 5
   m_Name: Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
+--- !u!114 &2477337062664256716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477337062664256715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afce250bf72973643b547c9c3fb35be7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: {fileID: 1032128715}
+  Type: {fileID: 215210404}
+  Modifer: {fileID: 855217489}
+  MaxPeopel: {fileID: 1763873152}
+  CurrentPeople: {fileID: 1612431666}
+  Output: {fileID: 1581778227}
+  Upkeep: {fileID: 1825047031}
+  OutPutImge: {fileID: 2034740346}
+  UpkeepImage: {fileID: 1718301526}
+  CameraRenderTexture: {fileID: 8400000, guid: 6c662033005d9424d8cc674b06e8c690, type: 2}
 --- !u!224 &2477337062694402808
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15347,6 +15367,7 @@ MonoBehaviour:
   personView: {fileID: 1368766428}
   buildRoomView: {fileID: 1436022352}
   uiButton: {fileID: 1851411109}
+  roomView: {fileID: 2477337062664256716}
 --- !u!1001 &6459724331635126412
 PrefabInstance:
   m_ObjectHideFlags: 0

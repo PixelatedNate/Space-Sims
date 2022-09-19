@@ -12,6 +12,8 @@ public class LeftPanal : MonoBehaviour
     BuildRoomListView buildRoomView;
     [SerializeField]
     UIButton uiButton;
+    [SerializeField]
+    RoomView roomView;
 
     GameObject ActiveView;
 
@@ -50,8 +52,9 @@ public class LeftPanal : MonoBehaviour
             ActiveView.SetActive(false);
         }
         uiButton.LeftTabSlideOut();
-       // ActiveView = personView.gameObject;
-       // ActiveView.SetActive(true);  
+        roomView.SetRoom(room);
+        ActiveView = roomView.gameObject;
+        ActiveView.SetActive(true);  
     }
 
 

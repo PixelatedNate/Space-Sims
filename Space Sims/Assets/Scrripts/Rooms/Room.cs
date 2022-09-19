@@ -53,10 +53,12 @@ public class Room : MonoBehaviour, IInteractables
     public RoomType RoomType { get; }
 
     [SerializeField]
-    private List<PersonInfo> Workers;
+    public List<PersonInfo> Workers;
 
     [SerializeField]
-    private SkillsList DesiredSkill;
+    private SkillsList _desiredSkill;
+
+    public SkillsList DesiredSkill { get { return _desiredSkill; } }
 
     [SerializeField]
     private RoomStats Level1RoomStat;
@@ -65,6 +67,10 @@ public class Room : MonoBehaviour, IInteractables
     [SerializeField]
     private RoomStats Level3RoomStat;
     //enum skin :TODO   
+
+
+    [SerializeField]
+    private Camera camera;
 
 
     public RoomStats RoomStat { get { return Roomlevels[level]; } }
@@ -123,6 +129,11 @@ public class Room : MonoBehaviour, IInteractables
         
     }
 
+    public void SetCamera(RenderTexture renderTexture)
+    {
+        camera.gameObject.SetActive(true);
+        camera.targetTexture = renderTexture;
+    }
 
 
 #region InteractableInterface
@@ -135,6 +146,7 @@ public class Room : MonoBehaviour, IInteractables
 
     public void OnDeselect()
     {
+        camera.gameObject.SetActive(false);
         TempSelect.SetActive(false);
     }
 
