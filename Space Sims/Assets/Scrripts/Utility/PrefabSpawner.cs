@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,8 +22,12 @@ public class PrefabSpawner : MonoBehaviour
     private GameObject PersonTemplate;
     
     [SerializeField]
-    private GameObject RoomTemplate;
- 
+    private GameObject FuelRoomTemplate;
+    [SerializeField]
+    private GameObject FoodRoomTemplate;
+    [SerializeField]
+    private GameObject MineralsRoomTemplate;
+
     public GameObject SpawnPerson()
     {
        return GameObject.Instantiate(PersonTemplate);
@@ -30,7 +35,13 @@ public class PrefabSpawner : MonoBehaviour
 
     public GameObject SpawnRoom(RoomType roomType)
     {
-        return GameObject.Instantiate(RoomTemplate);
+        switch(roomType)
+        {
+            case (RoomType.Fuel): return GameObject.Instantiate(FuelRoomTemplate);
+            case (RoomType.Food): return GameObject.Instantiate(FoodRoomTemplate);
+            case (RoomType.Minerals): return GameObject.Instantiate(MineralsRoomTemplate);
+            default: throw new Exception(roomType.ToString() + ": roomTypeCanNotBeFound");
+        }
     }
 
 

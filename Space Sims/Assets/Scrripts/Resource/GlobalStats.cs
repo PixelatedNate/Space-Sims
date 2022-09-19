@@ -77,6 +77,36 @@ public class GlobalStats : MonoBehaviour
         TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;
         
     }
+       public void AddorUpdateRoomDelta(Room room, GameResources delta)
+    {
+        if(RoomDeltaResources.ContainsKey(room))
+        {
+            RoomDeltaResources[room] = delta;
+        }
+        else
+        {
+            RoomDeltaResources.Add(room, delta);
+        }
+            RecalculateRoomDeltaTotal();
+    }
+    public void RemoveRoomDelta(Room room)
+    {
+        if (RoomDeltaResources.ContainsKey(room))
+        {
+            RoomDeltaResources.Remove(room);
+            RecalculateRoomDeltaTotal();
+        }
+    }
+    private void RecalculateRoomDeltaTotal()
+    {
+        RoomDeltaResourcesTotal = new GameResources();
+        foreach(var keyPair in RoomDeltaResources)
+        {
+            RoomDeltaResourcesTotal += keyPair.Value;
+        }
+        TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;
+        
+    }
 
 
 
