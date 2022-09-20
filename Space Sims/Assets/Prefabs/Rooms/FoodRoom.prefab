@@ -785,14 +785,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TempSelect: {fileID: 2958880641197198299}
-  RoomPosition: {x: 0, y: 0, z: 0}
-  _roomName: FoodRoom
-  _roomDiscription: WorkersNeed Food
-  _roomType: 0
-  Workers: []
-  _desiredSkill: 0
-  Level1RoomStat:
-    _upkeep:
+  Roomlevels:
+  - _upkeep:
       Fuel: 5
       Food: 0
       Minerals: 0
@@ -808,40 +802,12 @@ MonoBehaviour:
       Minerals: 0
       Premimum: 0
     _maxWorkers: 2
-  Level2RoomStat:
-    _upkeep:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _outPut:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _buildCost:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _maxWorkers: 2
-  Level3RoomStat:
-    _upkeep:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _outPut:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _buildCost:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _maxWorkers: 2
+  RoomPosition: {x: 0, y: 0, z: 0}
+  _roomName: FoodRoom
+  _roomDiscription: WorkersNeed Food
+  _roomType: 0
+  Workers: []
+  _desiredSkill: 0
   camera: {fileID: 7272171562527989397}
 --- !u!61 &7983010585713306521
 BoxCollider2D:
