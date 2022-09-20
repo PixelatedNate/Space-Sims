@@ -22,6 +22,7 @@ public class BuildRoomListView : MonoBehaviour
         foreach(var item in buildRoomListItems)
         {
             item.roomPos = roomPos;
+            item.UpdateItem();
         }
     }
 

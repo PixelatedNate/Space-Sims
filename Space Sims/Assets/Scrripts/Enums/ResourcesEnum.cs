@@ -8,5 +8,4 @@ public enum ResourcesEnum
     Food,
     Minerals,
     Premimum
-
 }

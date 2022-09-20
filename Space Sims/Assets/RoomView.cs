@@ -23,8 +23,30 @@ public class RoomView : MonoBehaviour
     {
         SelectedRoom = room;
         UpdateText();
-        DisplayInputAndOutPuts();
         UpdateCamera();
+
+        if (SelectedRoom.UpkeepType != null)
+        {
+            UpkeepImage.gameObject.SetActive(true);
+            UpkeepImage.sprite = Icons.GetIcon(SelectedRoom.UpkeepType);
+            Upkeep.text = SelectedRoom.UpkeepValue.ToString();
+        }
+        else
+        {
+            UpkeepImage.gameObject.SetActive(false);
+            Upkeep.text = "";
+        }
+        if (SelectedRoom.OutPutType != null)
+        {
+            OutPutImge.gameObject.SetActive(true);
+            OutPutImge.sprite = Icons.GetIcon(SelectedRoom.OutPutType);
+            Output.text = SelectedRoom.OutputValue.ToString();
+        }
+        else
+        {
+            OutPutImge.gameObject.SetActive(false);
+            Output.text = "";
+        }
         
     }
 
@@ -37,30 +59,6 @@ public class RoomView : MonoBehaviour
         MaxPeopel.text = SelectedRoom.RoomStat.MaxWorkers.ToString();
         CurrentPeople.text = SelectedRoom.Workers.Count.ToString();
     }
-
-    private void DisplayInputAndOutPuts()
-    {
-
-        bool upkeepFound = false;
-        bool outPutFound = false;
-        foreach (ResourcesEnum re in Enum.GetValues(typeof(ResourcesEnum)))
-        {
-            if (SelectedRoom.RoomStat.Upkeep.GetResorce(re) != 0)
-            {
-                if (upkeepFound == true) { throw new Exception("Room " + SelectedRoom.gameObject.name + " has two diffrent Resources used for Upkeep"); }
-                upkeepFound = true;
-                UpkeepImage.sprite = Icons.GetIcon(re);
-                Upkeep.text = SelectedRoom.RoomStat.Upkeep.GetResorce(re).ToString();
-            }
-            if (SelectedRoom.RoomStat.OutPut.GetResorce(re) != 0)
-            {
-                if (outPutFound == true) { Debug.LogWarning("Room " + SelectedRoom.gameObject.name + " has two diffrent Resources used for OutPut"); }
-                outPutFound = true;
-                OutPutImge.sprite = Icons.GetIcon(re);
-                Output.text = SelectedRoom.RoomStat.OutPut.GetResorce(re).ToString();
-            }
-        }
-    }      
     
     private void UpdateCamera()
     {
