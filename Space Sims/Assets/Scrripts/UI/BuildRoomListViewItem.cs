@@ -32,8 +32,9 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void onClick()
     {
-        RoomGridManager.Instance.AddRoom(roomPos, room.RoomType);
+        Room newRoom = RoomGridManager.Instance.AddRoom(roomPos, room.RoomType);
         UIManager.Instance.DeselectAll();
+        newRoom.StartConstruction(0);
     }
 
     public void UpdateItem()
