@@ -23,6 +23,10 @@ public class Room : MonoBehaviour, IInteractables
         [SerializeField]
         private int _maxWorkers;
         public int MaxWorkers { get { return _maxWorkers; } }
+
+        [SerializeField]
+        public double _buildTime;
+        public double BuildTime { get { return _buildTime; } }
 }
 
 
@@ -61,21 +65,12 @@ public class Room : MonoBehaviour, IInteractables
 
     public SkillsList DesiredSkill { get { return _desiredSkill; } }
 
-  //  [SerializeField]
-  //  private RoomStats Level1RoomStat;
-  //  [SerializeField]
-  //  private RoomStats Level2RoomStat;
- //   [SerializeField]
- //   private RoomStats Level3RoomStat;
-    //enum skin :TODO   
-
     private ResourcesEnum? _outputType = null;
     public  ResourcesEnum? OutPutType { get { return _outputType; } }
     public int? OutputValue { get {
             if (OutPutType == null) return null;
             return RoomStat.OutPut.GetResorce((ResourcesEnum)OutPutType);
                 } }
-
     
     private ResourcesEnum? _upkeepType = null;
     public  ResourcesEnum? UpkeepType { get { return _upkeepType; } }
@@ -87,8 +82,10 @@ public class Room : MonoBehaviour, IInteractables
             return -RoomStat.Upkeep.GetResorce((ResourcesEnum)UpkeepType);
         }
     }
+    
+    public bool IsUnderConstruction { get; private set; }
 
-
+    public TimeDelayManager.Timer ConstructionTimer { get; private set; }
 
 
 
@@ -100,6 +97,23 @@ public class Room : MonoBehaviour, IInteractables
     {
         IntisaliseRoom();
         GlobalStats.Instance.PlyaerRooms.Add(this);
+        GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
+    }
+
+
+
+    public void StartConstruction(int level)
+    {
+        Debug.Log("starting");
+        IsUnderConstruction = true;
+        GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
+        ConstructionTimer = TimeDelayManager.Instance.AddTimer( new TimeDelayManager.Timer(DateTime.Now.AddMinutes(Roomlevels[level].BuildTime),ConstructionCompleat));
+    }
+
+    public void ConstructionCompleat()
+    {
+        Debug.Log("Complete");
+        IsUnderConstruction = false;
         GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
     }
 

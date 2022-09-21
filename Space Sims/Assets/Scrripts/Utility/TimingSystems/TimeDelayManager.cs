@@ -20,13 +20,13 @@ public class TimeDelayManager : MonoBehaviour
         }
     }
 
-    static DateTime currentTime;
-
     public class Timer
     {
-        public DateTime EndTime;
+        public DateTime StartTime { get; set; }
+        public DateTime EndTime { get; set; }
         public Action EndMethod { get; }
-        TimeSpan RemainingDuration { get { return (EndTime - currentTime); } }
+        public TimeSpan TotalBuildDuration { get { return (EndTime - StartTime); } }
+        public TimeSpan RemainingDuration { get { return (EndTime - DateTime.Now); } }
 
 
         public Timer(DateTime endTime, Action endMethod)
@@ -58,10 +58,12 @@ public class TimeDelayManager : MonoBehaviour
     }
 
 
-    public void AddTimer(Timer timer)
+    public Timer AddTimer(Timer timer)
     {
+        timer.StartTime = DateTime.Now;
         ActiveTimers.Add(timer);
         ActiveTimers.Sort((timer1,timer2)  => timer1.EndTime.CompareTo(timer2.EndTime));
+        return timer;
     }
 
 

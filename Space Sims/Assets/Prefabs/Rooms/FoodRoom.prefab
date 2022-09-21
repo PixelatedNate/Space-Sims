@@ -802,6 +802,7 @@ MonoBehaviour:
       Minerals: 0
       Premimum: 0
     _maxWorkers: 2
+    _buildTime: 0.5
   RoomPosition: {x: 0, y: 0, z: 0}
   _roomName: FoodRoom
   _roomDiscription: WorkersNeed Food

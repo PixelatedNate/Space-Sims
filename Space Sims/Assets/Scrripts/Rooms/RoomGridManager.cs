@@ -52,9 +52,9 @@ public class RoomGridManager : MonoBehaviour
 
 
 
-    public void AddRoom(Vector3Int cellPos,RoomType roomType)
+    public Room AddRoom(Vector3Int cellPos,RoomType roomType)
     {
-        if (RoomList.ContainsKey(cellPos)) { return; }
+        if (RoomList.ContainsKey(cellPos)) { return null; }
        
         if(BuildCellList.ContainsKey(cellPos))
         {
@@ -84,6 +84,7 @@ public class RoomGridManager : MonoBehaviour
                 BuildCellList.Add(adjacentCell, buildTemplate);
             }
         }
+        return roomScript;
 
     }
 
