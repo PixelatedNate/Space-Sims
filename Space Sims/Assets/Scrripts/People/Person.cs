@@ -48,7 +48,7 @@ public class Person : MonoBehaviour, IInteractables
 
     public void AssginRoomToPerson(Room room)
     {
-        if (room != null && room.addWorker(this))
+        if (room != null && room.AddWorker(this))
         {
             if (PersonInfo.Room != null) //At somepoint this can be reomved but good to have check for now.
             {

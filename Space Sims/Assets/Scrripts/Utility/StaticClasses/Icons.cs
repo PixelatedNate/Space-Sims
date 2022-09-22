@@ -14,12 +14,8 @@ public static class Icons
 
 
 
-    public static Sprite GetIcon(ResourcesEnum? resourcesEnum)
+    public static Sprite GetIcon(ResourcesEnum resourcesEnum)
     {
-        if(resourcesEnum == null)
-        {
-            return null;
-        }
         switch (resourcesEnum)
         {
             case ResourcesEnum.Fuel: return Resources.Load<Sprite>(FuelIconPath);

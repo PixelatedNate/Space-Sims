@@ -5,10 +5,37 @@ using UnityEngine;
 
 public class GlobalStats : MonoBehaviour
 {
-   
-    #region Singlton
+
     public static GlobalStats Instance;
-    private void Awake()
+
+    private Dictionary<Person, GameResources> PersonDeltaResources { get; set; } = new Dictionary<Person, GameResources>();
+    private GameResources PersonDeltaResourcesTotal { get; set; } = new GameResources();
+
+    private Dictionary<Room, GameResources> RoomDeltaResources { get; set; } = new Dictionary<Room, GameResources>();
+    private GameResources RoomDeltaResourcesTotal { get; set; } = new GameResources();
+
+    private GameResources TotalDelta { get; set; }
+
+    [SerializeField]
+    private GameResources _playerResources;
+    public GameResources PlayerResources { get { return _playerResources; } set { SetPlayerResources(value); } }
+
+
+    public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
+    public List<Room> PlyaerRooms = new List<Room>();
+
+    #region CustomGetterAndSetters
+
+    private void SetPlayerResources(GameResources value)
+    {
+       _playerResources = value;
+       checkResourcesForAlertChanges();
+       UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, 0);
+    }
+
+    #endregion
+
+    void Awake()
     {
         if (Instance != null && Instance != this)
         {
@@ -19,43 +46,25 @@ public class GlobalStats : MonoBehaviour
             Instance = this;
         }
     }
-    #endregion
-
-    //section for all the code relating to DeltaGameResourcesChyanges
-    #region DeltaChanges
-    Dictionary<Person, GameResources> PersonDeltaResources = new Dictionary<Person, GameResources>();
-    GameResources PersonDeltaResourcesTotal = new GameResources();
-    Dictionary<Room, GameResources> RoomDeltaResources = new Dictionary<Room, GameResources>();
-    GameResources RoomDeltaResourcesTotal = new GameResources();
-    GameResources TotalDelta;
-    #endregion
-
-    [SerializeField]
-    private GameResources _playerResources;
-    public GameResources PlayerResources { get { return _playerResources; } 
-        set {
-            _playerResources = value;
-            checkResourcesForAlertChanges();
-            UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, 0);
-            }
-        }
-
-
-    public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
-    public List<Room> PlyaerRooms = new List<Room>();
+    void Start()
+    {
+        TimeTickSystem.OnTick += OnTick;
+    }
 
 
 
-    #region DeltaGameResources Methods
-    public void AddorUpdatePersonDelta(Person person, GameResources delta)
+
+    #region PublicMethods
+    
+    public void AddorUpdatePersonDelta(Person person, GameResources personDeltaResources)
     {
         if(PersonDeltaResources.ContainsKey(person))
         {
-            PersonDeltaResources[person] = delta;
+            PersonDeltaResources[person] = personDeltaResources;
         }
         else
         {
-            PersonDeltaResources.Add(person, delta);
+            PersonDeltaResources.Add(person, personDeltaResources);
         }
             RecalculatePersonDeltaTotal();
     }
@@ -67,17 +76,7 @@ public class GlobalStats : MonoBehaviour
             RecalculatePersonDeltaTotal();
         }
     }
-    private void RecalculatePersonDeltaTotal()
-    {
-        PersonDeltaResourcesTotal = new GameResources();
-        foreach(var keyPair in PersonDeltaResources)
-        {
-            PersonDeltaResourcesTotal += keyPair.Value;
-        }
-        TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;
-        
-    }
-       public void AddorUpdateRoomDelta(Room room, GameResources delta)
+    public void AddorUpdateRoomDelta(Room room, GameResources delta)
     {
         if(RoomDeltaResources.ContainsKey(room))
         {
@@ -97,6 +96,25 @@ public class GlobalStats : MonoBehaviour
             RecalculateRoomDeltaTotal();
         }
     }
+    
+    #endregion
+
+    #region PrivateMethods
+
+    private void OnTick(object source, EventArgs e)
+    {
+        PlayerResources += TotalDelta;
+    }
+
+    private void RecalculatePersonDeltaTotal()
+    {
+        PersonDeltaResourcesTotal = new GameResources();
+        foreach(var keyPair in PersonDeltaResources)
+        {
+            PersonDeltaResourcesTotal += keyPair.Value;
+        }
+        TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;
+    }
     private void RecalculateRoomDeltaTotal()
     {
         RoomDeltaResourcesTotal = new GameResources();
@@ -104,27 +122,8 @@ public class GlobalStats : MonoBehaviour
         {
             RoomDeltaResourcesTotal += keyPair.Value;
         }
-        TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;
-        
+        TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;        
     }
-
-
-
-    #endregion
-
-
-
-    private void Start()
-    {
-        TimeTickSystem.OnTick += OnTick;
-    }
-
-    private void OnTick(object source, EventArgs e)
-    {
-
-        PlayerResources += TotalDelta;
-    }
-
 
     private void checkResourcesForAlertChanges()
     {
@@ -136,5 +135,8 @@ public class GlobalStats : MonoBehaviour
             {
                 AlertManager.Instance.SendAlert(Alerts.LowFuel);
             }
-    } 
+    }
+
+    #endregion
 }
+

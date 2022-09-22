@@ -414,17 +414,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba6c34882bb97f4684f71ebcd971638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room: {fileID: 0}
+  _room: {fileID: 0}
   _roomName: {fileID: 5464490223888899175}
   _buildTimeText: {fileID: 7244210696320623187}
   _roomDiscription: {fileID: 2341065817167724968}
   _buildCost: {fileID: 4051624203687217658}
   _upkeepCost: {fileID: 5553834244456385550}
-  _outPut: {fileID: 7458314343820860512}
+  _output: {fileID: 7458314343820860512}
   _upkeepImg: {fileID: 2080965008461726324}
   _outputImg: {fileID: 7779343181429142134}
   _buildCostImg: {fileID: 432650231138417870}
-  backgroundImg: {fileID: 0}
+  _backgroundImg: {fileID: 0}
 --- !u!1 &4479944297217914656
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,7 +548,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5451609638821971484}
         m_TargetAssemblyTypeName: BuildRoomListViewItem, Assembly-CSharp
-        m_MethodName: onClick
+        m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

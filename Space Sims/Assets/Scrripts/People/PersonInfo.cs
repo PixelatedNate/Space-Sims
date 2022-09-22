@@ -137,8 +137,6 @@ public class PersonInfo {
     const string FemaleNamePath = "TextData/Names/People/female";
 
 
-
-
     //  [SerializeField]
     private string _name;
     public string Name { get { return _name; } set { _name = value; } }
@@ -168,11 +166,10 @@ public class PersonInfo {
 
     public Person PersonMonoBehaviour { get; set; }
 
-
-
     private Room _room;
-
     public Room Room { get; set; }
+    
+    
     public void Randomize()
     {
         _gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female ;
@@ -181,7 +178,6 @@ public class PersonInfo {
         RandomizeAppereance();
         RandomizeSkills();
     }
-
 
     public void StartQuest(Quest quest)
     {

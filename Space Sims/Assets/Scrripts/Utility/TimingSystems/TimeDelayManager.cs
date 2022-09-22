@@ -4,23 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TimeDelayManager : MonoBehaviour
-{
-    
-    
-    public static TimeDelayManager Instance;
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
-
-    public class Timer
+{   
+     public class Timer
     {
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -34,29 +19,32 @@ public class TimeDelayManager : MonoBehaviour
             this.EndTime = endTime;
             this.EndMethod = endMethod;
         }
-        public Timer(int timeInSeconds, Action endMethod)
+        public Timer(int minutes, Action endMethod)
         {
-            this.EndTime = DateTime.Now.AddSeconds(timeInSeconds);
+            this.EndTime = DateTime.Now.AddMinutes(minutes);
             this.EndMethod = endMethod;
         }
-
-
-
     }
 
+    public static TimeDelayManager Instance { get; set; }
+    private List<Timer> ActiveTimers { get; set; } = new List<Timer>();
 
-   private List<Timer> ActiveTimers = new List<Timer>();
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
-
-    private void Start()
+    void Start()
     {
       TimeTickSystem.OnTick += OnTick;
-      //  ForTesting
-        /*
-        TimeDelayManager.Instance.AddTimer(new Timer(10,testMethodForEndOfTimer));
-        */
     }
-
 
     public Timer AddTimer(Timer timer)
     {
@@ -64,13 +52,6 @@ public class TimeDelayManager : MonoBehaviour
         ActiveTimers.Add(timer);
         ActiveTimers.Sort((timer1,timer2)  => timer1.EndTime.CompareTo(timer2.EndTime));
         return timer;
-    }
-
-
-
-    // can be revmoved
-    private void testMethodForEndOfTimer()
-    {
     }
 
     private void OnTick(object source, EventArgs e)
@@ -88,10 +69,4 @@ public class TimeDelayManager : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

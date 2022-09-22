@@ -5,32 +5,22 @@ using UnityEngine;
 public class BuildRoomListView : MonoBehaviour
 {
 
-    public Vector3Int roomPos { get; set; }
+    private Vector3Int RoomPos { get; set; }
     [SerializeField]
-    BuildRoomListViewItem[] buildRoomListItems;
+    private BuildRoomListViewItem[] _buildRoomListItems;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
+    #region publicMethods
 
     public void EnableView(Vector3Int newRoomPos)
     {
-        roomPos = newRoomPos;
-        foreach(var item in buildRoomListItems)
+        RoomPos = newRoomPos;
+        foreach(var item in _buildRoomListItems)
         {
-            item.roomPos = roomPos;
+            item.RoomPosition = RoomPos;
             item.UpdateItem();
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    #endregion
 
 }
