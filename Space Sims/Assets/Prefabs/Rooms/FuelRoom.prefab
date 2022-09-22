@@ -783,8 +783,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03d69a8c053d8c248982fe8776789820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TempSelect: {fileID: 2958880641197198299}
-  Roomlevels:
+  _tempSelect: {fileID: 2958880641197198299}
+  _roomlevels:
   - _upkeep:
       Fuel: 0
       Food: 0
@@ -800,15 +800,30 @@ MonoBehaviour:
       Food: 0
       Minerals: 0
       Premimum: 0
-    _maxWorkers: 2
+    _maxWorkers: 0
     _buildTime: 1
-  RoomPosition: {x: 0, y: 0, z: 0}
+  - _upkeep:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _outPut:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _buildCost:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _maxWorkers: 0
+    _buildTime: 0
   _roomName: FuelRoom
   _roomDiscription: Rooms need Fuel
   _roomType: 1
-  Workers: []
   _desiredSkill: 0
-  camera: {fileID: 7272171562527989397}
+  _roomCameraPortal: {fileID: 7272171562527989397}
 --- !u!61 &7983010585713306521
 BoxCollider2D:
   m_ObjectHideFlags: 0
