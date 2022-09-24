@@ -7,24 +7,31 @@ public class TopBar : MonoBehaviour
 {
 
     [SerializeField]
-    private TextMeshProUGUI Fuel, Food, Minerals;
+    private TextMeshProUGUI _fuel, _food, _minerals;
     [SerializeField]
-    private TextMeshProUGUI DeltaFuel, DeltaFood, DeltaMinerals;
+    private TextMeshProUGUI _deltaFuel, _deltaFood, _deltaMinerals;
     [SerializeField]
-    private TextMeshProUGUI People;
+    private TextMeshProUGUI _people;
 
+
+    #region publicMethods
+    
+    /// <summary>
+    /// Set the values of the topBar.
+    /// </summary>
+    /// <param name="currentValues"></param>
+    /// <param name="deltaValues"></param>
+    /// <param name="peopleCount"> maxPeople </param>
     public void SetValues(GameResources currentValues, GameResources deltaValues, int peopleCount)
     {
-        People.text          =  peopleCount.ToString();
-        Fuel.text            =  currentValues.Fuel.ToString();
-        DeltaFuel.text       =  deltaValues.Fuel.ToString();
-        Food.text            =  currentValues.Food.ToString();
-        DeltaFood.text       =  deltaValues.Food.ToString();
-        if(deltaValues.Food < 0)
-        {
-            DeltaFood.color = Color.red;
-        }
-        Minerals.text        =  currentValues.Minerals.ToString();
-        DeltaMinerals.text   =  deltaValues.Minerals.ToString();
+        _people.text          =  peopleCount.ToString("+0;-#");
+        _fuel.text            =  currentValues.Fuel.ToString("+0;-#");
+        _deltaFuel.text       =  deltaValues.Fuel.ToString("+0;-#");
+        _food.text            =  currentValues.Food.ToString("+0;-#");
+        _deltaFood.text       =  deltaValues.Food.ToString("+0;-#");
+        _minerals.text        =  currentValues.Minerals.ToString("+0;-#");
+        _deltaMinerals.text   =  deltaValues.Minerals.ToString("+0;-#");
     }
+
+    #endregion
 }

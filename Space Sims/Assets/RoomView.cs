@@ -7,63 +7,124 @@ using System;
 
 public class RoomView : MonoBehaviour
 {
-
     [SerializeField]
-    TextMeshProUGUI Name, Type, Modifer, MaxPeopel, CurrentPeople, Output, Upkeep;
-
+    private TextMeshProUGUI _name, _type, _modifer, _maxPeopel, _currentPeople, _output, _upkeep, _constructionTime;
     [SerializeField]
-    Image OutPutImge, UpkeepImage;
-
-    Room SelectedRoom;
-
+    private Image _outPutImge, _upkeepImage;
     [SerializeField]
-    RenderTexture CameraRenderTexture;
+    private Transform _progressbar;
+    [SerializeField]
+    private GameObject _activeSubview, _disabledSubView, _construtionSubView;
+    [SerializeField]
+    RenderTexture _cameraRenderTexture;
+    private Room SelectedRoom { get; set; }
 
+
+    #region PublicMethods   
+
+    /// <summary>
+    /// Set the room info to be displayed in the view
+    /// </summary>
+    /// <param name="room"></param>
     public void SetRoom(Room room)
     {
         SelectedRoom = room;
-        UpdateText();
-        DisplayInputAndOutPuts();
         UpdateCamera();
-        
+        UpdateView();
     }
 
+    #endregion
 
-    private void UpdateText()
+    #region PrivateMethods
+
+    private void UpdateView()
     {
-        Name.text = SelectedRoom.RoomName;
-        Type.text = SelectedRoom.RoomType.ToString();
-        Modifer.text = SelectedRoom.DesiredSkill.ToString();
-        MaxPeopel.text = SelectedRoom.RoomStat.MaxWorkers.ToString();
-        CurrentPeople.text = SelectedRoom.Workers.Count.ToString();
-    }
-
-    private void DisplayInputAndOutPuts()
-    {
-
-        bool upkeepFound = false;
-        bool outPutFound = false;
-        foreach (ResourcesEnum re in Enum.GetValues(typeof(ResourcesEnum)))
+        UpdateUniversalText();
+        if (SelectedRoom.IsUnderConstruction)
         {
-            if (SelectedRoom.RoomStat.Upkeep.GetResorce(re) != 0)
-            {
-                if (upkeepFound == true) { throw new Exception("Room " + SelectedRoom.gameObject.name + " has two diffrent Resources used for Upkeep"); }
-                upkeepFound = true;
-                UpkeepImage.sprite = Icons.GetIcon(re);
-                Upkeep.text = SelectedRoom.RoomStat.Upkeep.GetResorce(re).ToString();
-            }
-            if (SelectedRoom.RoomStat.OutPut.GetResorce(re) != 0)
-            {
-                if (outPutFound == true) { Debug.LogWarning("Room " + SelectedRoom.gameObject.name + " has two diffrent Resources used for OutPut"); }
-                outPutFound = true;
-                OutPutImge.sprite = Icons.GetIcon(re);
-                Upkeep.text = SelectedRoom.RoomStat.OutPut.GetResorce(re).ToString();
-            }
+            TimeTickSystem.OnTick += OnTick;
+            _activeSubview.SetActive(false);
+            _disabledSubView.SetActive(false);
+            _construtionSubView.SetActive(true);
+            UpdateContructionValues();
+            return;
         }
-    }      
+        else
+        {
+            TimeTickSystem.OnTick -= OnTick;
+            _construtionSubView.SetActive(false);
+            _activeSubview.SetActive(true);
+            UpdateOutput();
+            UpdateUpkeep();
+        }
+          
+    }
+    private void UpdateContructionValues()
+    {
+      _constructionTime.text = SelectedRoom.ConstructionTimer.RemainingDuration.ToString("h'h 'm'm 's's'");
+      double ProgressBarPercent = (SelectedRoom.ConstructionTimer.RemainingDuration.TotalSeconds/(SelectedRoom.ConstructionTimer.TotalBuildDuration.TotalSeconds / 100));
+      _progressbar.localScale = new Vector3(1-(float)ProgressBarPercent/100,1,1);
+    }
+
     
+    private void UpdateUniversalText()
+    {
+        _name.text = SelectedRoom.RoomName;
+        _type.text = SelectedRoom.RoomType.ToString();
+        _modifer.text = SelectedRoom.DesiredSkill.ToString();
+        _maxPeopel.text = SelectedRoom.RoomStat.MaxWorkers.ToString();
+        _currentPeople.text = SelectedRoom.Workers.Count.ToString();
+    }
+
+    private void UpdateUpkeep()
+    {
+        if (SelectedRoom.UpkeepType != null)
+        {
+            _upkeepImage.gameObject.SetActive(true);
+            _upkeepImage.sprite = Icons.GetIcon((ResourcesEnum)SelectedRoom.UpkeepType);
+            _upkeep.text = SelectedRoom.UpkeepValue.ToString();
+        }
+        else
+        {
+            _upkeepImage.gameObject.SetActive(false);
+            _upkeep.text = "";
+        }
+    }
+        
+    private void UpdateOutput()
+    {
+        if (SelectedRoom.OutPutType != null)
+        {
+            _outPutImge.gameObject.SetActive(true);
+            _outPutImge.sprite = Icons.GetIcon((ResourcesEnum)SelectedRoom.OutPutType);
+            _output.text = SelectedRoom.OutputValue.ToString();
+        }
+        else
+        {
+            _outPutImge.gameObject.SetActive(false);
+            _output.text = "";
+        }
+    }
+        
+
     private void UpdateCamera()
     {
-        SelectedRoom.SetCamera(CameraRenderTexture);
+        SelectedRoom.SetCamera(_cameraRenderTexture);
     }
+
+
+    private void OnTick(object source, EventArgs e)
+    {
+        if(SelectedRoom.IsUnderConstruction)
+        {
+            UpdateContructionValues();
+        }
+        else
+        {
+            SetRoom(SelectedRoom);
+        }
+    }
+
+    #endregion
+
 }

@@ -5,102 +5,110 @@ using UnityEngine;
 
 public class Room : MonoBehaviour, IInteractables
 {
-    [Serializable]
-    public class RoomStats
-    {
-        [SerializeField]
-        GameResources _upkeep;
-        public GameResources Upkeep { get { return _upkeep; } }
-        
-        [SerializeField]
-        GameResources _outPut;
-        public GameResources OutPut { get { return _outPut; } }
-        
-        [SerializeField]
-        GameResources _buildCost;
-        public GameResources BuildCost { get { return _buildCost; } }
-
-        [SerializeField]
-        private int _maxWorkers;
-        public int MaxWorkers { get { return _maxWorkers; } }
-}
-
+    [SerializeField]
+    private GameObject _tempSelect;
+    [SerializeField]
+    private RoomStats[] _roomlevels;
 
     [SerializeField]
-    private GameObject TempSelect;
-
-    private int level { get; set; } = 0; // overide setmethod at somepoint
-    
-    private RoomStats[] Roomlevels;
-
-    public Vector3Int RoomPosition;
-    
-    private Sprite _roomImg;
-
-    public Sprite RoomImg { get { return _roomImg; } }
-
-    [SerializeField]
-    private string _roomName; 
+    private string _roomName;
     public string RoomName { get { return _roomName; } }
 
-    [SerializeField, TextArea(10,10)]
+    [SerializeField, TextArea(10, 10)]
     private string _roomDiscription;
     public string RoomDiscription { get { return _roomDiscription; } }
+    public Vector3Int RoomPosition { get; set; }
 
     [SerializeField]
     private RoomType _roomType;
-
-    public RoomType RoomType { get; }
-
-    [SerializeField]
-    public List<PersonInfo> Workers;
+    public RoomType RoomType { get { return _roomType; } }
+    private int Level { get; set; } = 0;
+    public RoomStats RoomStat { get { return _roomlevels[Level]; } }
 
     [SerializeField]
     private SkillsList _desiredSkill;
-
     public SkillsList DesiredSkill { get { return _desiredSkill; } }
+    public bool IsUnderConstruction { get; private set; }
+    public TimeDelayManager.Timer ConstructionTimer { get; private set; }
+
+    private ResourcesEnum? _outputType = null;
+    public ResourcesEnum? OutPutType { get { return _outputType; } }
+    public int? OutputValue { get { return GetOutPutValue(); } }
+
+    private ResourcesEnum? _upkeepType = null;
+    public ResourcesEnum? UpkeepType { get { return _upkeepType; } }
+    public int? UpkeepValue {get { return GetUpkeepValue(); } }
+    public List<PersonInfo> Workers { get; private set; } = new List<PersonInfo>();
 
     [SerializeField]
-    private RoomStats Level1RoomStat;
-    [SerializeField]
-    private RoomStats Level2RoomStat;
-    [SerializeField]
-    private RoomStats Level3RoomStat;
-    //enum skin :TODO   
+    private Camera _roomCameraPortal;
 
 
-    [SerializeField]
-    private Camera camera;
+    #region CustomGettersAndSetters
 
+    private int? GetOutPutValue()
+    {
+        if (OutPutType == null)
+        {
+            return null;
+        }
+        return RoomStat.OutPut.GetResorce((ResourcesEnum)OutPutType);
+    }
 
-    public RoomStats RoomStat { get { return Roomlevels[level]; } }
+    private int? GetUpkeepValue()
+    {
+        if (UpkeepType == null)
+        {
+            return null;
+        }
+        return RoomStat.OutPut.GetResorce((ResourcesEnum)UpkeepType);
+    }
+    #endregion
+
 
     void Start()
     {
-        Roomlevels = new RoomStats[3] {Level1RoomStat, Level2RoomStat, Level3RoomStat };
+        IntisaliseRoom();
+        GlobalStats.Instance.PlyaerRooms.Add(this);
+        GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
     }
 
-    public bool Upgrade()
+
+
+    #region PublicMethods
+
+
+    public void BuildRoom()
     {
-        if (level == Roomlevels.Length-1)
+        if(IsUnderConstruction || Level != 0)
         {
-            throw new Exception("trying to upgradeMaxLevel Room");
+            throw new Exception("Trying to build a new room which allready exsistes");
         }
-        if (Roomlevels[level + 1].BuildCost < GlobalStats.Instance.PlayerResources)
+        GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
+        BuildOrUpgradeRoom(0);
+    }
+    public void UpgradeRoom(int level)
+    {
+        if(IsUnderConstruction || Level == _roomlevels.Length-1)
         {
-            level++;
-            return true;
+            throw new Exception("Trying to uprage a room which is max level or allready under construction");
         }
-        else
-        {
-            return false;
-        }      
+        BuildOrUpgradeRoom(++level);
+    }
+    public void IntisaliseRoom()
+    {
+        SetUpkeepAndOutPut();
     }
 
-    public bool addWorker(Person person)
+    public bool AddWorker(Person person)
     {
         if(Workers.Count == RoomStat.MaxWorkers)
         {
+            return false;
+        }
+        if(Workers.Contains(person.PersonInfo))
+        {
+            Debug.LogWarning("Failed to add a person to room: as they are allready in");
             return false;
         }
         else
@@ -112,9 +120,9 @@ public class Room : MonoBehaviour, IInteractables
 
     public void RemoveWorker(Person person)
     {
-        if (Workers.Count == 0)
+        if (Workers.Count == 0 || !Workers.Contains(person.PersonInfo))
         {
-            throw new Exception("trying to reomve a person that dosn't exsist");
+            Debug.LogWarning("Failed to reomve a person from room: as they are not present in");
         }
         else
         {
@@ -122,44 +130,70 @@ public class Room : MonoBehaviour, IInteractables
         }
     }
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetCamera(RenderTexture renderTexture)
     {
-        camera.gameObject.SetActive(true);
-        camera.targetTexture = renderTexture;
+       _roomCameraPortal.GetComponent<Camera>().gameObject.SetActive(true);
+       _roomCameraPortal.GetComponent<Camera>().targetTexture = renderTexture;
     }
 
+    private void SetUpkeepAndOutPut()
+    {
+        bool upkeepFound = false;
+        bool outPutFound = false;
+        foreach (ResourcesEnum re in Enum.GetValues(typeof(ResourcesEnum)))
+        {
+            if (RoomStat.Upkeep.GetResorce(re) != 0)
+            {
+                if (upkeepFound == true) { throw new Exception("Room " + gameObject.name + " has two diffrent Resources used for Upkeep"); }
+                upkeepFound = true;
+                _upkeepType = re;
+            }
+            if (RoomStat.OutPut.GetResorce(re) != 0)
+            {
+                if (outPutFound == true) { Debug.LogWarning("Room " +  gameObject.name + " has two diffrent Resources used for OutPut"); }
+                outPutFound = true;
+                _outputType = re;
+            }
+        }
+    }
 
-#region InteractableInterface
+    #endregion
+
+    #region PrivateMethods
+
+    private void BuildOrUpgradeRoom(int newLevel)
+    {
+        IsUnderConstruction = true;
+        GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
+        ConstructionTimer = TimeDelayManager.Instance.AddTimer( new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime),ConstructionCompleat));
+    }
+    private void ConstructionCompleat()
+    {
+        IsUnderConstruction = false;
+        GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
+    }
+
+    #endregion
+
+    #region InteractableInterface
 
     public void OnSelect()
     {
-        TempSelect.SetActive(true);
+        _tempSelect.SetActive(true);
         UIManager.Instance.DisplaySelected(this);
     }
 
     public void OnDeselect()
     {
-        camera.gameObject.SetActive(false);
-        TempSelect.SetActive(false);
+        _roomCameraPortal.GetComponent<Camera>().gameObject.SetActive(false);
+        _tempSelect.SetActive(false);
     }
 
     public bool OnHold()
     {
         return false;
-     //   throw new NotImplementedException();
     }
-
-    public void OnHoldRelease()
-    {
-       // throw new NotImplementedException();
-    }
+    public void OnHoldRelease() { }
 
     #endregion
 }

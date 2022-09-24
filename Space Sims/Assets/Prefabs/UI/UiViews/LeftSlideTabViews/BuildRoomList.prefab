@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildRoomListVIew (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5451609638821971484, guid: 257a9e84baa0102419abed1551a34341, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 4186185918071054093, guid: 3057e0f6f3a15a1499da7c2f59e96c06, type: 3}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -177,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 124.03999
+      value: -41.345
       objectReference: {fileID: 0}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -226,6 +230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildRoomListVIew (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5451609638821971484, guid: 257a9e84baa0102419abed1551a34341, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 4186185918071054093, guid: 233bace08e74f1c4cabec957b004e02a, type: 3}
     - target: {fileID: 5451609638821971484, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: _buildTimeText
       value: 
@@ -304,7 +312,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 124.03999
+      value: 41.34999
       objectReference: {fileID: 0}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -371,6 +379,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildRoomListVIew (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 4155270830455454897, guid: 257a9e84baa0102419abed1551a34341, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5451609638821971484, guid: 257a9e84baa0102419abed1551a34341, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 4186185918071054093, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -441,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 124.03999
+      value: -124.04
       objectReference: {fileID: 0}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -486,6 +502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BuildRoomListVIew (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 5451609638821971484, guid: 257a9e84baa0102419abed1551a34341, type: 3}
+      propertyPath: room
+      value: 
+      objectReference: {fileID: 4186185918071054093, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
     - target: {fileID: 5633223261450348435, guid: 257a9e84baa0102419abed1551a34341, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

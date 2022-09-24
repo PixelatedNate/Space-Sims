@@ -15,6 +15,7 @@ public class TimeTickSystem : MonoBehaviour
     public static event EventHandler<EventArgs> OnTick;
 
     public static event EventHandler<EventArgs> OnMajorTick;
+    
     // Update is called once per frame
     void Update()
     {
