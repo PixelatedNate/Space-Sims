@@ -133,8 +133,15 @@ public class PersonInfo {
     string HeadPath;
     string BodyPath;
 
+    string hairPath;
+    string clothesPath;
+
     const string MaleNamePath = "TextData/Names/People/male";
     const string FemaleNamePath = "TextData/Names/People/female";
+
+
+
+
 
 
     //  [SerializeField]
@@ -164,6 +171,21 @@ public class PersonInfo {
  //   [SerializeField]
     private Sprite _body; 
     public Sprite Body { get { return _body; } }
+
+    //   [SerializeField]
+    private Sprite _hair;
+    public Sprite Hair { get { return _hair; } }
+
+    //   [SerializeField]
+    private Sprite _clothes;
+    public Sprite Clothes { get { return _clothes; } }
+
+    private Color _skinColor;
+    public Color SkinColor { get { return _skinColor; } }
+
+    private Color _hairColor;
+
+    public Color HairColor { get { return _hairColor; } }
 
     public bool IsQuesting { get { return CurrentQuest != null; } }
     public Quest CurrentQuest { get; set; }
@@ -230,17 +252,26 @@ public class PersonInfo {
         {
             HeadPath = "ArtWork/People/" + _race + "/Female/Heads";
             BodyPath = "ArtWork/People/" + _race + "/Female/Bodies";
+            hairPath = "Artwork/Hair/Female";
+            clothesPath = "Artwork/Clothes/Female";
         }
         else
         {
             HeadPath = "ArtWork/People/" + _race + "/Male/Heads";
             BodyPath = "ArtWork/People/" + _race + "/Male/Bodies";
+            hairPath = "Artwork/Hair/Male";
+            clothesPath = "Artwork/Clothes/Male";
         }
+
 
         _head = GetRandomSpriteFromPath(HeadPath);
         _body = GetRandomSpriteFromPath(BodyPath);
+        _hair = GetRandomSpriteFromPath(hairPath);
+        _clothes = GetRandomSpriteFromPath(clothesPath);
+        _skinColor = PersonSkin.GetRandomColor(Race);
+        _hairColor = GetRandomColor();
 
-        Debug.Log(_race);
+        Debug.Log("I have produced a " + Gender.ToString() + " " + _race);
     }
 
 
@@ -251,5 +282,11 @@ public class PersonInfo {
         return sprits[index];
     }
 
+    private Color GetRandomColor()
+    {
+        Color returnColor = new Color();
+        returnColor = Random.ColorHSV(0f, 1f, 0.2f, 1f, 0.6f, 1f, 1f, 1f);
+        return returnColor;
+    }
 
 }

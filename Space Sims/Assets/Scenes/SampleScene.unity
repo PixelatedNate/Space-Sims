@@ -1482,6 +1482,14 @@ PrefabInstance:
       propertyPath: _deltaMinerals
       value: 
       objectReference: {fileID: 624360905}
+    - target: {fileID: 1716642186307146720, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -13.999939
+      objectReference: {fileID: 0}
+    - target: {fileID: 1716642187082230996, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 13.999939
+      objectReference: {fileID: 0}
     - target: {fileID: 3193092226600793922, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: _room
       value: 
@@ -1661,7 +1669,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
---- !u!1001 &5306872156904737319
+--- !u!1001 &4878222352221960846
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2

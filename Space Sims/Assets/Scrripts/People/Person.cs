@@ -9,6 +9,10 @@ public class Person : MonoBehaviour, IInteractables
     private SpriteRenderer HeadRender;
     [SerializeField]
     private SpriteRenderer BodyRender;
+    [SerializeField]
+    private SpriteRenderer HairRender;
+    [SerializeField]
+    private SpriteRenderer ClothesRender;
 
     private PersonInfo _personInfo = null;
     public PersonInfo PersonInfo { get { return _personInfo; } }
@@ -84,7 +88,15 @@ public class Person : MonoBehaviour, IInteractables
     private void ReRenderPerson()
     {
         BodyRender.sprite = PersonInfo.Body;
+        BodyRender.material.color = PersonInfo.SkinColor;
         HeadRender.sprite = PersonInfo.Head;
+        HeadRender.material.color = PersonInfo.SkinColor;
+        ClothesRender.sprite = PersonInfo.Clothes;
+        HairRender.sprite = PersonInfo.Hair;
+        HairRender.material.color = PersonInfo.HairColor;
+
+   
+      
     }
 
 
