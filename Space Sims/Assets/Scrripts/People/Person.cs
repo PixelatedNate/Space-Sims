@@ -6,6 +6,10 @@ using UnityEngine;
 public class Person : MonoBehaviour, IInteractables
 {
     [SerializeField]
+    GameObject TESTICON;
+
+
+    [SerializeField]
     private SpriteRenderer HeadRender;
     [SerializeField]
     private SpriteRenderer BodyRender;
@@ -22,6 +26,9 @@ public class Person : MonoBehaviour, IInteractables
 
     [SerializeField]
     bool IsBeingHeld = false;
+
+
+    LinkedList<Vector3Int> MovePath;
 
     // Start is called before the first frame update
     void Start()
@@ -58,8 +65,18 @@ public class Person : MonoBehaviour, IInteractables
             {
                 PersonInfo.Room.RemoveWorker(this);
             }
+            MovePath = null;
             PersonInfo.Room = room;
-            transform.position = room.transform.position;
+            //transform.position = room.transform.position;
+            
+            Debug.Log(room.PathFindingTileMap.WorldToCell(transform.position));
+            MovePath = PathFinding.CalculatePath(room.PathFindingTileMap, room.PathFindingTileMap.WorldToCell(transform.position), new Vector3Int(8,-1,0));
+            
+            foreach(Vector3Int v3 in MovePath)
+            {
+                GameObject.Instantiate(TESTICON, PersonInfo.Room.PathFindingTileMap.CellToWorld(v3), Quaternion.identity);    
+            }
+        
         }
         else
         {
@@ -73,6 +90,23 @@ public class Person : MonoBehaviour, IInteractables
             }
         }
     }
+
+
+    private void Update()
+    {
+        if (MovePath != null && MovePath.Count > 0)
+        {
+            Vector3 worldSpacePosition = PersonInfo.Room.PathFindingTileMap.CellToWorld(MovePath.First.Value);
+            Vector3 dir = (worldSpacePosition - transform.position).normalized;
+            transform.Translate(dir * 1 * Time.deltaTime);
+            if(Vector3.Distance(transform.position, worldSpacePosition) < 0.2)
+            {
+                MovePath.RemoveFirst();
+            }
+        }
+    }
+
+
 
 
     private void OnDestroy()
@@ -93,10 +127,7 @@ public class Person : MonoBehaviour, IInteractables
         HeadRender.material.color = PersonInfo.SkinColor;
         ClothesRender.sprite = PersonInfo.Clothes;
         HairRender.sprite = PersonInfo.Hair;
-        HairRender.material.color = PersonInfo.HairColor;
-
-   
-      
+        HairRender.material.color = PersonInfo.HairColor;       
     }
 
 

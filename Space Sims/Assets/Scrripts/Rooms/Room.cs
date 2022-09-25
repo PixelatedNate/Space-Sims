@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Room : MonoBehaviour, IInteractables
 {
@@ -37,12 +38,16 @@ public class Room : MonoBehaviour, IInteractables
 
     private ResourcesEnum? _upkeepType = null;
     public ResourcesEnum? UpkeepType { get { return _upkeepType; } }
-    public int? UpkeepValue {get { return GetUpkeepValue(); } }
+    public int? UpkeepValue { get { return GetUpkeepValue(); } }
     public List<PersonInfo> Workers { get; private set; } = new List<PersonInfo>();
 
     [SerializeField]
     private Camera _roomCameraPortal;
 
+
+    [SerializeField]
+    private Tilemap _pathFindingTileMap;
+    public Tilemap PathFindingTileMap { get { return _pathFindingTileMap; } }
 
     #region CustomGettersAndSetters
 
