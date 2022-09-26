@@ -2,11 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Person : MonoBehaviour, IInteractables
 {
     [SerializeField]
     GameObject TESTICON;
+
+    //  new Vector3 (6,1)
+    //  6,-3
+    //  10,1
+    //  10,-3
+
+    private Vector3Int[] _tempPathFindingPoints = { new Vector3Int(6, -3, 0), new Vector3Int(6,1,0), new Vector3Int(10,1,0),new Vector3Int(10,-3)};
+
 
 
     [SerializeField]
@@ -67,16 +76,9 @@ public class Person : MonoBehaviour, IInteractables
             }
             MovePath = null;
             PersonInfo.Room = room;
-            //transform.position = room.transform.position;
             
             Debug.Log(room.PathFindingTileMap.WorldToCell(transform.position));
             MovePath = PathFinding.CalculatePath(room.PathFindingTileMap, room.PathFindingTileMap.WorldToCell(transform.position), new Vector3Int(8,-1,0));
-            
-            foreach(Vector3Int v3 in MovePath)
-            {
-                GameObject.Instantiate(TESTICON, PersonInfo.Room.PathFindingTileMap.CellToWorld(v3), Quaternion.identity);    
-            }
-        
         }
         else
         {
@@ -94,16 +96,26 @@ public class Person : MonoBehaviour, IInteractables
 
     private void Update()
     {
-        if (MovePath != null && MovePath.Count > 0)
+        if(MovePath == null) { return; }
+        if(MovePath.Count > 0)
         {
-            Vector3 worldSpacePosition = PersonInfo.Room.PathFindingTileMap.CellToWorld(MovePath.First.Value);
+            Vector3 worldSpacePosition = PersonInfo.Room.PathFindingTileMap.GetCellCenterWorld(MovePath.First.Value);
             Vector3 dir = (worldSpacePosition - transform.position).normalized;
             transform.Translate(dir * 1 * Time.deltaTime);
-            if(Vector3.Distance(transform.position, worldSpacePosition) < 0.2)
+            if(Vector3.Distance(transform.position, worldSpacePosition) < 0.05)
             {
                 MovePath.RemoveFirst();
             }
         }
+        else if(PersonInfo.Room != null)
+        {
+            Vector3Int randomPoint;
+            Vector3Int personposition = PersonInfo.Room.PathFindingTileMap.WorldToCell(transform.position);
+            int index = Random.Range(0,_tempPathFindingPoints.Length);
+            randomPoint = _tempPathFindingPoints[index];
+            MovePath = PathFinding.CalculatePath(PersonInfo.Room.PathFindingTileMap,personposition,randomPoint);
+        }
+
     }
 
 

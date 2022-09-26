@@ -3,17 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
+
+
+// make it run on anothe thread to increase performeace in futer
+
 public class PathFinding
 
 {
-    //private Tilemap tileMapGrid;
-
-
-
-
-
-
-    private class Node
+     private class Node
     {
         public bool Visted { get; set; }
         public Vector3Int PreviousPoint { get; set; }
