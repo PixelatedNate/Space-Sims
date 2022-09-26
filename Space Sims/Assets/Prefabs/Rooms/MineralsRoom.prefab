@@ -824,6 +824,7 @@ MonoBehaviour:
   _roomType: 2
   _desiredSkill: 0
   _roomCameraPortal: {fileID: 7272171562527989397}
+  _pathFindingTileMap: {fileID: 5196099802798856111}
 --- !u!61 &7983010585713306521
 BoxCollider2D:
   m_ObjectHideFlags: 0
