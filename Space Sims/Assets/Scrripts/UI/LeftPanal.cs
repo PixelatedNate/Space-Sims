@@ -45,7 +45,7 @@ public class LeftPanal : MonoBehaviour
         personView.SetPerson(personInfo);
     }
 
-    public void SelectRoom(Room room)
+    public void SelectPassiveProductionRoom(PassiveProductionRoom room)
     {
         if (ActiveView != null)
         {

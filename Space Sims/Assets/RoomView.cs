@@ -17,7 +17,7 @@ public class RoomView : MonoBehaviour
     private GameObject _activeSubview, _disabledSubView, _construtionSubView;
     [SerializeField]
     RenderTexture _cameraRenderTexture;
-    private Room SelectedRoom { get; set; }
+    private PassiveProductionRoom SelectedRoom { get; set; }
 
 
     #region PublicMethods   
@@ -26,7 +26,7 @@ public class RoomView : MonoBehaviour
     /// Set the room info to be displayed in the view
     /// </summary>
     /// <param name="room"></param>
-    public void SetRoom(Room room)
+    public void SetRoom(PassiveProductionRoom room)
     {
         SelectedRoom = room;
         UpdateCamera();

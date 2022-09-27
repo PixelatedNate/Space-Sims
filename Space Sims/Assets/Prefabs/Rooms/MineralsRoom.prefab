@@ -743,8 +743,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6451833005616642583}
-  - component: {fileID: 4186185918071054093}
   - component: {fileID: 7983010585713306521}
+  - component: {fileID: -6302463977167877220}
   m_Layer: 0
   m_Name: MineralsRoom
   m_TagString: Untagged
@@ -771,60 +771,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4186185918071054093
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4152872870442615271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03d69a8c053d8c248982fe8776789820, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _tempSelect: {fileID: 2958880641197198299}
-  _roomlevels:
-  - _upkeep:
-      Fuel: 5
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _outPut:
-      Fuel: 0
-      Food: 0
-      Minerals: 7
-      Premimum: 0
-    _buildCost:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _maxWorkers: 2
-    _buildTime: 2
-  - _upkeep:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _outPut:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _buildCost:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
-      Premimum: 0
-    _maxWorkers: 0
-    _buildTime: 0
-  _roomName: MineralsRoom
-  _roomDiscription: everyone loves dimones
-  _roomType: 2
-  _desiredSkill: 0
-  _roomCameraPortal: {fileID: 7272171562527989397}
-  _pathFindingTileMap: {fileID: 5196099802798856111}
 --- !u!61 &7983010585713306521
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -851,6 +797,49 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7, y: 7}
   m_EdgeRadius: 0
+--- !u!114 &-6302463977167877220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4152872870442615271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74fedc292a3e1d848b4a0a2bc9644611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _tempSelect: {fileID: 2958880641197198299}
+  _roomlevels:
+  - _buildCost:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _maxWorkers: 2
+    _buildTime: 1
+    _outPut:
+      Fuel: 0
+      Food: 0
+      Minerals: 7
+      Premimum: 0
+    _Upkeep:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _storage:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _peopleChange: 0
+  _roomName: MineralRoom
+  _roomDiscription: 
+  _roomType: 2
+  _roomCameraPortal: {fileID: 7272171562527989397}
+  _pathFindingTileMap: {fileID: 5196099802798856111}
+  _desiredSkill: 0
 --- !u!1 &4357136925427198834
 GameObject:
   m_ObjectHideFlags: 0

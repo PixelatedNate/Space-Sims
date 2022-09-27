@@ -1605,7 +1605,7 @@ PrefabInstance:
     - target: {fileID: 3193092226600793922, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: _room
       value: 
-      objectReference: {fileID: 4186185918071054093, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
+      objectReference: {fileID: -5624866226407055736, guid: 0913d64d3ae903c48a8c7e3a27aaf88a, type: 3}
     - target: {fileID: 3869709286788581001, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: _name
       value: 
@@ -1685,11 +1685,11 @@ PrefabInstance:
     - target: {fileID: 5252000281388009156, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: _room
       value: 
-      objectReference: {fileID: 4186185918071054093, guid: 233bace08e74f1c4cabec957b004e02a, type: 3}
+      objectReference: {fileID: -4413028007973865921, guid: 233bace08e74f1c4cabec957b004e02a, type: 3}
     - target: {fileID: 5598752880858538915, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: _room
       value: 
-      objectReference: {fileID: 4186185918071054093, guid: 3057e0f6f3a15a1499da7c2f59e96c06, type: 3}
+      objectReference: {fileID: -6302463977167877220, guid: 3057e0f6f3a15a1499da7c2f59e96c06, type: 3}
     - target: {fileID: 7146469149921939208, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: m_Pivot.x
       value: 0

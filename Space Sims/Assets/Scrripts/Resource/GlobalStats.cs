@@ -11,7 +11,7 @@ public class GlobalStats : MonoBehaviour
     private Dictionary<Person, GameResources> PersonDeltaResources { get; set; } = new Dictionary<Person, GameResources>();
     private GameResources PersonDeltaResourcesTotal { get; set; } = new GameResources();
 
-    private Dictionary<Room, GameResources> RoomDeltaResources { get; set; } = new Dictionary<Room, GameResources>();
+    private Dictionary<AbstractRoom, GameResources> RoomDeltaResources { get; set; } = new Dictionary<AbstractRoom, GameResources>();
     private GameResources RoomDeltaResourcesTotal { get; set; } = new GameResources();
 
     private GameResources TotalDelta { get; set; }
@@ -22,7 +22,7 @@ public class GlobalStats : MonoBehaviour
 
 
     public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
-    public List<Room> PlyaerRooms = new List<Room>();
+    public List<AbstractRoom> PlyaerRooms = new List<AbstractRoom>();
 
     #region CustomGetterAndSetters
 
@@ -76,7 +76,7 @@ public class GlobalStats : MonoBehaviour
             RecalculatePersonDeltaTotal();
         }
     }
-    public void AddorUpdateRoomDelta(Room room, GameResources delta)
+    public void AddorUpdateRoomDelta(AbstractRoom room, GameResources delta)
     {
         if(RoomDeltaResources.ContainsKey(room))
         {
@@ -88,7 +88,7 @@ public class GlobalStats : MonoBehaviour
         }
             RecalculateRoomDeltaTotal();
     }
-    public void RemoveRoomDelta(Room room)
+    public void RemoveRoomDelta(AbstractRoom room)
     {
         if (RoomDeltaResources.ContainsKey(room))
         {

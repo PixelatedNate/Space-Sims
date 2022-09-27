@@ -66,7 +66,7 @@ public class Person : MonoBehaviour, IInteractables
         ReRenderPerson();
     }
 
-    public void AssginRoomToPerson(Room room)
+    public void AssginRoomToPerson(AbstractRoom room)
     {
         if (room != null && room.AddWorker(this))
         {
@@ -174,7 +174,7 @@ public class Person : MonoBehaviour, IInteractables
 
     public void OnHoldRelease()
     {
-        Room room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
+        AbstractRoom room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
         AssginRoomToPerson(room);
         IsBeingHeld = false;
     }

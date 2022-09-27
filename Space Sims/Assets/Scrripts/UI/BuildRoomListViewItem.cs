@@ -11,7 +11,7 @@ public class BuildRoomListViewItem : MonoBehaviour
     public Vector3Int RoomPosition { get; set; }
 
     [SerializeField]
-    private Room _room;
+    private AbstractRoom _room;
     [SerializeField]
     private TextMeshProUGUI _roomName,_buildTimeText,_roomDiscription,_buildCost,_upkeepCost,_output;
     [SerializeField]
@@ -27,7 +27,7 @@ public class BuildRoomListViewItem : MonoBehaviour
 
 #region PublicMethods
 
-    public void SetRoom(Room room)
+    public void SetRoom(AbstractRoom room)
     {
         this._room = room;
         UpdateItem();
@@ -35,38 +35,43 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void OnClick()
     {
-        Room newRoom = RoomGridManager.Instance.BuildNewRoom(RoomPosition, _room.RoomType);
+        AbstractRoom newRoom = RoomGridManager.Instance.BuildNewRoom(RoomPosition, _room.RoomType);
         UIManager.Instance.DeselectAll();
         newRoom.BuildRoom();
     }
 
     public void UpdateItem()
     {
-        _room.IntisaliseRoom();
-        _roomName.text = _room.RoomName;
-        _roomDiscription.text = _room.RoomDiscription;
+        if (_room is PassiveProductionRoom)
+        {
+           PassiveProductionRoom  passiveProductionRoom = (PassiveProductionRoom)_room;
 
-        if (_room.UpkeepType != null)
-        {
-            _upkeepImg.gameObject.SetActive(true);
-            _upkeepImg.sprite = Icons.GetIcon((ResourcesEnum)_room.UpkeepType);
-            _upkeepCost.text = ((int)_room.UpkeepValue).ToString("+0;-#");
-        }
-        else
-        {
-            _upkeepImg.gameObject.SetActive(false);
-            _upkeepCost.text = "";
-        }
-        if (_room.OutPutType != null)
-        {
-            _outputImg.gameObject.SetActive(true);
-            _outputImg.sprite = Icons.GetIcon((ResourcesEnum)_room.OutPutType);
-            _output.text = ((int)_room.OutputValue).ToString("+0;-#");
-        }
-        else
-        {
-            _outputImg.gameObject.SetActive(false);
-            _output.text = "";
+            passiveProductionRoom.IntisaliseRoom();
+            _roomName.text = passiveProductionRoom.RoomName;
+            _roomDiscription.text = passiveProductionRoom.RoomDiscription;
+
+            if (passiveProductionRoom.UpkeepType != null)
+            {
+                _upkeepImg.gameObject.SetActive(true);
+                _upkeepImg.sprite = Icons.GetIcon((ResourcesEnum)passiveProductionRoom.UpkeepType);
+                _upkeepCost.text = ((int)passiveProductionRoom.UpkeepValue).ToString("+0;-#");
+            }
+            else
+            {
+                _upkeepImg.gameObject.SetActive(false);
+                _upkeepCost.text = "";
+            }
+            if (passiveProductionRoom.OutPutType != null)
+            {
+                _outputImg.gameObject.SetActive(true);
+                _outputImg.sprite = Icons.GetIcon((ResourcesEnum)passiveProductionRoom.OutPutType);
+                _output.text = ((int)passiveProductionRoom.OutputValue).ToString("+0;-#");
+            }
+            else
+            {
+                _outputImg.gameObject.SetActive(false);
+                _output.text = "";
+            }
         }
     }
 }

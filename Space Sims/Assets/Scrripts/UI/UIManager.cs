@@ -37,9 +37,9 @@ public class UIManager : MonoBehaviour
         {
             leftPanal.SelectPerson((PersonInfo)(object)obj);
         }
-        if(obj.GetType() == typeof(Room))
+        if(obj.GetType() == typeof(PassiveProductionRoom))
         {
-            leftPanal.SelectRoom((Room)(object)obj);
+            leftPanal.SelectPassiveProductionRoom((PassiveProductionRoom)(object)obj);
         }
     }
 
