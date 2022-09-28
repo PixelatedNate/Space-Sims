@@ -42,13 +42,13 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void UpdateItem()
     {
+        _roomName.text = _room.RoomName;
+        _roomDiscription.text = _room.RoomDiscription;
         if (_room is PassiveProductionRoom)
         {
            PassiveProductionRoom  passiveProductionRoom = (PassiveProductionRoom)_room;
 
             passiveProductionRoom.IntisaliseRoom();
-            _roomName.text = passiveProductionRoom.RoomName;
-            _roomDiscription.text = passiveProductionRoom.RoomDiscription;
 
             if (passiveProductionRoom.UpkeepType != null)
             {

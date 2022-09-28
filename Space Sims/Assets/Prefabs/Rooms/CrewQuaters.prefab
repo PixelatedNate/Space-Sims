@@ -276,7 +276,7 @@ MonoBehaviour:
       Food: 0
       Minerals: 0
       Premimum: 0
-    _maxWorkers: 0
+    _maxWorkers: 4
     _buildTime: 0
     _outPut:
       Fuel: 0

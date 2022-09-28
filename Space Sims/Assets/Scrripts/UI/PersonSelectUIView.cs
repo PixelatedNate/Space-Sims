@@ -9,9 +9,7 @@ public class PersonSelectUIView : MonoBehaviour
     PersonInfo SelectedPerson;
 
     [SerializeField]
-    Image Head; 
-    [SerializeField]
-    Image Body;
+    Image Head, Body, Hair, Cloths;
 
     [SerializeField]
     TextMeshProUGUI Name, Age, Room;
@@ -33,7 +31,12 @@ public class PersonSelectUIView : MonoBehaviour
     private void UpdateHeadAndBody()
     {
         Head.sprite = SelectedPerson.Head;
+        Head.color = SelectedPerson.SkinColor;
         Body.sprite = SelectedPerson.Body;
+        Body.color = SelectedPerson.SkinColor;
+        Cloths.sprite = SelectedPerson.Clothes;
+        Hair.sprite = SelectedPerson.Hair;
+        Hair.color = SelectedPerson.HairColor;
     }
 
     private void UpdateText()

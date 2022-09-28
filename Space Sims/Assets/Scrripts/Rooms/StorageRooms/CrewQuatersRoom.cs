@@ -6,7 +6,13 @@ public class CrewQuatersRoom : AbstractRoom
 {
     public override void IntisaliseRoom()
     {
+        GlobalStats.Instance.MaxPeople += RoomStat.PoepleChange;
+    }
 
+    void Start()
+    {          
+        GlobalStats.Instance.PlyaerRooms.Add(this);
+        GlobalStats.Instance.MaxPeople += RoomStat.PoepleChange;
     }
 
     protected override void UpdateRoomStats()

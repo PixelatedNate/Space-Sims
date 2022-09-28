@@ -110,6 +110,11 @@ public class TouchControls : MonoBehaviour
         }
          if(Input.touchCount == 2)
         {
+            if (EventSystem.current.currentSelectedGameObject != null)
+            {
+                _button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
+                _button.interactable = false;
+            }
             TouchZoom(); 
         }
          else if(Input.GetMouseButton(0))
