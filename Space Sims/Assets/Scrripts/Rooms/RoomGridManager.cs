@@ -13,7 +13,7 @@ public class RoomGridManager : MonoBehaviour
     [SerializeField]
     private GameObject _buildRoomTemplate;
     private Grid roomGrid { get; set; }
-    Dictionary<Vector3Int, Room> RoomList { get; set; } = new Dictionary<Vector3Int, Room>();
+    Dictionary<Vector3Int, AbstractRoom> RoomList { get; set; } = new Dictionary<Vector3Int, AbstractRoom>();
     Dictionary<Vector3Int, GameObject> BuildCellList { get; set; } = new Dictionary<Vector3Int, GameObject>();
 
     void Awake()
@@ -42,7 +42,7 @@ public class RoomGridManager : MonoBehaviour
     /// </summary>
     /// <param name="position">the postion in world space</param>
     /// <returns></returns>
-    public Room GetRoomAtPosition(Vector3 position)
+    public AbstractRoom GetRoomAtPosition(Vector3 position)
     {
         Vector3Int cellPosition = roomGrid.WorldToCell(position);
         if (!RoomList.ContainsKey(cellPosition)) 
@@ -61,7 +61,7 @@ public class RoomGridManager : MonoBehaviour
     /// <param name="cellPosition">cell position</param>
     /// <param name="roomType">type of room to build</param>
     /// <returns></returns>
-    public Room BuildNewRoom(Vector3Int cellPosition,RoomType roomType)
+    public AbstractRoom BuildNewRoom(Vector3Int cellPosition,RoomType roomType)
     {
         if (RoomList.ContainsKey(cellPosition)) 
         { 
@@ -79,7 +79,7 @@ public class RoomGridManager : MonoBehaviour
         newRoom.transform.parent = transform;
         Vector3 cellCenter = roomGrid.GetCellCenterWorld(cellPosition);
         newRoom.transform.position = cellCenter;
-        Room newRoomScript = newRoom.GetComponent<Room>();
+        AbstractRoom newRoomScript = newRoom.GetComponent<AbstractRoom>();
         newRoomScript.RoomPosition = cellPosition;
         RoomList.Add(cellPosition,newRoomScript);
 

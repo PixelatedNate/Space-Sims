@@ -5,19 +5,27 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 
-public class RoomView : MonoBehaviour
+public class UniversalRoomView : MonoBehaviour
 {
+
     [SerializeField]
-    private TextMeshProUGUI _name, _type, _modifer, _maxPeopel, _currentPeople, _output, _upkeep, _constructionTime;
-    [SerializeField]
-    private Image _outPutImge, _upkeepImage;
+    private TextMeshProUGUI _name, _type, _constructionTime;
     [SerializeField]
     private Transform _progressbar;
     [SerializeField]
-    private GameObject _activeSubview, _disabledSubView, _construtionSubView;
+    private GameObject _construtionSubView;
     [SerializeField]
     RenderTexture _cameraRenderTexture;
-    private Room SelectedRoom { get; set; }
+    
+
+    [SerializeField]
+    PassiveProductionRoomView _passiveProductionRoomViewScript;
+    [SerializeField]
+    CrewQuatersRoomView _crewQuatersRoomView;
+
+    private GameObject SubRoomView { get; set; }
+
+    private AbstractRoom SelectedRoom { get; set; }
 
 
     #region PublicMethods   
@@ -26,11 +34,33 @@ public class RoomView : MonoBehaviour
     /// Set the room info to be displayed in the view
     /// </summary>
     /// <param name="room"></param>
-    public void SetRoom(Room room)
+    public void SetRoom(AbstractRoom room)
     {
+        if (SubRoomView != null)
+        {
+            SubRoomView.SetActive(false);
+        }
         SelectedRoom = room;
         UpdateCamera();
         UpdateView();
+    }
+
+
+    private void EnableCorrectRoomView()
+    {
+    if (SelectedRoom is PassiveProductionRoom)
+     {
+        _passiveProductionRoomViewScript.gameObject.SetActive(true);
+        SubRoomView = _passiveProductionRoomViewScript.gameObject;
+        _passiveProductionRoomViewScript.SetRoom((PassiveProductionRoom)SelectedRoom);
+     }
+    else if (SelectedRoom is CrewQuatersRoom)
+     {
+        _crewQuatersRoomView.gameObject.SetActive(true);
+        SubRoomView = _crewQuatersRoomView.gameObject;
+        _crewQuatersRoomView.SetRoom((CrewQuatersRoom)SelectedRoom);
+     }
+
     }
 
     #endregion
@@ -43,8 +73,6 @@ public class RoomView : MonoBehaviour
         if (SelectedRoom.IsUnderConstruction)
         {
             TimeTickSystem.OnTick += OnTick;
-            _activeSubview.SetActive(false);
-            _disabledSubView.SetActive(false);
             _construtionSubView.SetActive(true);
             UpdateContructionValues();
             return;
@@ -53,9 +81,7 @@ public class RoomView : MonoBehaviour
         {
             TimeTickSystem.OnTick -= OnTick;
             _construtionSubView.SetActive(false);
-            _activeSubview.SetActive(true);
-            UpdateOutput();
-            UpdateUpkeep();
+            EnableCorrectRoomView();
         }
           
     }
@@ -65,47 +91,14 @@ public class RoomView : MonoBehaviour
       double ProgressBarPercent = (SelectedRoom.ConstructionTimer.RemainingDuration.TotalSeconds/(SelectedRoom.ConstructionTimer.TotalBuildDuration.TotalSeconds / 100));
       _progressbar.localScale = new Vector3(1-(float)ProgressBarPercent/100,1,1);
     }
-
-    
+  
     private void UpdateUniversalText()
     {
         _name.text = SelectedRoom.RoomName;
         _type.text = SelectedRoom.RoomType.ToString();
-        _modifer.text = SelectedRoom.DesiredSkill.ToString();
-        _maxPeopel.text = SelectedRoom.RoomStat.MaxWorkers.ToString();
-        _currentPeople.text = SelectedRoom.Workers.Count.ToString();
     }
 
-    private void UpdateUpkeep()
-    {
-        if (SelectedRoom.UpkeepType != null)
-        {
-            _upkeepImage.gameObject.SetActive(true);
-            _upkeepImage.sprite = Icons.GetIcon((ResourcesEnum)SelectedRoom.UpkeepType);
-            _upkeep.text = SelectedRoom.UpkeepValue.ToString();
-        }
-        else
-        {
-            _upkeepImage.gameObject.SetActive(false);
-            _upkeep.text = "";
-        }
-    }
-        
-    private void UpdateOutput()
-    {
-        if (SelectedRoom.OutPutType != null)
-        {
-            _outPutImge.gameObject.SetActive(true);
-            _outPutImge.sprite = Icons.GetIcon((ResourcesEnum)SelectedRoom.OutPutType);
-            _output.text = SelectedRoom.OutputValue.ToString();
-        }
-        else
-        {
-            _outPutImge.gameObject.SetActive(false);
-            _output.text = "";
-        }
-    }
-        
+           
 
     private void UpdateCamera()
     {

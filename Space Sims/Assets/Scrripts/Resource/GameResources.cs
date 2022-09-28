@@ -58,11 +58,6 @@ public class GameResources
     }
 
 
-
-
-
-
-
     #region Comparators
     public static GameResources operator+ (GameResources a, GameResources b)
     {

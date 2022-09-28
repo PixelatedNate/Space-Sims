@@ -26,21 +26,19 @@ public class UIManager : MonoBehaviour
 
 
 
-    public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int people)
+    public void UpdateTopBar(GameResources currentResources, GameResources deltaResources,int numberofPoeple ,int maxPeople)
     {
-        topBar.SetValues(currentResources, deltaResources, people);
+        topBar.SetValues(currentResources, deltaResources, numberofPoeple ,maxPeople);
     }
 
-    public void DisplaySelected<T>(T obj)
+    public void DisplayPerson(PersonInfo personInfo)
     {
-        if(obj.GetType() == typeof(PersonInfo))
-        {
-            leftPanal.SelectPerson((PersonInfo)(object)obj);
-        }
-        if(obj.GetType() == typeof(Room))
-        {
-            leftPanal.SelectRoom((Room)(object)obj);
-        }
+            leftPanal.SelectPerson(personInfo);
+    }
+
+    public void DisplayRoomView(AbstractRoom room)
+    {
+        leftPanal.SelectRoom(room);
     }
 
     public void OpenBuildRoomMenu(Vector3Int roomCellPos)

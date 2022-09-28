@@ -192,8 +192,8 @@ public class PersonInfo {
 
     public Person PersonMonoBehaviour { get; set; }
 
-    private Room _room;
-    public Room Room { get; set; }
+    private AbstractRoom _room;
+    public AbstractRoom Room { get; set; }
     
     
     public void Randomize()

@@ -11,7 +11,7 @@ public class TopBar : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _deltaFuel, _deltaFood, _deltaMinerals;
     [SerializeField]
-    private TextMeshProUGUI _people;
+    private TextMeshProUGUI _numberofPeopel, _maxPeople;
 
 
     #region publicMethods
@@ -22,9 +22,10 @@ public class TopBar : MonoBehaviour
     /// <param name="currentValues"></param>
     /// <param name="deltaValues"></param>
     /// <param name="peopleCount"> maxPeople </param>
-    public void SetValues(GameResources currentValues, GameResources deltaValues, int peopleCount)
+    public void SetValues(GameResources currentValues, GameResources deltaValues, int numberofPeople, int maxPeopleCount)
     {
-        _people.text          =  peopleCount.ToString("+0;-#");
+        _numberofPeopel.text  = numberofPeople.ToString();
+        _maxPeople.text       = maxPeopleCount.ToString();
         _fuel.text            =  currentValues.Fuel.ToString("+0;-#");
         _deltaFuel.text       =  deltaValues.Fuel.ToString("+0;-#");
         _food.text            =  currentValues.Food.ToString("+0;-#");

@@ -13,7 +13,7 @@ public class LeftPanal : MonoBehaviour
     [SerializeField]
     UIButton uiButton;
     [SerializeField]
-    RoomView roomView;
+    UniversalRoomView roomView;
 
     GameObject ActiveView;
 
@@ -45,7 +45,7 @@ public class LeftPanal : MonoBehaviour
         personView.SetPerson(personInfo);
     }
 
-    public void SelectRoom(Room room)
+    public void SelectRoom(AbstractRoom room)
     {
         if (ActiveView != null)
         {
@@ -56,8 +56,6 @@ public class LeftPanal : MonoBehaviour
         ActiveView = roomView.gameObject;
         ActiveView.SetActive(true);  
     }
-
-
 
     public void ClearAllView()
     {

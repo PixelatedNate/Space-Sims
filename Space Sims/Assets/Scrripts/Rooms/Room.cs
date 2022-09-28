@@ -74,8 +74,8 @@ public class Room : MonoBehaviour, IInteractables
     void Start()
     {
         IntisaliseRoom();
-        GlobalStats.Instance.PlyaerRooms.Add(this);
-        GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
+       // GlobalStats.Instance.PlyaerRooms.Add(this);
+     //   GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
     }
 
 
@@ -89,7 +89,7 @@ public class Room : MonoBehaviour, IInteractables
         {
             throw new Exception("Trying to build a new room which allready exsistes");
         }
-        GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
+     //   GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
         BuildOrUpgradeRoom(0);
     }
     public void UpgradeRoom(int level)
@@ -169,13 +169,13 @@ public class Room : MonoBehaviour, IInteractables
     private void BuildOrUpgradeRoom(int newLevel)
     {
         IsUnderConstruction = true;
-        GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
+     //   GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
         ConstructionTimer = TimeDelayManager.Instance.AddTimer( new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime),ConstructionCompleat));
     }
     private void ConstructionCompleat()
     {
         IsUnderConstruction = false;
-        GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
+     //   GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
     }
 
     #endregion
@@ -185,7 +185,7 @@ public class Room : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         _tempSelect.SetActive(true);
-        UIManager.Instance.DisplaySelected(this);
+       // UIManager.Instance.DisplayRoomView(this);
     }
 
     public void OnDeselect()

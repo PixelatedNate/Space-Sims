@@ -39,6 +39,10 @@ public class Person : MonoBehaviour, IInteractables
 
     LinkedList<Vector3Int> MovePath;
 
+
+
+    bool IsMouseOver = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +70,7 @@ public class Person : MonoBehaviour, IInteractables
         ReRenderPerson();
     }
 
-    public void AssginRoomToPerson(Room room)
+    public void AssginRoomToPerson(AbstractRoom room)
     {
         if (room != null && room.AddWorker(this))
         {
@@ -96,6 +100,23 @@ public class Person : MonoBehaviour, IInteractables
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            if (this.Equals(TouchControls.GetInteractableUnderMouse()))
+            {
+                Debug.Log("true");
+                IsMouseOver = true;
+                return;
+            }
+        }
+        else if (IsMouseOver && Input.GetMouseButtonUp(0))
+        {
+            IsMouseOver = false;
+        }
+        else if(IsMouseOver)
+        {
+            return;
+        }
         if(MovePath == null) { return; }
         if(MovePath.Count > 0)
         {
@@ -157,7 +178,7 @@ public class Person : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         TempSelected.SetActive(true);
-        UIManager.Instance.DisplaySelected(_personInfo);
+        UIManager.Instance.DisplayPerson(_personInfo);
     }
 
     public bool OnHold()
@@ -174,7 +195,7 @@ public class Person : MonoBehaviour, IInteractables
 
     public void OnHoldRelease()
     {
-        Room room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
+        AbstractRoom room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
         AssginRoomToPerson(room);
         IsBeingHeld = false;
     }
