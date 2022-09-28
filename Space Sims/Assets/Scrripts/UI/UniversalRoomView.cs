@@ -19,7 +19,9 @@ public class UniversalRoomView : MonoBehaviour
     
 
     [SerializeField]
-    PassiveProductionRoomView PassiveProductionRoomViewScript;
+    PassiveProductionRoomView _passiveProductionRoomViewScript;
+    [SerializeField]
+    CrewQuatersRoomView _crewQuatersRoomView;
 
     private GameObject SubRoomView { get; set; }
 
@@ -48,10 +50,17 @@ public class UniversalRoomView : MonoBehaviour
     {
     if (SelectedRoom is PassiveProductionRoom)
      {
-        PassiveProductionRoomViewScript.gameObject.SetActive(true);
-        SubRoomView = PassiveProductionRoomViewScript.gameObject;
-        PassiveProductionRoomViewScript.SetRoom((PassiveProductionRoom)SelectedRoom);
+        _passiveProductionRoomViewScript.gameObject.SetActive(true);
+        SubRoomView = _passiveProductionRoomViewScript.gameObject;
+        _passiveProductionRoomViewScript.SetRoom((PassiveProductionRoom)SelectedRoom);
      }
+    else if (SelectedRoom is CrewQuatersRoom)
+     {
+        _crewQuatersRoomView.gameObject.SetActive(true);
+        SubRoomView = _crewQuatersRoomView.gameObject;
+        _crewQuatersRoomView.SetRoom((CrewQuatersRoom)SelectedRoom);
+     }
+
     }
 
     #endregion

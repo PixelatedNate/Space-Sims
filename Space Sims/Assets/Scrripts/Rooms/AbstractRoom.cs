@@ -122,7 +122,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void OnSelect()
     {
     _tempSelect.SetActive(true);
-    UIManager.Instance.DisplaySelected(this);
+    UIManager.Instance.DisplayRoomView(this);
     }
     
     public void OnDeselect()

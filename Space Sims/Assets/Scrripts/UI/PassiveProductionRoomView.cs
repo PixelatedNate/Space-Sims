@@ -19,10 +19,6 @@ public class PassiveProductionRoomView : MonoBehaviour
 
     #region PublicMethods   
 
-    /// <summary>
-    /// Set the room info to be displayed in the view
-    /// </summary>
-    /// <param name="room"></param>
     public void SetRoom(PassiveProductionRoom room)
     {
         SelectedRoom = room;
@@ -36,12 +32,12 @@ public class PassiveProductionRoomView : MonoBehaviour
 
     private void UpdateView()
     {
-            UpdateUniversalText();
+            UpdateText();
             UpdateOutput();
             UpdateUpkeep();
     }
     
-    private void UpdateUniversalText()
+    private void UpdateText()
     {
         _modifer.text = SelectedRoom.DesiredSkill.ToString();
         _maxPeopel.text = SelectedRoom.RoomStat.MaxWorkers.ToString();

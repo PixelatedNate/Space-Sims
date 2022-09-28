@@ -45,7 +45,7 @@ public class LeftPanal : MonoBehaviour
         personView.SetPerson(personInfo);
     }
 
-    public void SelectPassiveProductionRoom(PassiveProductionRoom room)
+    public void SelectRoom(AbstractRoom room)
     {
         if (ActiveView != null)
         {
@@ -56,8 +56,6 @@ public class LeftPanal : MonoBehaviour
         ActiveView = roomView.gameObject;
         ActiveView.SetActive(true);  
     }
-
-
 
     public void ClearAllView()
     {

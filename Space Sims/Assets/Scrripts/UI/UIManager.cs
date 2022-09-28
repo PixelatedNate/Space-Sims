@@ -31,16 +31,14 @@ public class UIManager : MonoBehaviour
         topBar.SetValues(currentResources, deltaResources, numberofPoeple ,maxPeople);
     }
 
-    public void DisplaySelected<T>(T obj)
+    public void DisplayPerson(PersonInfo personInfo)
     {
-        if(obj.GetType() == typeof(PersonInfo))
-        {
-            leftPanal.SelectPerson((PersonInfo)(object)obj);
-        }
-        if(obj.GetType() == typeof(PassiveProductionRoom))
-        {
-            leftPanal.SelectPassiveProductionRoom((PassiveProductionRoom)(object)obj);
-        }
+            leftPanal.SelectPerson(personInfo);
+    }
+
+    public void DisplayRoomView(AbstractRoom room)
+    {
+        leftPanal.SelectRoom(room);
     }
 
     public void OpenBuildRoomMenu(Vector3Int roomCellPos)

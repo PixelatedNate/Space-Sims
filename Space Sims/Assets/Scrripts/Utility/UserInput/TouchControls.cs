@@ -40,7 +40,6 @@ public class TouchControls : MonoBehaviour
     IInteractables SelectedObject = null;
     bool InteractableIsIsHeld = false;
 
-
     private int UILayer;
 
     // Start is called before the first frame update
@@ -217,7 +216,7 @@ public class TouchControls : MonoBehaviour
         Camera.main.transform.position = newCameraTransform;
     }
 
-    public IInteractables GetInteractableUnderMouse()
+    public static IInteractables GetInteractableUnderMouse()
     {
     RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
     IInteractables selected = null;

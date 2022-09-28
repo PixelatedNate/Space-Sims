@@ -318,7 +318,7 @@ MonoBehaviour:
       Premimum: 0
     _peopleChange: 0
   _roomName: CrewQuaters
-  _roomDiscription: 
+  _roomDiscription: Room
   _roomType: 3
   _roomCameraPortal: {fileID: 4669747934863283592}
   _pathFindingTileMap: {fileID: 7798536622387223730}
