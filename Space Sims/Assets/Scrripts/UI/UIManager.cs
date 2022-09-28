@@ -51,4 +51,10 @@ public class UIManager : MonoBehaviour
         leftPanal.ClearAllView();
     }
 
+
+    public void ToggleRoomBuildMode()
+    {
+        RoomGridManager.Instance.TogleBuildMode();
+    }
+
 }

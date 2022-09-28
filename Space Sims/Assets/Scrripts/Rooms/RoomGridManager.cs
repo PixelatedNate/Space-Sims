@@ -16,6 +16,8 @@ public class RoomGridManager : MonoBehaviour
     Dictionary<Vector3Int, AbstractRoom> RoomList { get; set; } = new Dictionary<Vector3Int, AbstractRoom>();
     Dictionary<Vector3Int, GameObject> BuildCellList { get; set; } = new Dictionary<Vector3Int, GameObject>();
 
+    private bool ShowBuildRoom { get; set; } = false;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,8 +33,12 @@ public class RoomGridManager : MonoBehaviour
     void Start()
     {
         roomGrid = GetComponent<Grid>();
-        BuildNewRoom(Vector3Int.zero, RoomType.Fuel);
-        BuildNewRoom(new Vector3Int(1,0,0), RoomType.Fuel);
+        AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
+        AbstractRoom secondRoom = BuildNewRoom(new Vector3Int(1,0,0), RoomType.Fuel);
+        PrefabSpawner.Instance.SpawnPerson(fistRoom);
+        PrefabSpawner.Instance.SpawnPerson(fistRoom);
+        PrefabSpawner.Instance.SpawnPerson(fistRoom);
+        PrefabSpawner.Instance.SpawnPerson(fistRoom);
     }
 
 #region PublicMethods
@@ -54,6 +60,23 @@ public class RoomGridManager : MonoBehaviour
             return RoomList[cellPosition];
         }
     }
+
+
+    public void TogleBuildMode()
+    {
+        SetBuildMode(!ShowBuildRoom);
+    }
+
+    public void SetBuildMode(bool mode)
+    {
+        if(mode == ShowBuildRoom) { return; }
+        foreach(var buildroom in BuildCellList)
+        {
+            buildroom.Value.SetActive(mode);
+        }
+        ShowBuildRoom = mode;
+    }
+
 
     /// <summary>
     /// Build a new room at the given cell position
@@ -104,6 +127,7 @@ public class RoomGridManager : MonoBehaviour
                 buildRoomButton.CellPos = cell;
                 buildRoomButton.roomManager = this;
                 BuildCellList.Add(cell, buildTemplate);
+                buildTemplate.SetActive(ShowBuildRoom);
             }
         }
     }

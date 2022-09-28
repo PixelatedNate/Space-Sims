@@ -49,12 +49,22 @@ public class Person : MonoBehaviour, IInteractables
         //testing
         if (PersonInfo == null)
         {
-            PersonInfo person = new PersonInfo();
-            person.Randomize();
-            AssginPerson(person);
-            ReRenderPerson();
-            GlobalStats.Instance.PlayersPeople.Add(PersonInfo);
+            RandomisePerson();
         }
+    }
+
+
+    public void RandomisePerson()
+    {
+        if(PersonInfo != null)
+        {
+        GlobalStats.Instance.PlayersPeople.Remove(PersonInfo);
+        }
+         PersonInfo person = new PersonInfo();
+         person.Randomize();
+         AssginPerson(person);
+         ReRenderPerson();
+        GlobalStats.Instance.PlayersPeople.Add(PersonInfo);
     }
 
     public void AssginPerson(PersonInfo person)
@@ -70,8 +80,14 @@ public class Person : MonoBehaviour, IInteractables
         ReRenderPerson();
     }
 
-    public void AssginRoomToPerson(AbstractRoom room)
+
+    public bool AssginRoomToPerson(AbstractRoom room)
     {
+        if(room == PersonInfo.Room)
+        {
+            return false;
+        }
+
         if (room != null && room.AddWorker(this))
         {
             if (PersonInfo.Room != null) //At somepoint this can be reomved but good to have check for now.
@@ -82,7 +98,8 @@ public class Person : MonoBehaviour, IInteractables
             PersonInfo.Room = room;
             
             Debug.Log(room.PathFindingTileMap.WorldToCell(transform.position));
-            MovePath = PathFinding.CalculatePath(room.PathFindingTileMap, room.PathFindingTileMap.WorldToCell(transform.position), new Vector3Int(8,-1,0));
+            //MovePath = PathFinding.CalculatePath(room.PathFindingTileMap, room.PathFindingTileMap.WorldToCell(transform.position), new Vector3Int(8,-1,0));
+            return true;
         }
         else
         {
@@ -94,6 +111,7 @@ public class Person : MonoBehaviour, IInteractables
             {
                 transform.position = Vector3.zero;
             }
+            return false;
         }
     }
 
@@ -117,8 +135,7 @@ public class Person : MonoBehaviour, IInteractables
         {
             return;
         }
-        if(MovePath == null) { return; }
-        if(MovePath.Count > 0)
+        if(MovePath != null && MovePath.Count > 0)
         {
             Vector3 worldSpacePosition = PersonInfo.Room.PathFindingTileMap.GetCellCenterWorld(MovePath.First.Value);
             Vector3 dir = (worldSpacePosition - transform.position).normalized;
