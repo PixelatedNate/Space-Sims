@@ -13,24 +13,29 @@ public class GlobalStats : MonoBehaviour
 
     private Dictionary<AbstractRoom, GameResources> RoomDeltaResources { get; set; } = new Dictionary<AbstractRoom, GameResources>();
     private GameResources RoomDeltaResourcesTotal { get; set; } = new GameResources();
-
+ 
     private GameResources TotalDelta { get; set; }
-
-    [SerializeField]
-    private GameResources _playerResources;
+    
+    private GameResources _playerResources = new GameResources();
     public GameResources PlayerResources { get { return _playerResources; } set { SetPlayerResources(value); } }
 
-
+    private int _maxPeople;
+    public int MaxPeople { get { return _maxPeople; } set {SetMaxPeople(value); } }
     public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
     public List<AbstractRoom> PlyaerRooms = new List<AbstractRoom>();
-
+    
     #region CustomGetterAndSetters
 
+    private void SetMaxPeople(int value)
+    {
+        _maxPeople = value;
+        UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, PlayersPeople.Count ,MaxPeople);
+    }
     private void SetPlayerResources(GameResources value)
     {
        _playerResources = value;
        checkResourcesForAlertChanges();
-       UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, 0);
+       UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, PlayersPeople.Count, MaxPeople);
     }
 
     #endregion

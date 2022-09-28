@@ -26,9 +26,9 @@ public class UIManager : MonoBehaviour
 
 
 
-    public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int people)
+    public void UpdateTopBar(GameResources currentResources, GameResources deltaResources,int numberofPoeple ,int maxPeople)
     {
-        topBar.SetValues(currentResources, deltaResources, people);
+        topBar.SetValues(currentResources, deltaResources, numberofPoeple ,maxPeople);
     }
 
     public void DisplaySelected<T>(T obj)

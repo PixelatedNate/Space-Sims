@@ -13,7 +13,7 @@ public class LeftPanal : MonoBehaviour
     [SerializeField]
     UIButton uiButton;
     [SerializeField]
-    RoomView roomView;
+    UniversalRoomView roomView;
 
     GameObject ActiveView;
 

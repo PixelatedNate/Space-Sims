@@ -27,6 +27,8 @@ public class PrefabSpawner : MonoBehaviour
     private GameObject FoodRoomTemplate;
     [SerializeField]
     private GameObject MineralsRoomTemplate;
+    [SerializeField]
+    private GameObject CrewQuaterRoomTemplate;
 
     public GameObject SpawnPerson()
     {
@@ -40,6 +42,7 @@ public class PrefabSpawner : MonoBehaviour
             case (RoomType.Fuel): return GameObject.Instantiate(FuelRoomTemplate);
             case (RoomType.Food): return GameObject.Instantiate(FoodRoomTemplate);
             case (RoomType.Minerals): return GameObject.Instantiate(MineralsRoomTemplate);
+            case (RoomType.CrewQuaters): return GameObject.Instantiate(CrewQuaterRoomTemplate);
             default: throw new Exception(roomType.ToString() + ": roomTypeCanNotBeFound");
         }
     }
