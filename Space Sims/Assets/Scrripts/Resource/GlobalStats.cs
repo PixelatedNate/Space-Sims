@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,30 +11,37 @@ public class GlobalStats : MonoBehaviour
     private GameResources PersonDeltaResourcesTotal { get; set; } = new GameResources();
 
     private Dictionary<AbstractRoom, GameResources> RoomDeltaResources { get; set; } = new Dictionary<AbstractRoom, GameResources>();
+
+    [SerializeField]
+    private GameResources _bassMaxStorage;
+    private GameResources MaxStorage { get; set; } = new GameResources();
     private GameResources RoomDeltaResourcesTotal { get; set; } = new GameResources();
- 
-    private GameResources TotalDelta { get; set; }
-    
+
+    private GameResources TotalDelta { get; set; } = new GameResources();
+
+    [SerializeField]
+    private GameResources _startingResources;
+
     private GameResources _playerResources = new GameResources();
     public GameResources PlayerResources { get { return _playerResources; } set { SetPlayerResources(value); } }
 
     private int _maxPeople;
-    public int MaxPeople { get { return _maxPeople; } set {SetMaxPeople(value); } }
+    public int MaxPeople { get { return _maxPeople; } set { SetMaxPeople(value); } }
     public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
     public List<AbstractRoom> PlyaerRooms = new List<AbstractRoom>();
-    
+
     #region CustomGetterAndSetters
 
     private void SetMaxPeople(int value)
     {
         _maxPeople = value;
-        UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, PlayersPeople.Count ,MaxPeople);
+        UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, PlayersPeople.Count, MaxPeople, MaxStorage);
     }
     private void SetPlayerResources(GameResources value)
     {
-       _playerResources = value;
-       checkResourcesForAlertChanges();
-       UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, PlayersPeople.Count, MaxPeople);
+        _playerResources = value;
+        checkResourcesForAlertChanges();
+        UIManager.Instance.UpdateTopBar(_playerResources, TotalDelta, PlayersPeople.Count, MaxPeople, MaxStorage);
     }
 
     #endregion
@@ -53,6 +59,8 @@ public class GlobalStats : MonoBehaviour
     }
     void Start()
     {
+        MaxStorage = _bassMaxStorage;
+        PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;
     }
 
@@ -60,10 +68,10 @@ public class GlobalStats : MonoBehaviour
 
 
     #region PublicMethods
-    
+
     public void AddorUpdatePersonDelta(Person person, GameResources personDeltaResources)
     {
-        if(PersonDeltaResources.ContainsKey(person))
+        if (PersonDeltaResources.ContainsKey(person))
         {
             PersonDeltaResources[person] = personDeltaResources;
         }
@@ -71,7 +79,7 @@ public class GlobalStats : MonoBehaviour
         {
             PersonDeltaResources.Add(person, personDeltaResources);
         }
-            RecalculatePersonDeltaTotal();
+        RecalculatePersonDeltaTotal();
     }
     public void RemovePersonDelta(Person person)
     {
@@ -83,7 +91,7 @@ public class GlobalStats : MonoBehaviour
     }
     public void AddorUpdateRoomDelta(AbstractRoom room, GameResources delta)
     {
-        if(RoomDeltaResources.ContainsKey(room))
+        if (RoomDeltaResources.ContainsKey(room))
         {
             RoomDeltaResources[room] = delta;
         }
@@ -91,7 +99,7 @@ public class GlobalStats : MonoBehaviour
         {
             RoomDeltaResources.Add(room, delta);
         }
-            RecalculateRoomDeltaTotal();
+        RecalculateRoomDeltaTotal();
     }
     public void RemoveRoomDelta(AbstractRoom room)
     {
@@ -101,7 +109,7 @@ public class GlobalStats : MonoBehaviour
             RecalculateRoomDeltaTotal();
         }
     }
-    
+
     #endregion
 
     #region PrivateMethods
@@ -114,7 +122,7 @@ public class GlobalStats : MonoBehaviour
     private void RecalculatePersonDeltaTotal()
     {
         PersonDeltaResourcesTotal = new GameResources();
-        foreach(var keyPair in PersonDeltaResources)
+        foreach (var keyPair in PersonDeltaResources)
         {
             PersonDeltaResourcesTotal += keyPair.Value;
         }
@@ -123,23 +131,42 @@ public class GlobalStats : MonoBehaviour
     private void RecalculateRoomDeltaTotal()
     {
         RoomDeltaResourcesTotal = new GameResources();
-        foreach(var keyPair in RoomDeltaResources)
+        foreach (var keyPair in RoomDeltaResources)
         {
             RoomDeltaResourcesTotal += keyPair.Value;
         }
-        TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;        
+        TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;
     }
 
     private void checkResourcesForAlertChanges()
     {
-            if(PlayerResources.Food < 0)
-            {
-                AlertManager.Instance.SendAlert(Alerts.LowFood);
-            }
-            if(PlayerResources.Fuel < 0)
-            {
-                AlertManager.Instance.SendAlert(Alerts.LowFuel);
-            }
+        if (PlayerResources.Food < 0)
+        {
+            AlertManager.Instance.SendAlert(Alerts.LowFood);
+            PlayerResources.Food = 0;
+        }
+        else if (PlayerResources.Food >= MaxStorage.Food)
+        {
+            PlayerResources.Food = MaxStorage.Food;
+        }
+        if (PlayerResources.Fuel < 0)
+        {
+            AlertManager.Instance.SendAlert(Alerts.LowFuel);
+            PlayerResources.Fuel = 0;
+        }
+        else if (PlayerResources.Fuel >= MaxStorage.Fuel)
+        {
+            PlayerResources.Fuel = MaxStorage.Fuel;
+        }
+        if (PlayerResources.Minerals < 0)
+        {
+            PlayerResources.Minerals = 0;
+        }
+        else if (PlayerResources.Minerals >= MaxStorage.Minerals)
+        {
+            PlayerResources.Minerals = MaxStorage.Minerals;
+        }
+
     }
 
     #endregion

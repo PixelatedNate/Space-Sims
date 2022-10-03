@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LeftPanal : MonoBehaviour
@@ -17,7 +15,7 @@ public class LeftPanal : MonoBehaviour
 
     GameObject ActiveView;
 
-    
+
 
 
     public void OpenBuildRoomView(Vector3Int roomCellPos)
@@ -54,7 +52,7 @@ public class LeftPanal : MonoBehaviour
         uiButton.LeftTabSlideOut();
         roomView.SetRoom(room);
         ActiveView = roomView.gameObject;
-        ActiveView.SetActive(true);  
+        ActiveView.SetActive(true);
     }
 
     public void ClearAllView()
@@ -66,5 +64,5 @@ public class LeftPanal : MonoBehaviour
         }
     }
 
-  
+
 }

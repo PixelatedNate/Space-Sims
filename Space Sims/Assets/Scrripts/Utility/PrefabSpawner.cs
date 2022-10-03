@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PrefabSpawner : MonoBehaviour
@@ -20,7 +18,7 @@ public class PrefabSpawner : MonoBehaviour
 
     [SerializeField]
     private GameObject PersonTemplate;
-    
+
     [SerializeField]
     private GameObject FuelRoomTemplate;
     [SerializeField]
@@ -32,19 +30,19 @@ public class PrefabSpawner : MonoBehaviour
 
     public GameObject SpawnPerson()
     {
-       return GameObject.Instantiate(PersonTemplate);
+        return GameObject.Instantiate(PersonTemplate);
     }
     public GameObject SpawnPerson(AbstractRoom room)
     {
-       var person = GameObject.Instantiate(PersonTemplate);
+        var person = GameObject.Instantiate(PersonTemplate);
         person.GetComponent<Person>().RandomisePerson();
-       if(person.GetComponent<Person>().AssginRoomToPerson(room))
+        if (person.GetComponent<Person>().AssginRoomToPerson(room))
         {
             person.transform.position = room.transform.position;
             person.transform.position = person.transform.position - Vector3.forward;
             return person;
         }
-       else
+        else
         {
             GameObject.Destroy(person);
             Debug.LogWarning("could not spawn person in room");
@@ -55,7 +53,7 @@ public class PrefabSpawner : MonoBehaviour
 
     public GameObject SpawnRoom(RoomType roomType)
     {
-        switch(roomType)
+        switch (roomType)
         {
             case (RoomType.Fuel): return GameObject.Instantiate(FuelRoomTemplate);
             case (RoomType.Food): return GameObject.Instantiate(FoodRoomTemplate);

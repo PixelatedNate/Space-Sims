@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -74,8 +73,8 @@ public class Room : MonoBehaviour, IInteractables
     void Start()
     {
         IntisaliseRoom();
-       // GlobalStats.Instance.PlyaerRooms.Add(this);
-     //   GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
+        // GlobalStats.Instance.PlyaerRooms.Add(this);
+        //   GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
     }
 
 
@@ -85,16 +84,16 @@ public class Room : MonoBehaviour, IInteractables
 
     public void BuildRoom()
     {
-        if(IsUnderConstruction || Level != 0)
+        if (IsUnderConstruction || Level != 0)
         {
             throw new Exception("Trying to build a new room which allready exsistes");
         }
-     //   GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
+        //   GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
         BuildOrUpgradeRoom(0);
     }
     public void UpgradeRoom(int level)
     {
-        if(IsUnderConstruction || Level == _roomlevels.Length-1)
+        if (IsUnderConstruction || Level == _roomlevels.Length - 1)
         {
             throw new Exception("Trying to uprage a room which is max level or allready under construction");
         }
@@ -107,11 +106,11 @@ public class Room : MonoBehaviour, IInteractables
 
     public bool AddWorker(Person person)
     {
-        if(Workers.Count == RoomStat.MaxWorkers)
+        if (Workers.Count == RoomStat.MaxWorkers)
         {
             return false;
         }
-        if(Workers.Contains(person.PersonInfo))
+        if (Workers.Contains(person.PersonInfo))
         {
             Debug.LogWarning("Failed to add a person to room: as they are allready in");
             return false;
@@ -137,8 +136,8 @@ public class Room : MonoBehaviour, IInteractables
 
     public void SetCamera(RenderTexture renderTexture)
     {
-       _roomCameraPortal.GetComponent<Camera>().gameObject.SetActive(true);
-       _roomCameraPortal.GetComponent<Camera>().targetTexture = renderTexture;
+        _roomCameraPortal.GetComponent<Camera>().gameObject.SetActive(true);
+        _roomCameraPortal.GetComponent<Camera>().targetTexture = renderTexture;
     }
 
     private void SetUpkeepAndOutPut()
@@ -155,7 +154,7 @@ public class Room : MonoBehaviour, IInteractables
             }
             if (RoomStat.OutPut.GetResorce(re) != 0)
             {
-                if (outPutFound == true) { Debug.LogWarning("Room " +  gameObject.name + " has two diffrent Resources used for OutPut"); }
+                if (outPutFound == true) { Debug.LogWarning("Room " + gameObject.name + " has two diffrent Resources used for OutPut"); }
                 outPutFound = true;
                 _outputType = re;
             }
@@ -169,13 +168,13 @@ public class Room : MonoBehaviour, IInteractables
     private void BuildOrUpgradeRoom(int newLevel)
     {
         IsUnderConstruction = true;
-     //   GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
-        ConstructionTimer = TimeDelayManager.Instance.AddTimer( new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime),ConstructionCompleat));
+        //   GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
+        ConstructionTimer = TimeDelayManager.Instance.AddTimer(new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat));
     }
     private void ConstructionCompleat()
     {
         IsUnderConstruction = false;
-     //   GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
+        //   GlobalStats.Instance.AddorUpdateRoomDelta(this, RoomStat.OutPut - RoomStat.Upkeep);
     }
 
     #endregion
@@ -185,7 +184,7 @@ public class Room : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         _tempSelect.SetActive(true);
-       // UIManager.Instance.DisplayRoomView(this);
+        // UIManager.Instance.DisplayRoomView(this);
     }
 
     public void OnDeselect()

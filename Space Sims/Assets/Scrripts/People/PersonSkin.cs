@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -215,4 +212,4 @@ static class PersonSkin
         return returnColor;
     }
 
- }
+}

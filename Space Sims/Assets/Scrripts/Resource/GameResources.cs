@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
-public class GameResources 
+public class GameResources
 {
     public int Fuel;
     public int Food;
@@ -23,9 +20,9 @@ public class GameResources
         Premimum = 0;
     }
 
-   public GameResources(ResourcesEnum resourcesEnum,int value)
-    {      
-       SetResorce(resourcesEnum, value);
+    public GameResources(ResourcesEnum resourcesEnum, int value)
+    {
+        SetResorce(resourcesEnum, value);
     }
 
 
@@ -58,8 +55,8 @@ public class GameResources
     }
 
 
-    #region Comparators
-    public static GameResources operator+ (GameResources a, GameResources b)
+    #region Operators
+    public static GameResources operator +(GameResources a, GameResources b)
     {
         GameResources resources = new GameResources();
         resources.Fuel = a.Fuel + b.Fuel;
@@ -69,7 +66,7 @@ public class GameResources
 
         return resources;
     }
-    public static GameResources operator- (GameResources a, GameResources b)
+    public static GameResources operator -(GameResources a, GameResources b)
     {
         GameResources resources = new GameResources();
         resources.Fuel = a.Fuel - b.Fuel;
@@ -79,31 +76,31 @@ public class GameResources
 
         return resources;
     }
-    public static bool operator> (GameResources a, GameResources b)
+    public static bool operator >(GameResources a, GameResources b)
     {
-        return( (a.Fuel > b.Fuel) &&
+        return ((a.Fuel > b.Fuel) &&
                 (a.Food > b.Food) &&
                 (a.Minerals > b.Minerals) &&
-                (a.Premimum > b.Premimum) );
+                (a.Premimum > b.Premimum));
     }
 
-    public static bool operator< (GameResources a, GameResources b)
+    public static bool operator <(GameResources a, GameResources b)
     {
-        return( (a.Fuel < b.Fuel) &&
+        return ((a.Fuel < b.Fuel) &&
                 (a.Food < b.Food) &&
                 (a.Minerals < b.Minerals) &&
-                 (a.Premimum < b.Premimum) );    
+                 (a.Premimum < b.Premimum));
     }
 
-    public static bool operator== (GameResources a, GameResources b)
+    public static bool operator ==(GameResources a, GameResources b)
     {
-        return( (a.Fuel == b.Fuel) &&
+        return ((a.Fuel == b.Fuel) &&
                 (a.Food == b.Food) &&
                 (a.Minerals == b.Minerals) &&
-                 (a.Premimum == b.Premimum) );    
+                 (a.Premimum == b.Premimum));
     }
 
-    public static bool operator!= (GameResources a, GameResources b)
+    public static bool operator !=(GameResources a, GameResources b)
     {
         return ((a.Fuel != b.Fuel) &&
                 (a.Food != b.Food) &&
@@ -112,14 +109,32 @@ public class GameResources
     }
 
 
-    public static bool operator<= (GameResources a, GameResources b)
+    public static bool operator <=(GameResources a, GameResources b)
     {
-        return(a<b || a==b);    
+        return ((a.Fuel == b.Fuel) || (a.Fuel < b.Fuel) &&
+           (a.Food == b.Food) || (a.Food < b.Food) &&
+           (a.Minerals == b.Minerals) || (a.Minerals < b.Minerals) &&
+            (a.Premimum == b.Premimum) || (a.Premimum < b.Premimum));
     }
-    public static bool operator>= (GameResources a, GameResources b)
+    public static bool operator >=(GameResources a, GameResources b)
     {
-        return(a>b || a==b);    
+        return ((a.Fuel == b.Fuel) || (a.Fuel > b.Fuel) &&
+           (a.Food == b.Food) || (a.Food > b.Food) &&
+           (a.Minerals == b.Minerals) || (a.Minerals > b.Minerals) &&
+            (a.Premimum == b.Premimum) || (a.Premimum > b.Premimum));
     }
+    public static GameResources operator *(GameResources a, float b)
+    {
+        return new GameResources
+        {
+            Food = (int)MathF.Floor(a.Food * b),
+            Fuel = (int)MathF.Floor(a.Fuel * b),
+            Minerals = (int)MathF.Floor(a.Minerals * b),
+            Premimum = (int)MathF.Floor(a.Premimum * b),
+        };  
+            
+    }
+
 
     #endregion
 

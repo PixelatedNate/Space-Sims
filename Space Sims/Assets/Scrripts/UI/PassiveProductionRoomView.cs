@@ -1,19 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PassiveProductionRoomView : MonoBehaviour
 {
-    
+
     [SerializeField]
     private TextMeshProUGUI _modifer, _maxPeopel, _currentPeople, _output, _upkeep;
     [SerializeField]
     private Image _outPutImge, _upkeepImage;
     [SerializeField]
     private GameObject _activeSubview, _disabledSubView;
-    
+
     private PassiveProductionRoom SelectedRoom { get; set; }
 
 
@@ -32,11 +30,11 @@ public class PassiveProductionRoomView : MonoBehaviour
 
     private void UpdateView()
     {
-            UpdateText();
-            UpdateOutput();
-            UpdateUpkeep();
+        UpdateText();
+        UpdateOutput();
+        UpdateUpkeep();
     }
-    
+
     private void UpdateText()
     {
         _modifer.text = SelectedRoom.DesiredSkill.ToString();
@@ -50,7 +48,7 @@ public class PassiveProductionRoomView : MonoBehaviour
         {
             _upkeepImage.gameObject.SetActive(true);
             _upkeepImage.sprite = Icons.GetIcon((ResourcesEnum)SelectedRoom.UpkeepType);
-            _upkeep.text = SelectedRoom.UpkeepValue.ToString();
+            _upkeep.text = SelectedRoom.BaseUpkeepValue.ToString();
         }
         else
         {
@@ -58,14 +56,14 @@ public class PassiveProductionRoomView : MonoBehaviour
             _upkeep.text = "";
         }
     }
-        
+
     private void UpdateOutput()
     {
         if (SelectedRoom.OutPutType != null)
         {
             _outPutImge.gameObject.SetActive(true);
             _outPutImge.sprite = Icons.GetIcon((ResourcesEnum)SelectedRoom.OutPutType);
-            _output.text = SelectedRoom.OutputValue.ToString();
+            _output.text = SelectedRoom.BaseOutputValue.ToString();
         }
         else
         {
@@ -73,6 +71,6 @@ public class PassiveProductionRoomView : MonoBehaviour
             _output.text = "";
         }
     }
-      #endregion
+    #endregion
 
 }

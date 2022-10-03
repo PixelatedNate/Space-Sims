@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using System;
+using TMPro;
+using UnityEngine;
 
 public class UniversalRoomView : MonoBehaviour
 {
@@ -16,7 +13,7 @@ public class UniversalRoomView : MonoBehaviour
     private GameObject _construtionSubView;
     [SerializeField]
     RenderTexture _cameraRenderTexture;
-    
+
 
     [SerializeField]
     PassiveProductionRoomView _passiveProductionRoomViewScript;
@@ -48,18 +45,18 @@ public class UniversalRoomView : MonoBehaviour
 
     private void EnableCorrectRoomView()
     {
-    if (SelectedRoom is PassiveProductionRoom)
-     {
-        _passiveProductionRoomViewScript.gameObject.SetActive(true);
-        SubRoomView = _passiveProductionRoomViewScript.gameObject;
-        _passiveProductionRoomViewScript.SetRoom((PassiveProductionRoom)SelectedRoom);
-     }
-    else if (SelectedRoom is CrewQuatersRoom)
-     {
-        _crewQuatersRoomView.gameObject.SetActive(true);
-        SubRoomView = _crewQuatersRoomView.gameObject;
-        _crewQuatersRoomView.SetRoom((CrewQuatersRoom)SelectedRoom);
-     }
+        if (SelectedRoom is PassiveProductionRoom)
+        {
+            _passiveProductionRoomViewScript.gameObject.SetActive(true);
+            SubRoomView = _passiveProductionRoomViewScript.gameObject;
+            _passiveProductionRoomViewScript.SetRoom((PassiveProductionRoom)SelectedRoom);
+        }
+        else if (SelectedRoom is CrewQuatersRoom)
+        {
+            _crewQuatersRoomView.gameObject.SetActive(true);
+            SubRoomView = _crewQuatersRoomView.gameObject;
+            _crewQuatersRoomView.SetRoom((CrewQuatersRoom)SelectedRoom);
+        }
 
     }
 
@@ -83,22 +80,22 @@ public class UniversalRoomView : MonoBehaviour
             _construtionSubView.SetActive(false);
             EnableCorrectRoomView();
         }
-          
+
     }
     private void UpdateContructionValues()
     {
-      _constructionTime.text = SelectedRoom.ConstructionTimer.RemainingDuration.ToString("h'h 'm'm 's's'");
-      double ProgressBarPercent = (SelectedRoom.ConstructionTimer.RemainingDuration.TotalSeconds/(SelectedRoom.ConstructionTimer.TotalBuildDuration.TotalSeconds / 100));
-      _progressbar.localScale = new Vector3(1-(float)ProgressBarPercent/100,1,1);
+        _constructionTime.text = SelectedRoom.ConstructionTimer.RemainingDuration.ToString("h'h 'm'm 's's'");
+        double ProgressBarPercent = (SelectedRoom.ConstructionTimer.RemainingDuration.TotalSeconds / (SelectedRoom.ConstructionTimer.TotalBuildDuration.TotalSeconds / 100));
+        _progressbar.localScale = new Vector3(1 - (float)ProgressBarPercent / 100, 1, 1);
     }
-  
+
     private void UpdateUniversalText()
     {
         _name.text = SelectedRoom.RoomName;
         _type.text = SelectedRoom.RoomType.ToString();
     }
 
-           
+
 
     private void UpdateCamera()
     {
@@ -108,7 +105,7 @@ public class UniversalRoomView : MonoBehaviour
 
     private void OnTick(object source, EventArgs e)
     {
-        if(SelectedRoom.IsUnderConstruction)
+        if (SelectedRoom.IsUnderConstruction)
         {
             UpdateContructionValues();
         }

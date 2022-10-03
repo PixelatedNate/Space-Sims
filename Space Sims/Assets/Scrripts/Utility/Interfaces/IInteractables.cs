@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IInteractables {
+public interface IInteractables
+{
 
     void OnSelect();
 
@@ -14,4 +11,4 @@ public interface IInteractables {
     void OnHoldRelease();
 
 
- }
+}

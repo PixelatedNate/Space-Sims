@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +17,7 @@ public class QuestManager : MonoBehaviour
     }
 
 
-   public List<Quest> CompleatedQuest = new List<Quest>();
+    public List<Quest> CompleatedQuest = new List<Quest>();
 
     [SerializeField]
     List<Quest> AvalibleQuest = new List<Quest>();
@@ -35,10 +34,10 @@ public class QuestManager : MonoBehaviour
         */
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

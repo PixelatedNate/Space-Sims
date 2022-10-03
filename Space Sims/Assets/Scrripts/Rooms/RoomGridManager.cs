@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,14 +33,14 @@ public class RoomGridManager : MonoBehaviour
     {
         roomGrid = GetComponent<Grid>();
         AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
-        AbstractRoom secondRoom = BuildNewRoom(new Vector3Int(1,0,0), RoomType.Fuel);
+        AbstractRoom secondRoom = BuildNewRoom(new Vector3Int(1, 0, 0), RoomType.Fuel);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
     }
 
-#region PublicMethods
+    #region PublicMethods
 
     /// <summary>
     ///  Returns the room that is at the position provieded or null.
@@ -51,7 +50,7 @@ public class RoomGridManager : MonoBehaviour
     public AbstractRoom GetRoomAtPosition(Vector3 position)
     {
         Vector3Int cellPosition = roomGrid.WorldToCell(position);
-        if (!RoomList.ContainsKey(cellPosition)) 
+        if (!RoomList.ContainsKey(cellPosition))
         {
             return null;
         }
@@ -69,8 +68,8 @@ public class RoomGridManager : MonoBehaviour
 
     public void SetBuildMode(bool mode)
     {
-        if(mode == ShowBuildRoom) { return; }
-        foreach(var buildroom in BuildCellList)
+        if (mode == ShowBuildRoom) { return; }
+        foreach (var buildroom in BuildCellList)
         {
             buildroom.Value.SetActive(mode);
         }
@@ -84,19 +83,19 @@ public class RoomGridManager : MonoBehaviour
     /// <param name="cellPosition">cell position</param>
     /// <param name="roomType">type of room to build</param>
     /// <returns></returns>
-    public AbstractRoom BuildNewRoom(Vector3Int cellPosition,RoomType roomType)
+    public AbstractRoom BuildNewRoom(Vector3Int cellPosition, RoomType roomType)
     {
-        if (RoomList.ContainsKey(cellPosition)) 
-        { 
-            return null; 
+        if (RoomList.ContainsKey(cellPosition))
+        {
+            return null;
         }
-        
-        if(BuildCellList.ContainsKey(cellPosition))
+
+        if (BuildCellList.ContainsKey(cellPosition))
         {
             Destroy(BuildCellList[cellPosition]);
             BuildCellList.Remove(cellPosition);
         }
-        
+
         //Spawn the room Prefab and set up the room.
         GameObject newRoom = PrefabSpawner.Instance.SpawnRoom(roomType);
         newRoom.transform.parent = transform;
@@ -104,22 +103,22 @@ public class RoomGridManager : MonoBehaviour
         newRoom.transform.position = cellCenter;
         AbstractRoom newRoomScript = newRoom.GetComponent<AbstractRoom>();
         newRoomScript.RoomPosition = cellPosition;
-        RoomList.Add(cellPosition,newRoomScript);
+        RoomList.Add(cellPosition, newRoomScript);
 
         PopulateAdjacentBuildRoomCells(cellPosition);
         return newRoomScript;
     }
 
-#endregion
+    #endregion
 
-#region PrivateMethods
+    #region PrivateMethods
 
     private void PopulateAdjacentBuildRoomCells(Vector3Int cellPosition)
     {
         Vector3Int[] adjacentCells = GetAdjacentGridCells(cellPosition);
-        foreach(Vector3Int cell in adjacentCells)
+        foreach (Vector3Int cell in adjacentCells)
         {
-            if(!RoomList.ContainsKey(cell) && !BuildCellList.ContainsKey(cell))
+            if (!RoomList.ContainsKey(cell) && !BuildCellList.ContainsKey(cell))
             {
                 GameObject buildTemplate = GameObject.Instantiate(_buildRoomTemplate, transform);
                 buildTemplate.transform.position = roomGrid.GetCellCenterWorld(cell);
@@ -139,10 +138,10 @@ public class RoomGridManager : MonoBehaviour
         adjacentcells[2] = cellPosition + Vector3Int.up;
         adjacentcells[3] = cellPosition + Vector3Int.down;
 
-        return adjacentcells;           
+        return adjacentcells;
     }
 
-#endregion
+    #endregion
 
 
 }
