@@ -25,7 +25,7 @@ public class CrewQuatersRoom : AbstractRoom
 
     protected override void UpdateRoomStats()
     {
-        GlobalStats.Instance.MaxPeople += RoomStat.PoepleChange;
+
     }
 
     public override void SetOverLay(bool value)

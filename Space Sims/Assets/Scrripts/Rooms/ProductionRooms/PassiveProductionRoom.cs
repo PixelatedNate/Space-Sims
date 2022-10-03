@@ -153,7 +153,7 @@ public class PassiveProductionRoom : AbstractRoom
         { 
             _upkeepimg.gameObject.SetActive(true);
             _upkeepimg.sprite = Icons.GetIcon((ResourcesEnum)UpkeepType);
-            _upkeep.text = BaseUpkeepValue.ToString();
+            _upkeep.text = "-" + BaseUpkeepValue.ToString();
         }
     }
 
