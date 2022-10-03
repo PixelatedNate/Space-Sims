@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -26,14 +24,14 @@ public class UIManager : MonoBehaviour
 
 
 
-    public void UpdateTopBar(GameResources currentResources, GameResources deltaResources,int numberofPoeple ,int maxPeople)
+    public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
     {
-        topBar.SetValues(currentResources, deltaResources, numberofPoeple ,maxPeople);
+        topBar.SetValues(currentResources, deltaResources, numberofPoeple, maxPeople, maxResources);
     }
 
     public void DisplayPerson(PersonInfo personInfo)
     {
-            leftPanal.SelectPerson(personInfo);
+        leftPanal.SelectPerson(personInfo);
     }
 
     public void DisplayRoomView(AbstractRoom room)

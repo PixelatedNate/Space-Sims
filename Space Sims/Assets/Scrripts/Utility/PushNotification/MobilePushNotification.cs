@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Notifications.Android;
 using UnityEngine;
@@ -24,22 +23,22 @@ public class MobilePushNotification : MonoBehaviour
 
 
     AndroidNotificationChannel taskCompleteChannel = new AndroidNotificationChannel()
-{
-    Id = "channel_taskComplete",
-    Name = "Task Complete",
-    Importance = Importance.Default,
-    Description = "Notifications for timed task that have been completed",
-};
+    {
+        Id = "channel_taskComplete",
+        Name = "Task Complete",
+        Importance = Importance.Default,
+        Description = "Notifications for timed task that have been completed",
+    };
 
     // Start is called before the first frame update
     void Start()
     {
         AndroidNotificationCenter.RegisterNotificationChannel(taskCompleteChannel);
         sendNotification("Test", "this is a test");
-        sendNotification("Test", "this is a test",15);
-        sendNotification("Test", "this is a test",60);
+        sendNotification("Test", "this is a test", 15);
+        sendNotification("Test", "this is a test", 60);
 
-    
+
     }
 
 
@@ -48,7 +47,7 @@ public class MobilePushNotification : MonoBehaviour
         var notification = new AndroidNotification();
         notification.Title = title;
         notification.Text = text;
-        notification.FireTime = System.DateTime.Now.AddSeconds(firetimeSeconds+1);
+        notification.FireTime = System.DateTime.Now.AddSeconds(firetimeSeconds + 1);
         notifications.Add(notification);
     }
 
@@ -58,13 +57,13 @@ public class MobilePushNotification : MonoBehaviour
 #if UNITY_ANDROID || UNITY_EDITOR
     private void OnApplicationPause(bool pause)
     {
-        if(pause)
+        if (pause)
         {
             foreach (var notification in notifications)
             {
                 if (notification.FireTime > System.DateTime.Now)
                 {
-                    AndroidNotificationCenter.SendNotification(notification,"channel_taskComplete");
+                    AndroidNotificationCenter.SendNotification(notification, "channel_taskComplete");
                 }
             }
             notifications.Clear();
@@ -76,8 +75,8 @@ public class MobilePushNotification : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
-        
+
+
 
 
 

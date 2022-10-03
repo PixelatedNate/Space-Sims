@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class Icons
@@ -20,7 +18,7 @@ public static class Icons
         {
             case ResourcesEnum.Fuel: return Resources.Load<Sprite>(FuelIconPath);
             case ResourcesEnum.Food: return Resources.Load<Sprite>(FoodIconPath);
-            case ResourcesEnum.Minerals: return Resources.Load<Sprite>(MineralIconPath);              
+            case ResourcesEnum.Minerals: return Resources.Load<Sprite>(MineralIconPath);
             default: throw new Exception("Enum Resources returned No corisponding value");
         }
     }

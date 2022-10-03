@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+public enum SkillsList
+{
 
-public enum SkillsList{
-   
     Strength,
     Wisdom,
-    Dexterity, 
-    Intelligence, 
+    Dexterity,
+    Intelligence,
     Charisma
 }

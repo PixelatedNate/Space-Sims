@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BuildRoomListView : MonoBehaviour
@@ -14,7 +12,7 @@ public class BuildRoomListView : MonoBehaviour
     public void EnableView(Vector3Int newRoomPos)
     {
         RoomPos = newRoomPos;
-        foreach(var item in _buildRoomListItems)
+        foreach (var item in _buildRoomListItems)
         {
             item.RoomPosition = RoomPos;
             item.UpdateItem();

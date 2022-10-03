@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -45,7 +44,7 @@ public class Quest : ScriptableObject
 
     [SerializeField]
     string Name;
-    [TextArea(15, 20),SerializeField]
+    [TextArea(15, 20), SerializeField]
     string Description;
     [SerializeField]
     Requiments requiments;
@@ -66,7 +65,7 @@ public class Quest : ScriptableObject
 
     public void AssginPerson(PersonInfo person)
     {
-        if(Inprogress)
+        if (Inprogress)
         {
             throw new Exception("Trying to assginPerson to a quest in progress");
         }
@@ -76,7 +75,7 @@ public class Quest : ScriptableObject
 
     public void UnassginPerson(PersonInfo person)
     {
-        if(!PeopleAssgined.Contains(person))
+        if (!PeopleAssgined.Contains(person))
         {
             throw new Exception("trying to UnassginPerson not assgined to quest");
         }
@@ -93,12 +92,12 @@ public class Quest : ScriptableObject
     {
 
         TimeTickSystem.OnMajorTick += onMajorTick;
-        if(!requiments.Ismet(PeopleAssgined.ToArray()))
+        if (!requiments.Ismet(PeopleAssgined.ToArray()))
         {
             return false;
         }
         TimeDelayManager.Instance.AddTimer(new TimeDelayManager.Timer(Duration, new Action(CompleatQuest)));
-        foreach(PersonInfo p in PeopleAssgined)
+        foreach (PersonInfo p in PeopleAssgined)
         {
             p.StartQuest(this);
         }
@@ -108,19 +107,19 @@ public class Quest : ScriptableObject
 
     private void onMajorTick(object source, EventArgs e)
     {
-        Dictionary<QuestEncounter,int> events = new Dictionary<QuestEncounter, int>();
+        Dictionary<QuestEncounter, int> events = new Dictionary<QuestEncounter, int>();
         int valueOffset = 0;
         foreach (QuestEncounter qe in PossibleEncounters)
         {
-           int value = valueOffset + qe.frequancy; 
-           events.Add(qe, value);
-           valueOffset = value;
+            int value = valueOffset + qe.frequancy;
+            events.Add(qe, value);
+            valueOffset = value;
         }
-        int randomnum = Random.Range(1,valueOffset+1);
+        int randomnum = Random.Range(1, valueOffset + 1);
 
-        foreach(var qe in events)
+        foreach (var qe in events)
         {
-           if(randomnum <= qe.Value)
+            if (randomnum <= qe.Value)
             {
                 TriggerEncounter(qe.Key);
                 return;

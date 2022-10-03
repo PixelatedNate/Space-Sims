@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class PersonSelectUIView : MonoBehaviour
 {
@@ -63,7 +61,7 @@ public class PersonSelectUIView : MonoBehaviour
     private void UpdateSkill(SkillsList skill, Transform skillDots)
     {
         // add my room code here to get skills from an enum;
-        for(int i = 0; i < skillDots.childCount; i++)
+        for (int i = 0; i < skillDots.childCount; i++)
         {
             if (i < SelectedPerson.skills.GetSkill(skill))
             {
@@ -72,7 +70,7 @@ public class PersonSelectUIView : MonoBehaviour
             else
             {
                 skillDots.GetChild(i).GetComponent<Image>().color = Color.gray;
-            }             
+            }
         }
 
     }

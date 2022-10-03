@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,40 +12,70 @@ public class BuildRoomListViewItem : MonoBehaviour
     [SerializeField]
     private AbstractRoom _room;
     [SerializeField]
-    private TextMeshProUGUI _roomName,_buildTimeText,_roomDiscription,_buildCost,_upkeepCost,_output;
+    private TextMeshProUGUI _roomName, _buildTimeText, _roomDiscription, _buildCost, _upkeepCost, _output;
     [SerializeField]
     private Image _upkeepImg, _outputImg, _buildCostImg;
     [SerializeField]
     private Image _backgroundImg;
 
+    [SerializeField]
+    Image _buttonImg;
+
     void Start()
     {
         UpdateItem();
+        TimeTickSystem.OnTick += OnTick;
     }
 
 
-#region PublicMethods
+    private void OnTick(object source, EventArgs e)
+    {
+        Color c = _buttonImg.color;
+        if (GlobalStats.Instance.PlayerResources >= _room.RoomStat.BuildCost)
+        {
+            c.a = 0;
+        }
+        else
+        {
+            c.a = 0.8f;
+        }
+        _buttonImg.color = c;
+    }
+
+
+
+    #region PublicMethods
 
     public void SetRoom(AbstractRoom room)
     {
         this._room = room;
         UpdateItem();
+
     }
 
     public void OnClick()
     {
-        AbstractRoom newRoom = RoomGridManager.Instance.BuildNewRoom(RoomPosition, _room.RoomType);
-        UIManager.Instance.DeselectAll();
-        newRoom.BuildRoom();
+        if (GlobalStats.Instance.PlayerResources >= _room.RoomStat.BuildCost)
+        {
+            GlobalStats.Instance.PlayerResources -= _room.RoomStat.BuildCost;
+            AbstractRoom newRoom = RoomGridManager.Instance.BuildNewRoom(RoomPosition, _room.RoomType);
+            UIManager.Instance.DeselectAll();
+            newRoom.BuildRoom();
+            newRoom.IntisaliseRoom();
+        }
     }
 
     public void UpdateItem()
     {
         _roomName.text = _room.RoomName;
         _roomDiscription.text = _room.RoomDiscription;
+        _buildCost.text = _room.RoomStat.BuildCost.Minerals.ToString();
+
+        TimeSpan buildTime = new TimeSpan(0, (int)_room.RoomStat.BuildTime, 0);
+        _buildTimeText.text = buildTime.ToString();
         if (_room is PassiveProductionRoom)
         {
-           PassiveProductionRoom  passiveProductionRoom = (PassiveProductionRoom)_room;
+            PassiveProductionRoom passiveProductionRoom = (PassiveProductionRoom)_room;
 
             passiveProductionRoom.IntisaliseRoom();
 
@@ -54,7 +83,7 @@ public class BuildRoomListViewItem : MonoBehaviour
             {
                 _upkeepImg.gameObject.SetActive(true);
                 _upkeepImg.sprite = Icons.GetIcon((ResourcesEnum)passiveProductionRoom.UpkeepType);
-                _upkeepCost.text = ((int)passiveProductionRoom.UpkeepValue).ToString("+0;-#");
+                _upkeepCost.text = ((int)passiveProductionRoom.BaseUpkeepValue).ToString("+0;-#");
             }
             else
             {
@@ -65,7 +94,7 @@ public class BuildRoomListViewItem : MonoBehaviour
             {
                 _outputImg.gameObject.SetActive(true);
                 _outputImg.sprite = Icons.GetIcon((ResourcesEnum)passiveProductionRoom.OutPutType);
-                _output.text = ((int)passiveProductionRoom.OutputValue).ToString("+0;-#");
+                _output.text = ((int)passiveProductionRoom.BaseOutputValue).ToString("+0;-#");
             }
             else
             {

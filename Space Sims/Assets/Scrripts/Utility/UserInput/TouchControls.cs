@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -27,8 +26,8 @@ public class TouchControls : MonoBehaviour
     private float ClickDuration = 0;
 
     [SerializeField]
-    private float PANDEADZONE = 0.25f;       
-    
+    private float PANDEADZONE = 0.25f;
+
     bool Paning = false;   // maybe can be enum with state.
     bool Zooming = false;
 
@@ -52,15 +51,15 @@ public class TouchControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if(Input.GetMouseButtonUp(0) && !Zooming)
+
+        if (Input.GetMouseButtonUp(0) && !Zooming)
         {
-            if(_button != null)
+            if (_button != null)
             {
                 _button.interactable = true;
                 _button = null;
             }
-           if(!Paning)
+            if (!Paning)
             {
                 if (InteractableIsIsHeld && SelectedObject != null)
                 {
@@ -104,20 +103,20 @@ public class TouchControls : MonoBehaviour
             ClickDuration = 0;
             Paning = false;
         }
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
-         if(Input.touchCount == 2)
+        if (Input.touchCount == 2)
         {
             if (EventSystem.current.currentSelectedGameObject != null)
             {
                 _button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();
                 _button.interactable = false;
             }
-            TouchZoom(); 
+            TouchZoom();
         }
-         else if(Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0))
         {
             Zooming = false;
             ClickDuration += Time.deltaTime;
@@ -136,11 +135,11 @@ public class TouchControls : MonoBehaviour
                     _button.interactable = false;
                 }
             }
-            if(Paning)
+            if (Paning)
             {
                 Camera.main.transform.position += dir;
             }
-            else if(ClickDuration > HOLD_TIME_START) // this is not optermized so will run the check multipale times.
+            else if (ClickDuration > HOLD_TIME_START) // this is not optermized so will run the check multipale times.
             {
                 var selectableHold = GetInteractableUnderMouse();
                 if (selectableHold != null)
@@ -149,25 +148,25 @@ public class TouchControls : MonoBehaviour
                     if (InteractableIsIsHeld)
                     {
                         UIManager.Instance.DeselectAll();
-                        if(SelectedObject != null)
+                        if (SelectedObject != null)
                         {
-                        SelectedObject.OnDeselect();
+                            SelectedObject.OnDeselect();
                         }
                         SelectedObject = selectableHold;
                     }
                 }
             }
         }
-         else if(Zooming && Input.touchCount == 0)
+        else if (Zooming && Input.touchCount == 0)
         {
             Zooming = false;
         }
 
-         //if in editor can zoom with scrollwheel
+        //if in editor can zoom with scrollwheel
 #if UNITY_EDITOR
 
         Zoom(Input.GetAxis("Mouse ScrollWheel"));
-        
+
 #endif
     }
 
@@ -223,18 +222,36 @@ public class TouchControls : MonoBehaviour
 
     public static IInteractables GetInteractableUnderMouse()
     {
-    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-    IInteractables selected = null;
+        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        IInteractables selected = null;
         if (hit.collider != null)
         {
-             MonoBehaviour scrpit = hit.collider.gameObject.GetComponent<MonoBehaviour>();
+            MonoBehaviour scrpit = hit.collider.gameObject.GetComponent<MonoBehaviour>();
             if (scrpit is IInteractables)
             {
-                 return selected = (IInteractables)((System.Object)scrpit);
+                return selected = (IInteractables)((System.Object)scrpit);
             }
         }
-    return null;
+        return null;
     }
+    public static AbstractRoom GetRoomUnderMouse()
+    {
+        RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        foreach(RaycastHit2D hit in hits)
+        {
+            if (hit.collider != null)
+            {
+                MonoBehaviour scrpit = hit.collider.gameObject.GetComponent<MonoBehaviour>();
+                if (scrpit is AbstractRoom)
+                {
+                    return (AbstractRoom)scrpit;
+                }
+            }
+        }
+        return null;
+    }
+
+
 
     public void Zoom(float increment)
     {

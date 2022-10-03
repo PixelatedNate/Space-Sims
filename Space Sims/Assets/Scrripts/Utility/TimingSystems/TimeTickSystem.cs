@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TimeTickSystem : MonoBehaviour
@@ -15,12 +13,12 @@ public class TimeTickSystem : MonoBehaviour
     public static event EventHandler<EventArgs> OnTick;
 
     public static event EventHandler<EventArgs> OnMajorTick;
-    
+
     // Update is called once per frame
     void Update()
     {
         majorTickTimer += Time.deltaTime;
-        if(majorTickTimer >= MAJOR_TICK_TIMER)
+        if (majorTickTimer >= MAJOR_TICK_TIMER)
         {
             majorTickTimer -= MAJOR_TICK_TIMER;
             if (OnMajorTick != null)
@@ -28,7 +26,7 @@ public class TimeTickSystem : MonoBehaviour
         }
 
         tickTimer += Time.deltaTime;
-        if(tickTimer >= TICK_TIMER)
+        if (tickTimer >= TICK_TIMER)
         {
             tickTimer -= TICK_TIMER;
             if (OnTick != null)

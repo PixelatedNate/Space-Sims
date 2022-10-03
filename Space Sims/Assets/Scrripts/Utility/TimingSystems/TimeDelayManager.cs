@@ -1,11 +1,10 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TimeDelayManager : MonoBehaviour
-{   
-     public class Timer
+{
+    public class Timer
     {
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
@@ -43,14 +42,14 @@ public class TimeDelayManager : MonoBehaviour
 
     void Start()
     {
-      TimeTickSystem.OnTick += OnTick;
+        TimeTickSystem.OnTick += OnTick;
     }
 
     public Timer AddTimer(Timer timer)
     {
         timer.StartTime = DateTime.Now;
         ActiveTimers.Add(timer);
-        ActiveTimers.Sort((timer1,timer2)  => timer1.EndTime.CompareTo(timer2.EndTime));
+        ActiveTimers.Sort((timer1, timer2) => timer1.EndTime.CompareTo(timer2.EndTime));
         return timer;
     }
 
