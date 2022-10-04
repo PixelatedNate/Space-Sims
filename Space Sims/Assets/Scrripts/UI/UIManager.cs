@@ -31,11 +31,13 @@ public class UIManager : MonoBehaviour
 
     public void DisplayPerson(PersonInfo personInfo)
     {
+        RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPerson(personInfo);
     }
 
     public void DisplayRoomView(AbstractRoom room)
     {
+        RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectRoom(room);
     }
 
