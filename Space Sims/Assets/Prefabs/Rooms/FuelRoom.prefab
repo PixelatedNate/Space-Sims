@@ -1224,7 +1224,7 @@ MonoBehaviour:
   - _buildCost:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 100
       Premimum: 0
     _maxWorkers: 2
     _buildTime: 0.25

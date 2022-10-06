@@ -21,9 +21,7 @@ public class UIManager : MonoBehaviour
     LeftPanal leftPanal;
     [SerializeField]
     TopBar topBar;
-
-
-
+    
     public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
     {
         topBar.SetValues(currentResources, deltaResources, numberofPoeple, maxPeople, maxResources);
@@ -54,7 +52,9 @@ public class UIManager : MonoBehaviour
 
     public void ToggleRoomBuildMode()
     {
-        RoomGridManager.Instance.TogleBuildMode();
+        SoundManager.Instance.PlaySound(SoundManager.Sound.UIclick);
+       bool buildRoom = RoomGridManager.Instance.TogleBuildMode();
+       DeselectAll(); // will clear either slecet item or build RoomMenu
     }
 
 }

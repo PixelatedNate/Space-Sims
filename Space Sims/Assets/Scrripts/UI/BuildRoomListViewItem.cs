@@ -64,6 +64,10 @@ public class BuildRoomListViewItem : MonoBehaviour
             newRoom.IntisaliseRoom();
             RoomGridManager.Instance.SetBuildMode(false);
         }
+        else
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
+        }
     }
 
     public void UpdateItem()
