@@ -61,9 +61,14 @@ public class RoomGridManager : MonoBehaviour
     }
 
 
-    public void TogleBuildMode()
+    /// <summary>
+    ///  will enbale or disable the build mode and return the new state
+    /// </summary>
+    /// <returns> bool the new stat of BuildMode </returns>
+    public bool TogleBuildMode()
     {
         SetBuildMode(!ShowBuildRoom);
+        return ShowBuildRoom;
     }
 
     public void SetBuildMode(bool mode)
