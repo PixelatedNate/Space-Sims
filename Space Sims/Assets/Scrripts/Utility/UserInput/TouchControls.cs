@@ -19,7 +19,7 @@ public class TouchControls : MonoBehaviour
     [SerializeField]
     private float SHORT_CLICK_END = 0.5f;
     [SerializeField]
-    private float HOLD_TIME_START = 1f;
+    private float HOLD_TIME_START = 0.5f;
 
 
     [SerializeField]

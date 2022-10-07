@@ -778,7 +778,7 @@ MonoBehaviour:
   minZoom: 1
   MaxZoom: 30
   SHORT_CLICK_END: 0.5
-  HOLD_TIME_START: 1
+  HOLD_TIME_START: 0.6
   ClickDuration: 0
   PANDEADZONE: 0.25
 --- !u!114 &519420035

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using RDG;
 
 public class Person : MonoBehaviour, IInteractables
 {
@@ -206,6 +207,7 @@ public class Person : MonoBehaviour, IInteractables
     #region InteractableInterace
     public void OnSelect()
     {
+        Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
         TempSelected.SetActive(true);
         UIManager.Instance.DisplayPerson(_personInfo);
     }
@@ -216,6 +218,7 @@ public class Person : MonoBehaviour, IInteractables
         {
             throw new Exception("Cannot start a hold on someone who is allready being held");
         }
+        Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_HEAVY_CLICK);
         RoomUnderMouseOnDrag = null;
         IsBeingHeld = true;
 

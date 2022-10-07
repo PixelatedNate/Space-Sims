@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using RDG;
 
 public abstract class AbstractRoom : MonoBehaviour, IInteractables
 {
@@ -149,6 +150,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     public void OnSelect()
     {
+        Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
         _tempSelect.SetActive(true);
         UIManager.Instance.DisplayRoomView(this);
     }
