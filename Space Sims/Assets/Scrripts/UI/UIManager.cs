@@ -1,3 +1,4 @@
+using RDG;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -52,7 +53,8 @@ public class UIManager : MonoBehaviour
 
     public void ToggleRoomBuildMode()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Sound.UIclick);
+        Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
+       SoundManager.Instance.PlaySound(SoundManager.Sound.UIclick);
        bool buildRoom = RoomGridManager.Instance.TogleBuildMode();
        DeselectAll(); // will clear either slecet item or build RoomMenu
     }
