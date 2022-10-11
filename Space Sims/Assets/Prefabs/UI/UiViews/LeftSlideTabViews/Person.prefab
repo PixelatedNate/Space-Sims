@@ -5102,6 +5102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Head: {fileID: 4165423255850986733}
   Body: {fileID: 4165423255828424368}
+  Hair: {fileID: 0}
+  Cloths: {fileID: 0}
   Name: {fileID: 4165423254896845983}
   Age: {fileID: 4165423255973154522}
   Room: {fileID: 4165423256458316633}
