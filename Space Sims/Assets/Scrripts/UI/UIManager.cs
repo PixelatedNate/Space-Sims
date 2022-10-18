@@ -1,10 +1,13 @@
 using RDG;
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIManager : MonoBehaviour
 {
 
     public static UIManager Instance;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,7 +25,9 @@ public class UIManager : MonoBehaviour
     LeftPanal leftPanal;
     [SerializeField]
     TopBar topBar;
-    
+    [SerializeField]
+    ConformationUI _conformationUI;
+
     public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
     {
         topBar.SetValues(currentResources, deltaResources, numberofPoeple, maxPeople, maxResources);
@@ -49,6 +54,30 @@ public class UIManager : MonoBehaviour
     {
         leftPanal.ClearAllView();
     }
+
+    /// <summary>
+    /// A popUp Conformation UI with yes or no Option
+    /// Will close after selection
+    /// </summary>
+    /// <param name="onAccept">method on accept</param>
+    /// <param name="onDecline">method on decline</param>
+    public void Conformation(UnityAction onAccept, UnityAction onDecline, string text)
+    {
+        _conformationUI.SetListeners(onAccept,onDecline);
+        _conformationUI.setText(text);
+    }
+    /// <summary>
+    ///  A popUp Conformation UI with yes or no Option
+    /// Will close after selection
+    /// </summary>
+    /// <param name="onAccept">Method on accept</param>
+    public void Conformation(UnityAction onAccept, string text)
+    {
+        _conformationUI.gameObject.SetActive(true);
+        _conformationUI.SetListeners(onAccept,null);
+        _conformationUI.setText(text);
+    }
+
 
 
     public void ToggleRoomBuildMode()
