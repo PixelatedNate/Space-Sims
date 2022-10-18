@@ -12,8 +12,7 @@ public class SoundManager : MonoBehaviour
     {
         UIclick,
         PanalOpen,
-        Error,
-        RoomPlaced,
+        Error,    
     }
 
     [Serializable]

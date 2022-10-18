@@ -14,8 +14,6 @@ public class TouchControls : MonoBehaviour
     private float MaxZoom = 8;
 
 
-    private static bool CameraMovemntEnabled = true;
-
     private Button _button;   // prevent trigering of UI buttons when panning or performing other touch related actions
 
     [SerializeField]
@@ -54,10 +52,6 @@ public class TouchControls : MonoBehaviour
     void Update()
     {
 
-        if(!CameraMovemntEnabled)
-        {
-            return;
-        }
         if (Input.GetMouseButtonUp(0) && !Zooming)
         {
             if (_button != null)
@@ -295,11 +289,6 @@ public class TouchControls : MonoBehaviour
         List<RaycastResult> raysastResults = new List<RaycastResult>();
         EventSystem.current.RaycastAll(eventData, raysastResults);
         return raysastResults;
-    }
-
-    public static void EnableCameramovemntAndSelection(bool value)
-    {
-        CameraMovemntEnabled = value;
     }
 
 

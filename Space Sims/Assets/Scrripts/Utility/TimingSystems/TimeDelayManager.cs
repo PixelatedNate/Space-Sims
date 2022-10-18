@@ -53,11 +53,6 @@ public class TimeDelayManager : MonoBehaviour
         return timer;
     }
 
-    public bool RemoveTimer(Timer t)
-    {
-       return ActiveTimers.Remove(t);
-    }
-
     private void OnTick(object source, EventArgs e)
     {
         List<Timer> SpentTimer = new List<Timer>();

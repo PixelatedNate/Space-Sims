@@ -11,7 +11,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     protected GameObject _roomLight, _overlay;
 
     [SerializeField]
-    private GameObject _tempSelect, _underConstructionBanner;
+    private GameObject _tempSelect;
 
     [SerializeField]
     private RoomStats[] _roomlevels;
@@ -38,16 +38,10 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     private Camera _roomCameraPortal;
 
     [SerializeField]
-    private ParticleSystem _buildRoomParticalEffect;
-
-    [SerializeField]
     private Tilemap _pathFindingTileMap;
     public Tilemap PathFindingTileMap { get { return _pathFindingTileMap; } }
 
     protected bool isRoomActive { get; set; } = false;
-
-
-    private TimeDelayManager.Timer _buildTimer;
 
     #region PublicMethods
 
@@ -57,8 +51,6 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         {
             throw new Exception("Trying to build a new room which allready exsistes");
         }
-        _buildRoomParticalEffect.Play();
-        SoundManager.Instance.PlaySound(SoundManager.Sound.RoomPlaced);
         GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
         BuildOrUpgradeRoom(0);
     }
@@ -88,10 +80,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         else
         {
             Workers.Add(person.PersonInfo);
-            if (!IsUnderConstruction)
-            {
-                setRoomActive(true);
-            }
+            setRoomActive(true);
             UpdateRoomStats();
             return true;
         }
@@ -134,36 +123,16 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     #region PrivateMethods
 
-
-    public void SkipRoom()
-    {
-        UIManager.Instance.Conformation(AbleToSkipRoom,"are you sure you want to spend x in order to instatly build this room");
-    }
-
-    private void AbleToSkipRoom()
-    {
-        TimeDelayManager.Instance.RemoveTimer(_buildTimer);
-        ConstructionCompleat();
-    }
-
     private void BuildOrUpgradeRoom(int newLevel)
     {
         IsUnderConstruction = true;
-        _underConstructionBanner.SetActive(true);
         GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
-        _buildTimer = new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat);
         ConstructionTimer = TimeDelayManager.Instance.AddTimer(new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat));
         UpdateRoomStats();
     }
     private void ConstructionCompleat()
     {
         IsUnderConstruction = false;
-        _underConstructionBanner.SetActive(false);
-        _buildTimer = null;
-        if(Workers.Count != 0)
-        {
-            setRoomActive(true);
-        }
         UpdateRoomStats();
     }
 
