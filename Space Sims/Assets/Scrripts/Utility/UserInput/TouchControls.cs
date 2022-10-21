@@ -132,7 +132,7 @@ public class TouchControls : MonoBehaviour
                 return;
             }
             Vector3 dir = TouchStartPos - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (!Paning && Mathf.Abs(dir.magnitude) > PANDEADZONE)
+            if (!Paning && Mathf.Abs(dir.magnitude) > PANDEADZONE && EventSystem.current.currentSelectedGameObject == null)
             {
                 Paning = true;
                 if (EventSystem.current.currentSelectedGameObject != null)

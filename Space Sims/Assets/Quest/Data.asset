@@ -10,34 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24eebf4e3bb43c64ca98789dfcfdb888, type: 3}
-  m_Name: Quest
+  m_Name: Data
   m_EditorClassIdentifier: 
-  Title: Quest 2
-  Description: the secodn quest in a group of test
+  Title: Quest 1
+  Description: This is the 1 quest in the group of testing
   requiments:
-    Numpeople: 1
+    Numpeople: 0
     PeopleRequiments:
       _strength: 2
       _dexterity: 2
       _intelligence: 2
       _wisdom: 2
       _charisma: 2
-  Duration: 10
+  Duration: 0
   reward:
     gameResourcesReward:
-      Fuel: 86
-      Food: 245
+      Fuel: 0
+      Food: 0
       Minerals: 0
-      Premimum: 1
+      Premimum: 0
     peopleReward: []
-  PeopleAssgined:
-  - skills:
-      _strength: 2
-      _dexterity: 2
-      _intelligence: 2
-      _wisdom: 2
-      _charisma: 2
-  PossibleEncounters:
-  - {fileID: 11400000, guid: dadfe02b3df53fa4db2cac6fa393c67f, type: 2}
-  - {fileID: 11400000, guid: ca80c3042d92e4a4db0d15a3047e3f59, type: 2}
-  - {fileID: 11400000, guid: 62610a46d346b4d48a198361928b3a43, type: 2}
+  PeopleAssgined: []
+  PossibleEncounters: []

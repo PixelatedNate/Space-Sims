@@ -5,6 +5,12 @@ using UnityEngine;
 public class GlobalStats : MonoBehaviour
 {
 
+
+    [SerializeField]
+    Quest[] QuesttestsForMenu;
+
+
+
     public static GlobalStats Instance;
 
     private Dictionary<Person, GameResources> PersonDeltaResources { get; set; } = new Dictionary<Person, GameResources>();
@@ -30,7 +36,32 @@ public class GlobalStats : MonoBehaviour
     public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
     public List<AbstractRoom> PlyaerRooms = new List<AbstractRoom>();
 
+
+    private List<Quest> AvalibaleQuest { get; } = new List<Quest>();
+    private List<Quest> InProgressQuest { get; } = new List<Quest>();
+    private List<Quest> CompletedQuest { get; } = new List<Quest>();
+    
     #region CustomGetterAndSetters
+
+    public List<Quest> GetQuestsByStaus(Quest.Status status)
+    {
+        if(status == Quest.Status.Available)
+        {
+            return AvalibaleQuest;
+        }
+        if(status == Quest.Status.InProgress)
+        {
+            return InProgressQuest;
+        }
+        return CompletedQuest;
+    }
+
+    public void MarkQuestCompleted(Quest quest)
+    {
+       InProgressQuest.Remove(quest);
+       CompletedQuest.Add(quest);
+    }
+
 
     private void SetMaxPeople(int value)
     {
@@ -59,6 +90,7 @@ public class GlobalStats : MonoBehaviour
     }
     void Start()
     {
+        AvalibaleQuest.AddRange(QuesttestsForMenu);
         MaxStorage = _bassMaxStorage;
         PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;

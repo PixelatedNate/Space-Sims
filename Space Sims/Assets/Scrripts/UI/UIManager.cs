@@ -45,6 +45,18 @@ public class UIManager : MonoBehaviour
         leftPanal.SelectRoom(room);
     }
 
+    public void OpenQuestListView()
+    {
+        if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.QuestListView)
+        {
+            leftPanal.ClearAllView();
+        }
+        else
+        {
+            leftPanal.SelectQuestListView(Quest.Status.Available);
+        }
+    }
+
     public void OpenBuildRoomMenu(Vector3Int roomCellPos)
     {
         leftPanal.OpenBuildRoomView(roomCellPos);
