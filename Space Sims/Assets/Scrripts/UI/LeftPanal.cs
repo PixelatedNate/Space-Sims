@@ -12,51 +12,74 @@ public class LeftPanal : MonoBehaviour
     UIButton uiButton;
     [SerializeField]
     UniversalRoomView roomView;
-
+    [SerializeField]
+    QuestListView QuestListView;
     GameObject ActiveView;
 
 
+    public enum ActiveLSideView
+    {
+        BuildRoomView,
+        QuestListView,
+        PersonView,
+        RoomView,
+    }
+
+    public ActiveLSideView? activeLSideView { get; set; } = null;
 
 
     public void OpenBuildRoomView(Vector3Int roomCellPos)
     {
-        if (ActiveView != null)
-        {
-            ActiveView.SetActive(false);
-        }
+        DisableActiveView();
         uiButton.LeftTabSlideOut();
-        //ClearAllView();
-        ActiveView = buildRoomView.gameObject;
-        ActiveView.SetActive(true);
+        SetActiveView(buildRoomView.gameObject);
         buildRoomView.EnableView(roomCellPos);
     }
 
     public void SelectPerson(PersonInfo personInfo)
     {
-        if (ActiveView != null)
-        {
-            ActiveView.SetActive(false);
-        }
+        DisableActiveView();
         uiButton.LeftTabSlideOut();
-        ActiveView = personView.gameObject;
-        ActiveView.SetActive(true);
+        SetActiveView(personView.gameObject);
         personView.SetPerson(personInfo);
     }
 
     public void SelectRoom(AbstractRoom room)
     {
+        DisableActiveView();
+        uiButton.LeftTabSlideOut();
+        SetActiveView(roomView.gameObject);
+        roomView.SetRoom(room);
+    }
+
+    public void SelectQuestListView(Quest.Status staus)
+    {
+        DisableActiveView();
+        activeLSideView = ActiveLSideView.QuestListView;
+        uiButton.LeftTabSlideOut();
+        SetActiveView(QuestListView.gameObject);
+        QuestListView.SetView(staus);
+
+    }
+
+    private void DisableActiveView()
+    {
+        activeLSideView = null;
         if (ActiveView != null)
         {
             ActiveView.SetActive(false);
         }
-        uiButton.LeftTabSlideOut();
-        roomView.SetRoom(room);
-        ActiveView = roomView.gameObject;
+    }
+
+    private void SetActiveView(GameObject activeView)
+    {
+        ActiveView =activeView;
         ActiveView.SetActive(true);
     }
 
     public void ClearAllView()
     {
+        activeLSideView = null;
         if (ActiveView != null)
         {
             ActiveView.SetActive(false);

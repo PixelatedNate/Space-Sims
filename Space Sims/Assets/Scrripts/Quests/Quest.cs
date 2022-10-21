@@ -6,6 +6,14 @@ using Random = UnityEngine.Random;
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Quests/Quest", order = 1)]
 public class Quest : ScriptableObject
 {
+
+    public enum Status
+    {
+       Available,
+       InProgress,
+       Completed,
+    }
+
     [Serializable]
     class Requiments
     {
@@ -13,7 +21,7 @@ public class Quest : ScriptableObject
         int Numpeople;
         [SerializeField]
         PersonInfo.Skills PeopleRequiments;
-
+    
         public bool Ismet(PersonInfo[] people)
         {
             if (people.Length != Numpeople)
@@ -43,9 +51,9 @@ public class Quest : ScriptableObject
     private bool Inprogress = false;
 
     [SerializeField]
-    string Name;
+    public string Title;
     [TextArea(15, 20), SerializeField]
-    string Description;
+    public string Description;
     [SerializeField]
     Requiments requiments;
     [SerializeField]
@@ -58,7 +66,7 @@ public class Quest : ScriptableObject
 
     List<QuestEncounter> QuestLog;
 
-
+    Status questStaus;
 
     [SerializeField]
     private QuestEncounter[] PossibleEncounters;
@@ -142,7 +150,7 @@ public class Quest : ScriptableObject
         {
             p.CompleteQuest(new PersonInfo.Skills());
         }
-        QuestManager.Instance.CompleatedQuest.Add(this);
+        GlobalStats.Instance.MarkQuestCompleted(this);
     }
 }
 
