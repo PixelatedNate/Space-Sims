@@ -141,7 +141,7 @@ public class PassiveProductionRoom : AbstractRoom
         else
         { 
             _outputimg.gameObject.SetActive(true);
-            _outputimg.sprite = Icons.GetIcon((ResourcesEnum)OutPutType);
+            _outputimg.sprite = Icons.GetResourceIcon((ResourcesEnum)OutPutType);
             _output.text = "+" + OutputValue.ToString();
         }
         if (UpkeepType == null)
@@ -152,7 +152,7 @@ public class PassiveProductionRoom : AbstractRoom
         else
         { 
             _upkeepimg.gameObject.SetActive(true);
-            _upkeepimg.sprite = Icons.GetIcon((ResourcesEnum)UpkeepType);
+            _upkeepimg.sprite = Icons.GetResourceIcon((ResourcesEnum)UpkeepType);
             _upkeep.text = "-" + BaseUpkeepValue.ToString();
         }
     }

@@ -87,7 +87,7 @@ public class BuildRoomListViewItem : MonoBehaviour
             if (passiveProductionRoom.UpkeepType != null)
             {
                 _upkeepImg.gameObject.SetActive(true);
-                _upkeepImg.sprite = Icons.GetIcon((ResourcesEnum)passiveProductionRoom.UpkeepType);
+                _upkeepImg.sprite = Icons.GetResourceIcon((ResourcesEnum)passiveProductionRoom.UpkeepType);
                 _upkeepCost.text = ((int)passiveProductionRoom.BaseUpkeepValue).ToString("+0;-#");
             }
             else
@@ -98,7 +98,7 @@ public class BuildRoomListViewItem : MonoBehaviour
             if (passiveProductionRoom.OutPutType != null)
             {
                 _outputImg.gameObject.SetActive(true);
-                _outputImg.sprite = Icons.GetIcon((ResourcesEnum)passiveProductionRoom.OutPutType);
+                _outputImg.sprite = Icons.GetResourceIcon((ResourcesEnum)passiveProductionRoom.OutPutType);
                 _output.text = ((int)passiveProductionRoom.BaseOutputValue).ToString("+0;-#");
             }
             else

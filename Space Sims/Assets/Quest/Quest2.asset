@@ -15,13 +15,9 @@ MonoBehaviour:
   Title: Quest 4
   Description: What happened to quest 3?
   requiments:
-    Numpeople: 0
-    PeopleRequiments:
-      _strength: 2
-      _dexterity: 2
-      _intelligence: 2
-      _wisdom: 2
-      _charisma: 2
+    Numpeople: 4
+    SkillRequiment: 4
+    skillValueMin: 1
   Duration: 0
   reward:
     gameResourcesReward:
@@ -31,4 +27,5 @@ MonoBehaviour:
       Premimum: 0
     peopleReward: []
   PeopleAssgined: []
+  questStaus: 0
   PossibleEncounters: []

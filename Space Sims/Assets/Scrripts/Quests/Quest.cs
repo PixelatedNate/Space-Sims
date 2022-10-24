@@ -15,13 +15,15 @@ public class Quest : ScriptableObject
     }
 
     [Serializable]
-    class Requiments
+    public class Requiments
     {
         [SerializeField]
-        int Numpeople;
+        public int Numpeople;
         [SerializeField]
-        PersonInfo.Skills PeopleRequiments;
-    
+        public SkillsList SkillRequiment;
+        [SerializeField]
+        public int skillValueMin;
+
         public bool Ismet(PersonInfo[] people)
         {
             if (people.Length != Numpeople)
@@ -30,7 +32,7 @@ public class Quest : ScriptableObject
             }
             foreach (PersonInfo p in people)
             {
-                if (p.skills < PeopleRequiments)
+                if (p.skills.GetSkill(SkillRequiment) < skillValueMin)
                 {
                     return false;
                 }
@@ -55,18 +57,18 @@ public class Quest : ScriptableObject
     [TextArea(15, 20), SerializeField]
     public string Description;
     [SerializeField]
-    Requiments requiments;
+    public Requiments requiments;
     [SerializeField]
-    int Duration;
+    float Duration;
     [SerializeField]
     Reward reward;
 
     [SerializeField]
-    List<PersonInfo> PeopleAssgined = new List<PersonInfo>();
+    public List<PersonInfo> PeopleAssgined = new List<PersonInfo>();
 
     List<QuestEncounter> QuestLog;
 
-    Status questStaus;
+    public Status questStaus;
 
     [SerializeField]
     private QuestEncounter[] PossibleEncounters;
@@ -76,7 +78,7 @@ public class Quest : ScriptableObject
         if (Inprogress)
         {
             throw new Exception("Trying to assginPerson to a quest in progress");
-        }
+        } 
         PeopleAssgined.Add(person);
         bool requimentsMet = requiments.Ismet(PeopleAssgined.ToArray());
     }
@@ -88,27 +90,26 @@ public class Quest : ScriptableObject
             throw new Exception("trying to UnassginPerson not assgined to quest");
         }
         PeopleAssgined.Remove(person);
-    }
+    } 
+
     public void UnassginAllPeopople()
     {
         PeopleAssgined.Clear();
     }
-
-
-
+    
     public bool StartQuest()
     {
-
-        TimeTickSystem.OnMajorTick += onMajorTick;
         if (!requiments.Ismet(PeopleAssgined.ToArray()))
         {
             return false;
         }
-        TimeDelayManager.Instance.AddTimer(new TimeDelayManager.Timer(Duration, new Action(CompleatQuest)));
+        questStaus = Status.InProgress;
         foreach (PersonInfo p in PeopleAssgined)
         {
             p.StartQuest(this);
         }
+        TimeTickSystem.OnMajorTick += onMajorTick;
+        TimeDelayManager.Instance.AddTimer(new TimeDelayManager.Timer(DateTime.Now.AddMinutes(Duration), new Action(CompleatQuest)));
         return true;
     }
 

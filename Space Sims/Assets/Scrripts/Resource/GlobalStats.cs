@@ -90,7 +90,16 @@ public class GlobalStats : MonoBehaviour
     }
     void Start()
     {
+        // for testing at this stage only   
         AvalibaleQuest.AddRange(QuesttestsForMenu);
+        foreach(Quest q in AvalibaleQuest)
+        {
+            q.UnassginAllPeopople();
+            q.questStaus = Quest.Status.Available;
+        }
+
+
+
         MaxStorage = _bassMaxStorage;
         PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;

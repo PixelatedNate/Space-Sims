@@ -57,6 +57,23 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void OpenPersonListView()
+    {
+        if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.PersonList)
+        {
+            leftPanal.ClearAllView();
+        }
+        else
+        {
+            leftPanal.SelectPersonListView();
+        }
+    }
+
+    public void OpenSelectPersonForQuestListView(Action<PersonInfo> OnSelectMethod)
+    {
+        leftPanal.SelectPersonForQuest(OnSelectMethod);
+    }
+
     public void OpenBuildRoomMenu(Vector3Int roomCellPos)
     {
         leftPanal.OpenBuildRoomView(roomCellPos);
