@@ -37,30 +37,15 @@ public class GlobalStats : MonoBehaviour
     public List<AbstractRoom> PlyaerRooms = new List<AbstractRoom>();
 
 
-    private List<Quest> AvalibaleQuest { get; } = new List<Quest>();
-    private List<Quest> InProgressQuest { get; } = new List<Quest>();
-    private List<Quest> CompletedQuest { get; } = new List<Quest>();
+    private List<Quest> Quests { get; } = new List<Quest>();
     
     #region CustomGetterAndSetters
 
     public List<Quest> GetQuestsByStaus(Quest.Status status)
     {
-        if(status == Quest.Status.Available)
-        {
-            return AvalibaleQuest;
-        }
-        if(status == Quest.Status.InProgress)
-        {
-            return InProgressQuest;
-        }
-        return CompletedQuest;
+        return Quests.FindAll((a) => a.questStaus == status);   
     }
 
-    public void MarkQuestCompleted(Quest quest)
-    {
-       InProgressQuest.Remove(quest);
-       CompletedQuest.Add(quest);
-    }
 
 
     private void SetMaxPeople(int value)
@@ -91,8 +76,8 @@ public class GlobalStats : MonoBehaviour
     void Start()
     {
         // for testing at this stage only   
-        AvalibaleQuest.AddRange(QuesttestsForMenu);
-        foreach(Quest q in AvalibaleQuest)
+        Quests.AddRange(QuesttestsForMenu);
+        foreach(Quest q in Quests)
         {
             q.UnassginAllPeopople();
             q.questStaus = Quest.Status.Available;

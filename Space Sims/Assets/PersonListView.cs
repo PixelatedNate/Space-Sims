@@ -13,6 +13,8 @@ public class PersonListView : MonoBehaviour
 
     [SerializeField]
     GameObject PersonListItemTemplate;
+    [SerializeField]
+    GameObject RemoveFromQuestBtn;
 
     [SerializeField]
     TextMeshProUGUI Filterlable;
@@ -20,23 +22,39 @@ public class PersonListView : MonoBehaviour
     SkillsList? skillfilter = null;
 
     private Action<PersonInfo> OnSelectMethod = null;
+    private Quest QuestSelected = null;
 
 
     public void SetView()
     {
+        QuestSelected = null;
         OnSelectMethod = null;
         people = GlobalStats.Instance.PlayersPeople;
         FilterListByAge();
     }
 
 
-    public void GetPerson(Action<PersonInfo> onSelectMethod)
+    public void GetPersonForQuest(Action<PersonInfo> onSelectMethod, Quest quest)
     {
+        QuestSelected = quest;
         OnSelectMethod = onSelectMethod;
         people = GlobalStats.Instance.PlayersPeople;
-        FilterListByAge();
+        FilterListBySkill(quest.requiments.SkillRequiment);
+       // ApplyDetailForQuest(quest);
+        
     }
 
+
+    private void ApplyDetailForQuest(Quest quest)
+    {
+
+        foreach (Transform child in PersonScrollPanal)
+        {
+            child.GetComponent<PersonListViewItem>().SetQuestText(quest);
+        }
+    //    GameObject ClearPersonBtn = GameObject.Instantiate(RemoveFromQuestBtn,PersonScrollPanal);
+      //  ClearPersonBtn.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(null));
+    }
 
     private void FilterListBySkill(SkillsList skill)
        {
@@ -100,10 +118,14 @@ public class PersonListView : MonoBehaviour
         foreach(PersonInfo personInfo in people)
         {
            GameObject personViewItem = GameObject.Instantiate(PersonListItemTemplate ,PersonScrollPanal);
-            personViewItem.GetComponent<PersonListViewItem>().SetPerson(personInfo);
+           personViewItem.GetComponent<PersonListViewItem>().SetPerson(personInfo);
             if (OnSelectMethod != null)
             {               
                 personViewItem.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(personInfo));
+                if(QuestSelected)
+                {
+                    personViewItem.GetComponent<PersonListViewItem>().SetQuestText(QuestSelected);
+                }
             }
             else
             {

@@ -20,24 +20,12 @@ MonoBehaviour:
     skillValueMin: 3
   Duration: 0.1
   reward:
-    gameResourcesReward:
+    _gameResourcesReward:
       Fuel: 0
-      Food: 0
+      Food: 500
       Minerals: 0
       Premimum: 0
-    peopleReward: []
-  PeopleAssgined:
-  - skills:
-      _strength: 3
-      _dexterity: 9
-      _intelligence: 6
-      _wisdom: 1
-      _charisma: 1
-  - skills:
-      _strength: 8
-      _dexterity: 5
-      _intelligence: 3
-      _wisdom: 5
-      _charisma: 8
-  questStaus: 1
+    _peopleReward: []
+  PeopleAssgined: []
+  questStaus: 0
   PossibleEncounters: []

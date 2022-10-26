@@ -9,7 +9,7 @@ public class TimeDelayManager : MonoBehaviour
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public Action EndMethod { get; }
-        public TimeSpan TotalBuildDuration { get { return (EndTime - StartTime); } }
+        public TimeSpan TotalDuration { get { return (EndTime - StartTime); } }
         public TimeSpan RemainingDuration { get { return (EndTime - DateTime.Now); } }
 
 

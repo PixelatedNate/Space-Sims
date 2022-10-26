@@ -19,7 +19,7 @@ public class QuestRequimentBoxView : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI RequimentValue, PersonName;
 
-    public PersonInfo PersonInfo = null;
+    public PersonInfo SelectedPerson = null;
     public Quest questSelected;
 
     public QuestView MainQuestView { private get; set; }
@@ -31,8 +31,13 @@ public class QuestRequimentBoxView : MonoBehaviour
 
     public void SetPerson(PersonInfo personInfo, Quest quest)
     {
+        if(quest.questStaus == Quest.Status.InProgress || quest.questStaus == Quest.Status.Completed)
+        {
+            GetComponent<Button>().interactable = false;
+        }
+
         questSelected = quest;
-        PersonInfo = personInfo;
+        SelectedPerson = personInfo;
         personIcon.SetActive(false);
         PersonDisplay.SetActive(true);
         Head.sprite = personInfo.Head;
@@ -49,10 +54,17 @@ public class QuestRequimentBoxView : MonoBehaviour
         }
         RequimentValue.text = personInfo.skills.GetSkill(quest.requiments.SkillRequiment).ToString();
     }
+
+    public void UnSetPerson()
+    {
+        SetRequiments(questSelected);
+    }
+
     public void SetRequiments(Quest quest)
     {
+        Background.color = Color.gray;
         questSelected = quest;
-        PersonInfo = null;
+        SelectedPerson = null;
         personIcon.SetActive(true);
         PersonDisplay.SetActive(false);
         Requiment.sprite = Icons.GetSkillIcon(quest.requiments.SkillRequiment);
@@ -61,7 +73,7 @@ public class QuestRequimentBoxView : MonoBehaviour
 
     public void AddListener()
     {
-        GetComponent<Button>().onClick.AddListener(() => SelectPersonForQuest());
+       // GetComponent<Button>().onClick.AddListener(() => SelectPersonForQuest());
     }
 
     public void DeselectRequimentBox()
@@ -69,6 +81,13 @@ public class QuestRequimentBoxView : MonoBehaviour
         Outline.SetActive(false);
     }
 
+    public void SelectRequimentBox()
+    {
+        Outline.SetActive(true);
+    }
+
+
+    /*
     private void SelectPersonForQuest()
     {
         Outline.SetActive(true);
@@ -79,11 +98,12 @@ public class QuestRequimentBoxView : MonoBehaviour
     private void PersonSelected(PersonInfo newPersonInfo)
     {
         Outline.SetActive(false);
-        if(PersonInfo != null)
+        if(SelectedPerson != null)
         {
-            questSelected.UnassginPerson(PersonInfo);
+            questSelected.UnassginPerson(SelectedPerson);
         }
         questSelected.AssginPerson(newPersonInfo);
         SetPerson(newPersonInfo,questSelected);
     }
+    */
 }

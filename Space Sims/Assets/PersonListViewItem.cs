@@ -9,7 +9,7 @@ public class PersonListViewItem : MonoBehaviour
     PersonInfo person;
 
     [SerializeField]
-    TextMeshProUGUI PersonName, Age, Strenght, Dexterity, Inteligence, Wisdom, Charisma;
+    TextMeshProUGUI PersonName, Age, Strenght, Dexterity, Inteligence, Wisdom, Charisma, QuestText;
     [SerializeField]
     Image head, Body, Clothes;
 
@@ -24,6 +24,30 @@ public class PersonListViewItem : MonoBehaviour
         head.sprite = person.Head;
         Body.sprite = person.Body;
         Clothes.sprite = person.Clothes;
+    }
+
+    public void SetQuestText(Quest quest)
+    {
+        Debug.Log(person);
+        if (person.IsQuesting)
+        {
+            GetComponent<Button>().interactable = false;
+            QuestText.color = Color.red;
+            QuestText.text = "On Quest";
+        }
+        else if (quest.PeopleAssgined.Contains(person))
+        {
+            GetComponent<Button>().interactable = false;
+            QuestText.color = Color.green;
+            QuestText.text = "Allready Selcted";
+        }
+        else if (!quest.DosePersonMeetRequiment(person)) 
+        {
+            GetComponent<Button>().interactable = false;
+            QuestText.color = Color.green;
+            QuestText.text = "Missing Skill Requiment";
+        }
+
     }
 
     private void SetStats()

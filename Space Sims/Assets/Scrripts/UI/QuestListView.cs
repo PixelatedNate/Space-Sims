@@ -18,12 +18,40 @@ public class QuestListView : MonoBehaviour
     [SerializeField]
     QuestView questView;
 
+    [SerializeField]
+    Image availableBtnImg, ActiveBtnImg, CompletedBtmImg;
+
     public void SetView(Quest.Status status)
     {
-        questView.gameObject.SetActive(false);
+        //questView.gameObject.SetActive(false);
         QuestInView = GlobalStats.Instance.GetQuestsByStaus(status);
         PopulateList();
+        SetBtnColours(status);
     }
+
+
+    public void SetBtnColours(Quest.Status staus)
+    {
+        availableBtnImg.color = Color.gray;
+        ActiveBtnImg.color = Color.gray;
+        CompletedBtmImg.color = Color.gray;
+        if(staus == Quest.Status.Available)
+        {
+            availableBtnImg.color = Color.white;
+        }
+        else if(staus == Quest.Status.InProgress)
+        {
+            ActiveBtnImg.color = Color.white;
+        }
+        else if(staus == Quest.Status.Completed)
+        {
+            CompletedBtmImg.color = Color.white;
+        }
+
+    }
+        
+
+
 
     private void PopulateList()
     {

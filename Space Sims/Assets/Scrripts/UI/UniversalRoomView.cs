@@ -90,7 +90,7 @@ public class UniversalRoomView : MonoBehaviour
     private void UpdateContructionValues()
     {
         _constructionTime.text = SelectedRoom.ConstructionTimer.RemainingDuration.ToString("h'h 'm'm 's's'");
-        double ProgressBarPercent = (SelectedRoom.ConstructionTimer.RemainingDuration.TotalSeconds / (SelectedRoom.ConstructionTimer.TotalBuildDuration.TotalSeconds / 100));
+        double ProgressBarPercent = (SelectedRoom.ConstructionTimer.RemainingDuration.TotalSeconds / (SelectedRoom.ConstructionTimer.TotalDuration.TotalSeconds / 100));
         _progressbar.localScale = new Vector3(1 - (float)ProgressBarPercent / 100, 1, 1);
     }
 
