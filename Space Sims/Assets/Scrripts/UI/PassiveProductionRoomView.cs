@@ -47,7 +47,7 @@ public class PassiveProductionRoomView : MonoBehaviour
         if (SelectedRoom.UpkeepType != null)
         {
             _upkeepImage.gameObject.SetActive(true);
-            _upkeepImage.sprite = Icons.GetIcon((ResourcesEnum)SelectedRoom.UpkeepType);
+            _upkeepImage.sprite = Icons.GetResourceIcon((ResourcesEnum)SelectedRoom.UpkeepType);
             _upkeep.text = SelectedRoom.BaseUpkeepValue.ToString();
         }
         else
@@ -62,7 +62,7 @@ public class PassiveProductionRoomView : MonoBehaviour
         if (SelectedRoom.OutPutType != null)
         {
             _outPutImge.gameObject.SetActive(true);
-            _outPutImge.sprite = Icons.GetIcon((ResourcesEnum)SelectedRoom.OutPutType);
+            _outPutImge.sprite = Icons.GetResourceIcon((ResourcesEnum)SelectedRoom.OutPutType);
             _output.text = SelectedRoom.BaseOutputValue.ToString();
         }
         else

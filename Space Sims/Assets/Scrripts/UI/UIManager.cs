@@ -45,7 +45,21 @@ public class UIManager : MonoBehaviour
         leftPanal.SelectRoom(room);
     }
 
-    public void OpenQuestListView()
+    public void OpenAvalibalQuestListView()
+    {
+        OpenQuestListView(Quest.Status.Available);
+    }
+    public void OpenInProgressQuestView()
+    {
+        OpenQuestListView(Quest.Status.InProgress);
+    }
+
+    public void OpenCompletedQuestViewView()
+    {
+        OpenQuestListView(Quest.Status.Completed);
+    }
+
+    public void OpenQuestListViewBtn()
     {
         if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.QuestListView)
         {
@@ -53,8 +67,29 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            leftPanal.SelectQuestListView(Quest.Status.Available);
+            OpenQuestListView();  
         }
+    }
+    public void OpenQuestListView(Quest.Status status = Quest.Status.Available)
+    {
+            leftPanal.SelectQuestListView(status);       
+    }
+
+    public void OpenPersonListView()
+    {
+        if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.PersonList)
+        {
+            leftPanal.ClearAllView();
+        }
+        else
+        {
+            leftPanal.SelectPersonListView();
+        }
+    }
+    public void OpenSelectPersonForQuestListView(Action<PersonInfo> OnSelectMethod, Quest quest)
+    {
+        leftPanal.activeLSideView = LeftPanal.ActiveLSideView.PersonList;
+        leftPanal.SelectPersonForQuest(OnSelectMethod, quest);
     }
 
     public void OpenBuildRoomMenu(Vector3Int roomCellPos)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class LeftPanal : MonoBehaviour
@@ -14,6 +15,12 @@ public class LeftPanal : MonoBehaviour
     UniversalRoomView roomView;
     [SerializeField]
     QuestListView QuestListView;
+    [SerializeField]
+    PersonListView PersonListView;
+
+    [SerializeField]
+    QuestView questView;
+
     GameObject ActiveView;
 
 
@@ -23,6 +30,7 @@ public class LeftPanal : MonoBehaviour
         QuestListView,
         PersonView,
         RoomView,
+        PersonList,
     }
 
     public ActiveLSideView? activeLSideView { get; set; } = null;
@@ -54,16 +62,56 @@ public class LeftPanal : MonoBehaviour
 
     public void SelectQuestListView(Quest.Status staus)
     {
-        DisableActiveView();
+        DisableActiveView(false);
         activeLSideView = ActiveLSideView.QuestListView;
         uiButton.LeftTabSlideOut();
         SetActiveView(QuestListView.gameObject);
         QuestListView.SetView(staus);
+    }
 
+    public void SelectPersonListView(SkillsList? skill)
+    {
+        DisableActiveView();
+        uiButton.LeftTabSlideOut();
+        SetActiveView(PersonListView.gameObject);
+        PersonListView.SetView();
+        activeLSideView = ActiveLSideView.PersonList;
+    }
+
+    public void SelectPersonForQuest(Action<PersonInfo> onSelectMethod, Quest quest)
+    {
+        QuestListView.gameObject.SetActive(false);
+        uiButton.LeftTabSlideOut();
+        SetActiveView(PersonListView.gameObject);
+        PersonListView.GetPersonForQuest(onSelectMethod, quest);
+        activeLSideView = ActiveLSideView.PersonList;
+    }
+
+    public void SelectPersonListView()
+    {
+        SelectPersonListView(null);
+    }
+
+
+    private void DisableQuestView()
+    {
+       if(questView.gameObject.activeInHierarchy)
+       {
+           questView.gameObject.SetActive(false);
+       }
     }
 
     private void DisableActiveView()
     {
+        DisableActiveView(true);
+    }
+
+    private void DisableActiveView(bool disableQuestView)
+    {   
+        if(disableQuestView)
+        {
+            DisableQuestView();
+        }
         activeLSideView = null;
         if (ActiveView != null)
         {
@@ -73,12 +121,13 @@ public class LeftPanal : MonoBehaviour
 
     private void SetActiveView(GameObject activeView)
     {
-        ActiveView =activeView;
+        ActiveView = activeView;
         ActiveView.SetActive(true);
     }
 
     public void ClearAllView()
     {
+        questView.gameObject.SetActive(false);
         activeLSideView = null;
         if (ActiveView != null)
         {

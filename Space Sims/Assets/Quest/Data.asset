@@ -15,20 +15,17 @@ MonoBehaviour:
   Title: Quest 1
   Description: This is the 1 quest in the group of testing
   requiments:
-    Numpeople: 0
-    PeopleRequiments:
-      _strength: 2
-      _dexterity: 2
-      _intelligence: 2
-      _wisdom: 2
-      _charisma: 2
-  Duration: 0
+    Numpeople: 2
+    SkillRequiment: 1
+    skillValueMin: 3
+  Duration: 0.1
   reward:
-    gameResourcesReward:
+    _gameResourcesReward:
       Fuel: 0
-      Food: 0
+      Food: 500
       Minerals: 0
       Premimum: 0
-    peopleReward: []
+    _peopleReward: []
   PeopleAssgined: []
+  questStaus: 0
   PossibleEncounters: []
