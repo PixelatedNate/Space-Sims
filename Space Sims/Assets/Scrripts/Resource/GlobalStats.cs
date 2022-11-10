@@ -36,15 +36,21 @@ public class GlobalStats : MonoBehaviour
     public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
     public List<AbstractRoom> PlyaerRooms = new List<AbstractRoom>();
 
-
     private List<Quest> Quests { get; } = new List<Quest>();
+
+
+    private bool _lowFood;
+    private Alert _lowFoodAlert;
     
+
+
     #region CustomGetterAndSetters
 
     public List<Quest> GetQuestsByStaus(Quest.Status status)
     {
         return Quests.FindAll((a) => a.questStaus == status);   
     }
+
 
 
 
@@ -166,18 +172,29 @@ public class GlobalStats : MonoBehaviour
 
     private void checkResourcesForAlertChanges()
     {
-        if (PlayerResources.Food < 0)
+        if (PlayerResources.Food <= 0)
         {
-            AlertManager.Instance.SendAlert(Alerts.LowFood);
+            if (!_lowFood)
+            {
+                _lowFoodAlert = Alert.LowFoodAlert;
+                AlertManager.Instance.SendAlert(_lowFoodAlert);
+                _lowFood = true;
+            }            
             PlayerResources.Food = 0;
+        }
+        if(PlayerResources.Food > 0 && _lowFood)
+        {
+            _lowFood = false; 
+            AlertManager.Instance.RemoveAlert(_lowFoodAlert);
         }
         else if (PlayerResources.Food >= MaxStorage.Food)
         {
             PlayerResources.Food = MaxStorage.Food;
         }
+
         if (PlayerResources.Fuel < 0)
         {
-            AlertManager.Instance.SendAlert(Alerts.LowFuel);
+        //    AlertManager.Instance.SendAlert(Alerts.LowFuel);
             PlayerResources.Fuel = 0;
         }
         else if (PlayerResources.Fuel >= MaxStorage.Fuel)

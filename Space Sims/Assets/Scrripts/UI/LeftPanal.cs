@@ -60,6 +60,16 @@ public class LeftPanal : MonoBehaviour
         roomView.SetRoom(room);
     }
 
+
+    public void OpenOnQuest(Quest quest)
+    {
+        DisableActiveView(false);
+        activeLSideView = ActiveLSideView.QuestListView;
+        uiButton.LeftTabSlideOut();
+        SetActiveView(QuestListView.gameObject);
+        QuestListView.OpenOnQuest(quest);
+    }
+
     public void SelectQuestListView(Quest.Status staus)
     {
         DisableActiveView(false);

@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     TopBar topBar;
     [SerializeField]
     ConformationUI _conformationUI;
+    [SerializeField]
+    AlertsUI alertsUI;
 
     public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
     {
@@ -75,6 +77,13 @@ public class UIManager : MonoBehaviour
             leftPanal.SelectQuestListView(status);       
     }
 
+    public void OpenQuestViewOnQuest(Quest quest)
+    {
+        leftPanal.OpenOnQuest(quest);
+    }
+
+
+
     public void OpenPersonListView()
     {
         if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.PersonList)
@@ -97,9 +106,13 @@ public class UIManager : MonoBehaviour
         leftPanal.OpenBuildRoomView(roomCellPos);
     }
 
+   
+
     public void DeselectAll()
     {
         leftPanal.ClearAllView();
+        alertsUI.closeAlerts();
+
     }
 
     /// <summary>
