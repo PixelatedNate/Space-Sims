@@ -23,7 +23,18 @@ public class AlertComponet : MonoBehaviour
         Name.text = ActiveAlert.name;
         discripiton.text = ActiveAlert.message;
         Time.text = ActiveAlert.time.ToString("HH:mm");
+        if(ActiveAlert.prority != Alert.AlertPrority.Permanet)
+        {
+            button.onClick.AddListener(ClearAlert);
+        }
         button.onClick.AddListener(ActiveAlert.OnClickEffect);
+    }
+
+
+
+    private void ClearAlert()
+    {
+        AlertManager.Instance.RemoveAlert(ActiveAlert);
     }
 
 

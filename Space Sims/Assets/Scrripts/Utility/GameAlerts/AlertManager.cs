@@ -24,6 +24,10 @@ public class AlertManager : MonoBehaviour
 
     public void SendAlert(Alert alert)
     {
+        if(Alerts.Count == 0)
+        {
+            AlertsUI.gameObject.SetActive(true);
+        }
         Alerts.Add(alert);
         AlertsUI.AddAlert(alert);
     }
