@@ -152,7 +152,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         _underConstructionBanner.SetActive(true);
         GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
         _buildTimer = new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat);
-        ConstructionTimer = TimeDelayManager.Instance.AddTimer(new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat));
+        ConstructionTimer = TimeDelayManager.Instance.AddTimer(_buildTimer);
         UpdateRoomStats();
     }
     private void ConstructionCompleat()
@@ -164,7 +164,20 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         {
             setRoomActive(true);
         }
+        AlertManager.Instance.SendAlert(new Alert("Room Built","Room " + _roomName + " has been built", OpenRoomUIandFocusRoom, Alert.AlertPrority.low));
         UpdateRoomStats();
+    }
+
+
+    public void OpenRoomUIandFocusRoom()
+    {
+        FocusRoom();
+        UIManager.Instance.DisplayRoomView(this);
+    }
+
+    public void FocusRoom()
+    {
+        CameraManager.Instance.CameraFocus(gameObject);
     }
 
     protected abstract void UpdateRoomStats();

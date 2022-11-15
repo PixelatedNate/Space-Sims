@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     TopBar topBar;
     [SerializeField]
     ConformationUI _conformationUI;
+    [SerializeField]
+    AlertsUI alertsUI;
 
     public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
     {
@@ -37,12 +39,14 @@ public class UIManager : MonoBehaviour
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPerson(personInfo);
+        alertsUI.CloseAlerts();
     }
 
     public void DisplayRoomView(AbstractRoom room)
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectRoom(room);
+        alertsUI.CloseAlerts();
     }
 
     public void OpenAvalibalQuestListView()
@@ -69,11 +73,21 @@ public class UIManager : MonoBehaviour
         {
             OpenQuestListView();  
         }
+            alertsUI.CloseAlerts();
     }
     public void OpenQuestListView(Quest.Status status = Quest.Status.Available)
     {
             leftPanal.SelectQuestListView(status);       
+            alertsUI.CloseAlerts();
     }
+
+    public void OpenQuestViewOnQuest(Quest quest)
+    {
+        leftPanal.OpenOnQuest(quest);
+        alertsUI.CloseAlerts();
+    }
+
+
 
     public void OpenPersonListView()
     {
@@ -85,21 +99,34 @@ public class UIManager : MonoBehaviour
         {
             leftPanal.SelectPersonListView();
         }
+        alertsUI.CloseAlerts();
     }
     public void OpenSelectPersonForQuestListView(Action<PersonInfo> OnSelectMethod, Quest quest)
     {
         leftPanal.activeLSideView = LeftPanal.ActiveLSideView.PersonList;
         leftPanal.SelectPersonForQuest(OnSelectMethod, quest);
+        alertsUI.CloseAlerts();
     }
 
     public void OpenBuildRoomMenu(Vector3Int roomCellPos)
     {
         leftPanal.OpenBuildRoomView(roomCellPos);
+        alertsUI.CloseAlerts();
+    }
+
+     public void ClearLeftPanal()
+    {
+        leftPanal.ClearAllView();
+    }  
+     public void ClearAlertsPanal()
+    {
+        alertsUI.CloseAlerts();
     }
 
     public void DeselectAll()
     {
         leftPanal.ClearAllView();
+        alertsUI.CloseAlerts();
     }
 
     /// <summary>
