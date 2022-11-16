@@ -28,7 +28,6 @@ public class PersonListViewItem : MonoBehaviour
 
     public void SetQuestText(Quest quest)
     {
-        Debug.Log(person);
         if (person.IsQuesting)
         {
             GetComponent<Button>().interactable = false;
