@@ -8,6 +8,11 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 {
 
     [SerializeField]
+    private Vector2Int _size = new Vector2Int(1,1);
+
+    public Vector2Int Size { get { return _size; } }
+
+    [SerializeField]
     protected GameObject _roomLight, _overlay;
 
     [SerializeField]
@@ -41,13 +46,20 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     private ParticleSystem _buildRoomParticalEffect;
 
     [SerializeField]
-    private Tilemap _pathFindingTileMap;
-    public Tilemap PathFindingTileMap { get { return _pathFindingTileMap; } }
+    private Tilemap _floorTileMap;
+    [SerializeField]
+    private Tilemap _WallTileMap;
+
+    public Tilemap PathFindingTileMap { get { return _floorTileMap; } }
 
     protected bool isRoomActive { get; set; } = false;
 
 
     private TimeDelayManager.Timer _buildTimer;
+    
+
+    [SerializeField]
+    private TileBase ConectingTile;
 
     #region PublicMethods
 
@@ -74,7 +86,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     public abstract void IntisaliseRoom();
 
-    public bool AddWorker(Person person)
+    public virtual bool AddWorker(Person person)
     {
         if (Workers.Count == RoomStat.MaxWorkers)
         {
@@ -130,15 +142,83 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         UpdateRoomStats();
     }
 
+    public void SkipRoom()
+    {
+        UIManager.Instance.Conformation(AbleToSkipRoom,"are you sure you want to spend x in order to instatly build this room");
+    }
+
+    public void EnableRoomConection(Vector3Int AdjacentPos)
+    {
+
+        Vector3Int delataPos = AdjacentPos - RoomPosition;
+        
+        if(Size != new Vector2Int(1,1))
+        {
+            for(int x = 0; x < Size.x; x++)
+            {
+                delataPos = AdjacentPos - RoomPosition - new Vector3Int(x, 0, 0);
+                if(MathF.Abs(delataPos.magnitude) == 1)
+                {
+                    SetRoomTiles(delataPos, x, 0);
+                    return;
+                }
+            }
+            for(int y = 0; y < Size.y; y++)
+            {
+                delataPos = AdjacentPos - RoomPosition - new Vector3Int(0, y, 0);
+                if(MathF.Abs(delataPos.magnitude) == 1)
+                {
+                    SetRoomTiles(delataPos, 0 ,y);
+                    return;
+                }
+            }
+
+        }
+        if (Size == new Vector2Int(1, 1))
+        {
+            SetRoomTiles(delataPos);
+        }
+    }
+
+
     #endregion
 
     #region PrivateMethods
 
 
-    public void SkipRoom()
+    private void SetRoomTiles(Vector3 deltaPos , int xOfset = 0, int yOfset = 0)
     {
-        UIManager.Instance.Conformation(AbleToSkipRoom,"are you sure you want to spend x in order to instatly build this room");
+        // have to offest as tilemaps are not starting 0,0 bottom left (I know it sucks but it sucks even more to fix it)
+        Vector3Int offset = new Vector3Int(4, -5, 0);
+        Vector3 gridSize = RoomGridManager.Instance.roomGridSize;
+        Debug.Log(gridSize);
+        int halfYValue = Mathf.CeilToInt(gridSize.y / 2);
+        int halfXValue = Mathf.CeilToInt(gridSize.x / 2);
+
+        Vector3Int tilePosToChange = Vector3Int.zero;
+
+        if (deltaPos.y == 1)
+        {
+            tilePosToChange = new Vector3Int(halfXValue, (int)gridSize.y, 0);
+        }
+        if (deltaPos.y == -1)
+        {
+            tilePosToChange = new Vector3Int(halfXValue, 1, 0);
+        }
+        if (deltaPos.x == 1)
+        {
+            tilePosToChange = new Vector3Int((int)gridSize.x, halfYValue, 0);
+        }
+        if (deltaPos.x == -1)
+        {
+            tilePosToChange = new Vector3Int(1, halfYValue, 0);
+        }
+
+        Vector3Int tilePosToChangeWithAddedXYoffset = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+
+            _WallTileMap.SetTile(tilePosToChangeWithAddedXYoffset + offset, ConectingTile);
     }
+
 
     private void AbleToSkipRoom()
     {
@@ -196,7 +276,14 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     {
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
         _tempSelect.SetActive(true);
-        UIManager.Instance.DisplayRoomView(this);
+        if (RoomType == RoomType.QuestRoom)
+        {
+            UIManager.Instance.OpenAvalibalQuestListView();
+        }
+        else
+        {
+            UIManager.Instance.DisplayRoomView(this);
+        }
     }
 
     public void OnDeselect()

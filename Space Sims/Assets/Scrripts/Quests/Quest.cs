@@ -165,12 +165,13 @@ public class Quest : ScriptableObject
         {
             p.CompleteQuest(new PersonInfo.Skills());
         }
-        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenQuest , Alert.AlertPrority.low));
+        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest , Alert.AlertPrority.low));
     }
 
 
-    private void OpenQuest()
+    private void OpenAlertQuest()
     {
+        GlobalStats.Instance.QuestRoom.FocusRoom();
         UIManager.Instance.OpenQuestViewOnQuest(this);
     }
 

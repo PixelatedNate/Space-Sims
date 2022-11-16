@@ -33,8 +33,11 @@ public class GlobalStats : MonoBehaviour
 
     private int _maxPeople;
     public int MaxPeople { get { return _maxPeople; } set { SetMaxPeople(value); } }
-    public List<PersonInfo> PlayersPeople = new List<PersonInfo>();
-    public List<AbstractRoom> PlyaerRooms = new List<AbstractRoom>();
+    
+    public List<PersonInfo> PlayersPeople { get; set; } = new List<PersonInfo>();  
+    public List<AbstractRoom> PlyaerRooms { get; set; } = new List<AbstractRoom>();
+    public QuestRoom QuestRoom { get; set; }
+
 
     private List<Quest> Quests { get; } = new List<Quest>();
 

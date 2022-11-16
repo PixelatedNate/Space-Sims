@@ -12,7 +12,11 @@ public class RoomGridManager : MonoBehaviour
     [SerializeField]
     private GameObject _buildRoomTemplate;
     private Grid roomGrid { get; set; }
+
+    public Vector3 roomGridSize { get { return roomGrid.cellSize; } }
+
     Dictionary<Vector3Int, AbstractRoom> RoomList { get; set; } = new Dictionary<Vector3Int, AbstractRoom>();
+
     Dictionary<Vector3Int, GameObject> BuildCellList { get; set; } = new Dictionary<Vector3Int, GameObject>();
 
     private bool ShowBuildRoom { get; set; } = false;
@@ -32,6 +36,7 @@ public class RoomGridManager : MonoBehaviour
     void Start()
     {
         roomGrid = GetComponent<Grid>();
+        AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
         AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
         AbstractRoom secondRoom = BuildNewRoom(new Vector3Int(1, 0, 0), RoomType.Fuel);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
@@ -90,33 +95,68 @@ public class RoomGridManager : MonoBehaviour
     /// <returns></returns>
     public AbstractRoom BuildNewRoom(Vector3Int cellPosition, RoomType roomType)
     {
+
+        // DOSN'T NOT SUPORT BUILD NEW ROOMS NON STANDERED SIZE DUE TO POSILBE OVERIDING EXSISTING ROOMS unless checked/sure manualy, i.e at frist spawn
+ 
         if (RoomList.ContainsKey(cellPosition))
         {
             return null;
         }
 
-        if (BuildCellList.ContainsKey(cellPosition))
-        {
-            Destroy(BuildCellList[cellPosition]);
-            BuildCellList.Remove(cellPosition);
-        }
-
         //Spawn the room Prefab and set up the room.
         GameObject newRoom = PrefabSpawner.Instance.SpawnRoom(roomType);
         newRoom.transform.parent = transform;
-        Vector3 cellCenter = roomGrid.GetCellCenterWorld(cellPosition);
-        newRoom.transform.position = cellCenter;
         AbstractRoom newRoomScript = newRoom.GetComponent<AbstractRoom>();
+        Vector3 cellCenter = roomGrid.GetCellCenterWorld(cellPosition);
+        Vector3 newPos = cellCenter;
+        newRoom.transform.position = newPos;
         newRoomScript.RoomPosition = cellPosition;
-        RoomList.Add(cellPosition, newRoomScript);
 
-        PopulateAdjacentBuildRoomCells(cellPosition);
+
+        AddRoomToPos(cellPosition, newRoomScript);
+        for(int x = 1; x < newRoomScript.Size.x; x++)
+        {
+            AddRoomToPos(cellPosition + new Vector3Int(x, 0, 0), newRoomScript);
+        }
+        for(int y = 1; y < newRoomScript.Size.y; y++)
+        {
+           AddRoomToPos(cellPosition + new Vector3Int(0, y, 0), newRoomScript);
+        }
         return newRoomScript;
     }
 
     #endregion
 
     #region PrivateMethods
+
+
+    private void AddRoomToPos(Vector3Int positon, AbstractRoom room)
+    {
+        if (BuildCellList.ContainsKey(positon))
+        {
+            Destroy(BuildCellList[positon]);
+            BuildCellList.Remove(positon);
+        }
+        RoomList.Add(positon, room);
+        PopulateAdjacentBuildRoomCells(positon);
+        UpdateTileMapsForAdjacntRooms(positon);
+    }
+
+    private void UpdateTileMapsForAdjacntRooms(Vector3Int cellPosition)
+    {
+        Vector3Int[] adjacentCells = GetAdjacentGridCells(cellPosition);
+        foreach (Vector3Int cell in adjacentCells)
+        {
+            if(RoomList.ContainsKey(cell))
+            {
+                if (RoomList[cell] != RoomList[cellPosition])
+                {
+                    RoomList[cell].EnableRoomConection(cellPosition); // update adjecnt room
+                    RoomList[cellPosition].EnableRoomConection(cell);  //  update target room
+                }
+            }
+        }
+    }
 
     private void PopulateAdjacentBuildRoomCells(Vector3Int cellPosition)
     {

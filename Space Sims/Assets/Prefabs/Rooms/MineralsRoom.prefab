@@ -1658,6 +1658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74fedc292a3e1d848b4a0a2bc9644611, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _size: {x: 1, y: 1}
   _roomLight: {fileID: 2400441055890607365}
   _overlay: {fileID: 1078184757156557465}
   _tempSelect: {fileID: 2958880641197198299}
@@ -1691,7 +1692,9 @@ MonoBehaviour:
   _roomType: 2
   _roomCameraPortal: {fileID: 7272171562527989397}
   _buildRoomParticalEffect: {fileID: 1132329107350203524}
-  _pathFindingTileMap: {fileID: 5196099802798856111}
+  _floorTileMap: {fileID: 5196099802798856111}
+  _WallTileMap: {fileID: 8989345429371330776}
+  ConectingTile: {fileID: 11400000, guid: 7a72fca8d2c9f0f4db9a399d33bd72a7, type: 2}
   _overlayMaxPeople: {fileID: 5482608151459567008}
   _overlayCurrentPeople: {fileID: 7954962511680987417}
   _upkeep: {fileID: 4796294204975296725}

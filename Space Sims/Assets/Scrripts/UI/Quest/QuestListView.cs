@@ -21,10 +21,13 @@ public class QuestListView : MonoBehaviour
     [SerializeField]
     Image availableBtnImg, ActiveBtnImg, CompletedBtmImg;
 
+    Quest SelectedQuest;
+
     public void SetView(Quest.Status status)
     {
         //questView.gameObject.SetActive(false);
         QuestInView = GlobalStats.Instance.GetQuestsByStaus(status);
+        SelectedQuest = null;
         PopulateList();
         SetBtnColours(status);
     }
@@ -32,7 +35,6 @@ public class QuestListView : MonoBehaviour
     public void OpenOnQuest(Quest quest)
     {
         QuestInView = GlobalStats.Instance.GetQuestsByStaus(quest.questStaus);
-        PopulateList();
         SetBtnColours(quest.questStaus);
         OpenQuest(quest);
 
@@ -69,9 +71,19 @@ public class QuestListView : MonoBehaviour
 	    }
         foreach(Quest quest in QuestInView)
         {
-           GameObject questViewItem = GameObject.Instantiate(QuestListItemTemplate, QuestScrollPanal);
-            questViewItem.GetComponent<Button>().onClick.AddListener(() => OpenQuest(quest));
-            questViewItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quest.Title;        
+            GameObject questViewItem = GameObject.Instantiate(QuestListItemTemplate, QuestScrollPanal);
+            questViewItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quest.Title;
+            if (SelectedQuest == quest)
+            {
+                questViewItem.transform.GetChild(1).gameObject.SetActive(true);
+                questViewItem.GetComponent<Image>().color = Color.yellow;
+                questViewItem.GetComponent<Button>().onClick.AddListener(() => CloseQuest(quest));
+            }
+            else
+            {
+                questViewItem.transform.GetChild(1).gameObject.SetActive(false);
+                questViewItem.GetComponent<Button>().onClick.AddListener(() => OpenQuest(quest));
+            }
         }
     }
 
@@ -80,6 +92,15 @@ public class QuestListView : MonoBehaviour
     {
         questView.gameObject.SetActive(true);
         questView.SelectQuest(quest);
+        SelectedQuest = quest;
+        PopulateList();
+    }
+
+    private void CloseQuest(Quest quest)
+    {
+        questView.gameObject.SetActive(false);
+        SelectedQuest = null;
+        PopulateList();
     }
     
     void Start()
