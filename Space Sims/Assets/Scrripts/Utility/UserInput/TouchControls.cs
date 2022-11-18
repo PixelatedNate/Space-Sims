@@ -14,7 +14,7 @@ public class TouchControls : MonoBehaviour
     private float MaxZoom = 8;
 
 
-    private static bool CameraMovemntEnabled = true;
+    private static bool CameraMovemntEnabled { get; set; } = true;
 
     private Button _button;   // prevent trigering of UI buttons when panning or performing other touch related actions
 
