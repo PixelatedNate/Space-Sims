@@ -43,7 +43,7 @@ public class Quest : ScriptableObject
         }
     }
     [Serializable]
-    class Reward
+    public class Reward
     {
         [SerializeField]
         GameResources _gameResourcesReward;
@@ -64,7 +64,8 @@ public class Quest : ScriptableObject
     [SerializeField]
     float Duration;
     [SerializeField]
-    Reward reward;
+    Reward _reward;
+    public Reward reward { get { return _reward; } }
 
     [SerializeField]
     public List<PersonInfo> PeopleAssgined = new List<PersonInfo>();

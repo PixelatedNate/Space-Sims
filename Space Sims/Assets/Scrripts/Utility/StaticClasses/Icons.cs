@@ -26,6 +26,20 @@ public static class Icons
             default: throw new Exception("Enum Resources returned No corisponding value");
         }
     }
+    
+     public static int GetResourceIDForTextMeshPro(ResourcesEnum resourcesEnum)
+    {
+        switch (resourcesEnum)
+        {
+            case ResourcesEnum.Fuel: return 4;
+            case ResourcesEnum.Food: return 3;
+            case ResourcesEnum.Minerals: return 6;
+            default: throw new Exception("Enum Resources returned No corisponding value");
+        }
+    }
+    
+   
+
 
     public static Sprite GetSkillIcon(SkillsList skillEnum)
     {
