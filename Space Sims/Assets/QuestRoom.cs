@@ -19,7 +19,21 @@ public class QuestRoom : AbstractRoom
 
     public override bool AddWorker(Person person)
     {
-        return false;
+        if (Workers.Contains(person.PersonInfo))
+        {
+            Debug.LogWarning("Failed to add a person to room: as they are allready in");
+            return false;
+        }
+        else if (person.PersonInfo.Room == null)
+        {
+            Workers.Add(person.PersonInfo);
+            UpdateRoomStats();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public override void ClearPersonHover()

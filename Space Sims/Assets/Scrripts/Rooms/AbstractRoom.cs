@@ -249,6 +249,18 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     }
 
 
+    public void setWallColor(Color color)
+    {
+        //TileBase 
+         BoundsInt bounds = _WallTileMap.cellBounds;
+        foreach (Vector3Int pos in bounds.allPositionsWithin)
+        {
+            _WallTileMap.SetTileFlags(pos, TileFlags.None);
+            _WallTileMap.SetColor(pos,color);
+        }
+    }
+
+
     public void OpenRoomUIandFocusRoom()
     {
         FocusRoom();

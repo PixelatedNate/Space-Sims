@@ -1349,7 +1349,7 @@ MonoBehaviour:
   _upkeepimg: {fileID: 4861563714656941246}
   _outputimg: {fileID: 7044657451308564913}
   overlayBackGroundImg: {fileID: 4477270948779368946}
-  _desiredSkill: 0
+  _desiredSkill: 4
 --- !u!1 &4357136925427198834
 GameObject:
   m_ObjectHideFlags: 0
