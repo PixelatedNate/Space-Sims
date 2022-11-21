@@ -49,8 +49,8 @@ public class Quest : ScriptableObject
         GameResources _gameResourcesReward;
         public GameResources GameResourcesReward { get { return _gameResourcesReward; } }
         [SerializeField]
-        PersonInfo[] _peopleReward;
-        PersonInfo[] PeopleReward { get; set; }
+        int _numberofpeopleReward;
+        public int NumberOfPeopleReward { get { return _numberofpeopleReward; }  }
     }
 
     private bool Inprogress = false;
@@ -166,6 +166,12 @@ public class Quest : ScriptableObject
         {
             p.CompleteQuest(new PersonInfo.Skills());
         }
+
+        for(int i = 0; i < reward.NumberOfPeopleReward; i++)
+        {
+            PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom);
+        }
+
         AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest , Alert.AlertPrority.low));
     }
 

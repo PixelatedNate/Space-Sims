@@ -39,8 +39,7 @@ public class RoomGridManager : MonoBehaviour
         AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
         AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
         AbstractRoom secondRoom = BuildNewRoom(new Vector3Int(1, 0, 0), RoomType.Fuel);
-        PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        PrefabSpawner.Instance.SpawnPerson(fistRoom);
+        AbstractRoom forthRoom = BuildNewRoom(new Vector3Int(1, -1, 0), RoomType.Food);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
     }
@@ -112,6 +111,22 @@ public class RoomGridManager : MonoBehaviour
         newRoom.transform.position = newPos;
         newRoomScript.RoomPosition = cellPosition;
 
+        if(roomType == RoomType.CrewQuaters)
+        {
+            newRoomScript.setWallColor(Color.blue);
+        }
+        else if(roomType == RoomType.QuestRoom)
+        {
+            newRoomScript.setWallColor(Color.cyan);
+        }
+        else if(roomType == RoomType.Food)
+        {
+            newRoomScript.setWallColor(Color.green);
+        }
+        else if(roomType == RoomType.Fuel)
+        {
+            newRoomScript.setWallColor(Color.red);
+        }
 
         AddRoomToPos(cellPosition, newRoomScript);
         for(int x = 1; x < newRoomScript.Size.x; x++)

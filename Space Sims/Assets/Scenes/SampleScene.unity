@@ -678,7 +678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _startingResources.Fuel
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _bassMaxStorage.Minerals
@@ -686,11 +686,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _startingResources.Minerals
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _startingResources.Premimum
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: QuesttestsForMenu.Array.size
@@ -1668,6 +1668,10 @@ PrefabInstance:
       propertyPath: uiButton
       value: 
       objectReference: {fileID: 1851411109}
+    - target: {fileID: 6993026415139000230, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7146469149921939208, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: m_Pivot.x
       value: 0
