@@ -12,6 +12,8 @@ public class TouchControls : MonoBehaviour
     private float minZoom = 1;
     [SerializeField]
     private float MaxZoom = 8;
+    [SerializeField]
+    private float zoomSpeed = 1;
 
 
     private static bool CameraMovemntEnabled { get; set; } = true;
@@ -261,6 +263,7 @@ public class TouchControls : MonoBehaviour
 
     public void Zoom(float increment)
     {
+        increment = increment * zoomSpeed;
         Camera.main.orthographicSize = Mathf.Clamp(Camera.main.orthographicSize - increment, minZoom, MaxZoom);
     }
 
