@@ -16,7 +16,7 @@ public class TouchControls : MonoBehaviour
     private float zoomSpeed = 1;
 
 
-    private static bool CameraMovemntEnabled = true;
+    private static bool CameraMovemntEnabled { get; set; } = true;
 
     private Button _button;   // prevent trigering of UI buttons when panning or performing other touch related actions
 
@@ -38,6 +38,7 @@ public class TouchControls : MonoBehaviour
     private float BorderPixelsSize = 100f; // can be changed to a percentage.
     private float EdgePanSpeed = 5.0f;
 
+    private GameObject FollowObj;
 
 
     IInteractables SelectedObject = null;
@@ -113,6 +114,7 @@ public class TouchControls : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
+            CameraManager.Instance.ClearFollow();
             TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         if (Input.touchCount == 2)
@@ -177,8 +179,6 @@ public class TouchControls : MonoBehaviour
 
 #endif
     }
-
-
 
 
     private void TouchZoom()

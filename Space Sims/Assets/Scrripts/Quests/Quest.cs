@@ -43,14 +43,14 @@ public class Quest : ScriptableObject
         }
     }
     [Serializable]
-    class Reward
+    public class Reward
     {
         [SerializeField]
         GameResources _gameResourcesReward;
         public GameResources GameResourcesReward { get { return _gameResourcesReward; } }
         [SerializeField]
-        PersonInfo[] _peopleReward;
-        PersonInfo[] PeopleReward { get; set; }
+        int _numberofpeopleReward;
+        public int NumberOfPeopleReward { get { return _numberofpeopleReward; }  }
     }
 
     private bool Inprogress = false;
@@ -64,7 +64,8 @@ public class Quest : ScriptableObject
     [SerializeField]
     float Duration;
     [SerializeField]
-    Reward reward;
+    Reward _reward;
+    public Reward reward { get { return _reward; } }
 
     [SerializeField]
     public List<PersonInfo> PeopleAssgined = new List<PersonInfo>();
@@ -165,6 +166,21 @@ public class Quest : ScriptableObject
         {
             p.CompleteQuest(new PersonInfo.Skills());
         }
+
+        for(int i = 0; i < reward.NumberOfPeopleReward; i++)
+        {
+            PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom);
+        }
+
+        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest , Alert.AlertPrority.low));
     }
+
+
+    private void OpenAlertQuest()
+    {
+        GlobalStats.Instance.QuestRoom.FocusRoom();
+        UIManager.Instance.OpenQuestViewOnQuest(this);
+    }
+
 }
 

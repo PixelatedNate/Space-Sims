@@ -6,11 +6,13 @@ public class UIButton : MonoBehaviour
     public GameObject[] uiPopup;
     public GameObject[] slideTab;
     public Button[] slideBtn;
-    public Animator leftTabAnim;
+    private Animator leftTabAnim { get; set; }
+    private Animator alertTabAnim { get; set; }
     // Start is called before the first frame update
     void Start()
     {
         leftTabAnim = GameObject.Find("Left_Slide_Tab").GetComponent<Animator>();
+        alertTabAnim = GameObject.Find("Alert_Slide_Tab").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -60,4 +62,16 @@ public class UIButton : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundManager.Sound.PanalOpen);
         leftTabAnim.SetBool("Open", false);
     }
+
+    public void AlertTabSlideOut()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.PanalOpen);
+        alertTabAnim.SetBool("Open", true);
+    }
+    public void AlertTabSlideIn()
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.PanalOpen);
+        alertTabAnim.SetBool("Open", false);
+    }
+
 }

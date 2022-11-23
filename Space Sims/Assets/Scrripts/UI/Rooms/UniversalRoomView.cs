@@ -48,6 +48,11 @@ public class UniversalRoomView : MonoBehaviour
         SelectedRoom.SkipRoom();
     }
 
+    public void FoucseRoom()
+    {
+        SelectedRoom.FocusRoom();
+    }
+
     private void EnableCorrectRoomView()
     {
         if (SelectedRoom is PassiveProductionRoom)

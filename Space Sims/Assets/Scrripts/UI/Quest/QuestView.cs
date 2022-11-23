@@ -11,12 +11,15 @@ public class QuestView : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI Title;
     [SerializeField]
-    TextMeshProUGUI Discription, TimeLeft;
+    TextMeshProUGUI Discription, TimeLeft, Reward;
     [SerializeField]
     Transform RequimentPanel, ProgressBar;
 
     [SerializeField]
     Button startBtn;
+
+    [SerializeField]
+    PageSwiper pageSwiper;
 
     private List<QuestRequimentBoxView> QuestRequimentBoxViews = new List<QuestRequimentBoxView>();
     private QuestRequimentBoxView SelectedQuestRequiment;
@@ -32,6 +35,7 @@ public class QuestView : MonoBehaviour
         questSelected = quest;
         Title.text = quest.Title;
         Discription.text = quest.Description;
+        setRewaredText();
         SetRequiments();
         startBtn.enabled = enabled;
         if (quest.questStaus == Quest.Status.Available)
@@ -52,6 +56,7 @@ public class QuestView : MonoBehaviour
             TimeLeft.text = "Completed";
             ProgressBar.localScale = new Vector3(1, 1, 1);
         }
+        pageSwiper.setFirstPage();
     }
 
     public void SetActiveRequimentBoxView(QuestRequimentBoxView selectedQuestRequiment)
@@ -153,6 +158,21 @@ public class QuestView : MonoBehaviour
         TimeLeft.text = questSelected.QuestTimer.RemainingDuration.ToString("h'h 'm'm 's's'");
         double ProgressBarPercent = (questSelected.QuestTimer.RemainingDuration.TotalSeconds / (questSelected.QuestTimer.TotalDuration.TotalSeconds / 100));
         ProgressBar.localScale = new Vector3(1 - (float)ProgressBarPercent / 100, 1, 1);
+    }
+
+
+    private void setRewaredText()
+    {
+        Reward.text = null;
+        GameResources rewaredResources = questSelected.reward.GameResourcesReward;
+        foreach(ResourcesEnum re in Enum.GetValues(typeof(ResourcesEnum)))
+        {
+            if(rewaredResources.GetResorce(re) != 0)
+            {
+                int IconIdex = Icons.GetResourceIDForTextMeshPro(re);
+                Reward.text = Reward.text + "<sprite=" + IconIdex +">" + ": " + rewaredResources.GetResorce(re).ToString() + " <br>";
+            }
+        }
     }
 
 

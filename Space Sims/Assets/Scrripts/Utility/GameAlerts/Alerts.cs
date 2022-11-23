@@ -1,25 +1,40 @@
-public static class Alerts
+using System;
+using UnityEngine.Events;
+
+public class Alert
 {
-    public class Alert
+    
+    public enum AlertPrority
     {
-        public string name;
-        public string message;
+        low,
+        Med,
+        High,
+        Permanet,
     }
 
+    public string name;
+    public string message;
+    public DateTime time;
+    public UnityAction OnClickEffect;
+    public AlertPrority prority;
 
-
-    //Put allerts here;
-    static public Alert LowFood = new Alert
+    public Alert(string name, string message, UnityAction onClickEffect, AlertPrority prority)
     {
-        name = "Low Food",
-        message = "AHHHHH no food"
-    };
+        this.name = name;
+        this.message = message;
+        this.OnClickEffect = onClickEffect;
+        this.prority = prority;
+        time = DateTime.Now;
+    }
 
-    static public Alert LowFuel = new Alert
+    public Alert(string name, string message, AlertPrority prority)
     {
-        name = "Low Fuel",
-        message = "AHHHHH no fuel"
-    };
+        this.name = name;
+        this.message = message; 
+        this.prority = prority;
+        time = DateTime.Now;
+    }
 
+    public static Alert LowFoodAlert { get { return new Alert("LOW FOOD", "you have low food fix this you should", AlertPrority.Permanet); } }
 
 }

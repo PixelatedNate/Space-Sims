@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Data
   m_EditorClassIdentifier: 
   Title: Quest 1
-  Description: This is the 1 quest in the group of testing
+  Description: Send Distrese Signal
   requiments:
-    Numpeople: 2
-    SkillRequiment: 1
+    Numpeople: 1
+    SkillRequiment: 4
     skillValueMin: 3
   Duration: 0.1
-  reward:
+  _reward:
     _gameResourcesReward:
       Fuel: 0
-      Food: 500
+      Food: 0
       Minerals: 0
       Premimum: 0
-    _peopleReward: []
+    _numberofpeopleReward: 1
   PeopleAssgined: []
   questStaus: 0
   PossibleEncounters: []

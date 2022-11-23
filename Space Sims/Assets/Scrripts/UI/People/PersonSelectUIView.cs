@@ -58,6 +58,29 @@ public class PersonSelectUIView : MonoBehaviour
     }
 
 
+    public void GoToPerson()
+    {
+        if(SelectedPerson.IsQuesting)
+        {
+            UIManager.Instance.OpenQuestViewOnQuest(SelectedPerson.CurrentQuest);
+        }
+        else
+        {
+            CameraManager.Instance.CameraFocus(SelectedPerson.PersonMonoBehaviour.gameObject);
+        }
+    }
+    public void FollowPerson()
+    {
+        if(SelectedPerson.IsQuesting)
+        {
+            UIManager.Instance.OpenQuestViewOnQuest(SelectedPerson.CurrentQuest);
+        }
+        else
+        {
+            CameraManager.Instance.CameraFollow(SelectedPerson.PersonMonoBehaviour.gameObject);
+        }    
+    }
+
     private void UpdateSkill(SkillsList skill, Transform skillDots)
     {
         // add my room code here to get skills from an enum;

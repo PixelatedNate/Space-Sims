@@ -229,6 +229,8 @@ public class PersonInfo
         else
         {
             GameObject.Destroy(PersonMonoBehaviour.gameObject);
+            Room.RemoveWorker(PersonMonoBehaviour);
+            Room = GlobalStats.Instance.QuestRoom;
             CurrentQuest = quest;
         }
     }
@@ -236,6 +238,7 @@ public class PersonInfo
     {
         CurrentQuest = null;
         GameObject newTemplate = PrefabSpawner.Instance.SpawnPerson();
+        newTemplate.transform.position = Room.transform.position;
         PersonMonoBehaviour = newTemplate.GetComponent<Person>();
         PersonMonoBehaviour.AssginPerson(this);
 
