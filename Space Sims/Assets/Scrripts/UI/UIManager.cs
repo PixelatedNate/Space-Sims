@@ -2,11 +2,14 @@ using RDG;
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
 
     public static UIManager Instance;
+
+    public bool IsNavigation { get; private set; } = false;
 
     private void Awake()
     {
@@ -20,16 +23,19 @@ public class UIManager : MonoBehaviour
         }
     }
 
-
     [SerializeField]
     LeftPanal leftPanal;
     [SerializeField]
     TopBar topBar;
     [SerializeField]
+    NavTimerProgressBarUIView navTimerUI;
+    [SerializeField]
     ConformationUI _conformationUI;
     [SerializeField]
     AlertsUI alertsUI;
 
+    private GameObject MainLight { get; set; }
+    private GameObject MainCamera { get; set; }
     public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
     {
         topBar.SetValues(currentResources, deltaResources, numberofPoeple, maxPeople, maxResources);
@@ -39,6 +45,13 @@ public class UIManager : MonoBehaviour
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPerson(personInfo);
+        alertsUI.CloseAlerts();
+    }
+
+    public void DisplayPlanet(Planet planet)
+    {
+        RoomGridManager.Instance.SetBuildMode(false);
+        leftPanal.SelectPlanet(planet);
         alertsUI.CloseAlerts();
     }
 
@@ -162,4 +175,55 @@ public class UIManager : MonoBehaviour
        DeselectAll(); // will clear either slecet item or build RoomMenu
     }
 
-}
+    public void ToggleNavigation()
+    {
+        if (IsNavigation)
+        {
+            LoadMainShipView();
+        }
+        else
+        {
+            LoadNavigation();
+        }
+    }
+
+    public bool LoadNavigation()
+    {
+        if (!IsNavigation)
+        {
+            DeselectAll();
+            MainLight = GameObject.FindGameObjectWithTag("MainLight");
+            MainCamera = Camera.main.gameObject;
+            MainCamera.SetActive(false);
+            MainLight.SetActive(false);
+            SceneManager.LoadScene("Navigation", LoadSceneMode.Additive);
+            IsNavigation = true;
+            return true;
+        }
+        return false;
+    }
+
+
+    public bool LoadMainShipView()
+    {
+        if (IsNavigation)
+        {
+            DeselectAll();
+            SceneManager.UnloadSceneAsync("Navigation");
+            MainCamera.SetActive(true);
+            MainLight.SetActive(true);
+            IsNavigation = false;
+            return true;
+        }
+        return false;
+    }
+
+
+    public void TrackNavTimer(TimeDelayManager.Timer timer, Planet targetPlanet)
+    {
+        navTimerUI.gameObject.SetActive(true);
+        navTimerUI.TrackTimer(timer, targetPlanet);
+    }
+    
+
+}   

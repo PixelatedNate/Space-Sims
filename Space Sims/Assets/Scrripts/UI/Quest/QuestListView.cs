@@ -26,7 +26,8 @@ public class QuestListView : MonoBehaviour
     public void SetView(Quest.Status status)
     {
         //questView.gameObject.SetActive(false);
-        QuestInView = GlobalStats.Instance.GetQuestsByStaus(status);
+        //QuestInView = GlobalStats.Instance.GetQuestsByStaus(status);
+        QuestInView = QuestManager.GetQuestsByStaus(status);
         SelectedQuest = null;
         PopulateList();
         SetBtnColours(status);
@@ -34,7 +35,7 @@ public class QuestListView : MonoBehaviour
 
     public void OpenOnQuest(Quest quest)
     {
-        QuestInView = GlobalStats.Instance.GetQuestsByStaus(quest.questStaus);
+        QuestInView = QuestManager.GetQuestsByStaus(quest.questStaus);
         SetBtnColours(quest.questStaus);
         OpenQuest(quest);
 

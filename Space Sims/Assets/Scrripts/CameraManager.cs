@@ -22,15 +22,23 @@ public class CameraManager : MonoBehaviour
 
     public void CameraFocus(GameObject focusTarget)
     {
-        if(focusTarget != FollowTarget)
+        if (UIManager.Instance.IsNavigation)
+        {
+            UIManager.Instance.ToggleNavigation();
+        }
+        if (focusTarget != FollowTarget)
         {
             ClearFollow();
         }
         transform.position = new Vector3(focusTarget.transform.position.x,focusTarget.transform.position.y,transform.position.z);
     }
-
+ 
     public void CameraFollow(GameObject followtarget)
     {
+        if(UIManager.Instance.IsNavigation)
+        {
+            UIManager.Instance.ToggleNavigation();
+        }
         FollowTarget = followtarget;
     }
 

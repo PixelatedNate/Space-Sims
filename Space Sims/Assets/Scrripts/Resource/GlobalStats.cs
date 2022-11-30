@@ -10,6 +10,7 @@ public class GlobalStats : MonoBehaviour
     Quest[] QuesttestsForMenu;
 
 
+    public Planet CurrentPlanet;
 
     public static GlobalStats Instance;
 
@@ -39,7 +40,7 @@ public class GlobalStats : MonoBehaviour
     public QuestRoom QuestRoom { get; set; }
 
 
-    private List<Quest> Quests { get; } = new List<Quest>();
+  //  private List<Quest> Quests { get; } = new List<Quest>();
 
 
     private bool _lowFood;
@@ -48,13 +49,6 @@ public class GlobalStats : MonoBehaviour
 
 
     #region CustomGetterAndSetters
-
-    public List<Quest> GetQuestsByStaus(Quest.Status status)
-    {
-        return Quests.FindAll((a) => a.questStaus == status);   
-    }
-
-
 
 
     private void SetMaxPeople(int value)
@@ -84,16 +78,7 @@ public class GlobalStats : MonoBehaviour
     }
     void Start()
     {
-        // for testing at this stage only   
-        Quests.AddRange(QuesttestsForMenu);
-        foreach(Quest q in Quests)
-        {
-            q.UnassginAllPeopople();
-            q.questStaus = Quest.Status.Available;
-        }
-
-
-
+        QuestManager.SetAvalibleQuest(QuesttestsForMenu);
         MaxStorage = _bassMaxStorage;
         PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;

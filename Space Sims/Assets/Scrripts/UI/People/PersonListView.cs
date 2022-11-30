@@ -33,7 +33,6 @@ public class PersonListView : MonoBehaviour
         FilterListByAge();
     }
 
-
     public void GetPersonForQuest(Action<PersonInfo> onSelectMethod, Quest quest)
     {
         QuestSelected = quest;
