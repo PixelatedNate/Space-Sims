@@ -14,7 +14,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     [SerializeField]
     protected GameObject _roomLight, _overlay;
-
+    
     [SerializeField]
     private GameObject _tempSelect, _underConstructionBanner;
 
@@ -104,6 +104,10 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             {
                 setRoomActive(true);
             }
+            if(IsUnderConstruction && ConstructionTimer.IsPause)
+            {
+                ConstructionTimer.RestartTimer();
+            }
             UpdateRoomStats();
             return true;
         }
@@ -123,6 +127,10 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             if (Workers.Count == 0)
             {
                 setRoomActive(false);
+                if(IsUnderConstruction)
+                {
+                    ConstructionTimer.PauseTimer();
+                }
             }
         }
 
@@ -232,6 +240,10 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
         _buildTimer = new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat);
         ConstructionTimer = TimeDelayManager.Instance.AddTimer(_buildTimer);
+        if(Workers.Count == 0)
+        {
+            ConstructionTimer.PauseTimer();
+        }
         UpdateRoomStats();
     }
     private void ConstructionCompleat()

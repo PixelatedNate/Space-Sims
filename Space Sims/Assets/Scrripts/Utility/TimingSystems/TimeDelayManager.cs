@@ -9,18 +9,50 @@ public class TimeDelayManager : MonoBehaviour
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public Action EndMethod { get; }
-        public TimeSpan TotalDuration { get { return (EndTime - StartTime); } }
-        public TimeSpan RemainingDuration { get { return (EndTime - DateTime.Now); } }
+        public TimeSpan TotalDuration { get; private set; }
+        public TimeSpan RemainingDuration { get { return CalculateRemainingDuration(); } }
+        public bool IsPause { get; set; } = false;
 
+
+        private DateTime pauseTimeStart;
+
+
+        public TimeSpan CalculateRemainingDuration()
+        {
+            if(!IsPause)
+            {
+                return EndTime - DateTime.Now;
+            }
+            else
+            {
+                return EndTime + (DateTime.Now - pauseTimeStart) - DateTime.Now;
+            }
+        }
+
+
+        public void PauseTimer()
+        {
+            pauseTimeStart = DateTime.Now;
+            IsPause = true;
+        }
+
+        public void RestartTimer()
+        {
+            EndTime = EndTime + (DateTime.Now - pauseTimeStart);
+            IsPause = false;
+        }
+        
 
         public Timer(DateTime endTime, Action endMethod)
-        {
+        {           
             this.EndTime = endTime;
+            this.TotalDuration = EndTime - DateTime.Now;
             this.EndMethod = endMethod;
         }
         public Timer(int minutes, Action endMethod)
         {
             this.EndTime = DateTime.Now.AddMinutes(minutes);
+            this.TotalDuration = EndTime - DateTime.Now;
             this.EndMethod = endMethod;
         }
     }
@@ -64,8 +96,11 @@ public class TimeDelayManager : MonoBehaviour
         foreach (Timer t in ActiveTimers)
         {
             if (t.EndTime >= DateTime.Now) { break; }
-            t.EndMethod.Invoke();
-            SpentTimer.Add(t);
+            else if (!t.IsPause)
+            {
+                t.EndMethod.Invoke();
+                SpentTimer.Add(t);
+            }
         }
         foreach (Timer t in SpentTimer)
         {
