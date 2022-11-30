@@ -8,6 +8,8 @@ public class LeftPanal : MonoBehaviour
     [SerializeField]
     PersonSelectUIView personView;
     [SerializeField]
+    planetView planetView;
+    [SerializeField]
     BuildRoomListView buildRoomView;
     [SerializeField]
     UIButton uiButton;
@@ -51,6 +53,16 @@ public class LeftPanal : MonoBehaviour
         SetActiveView(personView.gameObject);
         personView.SetPerson(personInfo);
     }
+
+    public void SelectPlanet(Planet planet)
+    {
+        DisableActiveView();
+        uiButton.LeftTabSlideOut();
+        SetActiveView(planetView.gameObject);
+        planetView.SetPlanet(planet);
+    }
+
+
 
     public void SelectRoom(AbstractRoom room)
     {

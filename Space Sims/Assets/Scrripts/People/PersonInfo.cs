@@ -228,6 +228,7 @@ public class PersonInfo
         }
         else
         {
+         //   PersonMonoBehaviour.RemoveFromShip();
             GameObject.Destroy(PersonMonoBehaviour.gameObject);
             Room.RemoveWorker(PersonMonoBehaviour);
             Room = GlobalStats.Instance.QuestRoom;

@@ -153,16 +153,17 @@ public class Person : MonoBehaviour, IInteractables
     }
 
 
-
-
     private void OnDestroy()
     {
-        if (IsBeingHeld)
-        {
-            throw new Exception("Trying to destroy a person whilstBeingheld");
+        if (gameObject.scene.isLoaded)
+        { 
+             if (IsBeingHeld)
+             {
+                 throw new Exception("Trying to destroy a person whilstBeingheld");
+             }
+             GlobalStats.Instance.RemovePersonDelta(this);
+             PersonInfo.PersonMonoBehaviour = null;
         }
-        GlobalStats.Instance.RemovePersonDelta(this);
-        PersonInfo.PersonMonoBehaviour = null;
     }
 
     private void ReRenderPerson()

@@ -15,7 +15,6 @@ public class TouchControls : MonoBehaviour
     [SerializeField]
     private float zoomSpeed = 1;
 
-
     private static bool CameraMovemntEnabled { get; set; } = true;
 
     private Button _button;   // prevent trigering of UI buttons when panning or performing other touch related actions
@@ -44,9 +43,15 @@ public class TouchControls : MonoBehaviour
     IInteractables SelectedObject = null;
     bool InteractableIsIsHeld = false;
 
-    private int UILayer;
+    private int UILayer { get; set; }
 
-    // Start is called before the first frame update
+    [SerializeField]
+    private LayerMask ActiveLayer;
+
+
+    [SerializeField]
+    private Vector2 maxPanDist;
+
     void Start()
     {
         UILayer = LayerMask.NameToLayer("UI");
@@ -93,7 +98,8 @@ public class TouchControls : MonoBehaviour
                                 SelectedObject = null;
                             }
                         }
-                        var selected = GetInteractableUnderMouse();
+
+                        var selected = GetInteractableUnderMouse(ActiveLayer);
                         if (selected != null)
                         {
                             if (ClickDuration < SHORT_CLICK_END)
@@ -147,11 +153,14 @@ public class TouchControls : MonoBehaviour
             }
             if (Paning)
             {
-                Camera.main.transform.position += dir;
+                float xvalue = Mathf.Clamp(Camera.main.transform.position.x + dir.x,maxPanDist.x*-1,maxPanDist.x);
+                float yvalue = Mathf.Clamp(Camera.main.transform.position.y + dir.y, maxPanDist.y*-1,maxPanDist.y);
+
+                Camera.main.transform.position = new Vector3(xvalue,yvalue,Camera.main.transform.position.z);
             }
             else if (ClickDuration > HOLD_TIME_START) // this is not optermized so will run the check multipale times.
             {
-                var selectableHold = GetInteractableUnderMouse();
+                var selectableHold = GetInteractableUnderMouse(ActiveLayer);
                 if (selectableHold != null)
                 {
                     InteractableIsIsHeld = selectableHold.OnHold();
@@ -228,20 +237,32 @@ public class TouchControls : MonoBehaviour
         Camera.main.transform.position = newCameraTransform;
     }
 
-    public static IInteractables GetInteractableUnderMouse()
+    public static IInteractables GetInteractableUnderMouse(LayerMask? activeLayerMask = null)
     {
-        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        RaycastHit2D hit;
+        if (activeLayerMask != null)
+        {
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, Mathf.Infinity, (int)activeLayerMask);
+        }
+        else
+        {
+            hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        }
         IInteractables selected = null;
         if (hit.collider != null)
         {
-            MonoBehaviour scrpit = hit.collider.gameObject.GetComponent<MonoBehaviour>();
-            if (scrpit is IInteractables)
+            if (activeLayerMask == null || (1 << hit.collider.gameObject.layer & activeLayerMask) != 0)
             {
-                return selected = (IInteractables)((System.Object)scrpit);
+                MonoBehaviour scrpit = hit.collider.gameObject.GetComponent<MonoBehaviour>();
+                if (scrpit is IInteractables)
+                {
+                    return selected = (IInteractables)((System.Object)scrpit);
+                }
             }
         }
         return null;
     }
+
     public static AbstractRoom GetRoomUnderMouse()
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
