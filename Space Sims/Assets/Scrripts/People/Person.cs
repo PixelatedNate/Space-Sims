@@ -182,8 +182,12 @@ public class Person : MonoBehaviour, IInteractables
     {
         if (IsBeingHeld)
         {
+            float yOffset = -1.5f;
+
             Vector3 mousePointOnWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePointOnWorld.z = 0;
+            mousePointOnWorld.y = mousePointOnWorld.y + yOffset;
+
             transform.position = mousePointOnWorld;
             AbstractRoom roomUnderMouse = TouchControls.GetRoomUnderMouse();
             if(roomUnderMouse != RoomUnderMouseOnDrag)
