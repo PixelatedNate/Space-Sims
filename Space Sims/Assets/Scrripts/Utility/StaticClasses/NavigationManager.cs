@@ -64,7 +64,7 @@ public static class NavigationManager
     {
         TimeSpan rawTime = TimeSpan.FromMinutes(UniversSpeedModifyer * Vector3.Distance(a, b));
        
-       // return TimeSpan.FromSeconds(10);
+        return TimeSpan.FromSeconds(20);
         
         return TimeSpan.FromMinutes(Math.Round(rawTime.TotalSeconds)); // round to nearest second
     }
