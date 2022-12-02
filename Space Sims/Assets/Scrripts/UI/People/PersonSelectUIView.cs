@@ -21,8 +21,19 @@ public class PersonSelectUIView : MonoBehaviour
         UpdateHeadAndBody();
         UpdateText();
         UpdateSkills();
+        if(person.PersonMonoBehaviour != null)
+        {
+            person.PersonMonoBehaviour.SetOutline(true);
+        }
     }
 
+    private void OnDisable()
+    {
+        if (SelectedPerson.PersonMonoBehaviour != null)
+        {
+            SelectedPerson.PersonMonoBehaviour.SetOutline(false);
+        }
+    }
 
 
 

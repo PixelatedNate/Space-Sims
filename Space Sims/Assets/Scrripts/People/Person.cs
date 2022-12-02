@@ -217,33 +217,24 @@ public class Person : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
-      //  TempSelected.SetActive(true);
-        UIManager.Instance.DisplayPerson(_personInfo);
-        SelectOutline.sprite = PersonInfo.Body;
-        SelectOutline.gameObject.SetActive(true);
-        SelectOutline.sharedMaterial.SetTexture("Cloths", PersonInfo.Clothes.texture);
-        SelectOutline.sharedMaterial.SetTexture("Hair", PersonInfo.Hair.texture);
-        SelectOutline.sharedMaterial.SetTexture("Head", PersonInfo.Head.texture);
-    
+        UIManager.Instance.DisplayPerson(_personInfo);     
+    }
 
-        /*
-        Material[] bodayMaterials = new Material[2];
-        Material[] hairMaterials = new Material[2];
-        Material[] headMaterials = new Material[2];
+    public void SetOutline(bool value)
+    {
 
-        bodayMaterials[0] = BodyRender.material;
-        hairMaterials[0] =  HairRender.material;
-        headMaterials[0] =  HeadRender.material;
-
-
-        bodayMaterials[1] = MaterialFinder.GetOutlineResourceMaterial();
-        hairMaterials[1]  = MaterialFinder.GetOutlineResourceMaterial();
-        headMaterials[1]  = MaterialFinder.GetOutlineResourceMaterial();
-
-        BodyRender.materials = bodayMaterials;
-        HairRender.materials = hairMaterials;
-        HeadRender.materials = headMaterials;
-        */
+        if (value)
+        {
+            SelectOutline.sprite = PersonInfo.Body;
+            SelectOutline.gameObject.SetActive(true);
+            SelectOutline.sharedMaterial.SetTexture("Cloths", PersonInfo.Clothes.texture);
+            SelectOutline.sharedMaterial.SetTexture("Hair", PersonInfo.Hair.texture);
+            SelectOutline.sharedMaterial.SetTexture("Head", PersonInfo.Head.texture);
+        }
+        else
+        {
+            SelectOutline.gameObject.SetActive(false);
+        }
     }
 
     public bool OnHold()
@@ -274,7 +265,7 @@ public class Person : MonoBehaviour, IInteractables
 
     public void OnDeselect()
     {
-        SelectOutline.gameObject.SetActive(false);
+        SetOutline(false);
     }
     #endregion
 }
