@@ -25,6 +25,10 @@ public class Person : MonoBehaviour, IInteractables
     [SerializeField]
     private SpriteRenderer ClothesRender;
 
+
+    [SerializeField]
+    private SpriteRenderer SelectOutline;
+
     private PersonInfo _personInfo = null;
     public PersonInfo PersonInfo { get { return _personInfo; } }
 
@@ -209,8 +213,33 @@ public class Person : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
-        TempSelected.SetActive(true);
+      //  TempSelected.SetActive(true);
         UIManager.Instance.DisplayPerson(_personInfo);
+        SelectOutline.sprite = PersonInfo.Body;
+        SelectOutline.gameObject.SetActive(true);
+        SelectOutline.sharedMaterial.SetTexture("Cloths", PersonInfo.Clothes.texture);
+        SelectOutline.sharedMaterial.SetTexture("Hair", PersonInfo.Hair.texture);
+        SelectOutline.sharedMaterial.SetTexture("Head", PersonInfo.Head.texture);
+    
+
+        /*
+        Material[] bodayMaterials = new Material[2];
+        Material[] hairMaterials = new Material[2];
+        Material[] headMaterials = new Material[2];
+
+        bodayMaterials[0] = BodyRender.material;
+        hairMaterials[0] =  HairRender.material;
+        headMaterials[0] =  HeadRender.material;
+
+
+        bodayMaterials[1] = MaterialFinder.GetOutlineResourceMaterial();
+        hairMaterials[1]  = MaterialFinder.GetOutlineResourceMaterial();
+        headMaterials[1]  = MaterialFinder.GetOutlineResourceMaterial();
+
+        BodyRender.materials = bodayMaterials;
+        HairRender.materials = hairMaterials;
+        HeadRender.materials = headMaterials;
+        */
     }
 
     public bool OnHold()
@@ -241,7 +270,7 @@ public class Person : MonoBehaviour, IInteractables
 
     public void OnDeselect()
     {
-        TempSelected.SetActive(false);
+        SelectOutline.gameObject.SetActive(false);
     }
     #endregion
 }

@@ -24,10 +24,11 @@ public class Planet : MonoBehaviour, IInteractables
     public Quest[] Quests { get { return _quests; } }
 
 
+    private Material _orignalMaterial;
 
     public void OnDeselect()
     {
-
+        GetComponent<SpriteRenderer>().material = _orignalMaterial;
     }
 
     public bool OnHold()
@@ -43,6 +44,8 @@ public class Planet : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         UIManager.Instance.DisplayPlanet(this);
+        _orignalMaterial = GetComponent<SpriteRenderer>().material;
+        GetComponent<SpriteRenderer>().material = MaterialFinder.GetOutlineResourceMaterial();
     }
 
     // Start is called before the first frame update
