@@ -186,7 +186,7 @@ public class Person : MonoBehaviour, IInteractables
     {
         if (IsBeingHeld)
         {
-            float yOffset = -1.5f;
+            float yOffset = -0.5f;
 
             Vector3 mousePointOnWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePointOnWorld.z = 0;
