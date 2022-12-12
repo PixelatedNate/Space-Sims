@@ -227,9 +227,9 @@ public class Person : MonoBehaviour, IInteractables
         {
             SelectOutline.sprite = PersonInfo.Body;
             SelectOutline.gameObject.SetActive(true);
-            SelectOutline.sharedMaterial.SetTexture("Cloths", PersonInfo.Clothes.texture);
-            SelectOutline.sharedMaterial.SetTexture("Hair", PersonInfo.Hair.texture);
-            SelectOutline.sharedMaterial.SetTexture("Head", PersonInfo.Head.texture);
+            SelectOutline.sharedMaterial.SetTexture("_Head", PersonInfo.Head.texture);
+            SelectOutline.sharedMaterial.SetTexture("_Cloths", PersonInfo.Clothes.texture);
+            SelectOutline.sharedMaterial.SetTexture("_Hair", PersonInfo.Hair.texture);
         }
         else
         {
