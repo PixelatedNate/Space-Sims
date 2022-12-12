@@ -19,6 +19,15 @@ public class QuestView : MonoBehaviour
     Button startBtn;
 
     [SerializeField]
+    Image buttonImge;
+
+    [SerializeField]
+    Sprite ReadyButtonImg;
+    [SerializeField]
+    Sprite UnreadyButtonImg;
+
+
+    [SerializeField]
     PageSwiper pageSwiper;
 
     private List<QuestRequimentBoxView> QuestRequimentBoxViews = new List<QuestRequimentBoxView>();
@@ -56,6 +65,7 @@ public class QuestView : MonoBehaviour
             TimeLeft.text = "Completed";
             ProgressBar.localScale = new Vector3(1, 1, 1);
         }
+        SetButton();
         pageSwiper.setFirstPage();
     }
 
@@ -134,8 +144,27 @@ public class QuestView : MonoBehaviour
         SelectedQuestRequiment.SetPerson(newPersonInfo, questSelected);
         SelectedQuestRequiment.DeselectRequimentBox();
         SelectedQuestRequiment = null;
-        UIManager.Instance.OpenQuestListView();              
+        UIManager.Instance.OpenQuestListView();
+
+        SetButton();
     }
+
+
+
+
+    public void SetButton()
+    {
+        if(questSelected.requiments.Ismet(questSelected.PeopleAssgined.ToArray()))
+        {
+            buttonImge.sprite = ReadyButtonImg;
+        }
+        else
+        {
+            buttonImge.sprite = UnreadyButtonImg;
+        }
+    }
+
+
 
 
 
