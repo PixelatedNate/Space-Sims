@@ -23,8 +23,8 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     void Start()
     {
-        UpdateItem();
         TimeTickSystem.OnTick += OnTick;
+        UpdateItem();
     }
 
 
