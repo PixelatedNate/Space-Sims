@@ -12,8 +12,8 @@ public static class NavigationManager
     public static float UniversSpeedModifyer = 0.25f; 
 
     public static Planet CurrentPlanet { get; set; }
-
-    private static Planet TargetPlanet { get; set; }
+    public static Planet TargetPlanet { get; set; }
+    public static Planet PreviousPlanet { get; set; }
 
     public static bool NavigateToTargetPlanet(Planet planet)
     {
@@ -23,6 +23,7 @@ public static class NavigationManager
         }
         BackgroundManager.Instance.setBackgroundToInTransit();
         DateTime ariveralTime = DateTime.Now.Add(CalcualteTravleTime(planet));
+        PreviousPlanet = CurrentPlanet;
         CurrentPlanet = null;
         TargetPlanet = planet;
         InNavigation = true;
@@ -32,6 +33,27 @@ public static class NavigationManager
         // start timer
         return true;
 
+    }
+
+
+    public static Vector2 GetPositionRelativeToJourny()
+    {
+        if(!InNavigation)
+        {
+            Debug.LogWarning("Trying to get Posittion Relative To Journy when no journy is in progress");
+            return Vector2.zero;
+        }
+        else
+        {
+            float percentage = 1 - (float)_navTimer.PercentaceTravled/100;
+
+
+            Debug.Log(percentage);
+            Vector2 CurrentPositoin = Vector2.Lerp(PreviousPlanet.transform.position, TargetPlanet.transform.position,percentage);
+            return CurrentPositoin;
+            //float currentDistence = totalDistence 
+
+        }
     }
 
     private static void ArriveAtPlanet()

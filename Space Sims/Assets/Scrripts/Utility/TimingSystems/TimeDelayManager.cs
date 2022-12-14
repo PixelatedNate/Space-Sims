@@ -13,11 +13,16 @@ public class TimeDelayManager : MonoBehaviour
         public TimeSpan RemainingDuration { get { return CalculateRemainingDuration(); } }
         public bool IsPause { get; set; } = false;
 
+        public double PercentaceTravled { get { return CalculatePercent(); } }
 
         private DateTime pauseTimeStart;
 
+        private double CalculatePercent()
+        {
+         return RemainingDuration.TotalSeconds/(TotalDuration.TotalSeconds / 100);
+        }
 
-        public TimeSpan CalculateRemainingDuration()
+        private TimeSpan CalculateRemainingDuration()
         {
             if(!IsPause)
             {

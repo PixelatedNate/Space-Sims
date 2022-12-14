@@ -12,9 +12,8 @@ public class Planet : MonoBehaviour, IInteractables
     [SerializeField]
     Quest[] _quests;
 
-
     [SerializeField]
-    private bool IsPlayerShipPresent;
+    private bool IsStartPlanet;
 
     [SerializeField]
     private Sprite _background;
@@ -51,11 +50,14 @@ public class Planet : MonoBehaviour, IInteractables
     // Start is called before the first frame update
     void Start()
     {
-        PlanetSprite = GetComponent<SpriteRenderer>().sprite;
-        if(IsPlayerShipPresent)
+        if(IsStartPlanet)
         {
-            NavigationManager.CurrentPlanet = this;
+            if(NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
+            {
+                NavigationManager.CurrentPlanet = this;
+            }
         }
+        PlanetSprite = GetComponent<SpriteRenderer>().sprite;
     }
 
     // Update is called once per frame
