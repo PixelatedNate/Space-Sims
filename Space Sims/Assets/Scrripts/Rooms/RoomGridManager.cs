@@ -113,17 +113,21 @@ public class RoomGridManager : MonoBehaviour
 
         if(roomType == RoomType.CrewQuaters)
         {
-            newRoomScript.setWallColor(Color.blue);
+            newRoomScript.setWallColor(Color.white);
         }
         else if(roomType == RoomType.QuestRoom)
         {
-            newRoomScript.setWallColor(Color.cyan);
+            newRoomScript.setWallColor(Color.magenta);
         }
         else if(roomType == RoomType.Food)
         {
             newRoomScript.setWallColor(Color.green);
         }
         else if(roomType == RoomType.Fuel)
+        {
+            newRoomScript.setWallColor(Color.blue);
+        }
+        else if(roomType == RoomType.Minerals)
         {
             newRoomScript.setWallColor(Color.red);
         }
