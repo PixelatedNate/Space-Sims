@@ -9,9 +9,6 @@ public class GlobalStats : MonoBehaviour
     [SerializeField]
     Quest[] QuesttestsForMenu;
 
-
-    public Planet CurrentPlanet;
-
     public static GlobalStats Instance;
 
     private Dictionary<Person, GameResources> PersonDeltaResources { get; set; } = new Dictionary<Person, GameResources>();

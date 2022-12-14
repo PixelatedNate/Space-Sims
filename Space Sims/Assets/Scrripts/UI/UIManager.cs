@@ -1,5 +1,6 @@
 using RDG;
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -191,28 +192,62 @@ public class UIManager : MonoBehaviour
     {
         if (!IsNavigation)
         {
+
+            StartCoroutine("LoadNavigationCorotine");
+            return true;
+            /*
             DeselectAll();
             MainLight = GameObject.FindGameObjectWithTag("MainLight");
             MainCamera = Camera.main.gameObject;
-            MainCamera.SetActive(false);
             MainLight.SetActive(false);
             SceneManager.LoadScene("Navigation", LoadSceneMode.Additive);
+            
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Navigation"));
+            //MainCamera.SetActive(false);
             IsNavigation = true;
             return true;
+            */
         }
         return false;
     }
 
-
-    public bool LoadMainShipView()
+    IEnumerator LoadNavigationCorotine()
     {
-        if (IsNavigation)
+        if (!IsNavigation)
         {
             DeselectAll();
-            SceneManager.UnloadSceneAsync("Navigation");
-            MainCamera.SetActive(true);
-            MainLight.SetActive(true);
-            IsNavigation = false;
+            MainLight = GameObject.FindGameObjectWithTag("MainLight");
+            MainCamera = Camera.main.gameObject;
+            MainLight.SetActive(false);
+            SceneManager.LoadScene("Navigation", LoadSceneMode.Additive);
+
+            yield return new WaitUntil(() => SceneManager.GetSceneByName("Navigation") != null);
+
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Navigation"));
+            MainCamera.SetActive(false);
+            IsNavigation = true;     
+        }
+    }
+
+    IEnumerator LoadMainShipViewCorotine()
+    {
+        DeselectAll();
+        SceneManager.UnloadSceneAsync("Navigation");
+        SceneManager.SetActiveScene(SceneManager.GetSceneByName("SampleScene"));
+        yield return new WaitUntil(() => SceneManager.sceneCount == 1);
+        MainCamera.SetActive(true);
+        MainLight.SetActive(true);
+        IsNavigation = false;
+    }
+    
+
+
+
+    public bool LoadMainShipView()
+    { 
+        if (IsNavigation)
+        {
+            StartCoroutine("LoadMainShipViewCorotine");
             return true;
         }
         return false;

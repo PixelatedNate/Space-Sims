@@ -78,50 +78,62 @@ public class GameResources
     }
     public static bool operator >(GameResources a, GameResources b)
     {
-        return ((a.Fuel > b.Fuel) &&
+        return (
+                (a.Fuel > b.Fuel) &&
                 (a.Food > b.Food) &&
                 (a.Minerals > b.Minerals) &&
-                (a.Premimum > b.Premimum));
+                (a.Premimum > b.Premimum)
+                );
     }
 
     public static bool operator <(GameResources a, GameResources b)
     {
-        return ((a.Fuel < b.Fuel) &&
+        return (
+                (a.Fuel < b.Fuel) &&
                 (a.Food < b.Food) &&
                 (a.Minerals < b.Minerals) &&
-                 (a.Premimum < b.Premimum));
+                (a.Premimum < b.Premimum)
+                );
     }
 
     public static bool operator ==(GameResources a, GameResources b)
     {
-        return ((a.Fuel == b.Fuel) &&
+        return (
+                (a.Fuel == b.Fuel) &&
                 (a.Food == b.Food) &&
                 (a.Minerals == b.Minerals) &&
-                 (a.Premimum == b.Premimum));
+                 (a.Premimum == b.Premimum)
+                 );
     }
 
     public static bool operator !=(GameResources a, GameResources b)
     {
-        return ((a.Fuel != b.Fuel) &&
+        return (
+                (a.Fuel != b.Fuel) &&
                 (a.Food != b.Food) &&
                 (a.Minerals != b.Minerals) &&
-                 (a.Premimum != b.Premimum));
+                (a.Premimum != b.Premimum)
+                );
     }
 
 
     public static bool operator <=(GameResources a, GameResources b)
     {
-        return ((a.Fuel == b.Fuel) || (a.Fuel < b.Fuel) &&
-           (a.Food == b.Food) || (a.Food < b.Food) &&
-           (a.Minerals == b.Minerals) || (a.Minerals < b.Minerals) &&
-            (a.Premimum == b.Premimum) || (a.Premimum < b.Premimum));
+        return (
+           ((a.Fuel == b.Fuel) || (a.Fuel < b.Fuel)) &&
+           ((a.Food == b.Food) || (a.Food < b.Food)) &&
+           ((a.Minerals == b.Minerals) || (a.Minerals < b.Minerals)) &&
+           ((a.Premimum == b.Premimum) || (a.Premimum < b.Premimum))
+           );
     }
     public static bool operator >=(GameResources a, GameResources b)
     {
-        return ((a.Fuel == b.Fuel) || (a.Fuel > b.Fuel) &&
-           (a.Food == b.Food) || (a.Food > b.Food) &&
-           (a.Minerals == b.Minerals) || (a.Minerals > b.Minerals) &&
-            (a.Premimum == b.Premimum) || (a.Premimum > b.Premimum));
+        return (
+            ((a.Fuel == b.Fuel) || (a.Fuel > b.Fuel)) &&
+            ((a.Food == b.Food) || (a.Food > b.Food)) &&
+            ((a.Minerals == b.Minerals) || (a.Minerals > b.Minerals)) &&
+            ((a.Premimum == b.Premimum) || (a.Premimum > b.Premimum))
+            );
     }
     public static GameResources operator *(GameResources a, float b)
     {
