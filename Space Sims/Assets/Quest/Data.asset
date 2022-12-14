@@ -21,11 +21,11 @@ MonoBehaviour:
   Duration: 0.1
   _reward:
     _gameResourcesReward:
-      Fuel: 0
-      Food: 0
-      Minerals: 0
+      Fuel: 100000
+      Food: 100000
+      Minerals: 100000
       Premimum: 0
-    _numberofpeopleReward: 1
+    _numberofpeopleReward: 50
   PeopleAssgined: []
   questStaus: 0
   PossibleEncounters: []
