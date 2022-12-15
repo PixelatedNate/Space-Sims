@@ -12,6 +12,9 @@ public class planetView : MonoBehaviour
     Image PlanetImg;
 
     [SerializeField]
+    Button TravelButton;
+
+    [SerializeField]
     TextMeshProUGUI Name, TravalTime, NumberOfQuest;
 
     public void SetPlanet(Planet planet)
@@ -19,6 +22,16 @@ public class planetView : MonoBehaviour
         SelectedPlanet = planet;
         UpdateText();
         UpdateImage();
+
+        if(NavigationManager.CurrentPlanet == planet)
+        {
+            TravelButton.enabled = false;
+        }
+        else
+        {
+            TravelButton.enabled = true;
+        }
+            
     }
 
     public void TravelToPlanet()

@@ -37,8 +37,15 @@ public static class Icons
             default: throw new Exception("Enum Resources returned No corisponding value");
         }
     }
-    
-   
+
+    public static int GetPersonIconIDForTextMeshPro()
+    {
+        return 7;
+    }
+
+
+
+
 
 
     public static Sprite GetSkillIcon(SkillsList skillEnum)
