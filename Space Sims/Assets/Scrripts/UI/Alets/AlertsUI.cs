@@ -21,6 +21,8 @@ public class AlertsUI : MonoBehaviour
     private GameObject AlertImageUI;
 
 
+    private bool IsOpen { get; set; }
+
     private int GoodAlertCount = 0, PermentAlertCount = 0;
 
     [SerializeField]
@@ -28,13 +30,21 @@ public class AlertsUI : MonoBehaviour
 
     public void OpenAlerts()
     {
-        UIManager.Instance.ClearLeftPanal();
-        uIButton.AlertTabSlideOut();
+        if (!IsOpen)
+        {
+            UIManager.Instance.ClearLeftPanal();
+            uIButton.AlertTabSlideOut();
+            IsOpen = true;
+        }
     }
 
     public void CloseAlerts()
     {
-        uIButton.AlertTabSlideIn();
+        if (IsOpen)
+        {
+            uIButton.AlertTabSlideIn();
+            IsOpen = false;
+        }       
     }
 
     public void AddAlert(Alert alert)
