@@ -46,6 +46,7 @@ public class SoundManager : MonoBehaviour
     {
         _effectsSource.PlayOneShot(clip);
     }
+
     public void PlaySound(Sound sound)
     {
         _effectsSource.PlayOneShot(GetAudioClip(sound));
