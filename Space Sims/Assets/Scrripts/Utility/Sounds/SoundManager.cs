@@ -14,7 +14,16 @@ public class SoundManager : MonoBehaviour
         PanalOpen,
         Error,
         RoomPlaced,
+        QuestCompleted,
     }
+
+
+    public enum VoiceSounds
+    {
+        PickVoiceLines,
+        PutDownVoiceLines,
+    }
+
 
     [Serializable]
     public class SoundAudioClip
@@ -23,9 +32,18 @@ public class SoundManager : MonoBehaviour
         public AudioClip audioClip;
     }
 
+    [Serializable]
+    public class VoiceSoundAudioClip
+    {
+        public VoiceSounds sound;
+        public AudioClip[] audioClips;
+    }
+
     [SerializeField]
     private SoundAudioClip[] _soundAudioClips;
 
+    [SerializeField]
+    private VoiceSoundAudioClip[] _voiceSoundAudioClips;
 
     [SerializeField]
     private AudioSource _effectsSource;
@@ -52,6 +70,40 @@ public class SoundManager : MonoBehaviour
         _effectsSource.PlayOneShot(GetAudioClip(sound));
     }
 
+
+    public void PlaySound(VoiceSounds voiceSound, float pitch)
+    {
+
+        AudioClip[] soundClips = GetVoiceAudioClips(voiceSound);
+
+        int index = UnityEngine.Random.Range(0, soundClips.Length);
+
+        AudioSource customPitchAudioSoruce = gameObject.AddComponent<AudioSource>();
+
+        customPitchAudioSoruce.volume = _effectsSource.volume;
+        customPitchAudioSoruce.pitch = pitch;
+        customPitchAudioSoruce.PlayOneShot(soundClips[index]);
+        StartCoroutine("SoundCleanUp", customPitchAudioSoruce);
+    }
+
+    private AudioClip[] GetVoiceAudioClips(VoiceSounds voiceSound)
+    {
+        foreach (VoiceSoundAudioClip voiceSoundAudioClip in _voiceSoundAudioClips)
+        {
+            if (voiceSoundAudioClip.sound == voiceSound)
+            {
+                return voiceSoundAudioClip.audioClips;
+            }
+        }
+        return null;
+    }
+
+
+    IEnumerator SoundCleanUp(AudioSource audioSource)
+    {
+        yield return new WaitUntil(() => audioSource.isPlaying == false);
+        Destroy(audioSource);
+    }
 
     private AudioClip GetAudioClip(Sound sound)
     {

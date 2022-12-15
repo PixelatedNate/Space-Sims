@@ -157,6 +157,8 @@ public class Quest : ScriptableObject
 
     public void CompleatQuest()
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.QuestCompleted);
+
         //add stuff like reweards for quest compleation
         GlobalStats.Instance.PlayerResources += reward.GameResourcesReward;
 

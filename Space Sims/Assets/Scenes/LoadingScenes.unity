@@ -221,6 +221,19 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: 1aad5550667c26544968bcecec5e01a1, type: 3}
   - sound: 3
     audioClip: {fileID: 8300000, guid: f4897376d1f92e24caf90dcbe34bdfed, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: 2231050b617a7b64fbf2ccaee232fa91, type: 3}
+  _voiceSoundAudioClips:
+  - sound: 0
+    audioClips:
+    - {fileID: 8300000, guid: d11532329e4bf4a4780d95e36e234028, type: 3}
+    - {fileID: 8300000, guid: 9d825a03f796de04f8e0c87e7ccc4838, type: 3}
+    - {fileID: 8300000, guid: f364e4e0b548ade43bf5fd8f54dfbfe1, type: 3}
+  - sound: 1
+    audioClips:
+    - {fileID: 8300000, guid: 04956820a52655a43ab3edd93f930845, type: 3}
+    - {fileID: 8300000, guid: d08d0b37d85fc5e49a606d97b20220bd, type: 3}
+    - {fileID: 8300000, guid: d68f40aafaa169b409f13397f0741d13, type: 3}
   _effectsSource: {fileID: 637088676}
 --- !u!1 &230940813
 GameObject:
