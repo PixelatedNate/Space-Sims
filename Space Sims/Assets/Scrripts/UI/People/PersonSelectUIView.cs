@@ -99,7 +99,7 @@ public class PersonSelectUIView : MonoBehaviour
         {
             if (i < SelectedPerson.skills.GetSkill(skill))
             {
-                skillDots.GetChild(i).GetComponent<Image>().color = Color.red;
+                skillDots.GetChild(i).GetComponent<Image>().color = SkillColourMap.GetSkillColour(skill);
             }
             else
             {

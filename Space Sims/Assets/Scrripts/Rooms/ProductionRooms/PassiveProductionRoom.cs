@@ -63,6 +63,7 @@ public class PassiveProductionRoom : AbstractRoom
         IntisaliseRoom();
         GlobalStats.Instance.PlyaerRooms.Add(this);
         UpdateRoomStats();
+        setWallColor(SkillColourMap.GetSkillColour(DesiredSkill));
     }
 
     private void SetUpkeepAndOutPut()

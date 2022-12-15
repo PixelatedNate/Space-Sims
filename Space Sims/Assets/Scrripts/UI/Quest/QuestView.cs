@@ -194,14 +194,19 @@ public class QuestView : MonoBehaviour
     {
         Reward.text = null;
         GameResources rewaredResources = questSelected.reward.GameResourcesReward;
-        foreach(ResourcesEnum re in Enum.GetValues(typeof(ResourcesEnum)))
+        foreach (ResourcesEnum re in Enum.GetValues(typeof(ResourcesEnum)))
         {
-            if(rewaredResources.GetResorce(re) != 0)
+            if (rewaredResources.GetResorce(re) != 0)
             {
-                int IconIdex = Icons.GetResourceIDForTextMeshPro(re);
-                Reward.text = Reward.text + "<sprite=" + IconIdex +">" + ": " + rewaredResources.GetResorce(re).ToString() + " <br>";
+                int Index = Icons.GetResourceIDForTextMeshPro(re);
+                Reward.text = Reward.text + "<sprite=" + Index + ">" + ": " + rewaredResources.GetResorce(re).ToString() + " <br>";
             }
         }
+     if(questSelected.reward.NumberOfPeopleReward != 0)
+            {
+                int IconIndex = Icons.GetPersonIconIDForTextMeshPro();
+                Reward.text = Reward.text + "<sprite=" + IconIndex + ">" + ": " + questSelected.reward.NumberOfPeopleReward + " <br>";
+            }
     }
 
 

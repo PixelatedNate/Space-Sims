@@ -17,6 +17,11 @@ public static class NavigationManager
 
     public static bool NavigateToTargetPlanet(Planet planet)
     {
+        if(planet == CurrentPlanet)
+        {
+            Debug.LogWarning("trying to traval to a planet the player is allready at");
+            return false;
+        }
         if(InNavigation)
         {
             return false; // can't navigate to a diffrent palnet when allready in montion
@@ -46,13 +51,8 @@ public static class NavigationManager
         else
         {
             float percentage = 1 - (float)_navTimer.PercentaceTravled/100;
-
-
-            Debug.Log(percentage);
             Vector2 CurrentPositoin = Vector2.Lerp(PreviousPlanet.transform.position, TargetPlanet.transform.position,percentage);
             return CurrentPositoin;
-            //float currentDistence = totalDistence 
-
         }
     }
 
@@ -61,7 +61,6 @@ public static class NavigationManager
         InNavigation = false;
         CurrentPlanet = TargetPlanet;
         TargetPlanet = null;
-        //GlobalStats.Instance.se
         QuestManager.SetAvalibleQuest(CurrentPlanet.Quests);
         BackgroundManager.Instance.setBackground(CurrentPlanet.Background);
     }

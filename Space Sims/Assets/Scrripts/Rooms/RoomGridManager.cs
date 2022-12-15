@@ -110,28 +110,7 @@ public class RoomGridManager : MonoBehaviour
         Vector3 newPos = cellCenter;
         newRoom.transform.position = newPos;
         newRoomScript.RoomPosition = cellPosition;
-
-        if(roomType == RoomType.CrewQuaters)
-        {
-            newRoomScript.setWallColor(Color.white);
-        }
-        else if(roomType == RoomType.QuestRoom)
-        {
-            newRoomScript.setWallColor(Color.magenta);
-        }
-        else if(roomType == RoomType.Food)
-        {
-            newRoomScript.setWallColor(Color.green);
-        }
-        else if(roomType == RoomType.Fuel)
-        {
-            newRoomScript.setWallColor(Color.blue);
-        }
-        else if(roomType == RoomType.Minerals)
-        {
-            newRoomScript.setWallColor(Color.red);
-        }
-
+       
         AddRoomToPos(cellPosition, newRoomScript);
         for(int x = 1; x < newRoomScript.Size.x; x++)
         {
