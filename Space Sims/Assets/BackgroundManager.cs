@@ -15,6 +15,11 @@ public class BackgroundManager : MonoBehaviour
     [SerializeField]
     private Sprite _inTransitBackground;
 
+    [SerializeField]
+    private Material TravalingBackgroundMaterial;
+    [SerializeField]
+    private Material RandomBackGroundNoise;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -31,11 +36,13 @@ public class BackgroundManager : MonoBehaviour
     public void setBackground(Sprite newBackground)
     {
         _backgroundImage.sprite = newBackground;
+        _backgroundImage.material = RandomBackGroundNoise;
     }
 
     public void setBackgroundToInTransit()
     {
         _backgroundImage.sprite = _inTransitBackground;
+        _backgroundImage.material = TravalingBackgroundMaterial;
     }
 
 }

@@ -49,7 +49,8 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     private Tilemap _floorTileMap;
     [SerializeField]
     private Tilemap _WallTileMap;
-
+    [SerializeField]
+    private Tilemap _Shipedges;
     public Tilemap PathFindingTileMap { get { return _floorTileMap; } }
 
     protected bool isRoomActive { get; set; } = false;
@@ -222,9 +223,107 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         }
 
         Vector3Int tilePosToChangeWithAddedXYoffset = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
-
-            _WallTileMap.SetTile(tilePosToChangeWithAddedXYoffset + offset, ConectingTile);
+    
+        _WallTileMap.SetTile(tilePosToChangeWithAddedXYoffset + offset, ConectingTile);
     }
+
+    public void UpdateEdgeTiles()
+    {
+        // have to offest as tilemaps are not starting 0,0 bottom left (I know it sucks but it sucks even more to fix it)
+        Vector3Int offset = new Vector3Int(4, -5, 0);
+        Vector3 gridSize = RoomGridManager.Instance.roomGridSize;
+        int hight = (int)gridSize.y+1;
+        int width = (int)gridSize.x+1;
+        Vector3Int[] AdjacentRooms = RoomGridManager.Instance.GetAdjacentGridCells(RoomPosition);
+        foreach (Vector3Int room in AdjacentRooms)
+        {
+            if (RoomGridManager.Instance.GetRoomAtPosition(room) != null)
+            {
+                Vector3Int diffrence = RoomPosition - room;
+                if (diffrence.x == -1)
+                {
+                    if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.down) != null)
+                    {
+                        _Shipedges.SetTile(new Vector3Int(width-1,0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerLeft));
+                    }
+                    else
+                    {
+                        _Shipedges.SetTile(new Vector3Int(width, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.down));
+                    }
+                    if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.up) != null)
+                    {
+                        _Shipedges.SetTile(new Vector3Int(width-1, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerRightDown));
+                    }
+                    else
+                    {
+                        _Shipedges.SetTile(new Vector3Int(width, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.Up));
+                    }
+                }
+                if (diffrence.x == 1)
+                {
+                    if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.down) != null)
+                    {
+                        _Shipedges.SetTile(new Vector3Int(1, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerRight));
+                    }
+                    else
+                    {
+                        _Shipedges.SetTile(new Vector3Int(0, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.down));
+                    }
+
+                    if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.up) != null)
+                    {
+                        _Shipedges.SetTile(new Vector3Int(1, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerLeftDown));
+                    }
+                    else
+                    {
+                        _Shipedges.SetTile(new Vector3Int(0, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.Up));
+                    }
+                }
+                if (diffrence.y == 1)
+                {
+                    if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.left) != null)
+                    {
+                        _Shipedges.SetTile(new Vector3Int(0, 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerRightDown));
+                    }
+                    else
+                    {
+                        _Shipedges.SetTile(new Vector3Int(0, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.left));
+                    }
+
+                    if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.right) != null)
+                    {
+                        _Shipedges.SetTile(new Vector3Int(width, 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerLeftDown));
+                    }
+                    else
+                    {
+                        _Shipedges.SetTile(new Vector3Int(width, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.right));
+                    }
+                }
+                if (diffrence.y == -1)
+                {
+                    if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.left) != null)
+                    {
+                        _Shipedges.SetTile(new Vector3Int(0, hight-1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerLeft));
+                    }
+                    else
+                    {
+                        _Shipedges.SetTile(new Vector3Int(0, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.left));
+                    }
+                    if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.right) != null)
+                    {
+                        _Shipedges.SetTile(new Vector3Int(width, hight - 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerRight));
+                    }
+                    else
+                    {
+                        _Shipedges.SetTile(new Vector3Int(width, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.right));
+                    }
+                }
+            }
+        }
+    }
+                    
+    
+    
 
 
     private void AbleToSkipRoom()
@@ -258,6 +357,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         AlertManager.Instance.SendAlert(new Alert("Room Built","Room " + _roomName + " has been built", OpenRoomUIandFocusRoom, Alert.AlertPrority.low));
         UpdateRoomStats();
     }
+
 
 
     public void setWallColor(Color color)
@@ -322,4 +422,5 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void OnHoldRelease() { }
 
     #endregion
+
 }

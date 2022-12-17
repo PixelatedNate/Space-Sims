@@ -13,6 +13,8 @@ public class RoomGridManager : MonoBehaviour
     private GameObject _buildRoomTemplate;
     private Grid roomGrid { get; set; }
 
+    private List<GameObject> ExteralShipParts = new List<GameObject>();
+
     public Vector3 roomGridSize { get { return roomGrid.cellSize; } }
 
     Dictionary<Vector3Int, AbstractRoom> RoomList { get; set; } = new Dictionary<Vector3Int, AbstractRoom>();
@@ -20,6 +22,16 @@ public class RoomGridManager : MonoBehaviour
     Dictionary<Vector3Int, GameObject> BuildCellList { get; set; } = new Dictionary<Vector3Int, GameObject>();
 
     private bool ShowBuildRoom { get; set; } = false;
+
+    
+    [SerializeField]
+    GameObject EnginePrefabe;
+    [SerializeField]
+    GameObject CockPit;
+    [SerializeField]
+    GameObject UpWing;
+    [SerializeField]
+    GameObject DownWing;
 
     void Awake()
     {
@@ -63,6 +75,19 @@ public class RoomGridManager : MonoBehaviour
             return RoomList[cellPosition];
         }
     }
+
+    public AbstractRoom GetRoomAtPosition(Vector3Int position)
+    {
+        if (!RoomList.ContainsKey(position))
+        {
+            return null;
+        }
+        else
+        {
+            return RoomList[position];
+        }
+    }
+
 
 
     /// <summary>
@@ -120,6 +145,7 @@ public class RoomGridManager : MonoBehaviour
         {
            AddRoomToPos(cellPosition + new Vector3Int(0, y, 0), newRoomScript);
         }
+        UpdateEdgeTiles();
         return newRoomScript;
     }
 
@@ -183,6 +209,50 @@ public class RoomGridManager : MonoBehaviour
 
         return adjacentcells;
     }
+
+    private void UpdateEdgeTiles()
+    {
+        RemoveAllExternalParts();
+        foreach (var room in RoomList)
+        {
+            room.Value.UpdateEdgeTiles();
+            if(GetRoomAtPosition(room.Key + Vector3Int.left) == null)
+            {
+                Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.left);
+                var engineGO = GameObject.Instantiate(EnginePrefabe,SpawnPoint,Quaternion.identity);
+                ExteralShipParts.Add(engineGO);
+            }
+            if(GetRoomAtPosition(room.Key + Vector3Int.right) == null)
+            {
+                Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.right);
+                var cockPitGO = GameObject.Instantiate(CockPit,SpawnPoint,Quaternion.identity);
+                ExteralShipParts.Add(cockPitGO);
+            }
+            if(GetRoomAtPosition(room.Key + Vector3Int.up) == null)
+            {
+                Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.up);
+                var upWing = GameObject.Instantiate(UpWing,SpawnPoint,Quaternion.identity);
+                ExteralShipParts.Add(upWing);
+            }
+         if(GetRoomAtPosition(room.Key + Vector3Int.down) == null)
+            {
+                Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.down);
+                var downWing = GameObject.Instantiate(DownWing,SpawnPoint,Quaternion.identity);
+                ExteralShipParts.Add(downWing);
+            }
+
+        }
+    }
+
+    private void RemoveAllExternalParts()
+    {
+        foreach(GameObject part in ExteralShipParts)
+        {
+            Destroy(part);
+        }
+        ExteralShipParts.Clear();
+    }
+
 
     #endregion
 
