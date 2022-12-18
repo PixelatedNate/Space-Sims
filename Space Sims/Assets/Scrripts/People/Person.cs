@@ -170,7 +170,7 @@ public class Person : MonoBehaviour, IInteractables
         }
     }
 
-    private void ReRenderPerson()
+    public void ReRenderPerson()
     {
         BodyRender.sprite = PersonInfo.Body;
         BodyRender.material.color = PersonInfo.SkinColor;
@@ -217,7 +217,7 @@ public class Person : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
-        UIManager.Instance.DisplayPerson(_personInfo);     
+        UIManager.Instance.OpenPersonView(_personInfo);     
     }
 
     public void SetOutline(bool value)

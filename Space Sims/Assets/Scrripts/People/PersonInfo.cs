@@ -292,6 +292,16 @@ public class PersonInfo
         //      Debug.Log("I have produced a " + Gender.ToString() + " " + _race);
     }
 
+    public void SetCloths(Sprite cloths)
+    {
+        _clothes = cloths;
+        if(PersonMonoBehaviour != null)
+        {
+            PersonMonoBehaviour.ReRenderPerson();
+        }
+    }
+
+
 
     private Sprite GetRandomSpriteFromPath(string path)
     {

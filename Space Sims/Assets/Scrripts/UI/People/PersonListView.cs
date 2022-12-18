@@ -128,7 +128,7 @@ public class PersonListView : MonoBehaviour
             }
             else
             {
-                personViewItem.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.DisplayPerson(personInfo));
+                personViewItem.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.OpenPersonView(personInfo));
             }
         }
     }
