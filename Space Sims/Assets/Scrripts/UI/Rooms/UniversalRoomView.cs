@@ -42,6 +42,10 @@ public class UniversalRoomView : MonoBehaviour
         UpdateView();
     }
 
+    public void UpgradeRoom()
+    {
+        SelectedRoom.UpgradeRoom();
+    }
 
     public void SkipBuild()
     {

@@ -35,6 +35,8 @@ public static class NavigationManager
         _navTimer = new TimeDelayManager.Timer(ariveralTime, ArriveAtPlanet);
         TimeDelayManager.Instance.AddTimer(_navTimer);
         UIManager.Instance.TrackNavTimer(_navTimer,TargetPlanet);
+        UIManager.Instance.ToggleNavigation();
+        ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, false);
         // start timer
         return true;
 
@@ -63,6 +65,7 @@ public static class NavigationManager
         TargetPlanet = null;
         QuestManager.SetAvalibleQuest(CurrentPlanet.Quests);
         BackgroundManager.Instance.setBackground(CurrentPlanet.Background);
+        ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, true);
     }
 
 

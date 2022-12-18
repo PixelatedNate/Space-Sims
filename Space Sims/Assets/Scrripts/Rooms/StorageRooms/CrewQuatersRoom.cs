@@ -12,7 +12,7 @@ public class CrewQuatersRoom : AbstractRoom
     private Image _overlayBackGroundImg;
     public override void IntisaliseRoom()
     {
-        GlobalStats.Instance.MaxPeople += RoomStat.PoepleChange;
+       // GlobalStats.Instance.MaxPeople += RoomStat.PoepleChange;
     }
 
     void Start()

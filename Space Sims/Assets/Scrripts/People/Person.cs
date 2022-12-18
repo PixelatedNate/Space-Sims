@@ -233,7 +233,10 @@ public class Person : MonoBehaviour, IInteractables
         }
         else
         {
-            SelectOutline.gameObject.SetActive(false);
+            if (SelectOutline != null)
+            {
+                SelectOutline.gameObject.SetActive(false);
+            }
         }
     }
 

@@ -12,7 +12,7 @@ public static class SkillColourMap
         if(skill == SkillsList.Dexterity) { return Color.green; }
         if(skill == SkillsList.Charisma) { return Color.cyan; }
         if(skill == SkillsList.Intelligence) { return Color.blue; }
-        if(skill == SkillsList.Wisdom) { return Color.grey; }
+        if(skill == SkillsList.Wisdom) { return Color.yellow; }
 
         throw new System.Exception("Skill dose not have a assoiated colour");
 

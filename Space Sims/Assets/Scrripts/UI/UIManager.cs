@@ -259,6 +259,18 @@ public class UIManager : MonoBehaviour
         navTimerUI.gameObject.SetActive(true);
         navTimerUI.TrackTimer(timer, targetPlanet);
     }
-    
 
-}   
+
+    #region EnableAndDisableButtonsAndElements
+
+    public void DisableNavigationButton()
+    {
+
+    }
+
+
+    #endregion
+
+
+
+}

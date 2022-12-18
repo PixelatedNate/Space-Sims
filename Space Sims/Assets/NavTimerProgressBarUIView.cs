@@ -19,7 +19,6 @@ public class NavTimerProgressBarUIView : MonoBehaviour
 
     public void onClick()
     {
-        UIManager.Instance.LoadNavigation();
         UIManager.Instance.OpenPlanetView(_planet);
     }
 

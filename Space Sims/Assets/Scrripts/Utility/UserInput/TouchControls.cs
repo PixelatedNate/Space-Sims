@@ -91,6 +91,7 @@ public class TouchControls : MonoBehaviour
                 {
                     if (!IsPointerOverUIElement())
                     {
+                        IInteractables currentSelectedObject = SelectedObject;
                         if (SelectedObject != null)
                         {
                             {
@@ -98,14 +99,20 @@ public class TouchControls : MonoBehaviour
                                 SelectedObject = null;
                             }
                         }
-
                         var selected = GetInteractableUnderMouse(ActiveLayer);
                         if (selected != null)
                         {
                             if (ClickDuration < SHORT_CLICK_END)
                             {
-                                SelectedObject = selected;
-                                selected.OnSelect();
+                                if (selected == currentSelectedObject)
+                                {
+                                    UIManager.Instance.DeselectAll();
+                                }
+                                else
+                                {
+                                    SelectedObject = selected;
+                                    selected.OnSelect();
+                                }
                             }
                         }
                         if (SelectedObject == null)

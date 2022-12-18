@@ -76,15 +76,25 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         BuildOrUpgradeRoom(0);
     }
 
-    public void UpgradeRoom(int level)
+    public void UpgradeRoom()
     {
         if (IsUnderConstruction || Level == _roomlevels.Length - 1)
         {
             throw new Exception("Trying to uprage a room which is max level or allready under construction");
         }
-        BuildOrUpgradeRoom(++level);
-    }
 
+        if (_roomlevels[Level + 1].BuildCost < GlobalStats.Instance.PlayerResources)
+        {
+            GlobalStats.Instance.PlayerResources -= _roomlevels[Level + 1].BuildCost;
+            BuildOrUpgradeRoom(Level++);
+            UIManager.Instance.DisplayRoomView(this);
+            //SoundManager.Instance.PlaySound(SoundManager.Sound.);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
+        }
+    }
     public abstract void IntisaliseRoom();
 
     public virtual bool AddWorker(Person person)
@@ -356,9 +366,15 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         }
         AlertManager.Instance.SendAlert(new Alert("Room Built","Room " + _roomName + " has been built", OpenRoomUIandFocusRoom, Alert.AlertPrority.low));
         UpdateRoomStats();
+
+
+        // code related to crew room but here as could later be relevent to other rooms
+        if(Level != 0)
+        {
+           int deltaMaxPeople = RoomStat.PoepleChange - _roomlevels[Level - 1].PoepleChange;
+            GlobalStats.Instance.MaxPeople += deltaMaxPeople;
+        }
     }
-
-
 
     public void setWallColor(Color color)
     {
