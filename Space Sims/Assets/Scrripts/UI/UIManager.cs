@@ -42,14 +42,14 @@ public class UIManager : MonoBehaviour
         topBar.SetValues(currentResources, deltaResources, numberofPoeple, maxPeople, maxResources);
     }
 
-    public void DisplayPerson(PersonInfo personInfo)
+    public void OpenPersonView(PersonInfo personInfo)
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPerson(personInfo);
         alertsUI.CloseAlerts();
     }
 
-    public void DisplayPlanet(Planet planet)
+    public void OpenPlanetView(Planet planet)
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPlanet(planet);

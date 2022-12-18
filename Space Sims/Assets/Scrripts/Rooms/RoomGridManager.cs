@@ -222,19 +222,24 @@ public class RoomGridManager : MonoBehaviour
                 var engineGO = GameObject.Instantiate(EnginePrefabe,SpawnPoint,Quaternion.identity);
                 ExteralShipParts.Add(engineGO);
             }
-            if(GetRoomAtPosition(room.Key + Vector3Int.right) == null)
+            if(GetRoomAtPosition(room.Key + Vector3Int.right) == null
+                && GetRoomAtPosition(room.Key + (Vector3Int.right*2) ) == null)
             {
                 Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.right);
                 var cockPitGO = GameObject.Instantiate(CockPit,SpawnPoint,Quaternion.identity);
                 ExteralShipParts.Add(cockPitGO);
             }
-            if(GetRoomAtPosition(room.Key + Vector3Int.up) == null)
+            if(GetRoomAtPosition(room.Key + Vector3Int.up) == null 
+                && GetRoomAtPosition(room.Key + Vector3Int.up + Vector3Int.left) == null
+                && GetRoomAtPosition(room.Key + Vector3Int.up + Vector3Int.right) == null)
             {
                 Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.up);
                 var upWing = GameObject.Instantiate(UpWing,SpawnPoint,Quaternion.identity);
                 ExteralShipParts.Add(upWing);
             }
-         if(GetRoomAtPosition(room.Key + Vector3Int.down) == null)
+         if(GetRoomAtPosition(room.Key + Vector3Int.down) == null 
+                && GetRoomAtPosition(room.Key + Vector3Int.down + Vector3Int.right) == null
+                && GetRoomAtPosition(room.Key + Vector3Int.down + Vector3Int.left) == null)
             {
                 Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.down);
                 var downWing = GameObject.Instantiate(DownWing,SpawnPoint,Quaternion.identity);

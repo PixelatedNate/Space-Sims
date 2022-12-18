@@ -15,6 +15,9 @@ public class PersonSelectUIView : MonoBehaviour
     [SerializeField]
     Transform Strength, Dexterity, Intelligence, Wisdom, Charisma;
 
+    [SerializeField]
+    ClothSelectionMenuUIView _clothSelectionMenuUIView;
+
     public void SetPerson(PersonInfo person)
     {
         SelectedPerson = person;
@@ -106,7 +109,23 @@ public class PersonSelectUIView : MonoBehaviour
                 skillDots.GetChild(i).GetComponent<Image>().color = Color.gray;
             }
         }
+    }
 
+
+
+
+
+    public void ToggleCosmeticChageView()
+    {
+        if (_clothSelectionMenuUIView.gameObject.activeInHierarchy)
+        {
+            _clothSelectionMenuUIView.gameObject.SetActive(false);
+        }
+        else
+        {
+            _clothSelectionMenuUIView.gameObject.SetActive(true);
+            _clothSelectionMenuUIView.PopulateList(SelectedPerson);
+        }
     }
 
 

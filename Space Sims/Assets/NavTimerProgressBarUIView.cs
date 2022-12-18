@@ -20,7 +20,7 @@ public class NavTimerProgressBarUIView : MonoBehaviour
     public void onClick()
     {
         UIManager.Instance.LoadNavigation();
-        UIManager.Instance.DisplayPlanet(_planet);
+        UIManager.Instance.OpenPlanetView(_planet);
     }
 
     public void TrackTimer(TimeDelayManager.Timer timer, Planet targetPlanet)

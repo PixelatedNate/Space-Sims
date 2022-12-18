@@ -42,7 +42,7 @@ public class Planet : MonoBehaviour, IInteractables
 
     public void OnSelect()
     {
-        UIManager.Instance.DisplayPlanet(this);
+        UIManager.Instance.OpenPlanetView(this);
         _orignalMaterial = GetComponent<SpriteRenderer>().material;
         GetComponent<SpriteRenderer>().material = MaterialFinder.GetOutlineResourceMaterial();
     }
