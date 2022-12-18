@@ -1257,7 +1257,7 @@ MonoBehaviour:
       Minerals: 100
       Premimum: 0
     _maxWorkers: 4
-    _buildTime: 0
+    _buildTime: 1
     _outPut:
       Fuel: 0
       Food: 0
@@ -1277,7 +1277,7 @@ MonoBehaviour:
   - _buildCost:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 100
       Premimum: 0
     _maxWorkers: 0
     _buildTime: 0
@@ -1296,7 +1296,30 @@ MonoBehaviour:
       Food: 0
       Minerals: 0
       Premimum: 0
-    _peopleChange: 0
+    _peopleChange: 6
+  - _buildCost:
+      Fuel: 0
+      Food: 0
+      Minerals: 1000
+      Premimum: 0
+    _maxWorkers: 0
+    _buildTime: 3
+    _outPut:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _Upkeep:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _storage:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    _peopleChange: 15
   _roomName: CrewQuaters
   _roomDiscription: Room
   _roomType: 3

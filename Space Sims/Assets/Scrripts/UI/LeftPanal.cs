@@ -132,10 +132,12 @@ public class LeftPanal : MonoBehaviour
 
     private void DisableActiveView(bool disableQuestView)
     {   
+        //ClothUIMenu.gameObject.SetActive(false);
         if(disableQuestView)
         {
             DisableQuestView();
         }
+
         activeLSideView = null;
         if (ActiveView != null)
         {
