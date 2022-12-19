@@ -435,6 +435,7 @@ GameObject:
   - component: {fileID: 230940816}
   - component: {fileID: 230940815}
   - component: {fileID: 230940814}
+  - component: {fileID: 230940820}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -576,6 +577,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &230940820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 230940813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb3470c5b17282147a0237feeb838ff2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PopUpTextPrefab: {fileID: 7492106740034609945, guid: f60e6d09bccbcc443b9f136e06731e5b, type: 3}
 --- !u!1001 &232614121
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -995,6 +1009,10 @@ PrefabInstance:
     - target: {fileID: 7146469149921939212, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: m_Name
       value: ScreenCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146469149921939212, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
+      propertyPath: m_TagString
+      value: MainCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 7146469149921939214, guid: 1e5db13726f19124b847d16fc5b8b28d, type: 3}
       propertyPath: m_MatchWidthOrHeight
