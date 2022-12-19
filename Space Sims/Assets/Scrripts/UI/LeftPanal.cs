@@ -158,8 +158,7 @@ public class LeftPanal : MonoBehaviour
         activeLSideView = null;
         if (ActiveView != null)
         {
-            ActiveView.SetActive(false);
-            uiButton.LeftTabSlideIn();
+            uiButton.LeftTabSlideIn(ActiveView);
         }
     }
 
