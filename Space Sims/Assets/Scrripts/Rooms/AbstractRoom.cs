@@ -13,7 +13,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public Vector2Int Size { get { return _size; } }
 
     [SerializeField]
-    protected GameObject _roomLight, _overlay;
+    protected GameObject _roomLight, _roomDarkFilter ,_overlay;
     
     [SerializeField]
     private GameObject _tempSelect, _underConstructionBanner;
@@ -158,7 +158,8 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void setRoomActive(bool active)
     {
         if (active == isRoomActive) { return; }
-        _roomLight.SetActive(active);
+        //_roomLight.SetActive(active);
+        _roomDarkFilter.SetActive(!active);
         isRoomActive = active;
         UpdateRoomStats();
     }

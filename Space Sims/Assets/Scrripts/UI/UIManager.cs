@@ -224,11 +224,9 @@ public class UIManager : MonoBehaviour
             DeselectAll();
             MainLight = GameObject.FindGameObjectWithTag("MainLight");
             MainCamera = Camera.main.gameObject;
-            MainLight.SetActive(false);
             SceneManager.LoadScene("Navigation", LoadSceneMode.Additive);
-
             yield return new WaitUntil(() => SceneManager.GetSceneByName("Navigation") != null);
-
+            MainLight.SetActive(false);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("Navigation"));
             MainCamera.SetActive(false);
             IsNavigation = true;     
