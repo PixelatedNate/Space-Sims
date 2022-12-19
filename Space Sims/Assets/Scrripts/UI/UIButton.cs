@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -57,7 +58,7 @@ public class UIButton : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundManager.Sound.PanalOpen);
         leftTabAnim.SetBool("Open", true);
     }
-    public void LeftTabSlideIn()
+    public void LeftTabSlideIn(GameObject activeView = null)
     {
         if (leftTabAnim.GetBool("Open"))
         {
@@ -65,7 +66,6 @@ public class UIButton : MonoBehaviour
             leftTabAnim.SetBool("Open", false);
         }
     }
-
     public void AlertTabSlideOut()
     {
         SoundManager.Instance.PlaySound(SoundManager.Sound.PanalOpen);
