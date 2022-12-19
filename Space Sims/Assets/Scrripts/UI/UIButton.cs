@@ -59,8 +59,11 @@ public class UIButton : MonoBehaviour
     }
     public void LeftTabSlideIn()
     {
-        SoundManager.Instance.PlaySound(SoundManager.Sound.PanalOpen);
-        leftTabAnim.SetBool("Open", false);
+        if (leftTabAnim.GetBool("Open"))
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.PanalOpen);
+            leftTabAnim.SetBool("Open", false);
+        }
     }
 
     public void AlertTabSlideOut()
