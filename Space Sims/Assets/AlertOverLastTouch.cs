@@ -36,7 +36,6 @@ public class AlertOverLastTouch : MonoBehaviour
 
     public void PlayAlertOverLastTouch(string message, Color colour)
     {
-        Debug.Log("here");
         GameObject alert = GameObject.Instantiate(PopUpTextPrefab, LastTouchPosition, Quaternion.identity, MainCanvers);
         alert.GetComponent<TextMeshProUGUI>().text = message;
         alert.GetComponent<TextMeshProUGUI>().color = colour; 
