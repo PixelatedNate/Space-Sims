@@ -57,7 +57,6 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         float percentage = (eventData.pressPosition.x - eventData.position.x) / PageWidth;
-        Debug.Log(percentage);
         TouchControls.EnableCameramovemntAndSelection(true);
         if(Mathf.Abs(percentage) >= percentThreshold)
         {

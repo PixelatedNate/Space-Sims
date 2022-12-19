@@ -122,7 +122,6 @@ public class Person : MonoBehaviour, IInteractables
         {
             if (this.Equals(TouchControls.GetInteractableUnderMouse()))
             {
-                Debug.Log("true");
                 IsMouseOver = true;
                 return;
             }
