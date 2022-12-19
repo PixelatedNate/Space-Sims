@@ -35,6 +35,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     AlertsUI alertsUI;
 
+    [SerializeField]
+    SettingsUIMenu settingsMenu;
+
     private GameObject MainLight { get; set; }
     private GameObject MainCamera { get; set; }
     public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
@@ -128,6 +131,22 @@ public class UIManager : MonoBehaviour
         alertsUI.CloseAlerts();
     }
 
+
+    public void OpenSettingsMenu()
+    {
+
+        if (settingsMenu.gameObject.activeInHierarchy)
+        {
+            settingsMenu.gameObject.SetActive(false);
+        }
+        else
+        {
+            settingsMenu.gameObject.SetActive(true);
+        }
+        DeselectAll();
+
+    }
+
      public void ClearLeftPanal()
     {
         leftPanal.ClearAllView();
@@ -192,21 +211,8 @@ public class UIManager : MonoBehaviour
     {
         if (!IsNavigation)
         {
-
             StartCoroutine("LoadNavigationCorotine");
             return true;
-            /*
-            DeselectAll();
-            MainLight = GameObject.FindGameObjectWithTag("MainLight");
-            MainCamera = Camera.main.gameObject;
-            MainLight.SetActive(false);
-            SceneManager.LoadScene("Navigation", LoadSceneMode.Additive);
-            
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("Navigation"));
-            //MainCamera.SetActive(false);
-            IsNavigation = true;
-            return true;
-            */
         }
         return false;
     }

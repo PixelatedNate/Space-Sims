@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
         Error,
         RoomPlaced,
         QuestCompleted,
+        MetalFootSteps,
     }
 
 
@@ -70,6 +71,21 @@ public class SoundManager : MonoBehaviour
         _effectsSource.PlayOneShot(GetAudioClip(sound));
     }
 
+    public void PlaySoundIfVisableAndZoomedIn(Sound sound, Vector3 position, float MinzoomValue, float voloume = 1)
+    {
+        Vector3 viewPortPoint = Camera.main.WorldToViewportPoint(position);
+        if (Camera.main.orthographicSize <= MinzoomValue)
+        {
+            if (Mathf.Abs(viewPortPoint.x) < 1 && Mathf.Abs(viewPortPoint.y) < 1)
+            {
+                _effectsSource.volume = voloume;
+                _effectsSource.PlayOneShot(GetAudioClip(sound));
+            }
+        }
+    }
+
+
+
 
     public void PlaySound(VoiceSounds voiceSound, float pitch)
     {
@@ -99,7 +115,7 @@ public class SoundManager : MonoBehaviour
     }
 
 
-    IEnumerator SoundCleanUp(AudioSource audioSource)
+   IEnumerator SoundCleanUp(AudioSource audioSource)
     {
         yield return new WaitUntil(() => audioSource.isPlaying == false);
         Destroy(audioSource);
