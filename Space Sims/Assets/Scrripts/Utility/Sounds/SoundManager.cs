@@ -78,14 +78,10 @@ public class SoundManager : MonoBehaviour
         {
             if (Mathf.Abs(viewPortPoint.x) < 1 && Mathf.Abs(viewPortPoint.y) < 1)
             {
-                _effectsSource.volume = voloume;
-                _effectsSource.PlayOneShot(GetAudioClip(sound));
+                _effectsSource.PlayOneShot(GetAudioClip(sound),voloume);
             }
         }
     }
-
-
-
 
     public void PlaySound(VoiceSounds voiceSound, float pitch)
     {

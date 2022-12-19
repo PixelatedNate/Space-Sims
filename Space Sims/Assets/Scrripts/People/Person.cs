@@ -36,8 +36,7 @@ public class Person : MonoBehaviour, IInteractables
     [SerializeField]
     GameObject TempSelected;
 
-    [SerializeField]
-    bool IsBeingHeld = false;
+    public bool IsBeingHeld { get; private set; } = false;
 
 
     LinkedList<Vector3Int> MovePath;
