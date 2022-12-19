@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 using RDG;
+using System.Collections;
 
 public class Person : MonoBehaviour, IInteractables
 {
@@ -136,7 +137,7 @@ public class Person : MonoBehaviour, IInteractables
             return;
         }
         if (MovePath != null && MovePath.Count > 0)
-        {
+        {           
             Vector3 worldSpacePosition = PersonInfo.Room.PathFindingTileMap.GetCellCenterWorld(MovePath.First.Value);
             Vector3 dir = (worldSpacePosition - transform.position).normalized;
             transform.Translate(dir * 1 * Time.deltaTime);
@@ -155,7 +156,6 @@ public class Person : MonoBehaviour, IInteractables
         }
 
     }
-
 
     private void OnDestroy()
     {
