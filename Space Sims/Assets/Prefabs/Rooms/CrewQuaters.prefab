@@ -1249,8 +1249,9 @@ MonoBehaviour:
   _roomLight: {fileID: 0}
   _roomDarkFilter: {fileID: 6018632899319573560}
   _overlay: {fileID: 17034892118300070}
-  _tempSelect: {fileID: 951870052059611334}
   _underConstructionBanner: {fileID: 2783010349800312805}
+  _selectedRoomMaterial: {fileID: -876546973899608171, guid: f818531de199c66468fc20a0ad311cfc, type: 3}
+  _defultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   _roomlevels:
   - _buildCost:
       Fuel: 0
@@ -3261,7 +3262,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

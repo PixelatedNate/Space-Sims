@@ -8505,8 +8505,9 @@ MonoBehaviour:
   _roomLight: {fileID: 0}
   _roomDarkFilter: {fileID: 0}
   _overlay: {fileID: 5203940146908171486}
-  _tempSelect: {fileID: 4985808172514810302}
   _underConstructionBanner: {fileID: 7970144225871386269}
+  _selectedRoomMaterial: {fileID: -876546973899608171, guid: f818531de199c66468fc20a0ad311cfc, type: 3}
+  _defultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   _roomlevels:
   - _buildCost:
       Fuel: 0
