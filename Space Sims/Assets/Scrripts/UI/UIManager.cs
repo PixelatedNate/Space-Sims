@@ -27,6 +27,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     LeftPanal leftPanal;
     [SerializeField]
+    RightPanal rightPanal;
+    [SerializeField]
     TopBar topBar;
     [SerializeField]
     NavTimerProgressBarUIView navTimerUI;
@@ -38,6 +40,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     SettingsUIMenu settingsMenu;
 
+    private bool IsRightPanalOpen { get; set; }
+
     private GameObject MainLight { get; set; }
     private GameObject MainCamera { get; set; }
     public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
@@ -45,11 +49,15 @@ public class UIManager : MonoBehaviour
         topBar.SetValues(currentResources, deltaResources, numberofPoeple, maxPeople, maxResources);
     }
 
+
+    #region LeftPanal
+
     public void OpenPersonView(PersonInfo personInfo)
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPerson(personInfo);
         alertsUI.CloseAlerts();
+        rightPanal.ClearAllView();
     }
 
     public void OpenPlanetView(Planet planet)
@@ -104,8 +112,6 @@ public class UIManager : MonoBehaviour
         alertsUI.CloseAlerts();
     }
 
-
-
     public void OpenPersonListView()
     {
         if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.PersonList)
@@ -132,6 +138,46 @@ public class UIManager : MonoBehaviour
     }
 
 
+    #endregion
+
+
+    #region RightPanal
+
+    public void OpenQuestView(Quest quest)
+    {
+            rightPanal.OpenQuest(quest);
+            IsRightPanalOpen = true;
+    }
+
+    public void OpenPersonCosmetics(PersonInfo personInfo)
+    {
+        if (rightPanal.activeRSideView == RightPanal.ActiveRSideView.Cosmetic)
+        {
+            ClearRightPanal();
+        }
+        else
+        {
+            rightPanal.OpenPersonCosmetic(personInfo);
+            IsRightPanalOpen = true;
+        }
+    }
+    public void OpenPersonBackStory(PersonInfo personInfo)
+    {
+        if (rightPanal.activeRSideView == RightPanal.ActiveRSideView.BackStory)
+        {
+            ClearRightPanal();
+        }
+        else
+        {
+            rightPanal.OpenPersonBackStory(personInfo);
+            IsRightPanalOpen = true;
+        }
+    }
+
+
+
+    #endregion
+
     public void OpenSettingsMenu()
     {
 
@@ -151,6 +197,12 @@ public class UIManager : MonoBehaviour
     {
         leftPanal.ClearAllView();
     }  
+     public void ClearRightPanal()
+    {
+        IsRightPanalOpen = false;
+        rightPanal.ClearAllView();
+    }  
+
      public void ClearAlertsPanal()
     {
         alertsUI.CloseAlerts();
@@ -158,7 +210,10 @@ public class UIManager : MonoBehaviour
 
     public void DeselectAll()
     {
+
+        CameraManager.Instance.ClearFollow();
         leftPanal.ClearAllView();
+        rightPanal.ClearAllView();
         alertsUI.CloseAlerts();
     }
 
@@ -244,9 +299,6 @@ public class UIManager : MonoBehaviour
         IsNavigation = false;
     }
     
-
-
-
     public bool LoadMainShipView()
     { 
         if (IsNavigation)
@@ -263,18 +315,5 @@ public class UIManager : MonoBehaviour
         navTimerUI.gameObject.SetActive(true);
         navTimerUI.TrackTimer(timer, targetPlanet);
     }
-
-
-    #region EnableAndDisableButtonsAndElements
-
-    public void DisableNavigationButton()
-    {
-
-    }
-
-
-    #endregion
-
-
 
 }

@@ -22,6 +22,7 @@ public class LeftPanal : MonoBehaviour
 
     [SerializeField]
     QuestView questView;
+
     [SerializeField]
     ClothSelectionMenuUIView ClothUIMenu;
 
@@ -36,6 +37,8 @@ public class LeftPanal : MonoBehaviour
         RoomView,
         PersonList,
     }
+
+
 
     public ActiveLSideView? activeLSideView { get; set; } = null;
 
@@ -153,12 +156,11 @@ public class LeftPanal : MonoBehaviour
 
     public void ClearAllView()
     {
-        questView.gameObject.SetActive(false);
         ClothUIMenu.gameObject.SetActive(false);
         activeLSideView = null;
         if (ActiveView != null)
         {
-            uiButton.LeftTabSlideIn(ActiveView);
+            uiButton.LeftTabSlideIn();
         }
     }
 

@@ -141,8 +141,10 @@ public class PersonInfo
     const string FemaleNamePath = "TextData/Names/People/female";
 
 
+    const string JobNamePath = "TextData/Names/Jobs";
+    const string PlanetNamePath = "TextData/Names/Planets/PlanetNames";
 
-
+    const string HobbiesNamePath = "TextData/Hobbies";
 
 
     //  [SerializeField]
@@ -152,6 +154,12 @@ public class PersonInfo
     // [SerializeField]
     private Gender _gender;
     public Gender Gender { get { return _gender; } }
+
+
+    public String HomePlanet;
+    public String Job;
+    public String[] Likes;
+    public String[] Dislikes;
 
     private Race _race;
     public Race Race { get { return _race; } }
@@ -202,7 +210,7 @@ public class PersonInfo
         _gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female;
         _race = (Race)Random.Range(0, 10);
         _age = (short)Random.Range(20, 80);
-        RandomizeName();
+        RandomizeTextValues();
         RandomizeAppereance();
         RandomizeSkills();
     }
@@ -245,15 +253,42 @@ public class PersonInfo
 
     }
 
-    private void RandomizeName()
+    private void RandomizeTextValues()
     {
         string namePath = (Gender == Gender.Male) ? MaleNamePath : FemaleNamePath;
-        TextAsset rawNamesFile = Resources.Load<TextAsset>(namePath);
-        string[] names = rawNamesFile.text.Split('\n');
-        int index = Random.Range(0, names.Length);
-        Name = names[index];
+        Name = PickFromListAtRandom(namePath)[0];
+        HomePlanet = PickFromListAtRandom(PlanetNamePath)[0];
+        Job = PickFromListAtRandom(JobNamePath)[0];
+
+        int numberofHobbies = Random.Range(1, 3);
+        int numberofDislikeHobbies = Random.Range(1, 3);
+
+        Likes = PickFromListAtRandom(HobbiesNamePath, numberofHobbies);
+        Dislikes = PickFromListAtRandom(HobbiesNamePath, numberofDislikeHobbies);
+    }
+
+    private String[] PickFromListAtRandom(String path, int number = 1)
+    {
+        string[] selectedValues = new string[number];
+        TextAsset rawFile = Resources.Load<TextAsset>(path);
+        string[] values = rawFile.text.Split('\n');
+
+        int[] selectedValuesIndex = new int[number];
+        for (int i = 0; i < number; i++)
+        {
+            int index;
+            do
+            {
+                index = Random.Range(0, values.Length);
+           } while(Array.Exists(selectedValuesIndex, element => element == index));
+
+            selectedValues[i] = values[index];
+        }
+        return selectedValues;
 
     }
+
+
 
     private void RandomizeSkills()
     {
