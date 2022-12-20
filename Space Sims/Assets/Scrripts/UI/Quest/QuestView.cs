@@ -33,7 +33,7 @@ public class QuestView : MonoBehaviour
     private List<QuestRequimentBoxView> QuestRequimentBoxViews = new List<QuestRequimentBoxView>();
     private QuestRequimentBoxView SelectedQuestRequiment;
 
-    private Quest questSelected;
+    public Quest questSelected { get; private set; }
     // Start is called before the first frame update
    
     [SerializeField]

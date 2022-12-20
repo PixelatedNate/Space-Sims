@@ -127,7 +127,6 @@ public class TouchControls : MonoBehaviour
         }
         if (Input.GetMouseButtonDown(0))
         {
-            CameraManager.Instance.ClearFollow();
             TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         }
         if (Input.touchCount == 2)
@@ -152,6 +151,7 @@ public class TouchControls : MonoBehaviour
             if (!Paning && Mathf.Abs(dir.magnitude) > PANDEADZONE && EventSystem.current.currentSelectedGameObject == null)
             {
                 Paning = true;
+                CameraManager.Instance.ClearFollow();
                 if (EventSystem.current.currentSelectedGameObject != null)
                 {
                     _button = EventSystem.current.currentSelectedGameObject.GetComponent<Button>();

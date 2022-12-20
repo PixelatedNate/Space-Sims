@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 {
-    private Vector3 pageLocation;
-    private Vector3 page1Location;
+    private Vector3 localPageLocation;
+    private Vector3 localPage1Location;
     public float percentThreshold = 0.2f;
     public float easing = 0.5f;
 
@@ -29,38 +29,39 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
     public void setFirstPage()
     {
-        transform.position = page1Location;
-        pageLocation = transform.position;
+        transform.localPosition = localPage1Location;
+        localPageLocation = transform.localPosition;
         page = 1;
         Page1.PageIcon.color = Color.white;
         Page2.PageIcon.color = Color.gray;
     }
 
-    float PageWidth { get { return Page2.page.position.x - Page1.page.position.x; } }
+    float PageWidth { get { return Page2.page.localPosition.x - Page1.page.localPosition.x; } }
 
     public void OnDrag(PointerEventData eventData)
     {
         float difference = eventData.pressPosition.x - eventData.position.x;
-        float xpos = pageLocation.x - difference;
+        float xpos = localPageLocation.x - difference;
         if (page == 2)
         {
-            xpos = Mathf.Clamp(xpos, pageLocation.x - PageWidth, Mathf.Infinity);
+            xpos = Mathf.Clamp(xpos, localPageLocation.x - PageWidth, Mathf.Infinity);
         }
         else if (page == 1)
         { 
-            xpos = Mathf.Clamp(xpos,Mathf.NegativeInfinity,pageLocation.x + PageWidth);
+            xpos = Mathf.Clamp(xpos,Mathf.NegativeInfinity,localPageLocation.x + PageWidth);
         }
-        transform.position = new Vector3(xpos, pageLocation.y, pageLocation.z);
+        transform.localPosition = new Vector3(xpos, localPageLocation.y, localPageLocation.z);
         TouchControls.EnableCameramovemntAndSelection(false);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         float percentage = (eventData.pressPosition.x - eventData.position.x) / PageWidth;
+        Debug.Log(percentage);
         TouchControls.EnableCameramovemntAndSelection(true);
         if(Mathf.Abs(percentage) >= percentThreshold)
         {
-            Vector3 newLocation = pageLocation;
+            Vector3 newLocation = localPageLocation;
             if(percentage < 0 && page != 1)
             {
                 page--;
@@ -75,12 +76,12 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                 Page1.PageIcon.color = Color.gray;
                 Page2.PageIcon.color = Color.white;
             }
-            StartCoroutine(SmoothMove(transform.position, newLocation, easing));
-            pageLocation = newLocation;
+            StartCoroutine(SmoothMove(transform.localPosition, newLocation, easing));
+            localPageLocation = newLocation;
         }
         else
         {
-            StartCoroutine(SmoothMove(transform.position, pageLocation, easing));
+            StartCoroutine(SmoothMove(transform.localPosition, localPageLocation, easing));
         }
     }
 
@@ -91,17 +92,16 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         while (t <= 1.0)
         {
             t += Time.deltaTime / seconds;
-            transform.position = Vector3.Lerp(startPosition, endPos, Mathf.SmoothStep(0f, 1f, t));
+            transform.localPosition = Vector3.Lerp(startPosition, endPos, Mathf.SmoothStep(0f, 1f, t));
             yield return null;
         }
     }
 
-
     // Start is called before the first frame update
     private void Awake()
     {
-        page1Location = transform.position;
-        pageLocation = transform.position;   
+        localPage1Location = transform.localPosition;
+        localPageLocation = transform.localPosition;   
     }
 
     // Update is called once per frame

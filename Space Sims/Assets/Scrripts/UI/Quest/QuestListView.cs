@@ -16,9 +16,6 @@ public class QuestListView : MonoBehaviour
     GameObject QuestListItemTemplate;
 
     [SerializeField]
-    QuestView questView;
-
-    [SerializeField]
     Image availableBtnImg, ActiveBtnImg, CompletedBtmImg;
 
     Quest SelectedQuest;
@@ -91,15 +88,14 @@ public class QuestListView : MonoBehaviour
 
     private void OpenQuest(Quest quest)
     {
-        questView.gameObject.SetActive(true);
-        questView.SelectQuest(quest);
+        UIManager.Instance.OpenQuestView(quest);
         SelectedQuest = quest;
         PopulateList();
     }
 
     private void CloseQuest(Quest quest)
     {
-        questView.gameObject.SetActive(false);
+        UIManager.Instance.ClearRightPanal();
         SelectedQuest = null;
         PopulateList();
     }
