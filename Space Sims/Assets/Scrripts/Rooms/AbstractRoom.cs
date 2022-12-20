@@ -16,7 +16,12 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     protected GameObject _roomLight, _roomDarkFilter ,_overlay;
     
     [SerializeField]
-    private GameObject _tempSelect, _underConstructionBanner;
+    private GameObject _underConstructionBanner;
+
+    
+    [SerializeField]
+    private Material _selectedRoomMaterial, _defultMaterial;
+    
 
     [SerializeField]
     private RoomStats[] _roomlevels;
@@ -417,7 +422,8 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
-        _tempSelect.SetActive(true);
+
+        _WallTileMap.gameObject.GetComponent<TilemapRenderer>().material = _selectedRoomMaterial;
         if (RoomType == RoomType.QuestRoom)
         {
             UIManager.Instance.OpenAvalibalQuestListView();
@@ -431,7 +437,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void OnDeselect()
     {
         _roomCameraPortal.GetComponent<Camera>().gameObject.SetActive(false);
-        _tempSelect.SetActive(false);
+        _WallTileMap.gameObject.GetComponent<TilemapRenderer>().material = _defultMaterial;
     }
 
     public bool OnHold()

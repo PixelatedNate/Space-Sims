@@ -2720,8 +2720,9 @@ MonoBehaviour:
   _roomLight: {fileID: 0}
   _roomDarkFilter: {fileID: 8136683936730334696}
   _overlay: {fileID: 1078184757156557465}
-  _tempSelect: {fileID: 2958880641197198299}
   _underConstructionBanner: {fileID: 5728401972939954615}
+  _selectedRoomMaterial: {fileID: -876546973899608171, guid: f818531de199c66468fc20a0ad311cfc, type: 3}
+  _defultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   _roomlevels:
   - _buildCost:
       Fuel: 0
