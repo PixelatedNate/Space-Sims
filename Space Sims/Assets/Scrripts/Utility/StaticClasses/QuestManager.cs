@@ -21,6 +21,7 @@ public static class QuestManager
         {
             q.UnassginAllPeopople();
             q.questStaus = Quest.Status.Available;
+            q.QuestLog.Clear();
         }
         Quests.AddRange(quests);
     }

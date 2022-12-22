@@ -57,7 +57,15 @@ public class UIManager : MonoBehaviour
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPerson(personInfo);
         alertsUI.CloseAlerts();
-        rightPanal.ClearAllView();
+        if (rightPanal.activeRSideView == RightPanal.ActiveRSideView.BackStory)
+        {
+            rightPanal.OpenPersonBackStory(personInfo);
+        }
+        else
+        {
+            rightPanal.ClearAllView();
+        }
+
     }
 
     public void OpenPlanetView(Planet planet)
@@ -65,6 +73,7 @@ public class UIManager : MonoBehaviour
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPlanet(planet);
         alertsUI.CloseAlerts();
+        rightPanal.ClearAllView();
     }
 
     public void DisplayRoomView(AbstractRoom room)
@@ -72,6 +81,7 @@ public class UIManager : MonoBehaviour
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectRoom(room);
         alertsUI.CloseAlerts();
+        rightPanal.ClearAllView();
     }
 
     public void OpenAvalibalQuestListView()
@@ -98,6 +108,7 @@ public class UIManager : MonoBehaviour
         {
             OpenQuestListView();  
         }
+            rightPanal.ClearAllView();
             alertsUI.CloseAlerts();
     }
     public void OpenQuestListView(Quest.Status status = Quest.Status.Available)
@@ -122,6 +133,7 @@ public class UIManager : MonoBehaviour
         {
             leftPanal.SelectPersonListView();
         }
+        rightPanal.ClearAllView();
         alertsUI.CloseAlerts();
     }
     public void OpenSelectPersonForQuestListView(Action<PersonInfo> OnSelectMethod, Quest quest)
@@ -135,6 +147,7 @@ public class UIManager : MonoBehaviour
     {
         leftPanal.OpenBuildRoomView(roomCellPos);
         alertsUI.CloseAlerts();
+        rightPanal.ClearAllView();
     }
 
 

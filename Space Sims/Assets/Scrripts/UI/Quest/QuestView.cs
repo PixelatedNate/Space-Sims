@@ -26,9 +26,17 @@ public class QuestView : MonoBehaviour
     [SerializeField]
     Sprite UnreadyButtonImg;
 
+    [SerializeField]
+    Transform LogPanal;
+
+    [SerializeField]
+    GameObject LogUIPrefab;
 
     [SerializeField]
     PageSwiper pageSwiper;
+
+
+    private int LogsTotal;
 
     private List<QuestRequimentBoxView> QuestRequimentBoxViews = new List<QuestRequimentBoxView>();
     private QuestRequimentBoxView SelectedQuestRequiment;
@@ -67,6 +75,7 @@ public class QuestView : MonoBehaviour
         }
         SetButton();
         pageSwiper.setFirstPage();
+        setLogs();
     }
 
     public void SetActiveRequimentBoxView(QuestRequimentBoxView selectedQuestRequiment)
@@ -102,6 +111,19 @@ public class QuestView : MonoBehaviour
         }
     }
 
+    public void setLogs()
+    {
+        foreach (Transform child in LogPanal)
+	    {
+	         Destroy(child.gameObject);
+	    }
+        foreach(var log in questSelected.QuestLog)
+        {
+           var LogUI = GameObject.Instantiate(LogUIPrefab,LogPanal);
+           LogUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = log.Discription;
+        }
+        LogsTotal = questSelected.QuestLog.Count;
+    }
 
     private void SelectRequimentBox(QuestRequimentBoxView requimentBox)
     {
@@ -215,6 +237,10 @@ public class QuestView : MonoBehaviour
         if (questSelected.questStaus == Quest.Status.InProgress)
         {
             SetProgressBarAndText();
+            if(LogsTotal != questSelected.QuestLog.Count)
+            {
+                setLogs();
+            }
         }
         else
         {           

@@ -70,9 +70,9 @@ public class Quest : ScriptableObject
     [SerializeField]
     public List<PersonInfo> PeopleAssgined = new List<PersonInfo>();
 
-    List<QuestEncounter> QuestLog;
+    public List<QuestEncounter> QuestLog { get; private set; } = new List<QuestEncounter>();
 
-    public Status questStaus;
+    public Status questStaus { get; set; } = Status.Available;
 
     [SerializeField]
     private QuestEncounter[] PossibleEncounters;
