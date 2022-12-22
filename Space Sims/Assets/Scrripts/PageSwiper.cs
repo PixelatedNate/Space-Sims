@@ -12,11 +12,11 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     public float percentThreshold = 0.2f;
     public float easing = 0.5f;
 
-    [SerializeField]
-    public Pages Page1, Page2;
 
-    public int numPages = 2;
-    public int page = 1;
+    [SerializeField]
+    public Pages[] PagesList;
+
+    public int PageSelected = 0;
 
     [Serializable]
     public class Pages
@@ -31,22 +31,39 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         transform.localPosition = localPage1Location;
         localPageLocation = transform.localPosition;
-        page = 1;
-        Page1.PageIcon.color = Color.white;
-        Page2.PageIcon.color = Color.gray;
+        PageSelected = 0;
+        UpdatePageIcons();
     }
 
-    float PageWidth { get { return Page2.page.localPosition.x - Page1.page.localPosition.x; } }
+
+    public void UpdatePageIcons()
+    { 
+        for (int i = 0; i < PagesList.Length; i++)
+        {
+            if (i == PageSelected)
+            {
+                PagesList[i].PageIcon.color = Color.white;
+            }
+            else
+            {
+                PagesList[i].PageIcon.color = Color.gray;
+            }
+        }
+    }
+
+
+
+    float PageWidth { get { return PagesList[1].page.localPosition.x - PagesList[0].page.localPosition.x; } }
 
     public void OnDrag(PointerEventData eventData)
     {
         float difference = eventData.pressPosition.x - eventData.position.x;
         float xpos = localPageLocation.x - difference;
-        if (page == 2)
+        if (PageSelected == PagesList.Length-1)
         {
             xpos = Mathf.Clamp(xpos, localPageLocation.x - PageWidth, Mathf.Infinity);
         }
-        else if (page == 1)
+        else if (PageSelected == 0)
         { 
             xpos = Mathf.Clamp(xpos,Mathf.NegativeInfinity,localPageLocation.x + PageWidth);
         }
@@ -57,24 +74,21 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnEndDrag(PointerEventData eventData)
     {
         float percentage = (eventData.pressPosition.x - eventData.position.x) / PageWidth;
-        Debug.Log(percentage);
         TouchControls.EnableCameramovemntAndSelection(true);
         if(Mathf.Abs(percentage) >= percentThreshold)
         {
             Vector3 newLocation = localPageLocation;
-            if(percentage < 0 && page != 1)
+            if (percentage < 0 && PageSelected != 0)
             {
-                page--;
+                PageSelected--;
                 newLocation += new Vector3(PageWidth, 0, 0);
-                Page1.PageIcon.color = Color.white;
-                Page2.PageIcon.color = Color.gray;
+                UpdatePageIcons();
             }
-            else if(percentage > 0 && page != 2)
+            else if (percentage > 0 && PageSelected != PagesList.Length-1)
             {
-                page++;
+                PageSelected++;
                 newLocation -= new Vector3(PageWidth, 0, 0);
-                Page1.PageIcon.color = Color.gray;
-                Page2.PageIcon.color = Color.white;
+                UpdatePageIcons();
             }
             StartCoroutine(SmoothMove(transform.localPosition, newLocation, easing));
             localPageLocation = newLocation;
@@ -84,7 +98,6 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
             StartCoroutine(SmoothMove(transform.localPosition, localPageLocation, easing));
         }
     }
-
 
     IEnumerator SmoothMove(Vector3 startPosition, Vector3 endPos, float seconds)
     {

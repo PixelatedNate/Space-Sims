@@ -13,13 +13,16 @@ MonoBehaviour:
   m_Name: Enconter2
   m_EditorClassIdentifier: 
   Name: Qe2
-  Discription: Test 2
+  Discription: was that an earthquake?
   frequancy: 6
   PeopleRequiments:
-    _s1: 0
-    _s2: 0
+    _strength: 2
+    _dexterity: 2
+    _intelligence: 2
+    _wisdom: 2
+    _charisma: 2
   gameResources:
     Fuel: 0
     Food: 0
-    Other1: 0
+    Minerals: 0
     Premimum: 0
