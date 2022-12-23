@@ -17,6 +17,7 @@ public class Person : MonoBehaviour, IInteractables
 
     private Vector3Int[] _tempPathFindingPoints = { new Vector3Int(6, -3, 0), new Vector3Int(6, 1, 0), new Vector3Int(10, 1, 0), new Vector3Int(10, -3) };
 
+
     [SerializeField]
     private SpriteRenderer HeadRender;
     [SerializeField]
@@ -148,12 +149,33 @@ public class Person : MonoBehaviour, IInteractables
         {
             Vector3Int randomPoint;
             Vector3Int personposition = PersonInfo.Room.PathFindingTileMap.WorldToCell(transform.position);
-            int index = Random.Range(0, _tempPathFindingPoints.Length);
-            randomPoint = _tempPathFindingPoints[index];
+            //int index = Random.Range(0, _tempPathFindingPoints.Length);
+            //randomPoint = _tempPathFindingPoints[index];
+            randomPoint = GetRandomPathFindingPoint();
             MovePath = PathFinding.CalculatePath(PersonInfo.Room.PathFindingTileMap, personposition, randomPoint);
         }
-
     }
+
+
+    private Vector3Int GetRandomPathFindingPoint()
+    {
+        //private Vector3Int[] _tempPathFindingPoints = { new Vector3Int(6, -3, 0), new Vector3Int(6, 1, 0), new Vector3Int(10, 1, 0), new Vector3Int(10, -3) };
+
+        int x = 0;
+        int y = 0;
+        if (PersonInfo.Room.RoomType == RoomType.QuestRoom)
+        {
+            x = Random.Range(6, 22);
+            y = Random.Range(-3, 2);
+        }
+        else
+        {
+            x = Random.Range(6, 11);
+            y = Random.Range(-3, 2);
+        }
+        return new Vector3Int(x, y, 0);
+    }
+   
 
     private void OnDestroy()
     {

@@ -91,6 +91,24 @@ public class PathFinding
             adjacentTiles.Add(pos + Vector3Int.down);
         }
 
+        //Diagonals
+        if (tilemap.GetTile(pos + Vector3Int.left + Vector3Int.up) != null)
+        {
+            adjacentTiles.Add(pos + Vector3Int.left + Vector3Int.up);
+        }
+        if (tilemap.GetTile(pos + Vector3Int.left + Vector3Int.down) != null)
+        {
+            adjacentTiles.Add(pos + Vector3Int.down);
+        }
+        if (tilemap.GetTile(pos + Vector3Int.right + Vector3Int.up) != null)
+        {
+            adjacentTiles.Add(pos + Vector3Int.right + Vector3Int.up);
+        }
+        if (tilemap.GetTile(pos + Vector3Int.right + Vector3Int.down) != null)
+        {
+            adjacentTiles.Add(pos + Vector3Int.right + Vector3Int.down);
+        }
+
         return adjacentTiles.ToArray();
 
     }
