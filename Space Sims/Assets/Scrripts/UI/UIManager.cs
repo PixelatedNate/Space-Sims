@@ -299,6 +299,7 @@ public class UIManager : MonoBehaviour
             MainCamera.SetActive(false);
             IsNavigation = true;     
         }
+        TouchControls.DeceletAll();
     }
 
     IEnumerator LoadMainShipViewCorotine()

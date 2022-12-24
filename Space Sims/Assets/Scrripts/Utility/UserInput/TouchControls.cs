@@ -40,7 +40,7 @@ public class TouchControls : MonoBehaviour
     private GameObject FollowObj;
 
 
-    IInteractables SelectedObject = null;
+    private static IInteractables SelectedObject = null;
     bool InteractableIsIsHeld = false;
 
     private int UILayer { get; set; }
@@ -51,6 +51,13 @@ public class TouchControls : MonoBehaviour
 
     [SerializeField]
     private Vector2 maxPanDist;
+
+    static public void DeceletAll()
+    {
+        SelectedObject.OnDeselect();
+        SelectedObject = null;
+    }
+
 
     void Start()
     {
@@ -173,7 +180,6 @@ public class TouchControls : MonoBehaviour
                     InteractableIsIsHeld = selectableHold.OnHold();
                     if (InteractableIsIsHeld)
                     {
-                        UIManager.Instance.DeselectAll();
                         if (SelectedObject != null)
                         {
                             SelectedObject.OnDeselect();

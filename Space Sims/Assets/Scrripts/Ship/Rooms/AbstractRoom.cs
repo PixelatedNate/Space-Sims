@@ -223,26 +223,44 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
         Vector3Int tilePosToChange = Vector3Int.zero;
 
+
+        // for these checks first offset is for room positoin
+        // second offset is for if the room is bigger than a 1x1 size;
+
         if (deltaPos.y == 1)
         {
-            tilePosToChange = new Vector3Int(halfXValue, (int)gridSize.y, 0);
+            tilePosToChange = new Vector3Int(halfXValue, (int)gridSize.y, 0) + offset;
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+            _WallTileMap.SetTile(tilePosToChange + Vector3Int.left, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpLeft));
+            _WallTileMap.SetTile(tilePosToChange + Vector3Int.right, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpRight));
         }
         if (deltaPos.y == -1)
         {
-            tilePosToChange = new Vector3Int(halfXValue, 1, 0);
+            tilePosToChange = new Vector3Int(halfXValue, 1, 0) + offset;
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+            _WallTileMap.SetTile(tilePosToChange + Vector3Int.left, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownLeft));
+            _WallTileMap.SetTile(tilePosToChange + Vector3Int.right, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownRight));
         }
         if (deltaPos.x == 1)
         {
-            tilePosToChange = new Vector3Int((int)gridSize.x, halfYValue, 0);
+            tilePosToChange = new Vector3Int((int)gridSize.x, halfYValue, 0) + offset;
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+            _WallTileMap.SetTile(tilePosToChange + Vector3Int.up, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpRight));
+            _WallTileMap.SetTile(tilePosToChange + Vector3Int.down, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownRight));
         }
         if (deltaPos.x == -1)
         {
-            tilePosToChange = new Vector3Int(1, halfYValue, 0);
+            tilePosToChange = new Vector3Int(1, halfYValue, 0) + offset;
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+            _WallTileMap.SetTile(tilePosToChange + Vector3Int.up, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpLeft));
+            _WallTileMap.SetTile(tilePosToChange + Vector3Int.down, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownLeft));
         }
 
-        Vector3Int tilePosToChangeWithAddedXYoffset = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+        // this offset is for rooms which are more than 1x1 size
+        //Vector3Int tilePosToChangeWithAddedXYoffsetforRoomSize = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
     
-        _WallTileMap.SetTile(tilePosToChangeWithAddedXYoffset + offset, ConectingTile);
+        _WallTileMap.SetTile(tilePosToChange, null);
+        _floorTileMap.SetTile(tilePosToChange, ConectingTile);
     }
 
     public void UpdateEdgeTiles()
@@ -262,78 +280,78 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
                 {
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.down) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(width-1,0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerLeft));
+                        _Shipedges.SetTile(new Vector3Int(width-1,0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeInnerLeft));
                     }
                     else
                     {
-                        _Shipedges.SetTile(new Vector3Int(width, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.down));
+                        _Shipedges.SetTile(new Vector3Int(width, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimdown));
                     }
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.up) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(width-1, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerRightDown));
+                        _Shipedges.SetTile(new Vector3Int(width-1, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimInnerRightDown));
                     }
                     else
                     {
-                        _Shipedges.SetTile(new Vector3Int(width, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.Up));
+                        _Shipedges.SetTile(new Vector3Int(width, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimUp));
                     }
                 }
                 if (diffrence.x == 1)
                 {
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.down) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(1, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerRight));
+                        _Shipedges.SetTile(new Vector3Int(1, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimInnerRight));
                     }
                     else
                     {
-                        _Shipedges.SetTile(new Vector3Int(0, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.down));
+                        _Shipedges.SetTile(new Vector3Int(0, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimdown));
                     }
 
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.up) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(1, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerLeftDown));
+                        _Shipedges.SetTile(new Vector3Int(1, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeInnerLeftDown));
                     }
                     else
                     {
-                        _Shipedges.SetTile(new Vector3Int(0, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.Up));
+                        _Shipedges.SetTile(new Vector3Int(0, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimUp));
                     }
                 }
                 if (diffrence.y == 1)
                 {
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.left) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(0, 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerRightDown));
+                        _Shipedges.SetTile(new Vector3Int(0, 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimInnerRightDown));
                     }
                     else
                     {
-                        _Shipedges.SetTile(new Vector3Int(0, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.left));
+                        _Shipedges.SetTile(new Vector3Int(0, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimLeft));
                     }
 
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.right) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(width, 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerLeftDown));
+                        _Shipedges.SetTile(new Vector3Int(width, 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeInnerLeftDown));
                     }
                     else
                     {
-                        _Shipedges.SetTile(new Vector3Int(width, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.right));
+                        _Shipedges.SetTile(new Vector3Int(width, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimRight));
                     }
                 }
                 if (diffrence.y == -1)
                 {
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.left) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(0, hight-1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerLeft));
+                        _Shipedges.SetTile(new Vector3Int(0, hight-1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeInnerLeft));
                     }
                     else
                     {
-                        _Shipedges.SetTile(new Vector3Int(0, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.left));
+                        _Shipedges.SetTile(new Vector3Int(0, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimLeft));
                     }
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.right) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(width, hight - 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.innerRight));
+                        _Shipedges.SetTile(new Vector3Int(width, hight - 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimInnerRight));
                     }
                     else
                     {
-                        _Shipedges.SetTile(new Vector3Int(width, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TilePosition.right));
+                        _Shipedges.SetTile(new Vector3Int(width, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimRight));
                     }
                 }
             }
@@ -384,14 +402,19 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         }
     }
 
-    public void setWallColor(Color color)
+    public void SetWallColor(Color color)
     {
         //TileBase 
+        Color LowAlphaColour = color;
+
+        ///Color colorModifyer = new Color(0.4f, 0.4f,0.4f,1f);
+
+        LowAlphaColour += new Color(0.6f, 0.6f,0.6f,1f);
          BoundsInt bounds = _WallTileMap.cellBounds;
         foreach (Vector3Int pos in bounds.allPositionsWithin)
         {
             _WallTileMap.SetTileFlags(pos, TileFlags.None);
-            _WallTileMap.SetColor(pos,color);
+            _WallTileMap.SetColor(pos,LowAlphaColour);
         }
     }
 

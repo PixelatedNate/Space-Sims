@@ -7,16 +7,21 @@ public static class TileMapHelper
 
 
 
-    public enum TilePosition
+    public enum TileName
     {
-        Up,
-        down,
-        left,
-        right,
-        innerRight,
-        innerRightDown,
-        innerLeft,
-        innerLeftDown
+        EdgeRimUp,
+        EdgeRimdown,
+        EdgeRimLeft,
+        EdgeRimRight,
+        EdgeRimInnerRight,
+        EdgeRimInnerRightDown,
+        EdgeInnerLeft,
+        EdgeInnerLeftDown,
+
+        ConectingWallDownLeft,
+        ConectingWallDownRight,
+        ConectingWallUpLeft,
+        ConectingWallUpRight
     }
 
     private const string DownMiddle = "ArtWork/Tiles/Ship Outtards - Down Middle";
@@ -29,18 +34,34 @@ public static class TileMapHelper
     private const string innerLeft = "ArtWork/Tiles/Ship Outtards - Inner Left";
     private const string innerLeftDown = "ArtWork/Tiles/Ship Outtards - Inner Left Down";
 
-    public static TileBase GetTile(TilePosition tileEnum)
+
+
+    private const string ConectingWallDownLeft = "ArtWork/Tiles/Ship A (Inner Left Bottom)";
+    private const string ConectingWallDownRight = "ArtWork/Tiles/Ship A (Inner Right Bottom)";
+    private const string ConectingWallUpLeft  = "ArtWork/Tiles/Ship A (Inner Right)";
+    private const string ConectingWallUpRight = "ArtWork/Tiles/Ship A (Inner Left)";
+    
+    
+
+    public static TileBase GetTile(TileName tileEnum)
     {
         switch (tileEnum)
         {
-            case TilePosition.down: return Resources.Load<TileBase>(DownMiddle);
-            case TilePosition.Up: return   Resources.Load<TileBase>(UpMiddle);
-            case TilePosition.left: return Resources.Load<TileBase>(LeftMiddle);
-            case TilePosition.right: return Resources.Load<TileBase>(RightMiddle);
-            case TilePosition.innerRight: return Resources.Load<TileBase>(innerRight);
-            case TilePosition.innerLeft: return Resources.Load<TileBase>(innerLeft);
-            case TilePosition.innerRightDown: return Resources.Load<TileBase>(innerRightDown);
-            case TilePosition.innerLeftDown: return Resources.Load<TileBase>(innerLeftDown);
+            case TileName.EdgeRimdown: return Resources.Load<TileBase>(DownMiddle);
+            case TileName.EdgeRimUp: return   Resources.Load<TileBase>(UpMiddle);
+            case TileName.EdgeRimLeft: return Resources.Load<TileBase>(LeftMiddle);
+            case TileName.EdgeRimRight: return Resources.Load<TileBase>(RightMiddle);
+            case TileName.EdgeRimInnerRight: return Resources.Load<TileBase>(innerRight);
+            case TileName.EdgeInnerLeft: return Resources.Load<TileBase>(innerLeft);
+            case TileName.EdgeRimInnerRightDown: return Resources.Load<TileBase>(innerRightDown);
+            case TileName.EdgeInnerLeftDown: return Resources.Load<TileBase>(innerLeftDown);
+
+            case TileName.ConectingWallDownLeft: return Resources.Load<TileBase>(ConectingWallDownLeft);
+            case TileName.ConectingWallDownRight: return Resources.Load<TileBase>(ConectingWallDownRight);
+            case TileName.ConectingWallUpLeft: return Resources.Load<TileBase>(ConectingWallUpLeft);
+            case TileName.ConectingWallUpRight: return Resources.Load<TileBase>(ConectingWallUpRight);
+            
+
          default: throw new Exception("Enum TileRPosition returned No corisponding value");
         }
     }

@@ -266,6 +266,7 @@ public class Person : MonoBehaviour, IInteractables
         {
             throw new Exception("Cannot start a hold on someone who is allready being held");
         }
+        UIManager.Instance.OpenPersonView(PersonInfo);
         SoundManager.Instance.PlaySound(SoundManager.VoiceSounds.PickVoiceLines,PersonVoice.GetPitch(PersonInfo));
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_HEAVY_CLICK);
         RoomUnderMouseOnDrag = null;
@@ -275,6 +276,7 @@ public class Person : MonoBehaviour, IInteractables
 
     public void OnHoldRelease()
     {
+        UIManager.Instance.DeselectAll();
         SoundManager.Instance.PlaySound(SoundManager.VoiceSounds.PutDownVoiceLines,PersonVoice.GetPitch(PersonInfo));
         AbstractRoom room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
         AssginRoomToPerson(room);
@@ -284,6 +286,7 @@ public class Person : MonoBehaviour, IInteractables
         }
         RoomUnderMouseOnDrag = null;
         IsBeingHeld = false;
+        SetOutline(false);
     }
 
     public void OnDeselect()
