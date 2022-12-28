@@ -868,7 +868,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minZoom: 1
   MaxZoom: 17
-  zoomSpeed: 1
+  zoomSpeed: 2
   SHORT_CLICK_END: 0.5
   HOLD_TIME_START: 0.5
   ClickDuration: 0

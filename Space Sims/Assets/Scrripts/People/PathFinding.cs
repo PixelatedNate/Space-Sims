@@ -34,7 +34,7 @@ public class PathFinding
             Vector3Int? currentPositionNullable = GetNodeKeyWithLowestScore(graph);
             if (GetNodeKeyWithLowestScore(graph) == null)
             {
-                Debug.LogWarning("No path was found when parth finding");
+                Debug.LogWarning("No path was found when parth finding Target was: " + target);
                 return null;
             }
             Vector3Int currentPosition = (Vector3Int)currentPositionNullable;
@@ -46,7 +46,7 @@ public class PathFinding
                 {
                     float newScore = 1; // can be modifyed for account for move speed such as walking on mud or rood e.t.c (not really relevent in our game so all tiles are equal)
                     float hValue = Mathf.Abs(Vector3Int.Distance(adjacentTile, target));
-                    graph.Add(adjacentTile, new Node() { Visted = false, PreviousPoint = currentPosition, H = hValue, Score = newScore }); // h will need to be chagned if diganol movemnt is added
+                    graph.Add(adjacentTile, new Node() { Visted = false, PreviousPoint = currentPosition, H = hValue, Score = newScore }); 
                 }
 
                 if (currentPosition == target)

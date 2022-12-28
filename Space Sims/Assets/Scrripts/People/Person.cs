@@ -165,7 +165,7 @@ public class Person : MonoBehaviour, IInteractables
         int y = 0;
         if (PersonInfo.Room.RoomType == RoomType.QuestRoom)
         {
-            x = Random.Range(6, 22);
+            x = Random.Range(6, 18);
             y = Random.Range(-3, 2);
         }
         else

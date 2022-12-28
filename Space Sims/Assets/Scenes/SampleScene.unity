@@ -224,6 +224,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8397279783908294931, guid: 8482f84e619bc244ea10360e9f962320, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397279783908294931, guid: 8482f84e619bc244ea10360e9f962320, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.421
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397279783908294931, guid: 8482f84e619bc244ea10360e9f962320, type: 3}
       propertyPath: m_ReferenceResolution.x
       value: 3040
       objectReference: {fileID: 0}
@@ -648,7 +656,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minZoom: 1
   MaxZoom: 30
-  zoomSpeed: 1
+  zoomSpeed: 2
   SHORT_CLICK_END: 0.5
   HOLD_TIME_START: 0.6
   ClickDuration: 0

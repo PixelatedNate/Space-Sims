@@ -13,7 +13,7 @@ public class TouchControls : MonoBehaviour
     [SerializeField]
     private float MaxZoom = 8;
     [SerializeField]
-    private float zoomSpeed = 1;
+    private float zoomSpeed = 2;
 
     private static bool CameraMovemntEnabled { get; set; } = true;
 
@@ -147,7 +147,12 @@ public class TouchControls : MonoBehaviour
         }
         else if (Input.GetMouseButton(0))
         {
-            Zooming = false;
+            if (Zooming)
+            {
+                Zooming = false;
+                TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            }
+
             ClickDuration += Time.deltaTime;
             if (InteractableIsIsHeld)
             {
