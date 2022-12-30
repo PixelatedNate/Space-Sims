@@ -8,17 +8,17 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 {
 
     [SerializeField]
-    private Vector2Int _size = new Vector2Int(1,1);
+    private Vector2Int _size = new Vector2Int(1, 1);
 
     public Vector2Int Size { get { return _size; } }
 
     [SerializeField]
-    protected GameObject _roomLight, _roomDarkFilter ,_overlay;
-    
+    protected GameObject _roomDarkFilter, _overlay;
+
     [SerializeField]
     private GameObject _underConstructionBanner;
 
-    [  SerializeField]
+    [SerializeField]
     private RoomStats[] _roomlevels;
 
     [SerializeField]
@@ -57,8 +57,35 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
 
     private TimeDelayManager.Timer _buildTimer;
-    
+ 
 
+    public Vector3Int GetConectorTile(Direction dir)
+    {
+        // have to offest as tilemaps are not starting 0,0 bottom left (I know it sucks but it sucks even more to fix it)
+        Vector3Int offset = new Vector3Int(4, -5, 0);
+        Vector3 gridSize = RoomGridManager.Instance.roomGridSize;
+        int halfYValue = Mathf.CeilToInt(gridSize.y / 2);
+        int halfXValue = Mathf.CeilToInt(gridSize.x / 2);
+        switch (dir)
+        {
+            case Direction.Up: return new Vector3Int(halfXValue, (int)gridSize.y, 0) + offset;
+            case Direction.Down: return new Vector3Int(halfXValue, 1, 0) + offset;
+            case Direction.Right: return new Vector3Int((int)gridSize.x, halfYValue, 0) + offset;
+            case Direction.Left: return new Vector3Int(1, halfYValue, 0) + offset;
+            default: return Vector3Int.zero;
+        }
+    }
+    public Vector3Int GetCenterTile()
+    {
+        // have to offest as tilemaps are not starting 0,0 bottom left (I know it sucks but it sucks even more to fix it)
+        Vector3Int offset = new Vector3Int(4, -5, 0);
+        Vector3 gridSize = RoomGridManager.Instance.roomGridSize;
+        int halfYValue = Mathf.CeilToInt(gridSize.y / 2);
+        int halfXValue = Mathf.CeilToInt(gridSize.x / 2);
+        return new Vector3Int(halfXValue, halfYValue, 0) + offset;
+        
+    }
+    
     [SerializeField]
     private TileBase ConectingTile;
 
@@ -210,12 +237,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     private void SetRoomTiles(Vector3 deltaPos , int xOfset = 0, int yOfset = 0)
     {
-        // have to offest as tilemaps are not starting 0,0 bottom left (I know it sucks but it sucks even more to fix it)
-        Vector3Int offset = new Vector3Int(4, -5, 0);
         Vector3 gridSize = RoomGridManager.Instance.roomGridSize;
-        int halfYValue = Mathf.CeilToInt(gridSize.y / 2);
-        int halfXValue = Mathf.CeilToInt(gridSize.x / 2);
-
         Vector3Int tilePosToChange = Vector3Int.zero;
 
 
@@ -224,35 +246,35 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
         if (deltaPos.y == 1)
         {
-            tilePosToChange = new Vector3Int(halfXValue, (int)gridSize.y, 0) + offset;
+            tilePosToChange = GetConectorTile(Direction.Up);
+            // this  offset is for rooms which are more than 1x1 size
             tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.left, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpLeft));
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.right, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpRight));
         }
         if (deltaPos.y == -1)
         {
-            tilePosToChange = new Vector3Int(halfXValue, 1, 0) + offset;
+            tilePosToChange = GetConectorTile(Direction.Down);
+            // this offset is for rooms which are more than 1x1 size
             tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.left, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownLeft));
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.right, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownRight));
         }
         if (deltaPos.x == 1)
         {
-            tilePosToChange = new Vector3Int((int)gridSize.x, halfYValue, 0) + offset;
+            tilePosToChange = GetConectorTile(Direction.Right);
             tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.up, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpRight));
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.down, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownRight));
         }
         if (deltaPos.x == -1)
         {
-            tilePosToChange = new Vector3Int(1, halfYValue, 0) + offset;
-            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+            tilePosToChange = GetConectorTile(Direction.Left);
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0);  
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.up, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpLeft));
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.down, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownLeft));
         }
 
-        // this offset is for rooms which are more than 1x1 size
-        //Vector3Int tilePosToChangeWithAddedXYoffsetforRoomSize = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
     
         _WallTileMap.SetTile(tilePosToChange, null);
         _floorTileMap.SetTile(tilePosToChange, ConectingTile);

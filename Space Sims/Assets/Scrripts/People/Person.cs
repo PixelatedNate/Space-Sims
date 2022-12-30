@@ -4,6 +4,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using RDG;
 using System.Collections;
+using System.Linq;
 
 public class Person : MonoBehaviour, IInteractables
 {
@@ -40,8 +41,11 @@ public class Person : MonoBehaviour, IInteractables
     public bool IsBeingHeld { get; private set; } = false;
 
 
-    LinkedList<Vector3Int> MovePath;
+    LinkedList<Vector3Int> MovePath { get; set; }
     
+    AbstractRoom PathfindingRoom { get; set; }
+
+    Dictionary<AbstractRoom,LinkedList<Vector3Int>> RoomMovePath { get; set; }
     private AbstractRoom RoomUnderMouseOnDrag { get; set; }
 
 
@@ -112,6 +116,9 @@ public class Person : MonoBehaviour, IInteractables
             {
                 transform.position = Vector3.zero;
             }
+            Vector3Int personposition = room.PathFindingTileMap.WorldToCell(transform.position);
+            RoomMovePath = PathFinding.CalculateRoomPath(personposition, room, PersonInfo.Room);
+            MovePath = null;
             return false;
         }
     }
@@ -135,24 +142,53 @@ public class Person : MonoBehaviour, IInteractables
         {
             return;
         }
+
+
+        float walkSpeed = 1;
+
+        bool IsWalkingBetweenRooms = false;
+
+        if(RoomMovePath != null && RoomMovePath.Count > 1)
+        {
+            walkSpeed = 2;
+            IsWalkingBetweenRooms = true;
+            if(MovePath == null)
+            {
+                PathfindingRoom = RoomMovePath.ElementAt(0).Key;
+                MovePath = RoomMovePath.ElementAt(0).Value;
+            }
+            else if (MovePath.Count == 0)
+            {
+                Vector3Int nextPosition = RoomMovePath.ElementAt(1).Value.First.Value;
+                Vector3 worldSpacePositionNextPosition = RoomMovePath.ElementAt(1).Key.PathFindingTileMap.GetCellCenterWorld(nextPosition);
+                Vector3 dir = (worldSpacePositionNextPosition - transform.position).normalized;
+                transform.Translate(dir * walkSpeed * Time.deltaTime);
+                if (Vector3.Distance(transform.position, worldSpacePositionNextPosition) < 0.05)
+                {
+                    RoomMovePath.Remove(RoomMovePath.ElementAt(0).Key);
+                    PathfindingRoom = RoomMovePath.ElementAt(0).Key;
+                    MovePath = RoomMovePath.ElementAt(0).Value;
+                }
+            }
+        }
+
         if (MovePath != null && MovePath.Count > 0)
         {           
-            Vector3 worldSpacePosition = PersonInfo.Room.PathFindingTileMap.GetCellCenterWorld(MovePath.First.Value);
-            Vector3 dir = (worldSpacePosition - transform.position).normalized;
-            transform.Translate(dir * 1 * Time.deltaTime);
-            if (Vector3.Distance(transform.position, worldSpacePosition) < 0.05)
+            Vector3 worldSpacePositionNextPosition = PathfindingRoom.PathFindingTileMap.GetCellCenterWorld(MovePath.First.Value);
+            Vector3 dir = (worldSpacePositionNextPosition - transform.position).normalized;
+            transform.Translate(dir * walkSpeed * Time.deltaTime);
+            if (Vector3.Distance(transform.position, worldSpacePositionNextPosition) < 0.05)
             {
                 MovePath.RemoveFirst();
             }
         }
-        else if (PersonInfo.Room != null)
+        else if (PersonInfo.Room != null && !IsWalkingBetweenRooms)
         {
             Vector3Int randomPoint;
             Vector3Int personposition = PersonInfo.Room.PathFindingTileMap.WorldToCell(transform.position);
-            //int index = Random.Range(0, _tempPathFindingPoints.Length);
-            //randomPoint = _tempPathFindingPoints[index];
             randomPoint = GetRandomPathFindingPoint();
-            MovePath = PathFinding.CalculatePath(PersonInfo.Room.PathFindingTileMap, personposition, randomPoint);
+            PathfindingRoom = PersonInfo.Room;
+            MovePath = PathFinding.CalculateInternalRoomPath(PersonInfo.Room.PathFindingTileMap, personposition, randomPoint);
         }
     }
 
