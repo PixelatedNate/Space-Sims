@@ -669,6 +669,26 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
+  - first: {x: 8, y: -1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
+  - first: {x: 9, y: -1, z: 0}
+    second:
+      serializedVersion: 2
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_TileObjectToInstantiateIndex: 65535
+      dummyAlignment: 0
+      m_AllTileFlags: 1073741825
   - first: {x: 10, y: -1, z: 0}
     second:
       serializedVersion: 2
@@ -901,7 +921,7 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 47
+  - m_RefCount: 49
     m_Data: {fileID: 11400000, guid: 8616b1863b664824686b0341b3e536e1, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -944,7 +964,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 47
+  - m_RefCount: 49
     m_Data: {fileID: 21300000, guid: 215b587baa3bc5540a1d0b635dc3a8c4, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -987,7 +1007,7 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
-  - m_RefCount: 47
+  - m_RefCount: 49
     m_Data:
       e00: 1
       e01: 0
@@ -1006,7 +1026,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 47
+  - m_RefCount: 49
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -1165,8 +1185,6 @@ MonoBehaviour:
   _roomDarkFilter: {fileID: 6018632899319573560}
   _overlay: {fileID: 17034892118300070}
   _underConstructionBanner: {fileID: 2783010349800312805}
-  _selectedRoomMaterial: {fileID: -876546973899608171, guid: f818531de199c66468fc20a0ad311cfc, type: 3}
-  _defultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   _roomlevels:
   - _buildCost:
       Fuel: 0
@@ -8343,7 +8361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2274685302405061865
 Transform:
   m_ObjectHideFlags: 0
@@ -8352,8 +8370,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6018632899319573560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0273, y: 0.0214, z: 0}
-  m_LocalScale: {x: 6.345416, y: 6.921499, z: 1}
+  m_LocalPosition: {x: 0.1392, y: 0, z: 0}
+  m_LocalScale: {x: 7.001877, y: 7.0067306, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 9055671704745275658}
