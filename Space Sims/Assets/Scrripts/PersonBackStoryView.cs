@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -14,7 +12,7 @@ public class PersonBackStoryView : MonoBehaviour
 
     public void SetBackStory(PersonInfo personInfo)
     {
-        if(RawText == null)
+        if (RawText == null)
         {
             RawText = textmeshPro.text;
         }
@@ -23,7 +21,7 @@ public class PersonBackStoryView : MonoBehaviour
         backStoryText = backStoryText.Replace("[Name]", personInfo.Name);
         backStoryText = backStoryText.Replace("[Planet]", personInfo.HomePlanet);
         backStoryText = backStoryText.Replace("[Job]", personInfo.Job);
-        
+
         backStoryText = backStoryText.Replace("[Likes]", string.Join("\n", personInfo.Likes));
         backStoryText = backStoryText.Replace("[Dislikes]", string.Join("\n", personInfo.Dislikes));
 

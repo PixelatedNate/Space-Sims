@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TutorialManager : MonoBehaviour
@@ -7,7 +5,7 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField]
     public static bool completed = false;
- 
+
     public enum TutorialEvent
     {
         ScreenPaned,
@@ -17,7 +15,7 @@ public class TutorialManager : MonoBehaviour
 
     public void EventTrigered(TutorialEvent tutorialEvent)
     {
-        
+
     }
 
 }

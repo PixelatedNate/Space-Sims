@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClothSelectionMenuUIView : MonoBehaviour
@@ -16,9 +14,9 @@ public class ClothSelectionMenuUIView : MonoBehaviour
     public void PopulateList(PersonInfo person)
     {
         foreach (Transform child in _ScrolPanal)
-	    {
-	         Destroy(child.gameObject);
-	    }
+        {
+            Destroy(child.gameObject);
+        }
         Sprite[] cloths;
         if (person.Gender == Gender.Male)
         {
@@ -29,9 +27,9 @@ public class ClothSelectionMenuUIView : MonoBehaviour
             cloths = GetAllClothsFromPath(clothesFemalePath);
         }
 
-        foreach(Sprite cloth in cloths)
+        foreach (Sprite cloth in cloths)
         {
-          var ClothItemUI = GameObject.Instantiate(ClothingItemPrefab,_ScrolPanal);
+            var ClothItemUI = GameObject.Instantiate(ClothingItemPrefab, _ScrolPanal);
             ClothItemUI.GetComponent<ClothCosmeticSelectionUI>().Setup(person, cloth);
         }
     }

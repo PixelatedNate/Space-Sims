@@ -2,8 +2,8 @@ public enum SkillsList
 {
 
     Strength = 1,
-    Wisdom = 2,
-    Dexterity = 3,
-    Intelligence = 4,
+    Dexterity = 2,
+    Intelligence = 3,
+    Wisdom = 4,
     Charisma = 5
 }

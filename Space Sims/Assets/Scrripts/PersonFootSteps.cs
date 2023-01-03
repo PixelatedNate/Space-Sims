@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PersonFootSteps : MonoBehaviour
@@ -16,12 +14,12 @@ public class PersonFootSteps : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(MainPersonScript.IsBeingHeld)
+        if (MainPersonScript.IsBeingHeld)
         {
             LastPositon = transform.position;
             return;
         }
-        else if(Mathf.Abs(Vector3.Distance(transform.position,LastPositon)) >= .5f)
+        else if (Mathf.Abs(Vector3.Distance(transform.position, LastPositon)) >= .5f)
         {
             LastPositon = transform.position;
             SoundManager.Instance.PlaySoundIfVisableAndZoomedIn(SoundManager.Sound.MetalFootSteps, transform.position, 2.5f, 0.02f);

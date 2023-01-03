@@ -106,15 +106,15 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            OpenQuestListView();  
+            OpenQuestListView();
         }
-            rightPanal.ClearAllView();
-            alertsUI.CloseAlerts();
+        rightPanal.ClearAllView();
+        alertsUI.CloseAlerts();
     }
     public void OpenQuestListView(Quest.Status status = Quest.Status.Available)
     {
-            leftPanal.SelectQuestListView(status);       
-            alertsUI.CloseAlerts();
+        leftPanal.SelectQuestListView(status);
+        alertsUI.CloseAlerts();
     }
 
     public void OpenQuestViewOnQuest(Quest quest)
@@ -158,8 +158,8 @@ public class UIManager : MonoBehaviour
 
     public void OpenQuestView(Quest quest)
     {
-            rightPanal.OpenQuest(quest);
-            IsRightPanalOpen = true;
+        rightPanal.OpenQuest(quest);
+        IsRightPanalOpen = true;
     }
 
     public void OpenPersonCosmetics(PersonInfo personInfo)
@@ -206,17 +206,17 @@ public class UIManager : MonoBehaviour
 
     }
 
-     public void ClearLeftPanal()
+    public void ClearLeftPanal()
     {
         leftPanal.ClearAllView();
-    }  
-     public void ClearRightPanal()
+    }
+    public void ClearRightPanal()
     {
         IsRightPanalOpen = false;
         rightPanal.ClearAllView();
-    }  
+    }
 
-     public void ClearAlertsPanal()
+    public void ClearAlertsPanal()
     {
         alertsUI.CloseAlerts();
     }
@@ -238,7 +238,7 @@ public class UIManager : MonoBehaviour
     /// <param name="onDecline">method on decline</param>
     public void Conformation(UnityAction onAccept, UnityAction onDecline, string text)
     {
-        _conformationUI.SetListeners(onAccept,onDecline);
+        _conformationUI.SetListeners(onAccept, onDecline);
         _conformationUI.setText(text);
     }
     /// <summary>
@@ -249,7 +249,7 @@ public class UIManager : MonoBehaviour
     public void Conformation(UnityAction onAccept, string text)
     {
         _conformationUI.gameObject.SetActive(true);
-        _conformationUI.SetListeners(onAccept,null);
+        _conformationUI.SetListeners(onAccept, null);
         _conformationUI.setText(text);
     }
 
@@ -258,9 +258,9 @@ public class UIManager : MonoBehaviour
     public void ToggleRoomBuildMode()
     {
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
-       SoundManager.Instance.PlaySound(SoundManager.Sound.UIclick);
-       bool buildRoom = RoomGridManager.Instance.TogleBuildMode();
-       DeselectAll(); // will clear either slecet item or build RoomMenu
+        SoundManager.Instance.PlaySound(SoundManager.Sound.UIclick);
+        bool buildRoom = RoomGridManager.Instance.TogleBuildMode();
+        DeselectAll(); // will clear either slecet item or build RoomMenu
     }
 
     public void ToggleNavigation()
@@ -297,7 +297,7 @@ public class UIManager : MonoBehaviour
             MainLight.SetActive(false);
             SceneManager.SetActiveScene(SceneManager.GetSceneByName("Navigation"));
             MainCamera.SetActive(false);
-            IsNavigation = true;     
+            IsNavigation = true;
         }
         TouchControls.DeceletAll();
     }
@@ -312,9 +312,9 @@ public class UIManager : MonoBehaviour
         MainLight.SetActive(true);
         IsNavigation = false;
     }
-    
+
     public bool LoadMainShipView()
-    { 
+    {
         if (IsNavigation)
         {
             StartCoroutine("LoadMainShipViewCorotine");

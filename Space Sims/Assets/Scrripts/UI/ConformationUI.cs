@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -21,7 +18,7 @@ public class ConformationUI : MonoBehaviour
         TouchControls.EnableCameramovemntAndSelection(false);
         _accept.onClick.RemoveAllListeners();
         _decline.onClick.RemoveAllListeners();
-       
+
         _accept.onClick.AddListener(onAccept);
         _accept.onClick.AddListener(OnAccept);
         if (onDecline != null)
@@ -38,7 +35,7 @@ public class ConformationUI : MonoBehaviour
     }
 
     private void OnAccept()
-    { 
+    {
         TouchControls.EnableCameramovemntAndSelection(true);
         this.gameObject.SetActive(false);
     }
@@ -47,6 +44,6 @@ public class ConformationUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

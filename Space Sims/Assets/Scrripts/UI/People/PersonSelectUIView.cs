@@ -21,7 +21,7 @@ public class PersonSelectUIView : MonoBehaviour
         UpdateHeadAndBody();
         UpdateText();
         UpdateSkills();
-        if(person.PersonMonoBehaviour != null)
+        if (person.PersonMonoBehaviour != null)
         {
             person.PersonMonoBehaviour.SetOutline(true);
         }
@@ -70,7 +70,7 @@ public class PersonSelectUIView : MonoBehaviour
 
     public void GoToPerson()
     {
-        if(SelectedPerson.IsQuesting)
+        if (SelectedPerson.IsQuesting)
         {
             UIManager.Instance.OpenQuestViewOnQuest(SelectedPerson.CurrentQuest);
         }
@@ -81,14 +81,14 @@ public class PersonSelectUIView : MonoBehaviour
     }
     public void FollowPerson()
     {
-        if(SelectedPerson.IsQuesting)
+        if (SelectedPerson.IsQuesting)
         {
             UIManager.Instance.OpenQuestViewOnQuest(SelectedPerson.CurrentQuest);
         }
         else
         {
             CameraManager.Instance.CameraFollow(SelectedPerson.PersonMonoBehaviour.gameObject);
-        }    
+        }
     }
 
     private void UpdateSkill(SkillsList skill, Transform skillDots)

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraManager : MonoBehaviour
@@ -30,12 +28,12 @@ public class CameraManager : MonoBehaviour
         {
             ClearFollow();
         }
-        transform.position = new Vector3(focusTarget.transform.position.x,focusTarget.transform.position.y,transform.position.z);
+        transform.position = new Vector3(focusTarget.transform.position.x, focusTarget.transform.position.y, transform.position.z);
     }
- 
+
     public void CameraFollow(GameObject followtarget)
     {
-        if(UIManager.Instance.IsNavigation)
+        if (UIManager.Instance.IsNavigation)
         {
             UIManager.Instance.ToggleNavigation();
         }
@@ -49,7 +47,7 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(FollowTarget != null)
+        if (FollowTarget != null)
         {
             CameraFocus(FollowTarget);
         }

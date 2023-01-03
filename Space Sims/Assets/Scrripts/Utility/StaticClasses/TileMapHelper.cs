@@ -38,17 +38,17 @@ public static class TileMapHelper
 
     private const string ConectingWallDownLeft = "ArtWork/Tiles/Ship A (Inner Left Bottom)";
     private const string ConectingWallDownRight = "ArtWork/Tiles/Ship A (Inner Right Bottom)";
-    private const string ConectingWallUpLeft  = "ArtWork/Tiles/Ship A (Inner Right)";
+    private const string ConectingWallUpLeft = "ArtWork/Tiles/Ship A (Inner Right)";
     private const string ConectingWallUpRight = "ArtWork/Tiles/Ship A (Inner Left)";
-    
-    
+
+
 
     public static TileBase GetTile(TileName tileEnum)
     {
         switch (tileEnum)
         {
             case TileName.EdgeRimdown: return Resources.Load<TileBase>(DownMiddle);
-            case TileName.EdgeRimUp: return   Resources.Load<TileBase>(UpMiddle);
+            case TileName.EdgeRimUp: return Resources.Load<TileBase>(UpMiddle);
             case TileName.EdgeRimLeft: return Resources.Load<TileBase>(LeftMiddle);
             case TileName.EdgeRimRight: return Resources.Load<TileBase>(RightMiddle);
             case TileName.EdgeRimInnerRight: return Resources.Load<TileBase>(innerRight);
@@ -60,10 +60,10 @@ public static class TileMapHelper
             case TileName.ConectingWallDownRight: return Resources.Load<TileBase>(ConectingWallDownRight);
             case TileName.ConectingWallUpLeft: return Resources.Load<TileBase>(ConectingWallUpLeft);
             case TileName.ConectingWallUpRight: return Resources.Load<TileBase>(ConectingWallUpRight);
-            
 
-         default: throw new Exception("Enum TileRPosition returned No corisponding value");
+
+            default: throw new Exception("Enum TileRPosition returned No corisponding value");
         }
     }
-    
+
 }

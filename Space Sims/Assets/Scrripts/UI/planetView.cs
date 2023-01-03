@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +21,7 @@ public class planetView : MonoBehaviour
         UpdateText();
         UpdateImage();
 
-        if(NavigationManager.CurrentPlanet == planet)
+        if (NavigationManager.CurrentPlanet == planet)
         {
             TravelButton.enabled = false;
         }
@@ -31,7 +29,7 @@ public class planetView : MonoBehaviour
         {
             TravelButton.enabled = true;
         }
-            
+
     }
 
     public void TravelToPlanet()
@@ -55,7 +53,7 @@ public class planetView : MonoBehaviour
         }
         else
         {
-           TravalTime.text = NavigationManager.CalcualteTravleTime(SelectedPlanet).ToString("h'h 'm'm 's's'");
+            TravalTime.text = NavigationManager.CalcualteTravleTime(SelectedPlanet).ToString("h'h 'm'm 's's'");
         }
     }
 

@@ -12,20 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24eebf4e3bb43c64ca98789dfcfdb888, type: 3}
   m_Name: Quest
   m_EditorClassIdentifier: 
-  Title: Quest 2
+  Title: Search for Life
   Description: the secodn quest in a group of test
   requiments:
     Numpeople: 1
     SkillRequiment: 2
     skillValueMin: 6
   Duration: 10
-  reward:
-    gameResourcesReward:
-      Fuel: 86
-      Food: 245
-      Minerals: 0
-      Premimum: 1
-    peopleReward: []
+  _reward:
+    _gameResourcesReward:
+      Fuel: 0
+      Food: 0
+      Minerals: 10
+      Premimum: 0
+    _numberofpeopleReward: 0
   PeopleAssgined: []
   PossibleEncounters:
   - {fileID: 11400000, guid: dadfe02b3df53fa4db2cac6fa393c67f, type: 2}

@@ -1,17 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class RightPanal: MonoBehaviour
+public class RightPanal : MonoBehaviour
 {
 
     GameObject ActiveView;
     [SerializeField]
     UIButton UiButton;
- 
+
     [SerializeField]
     QuestView questView;
- 
+
     [SerializeField]
     ClothSelectionMenuUIView PersonCosmetics;
 
@@ -30,9 +28,9 @@ public class RightPanal: MonoBehaviour
 
     public void OpenQuest(Quest quest)
     {
-        if(activeRSideView == ActiveRSideView.Quest)
+        if (activeRSideView == ActiveRSideView.Quest)
         {
-            if(questView.questSelected == quest)
+            if (questView.questSelected == quest)
             {
                 ClearAllView();
             }
@@ -43,7 +41,7 @@ public class RightPanal: MonoBehaviour
         SetActiveView(questView.gameObject);
         questView.SelectQuest(quest);
     }
- 
+
     public void OpenPersonCosmetic(PersonInfo personInfo)
     {
         activeRSideView = ActiveRSideView.Cosmetic;
@@ -64,8 +62,8 @@ public class RightPanal: MonoBehaviour
 
     private void SetActiveView(GameObject activeView)
     {
-        if(ActiveView != null)
-        { 
+        if (ActiveView != null)
+        {
             ActiveView.SetActive(false);
         }
         ActiveView = activeView;
@@ -79,8 +77,8 @@ public class RightPanal: MonoBehaviour
         activeRSideView = null;
         if (ActiveView != null)
         {
-        UiButton.RightTabSlideIn();
+            UiButton.RightTabSlideIn();
         }
     }
 
-    }
+}

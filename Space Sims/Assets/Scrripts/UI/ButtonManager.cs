@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +9,7 @@ public class ButtonManager : MonoBehaviour
     {
         Navigation,
     }
- 
+
 
     [Serializable]
     public class ButtonsReffrence
@@ -42,9 +40,9 @@ public class ButtonManager : MonoBehaviour
 
     public void SetButtonEnabled(ButtonName name, bool enabled)
     {
-        foreach(ButtonsReffrence buttonReffrence in buttons)
+        foreach (ButtonsReffrence buttonReffrence in buttons)
         {
-            if(buttonReffrence.name == name)
+            if (buttonReffrence.name == name)
             {
                 Color buttonColour = buttonReffrence.button.GetComponent<Button>().image.color;
                 buttonReffrence.button.GetComponent<Button>().interactable = enabled;

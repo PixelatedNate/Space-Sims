@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 public class Alert
 {
-    
+
     public enum AlertPrority
     {
         low,
@@ -30,7 +30,7 @@ public class Alert
     public Alert(string name, string message, AlertPrority prority)
     {
         this.name = name;
-        this.message = message; 
+        this.message = message;
         this.prority = prority;
         time = DateTime.Now;
     }

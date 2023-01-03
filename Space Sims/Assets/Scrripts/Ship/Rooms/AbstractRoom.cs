@@ -1,8 +1,8 @@
+using RDG;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using RDG;
 
 public abstract class AbstractRoom : MonoBehaviour, IInteractables
 {
@@ -57,7 +57,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
 
     private TimeDelayManager.Timer _buildTimer;
- 
+
 
     public Vector3Int GetConectorTile(Direction dir)
     {
@@ -83,9 +83,9 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         int halfYValue = Mathf.CeilToInt(gridSize.y / 2);
         int halfXValue = Mathf.CeilToInt(gridSize.x / 2);
         return new Vector3Int(halfXValue, halfYValue, 0) + offset;
-        
+
     }
-    
+
     [SerializeField]
     private TileBase ConectingTile;
 
@@ -144,7 +144,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             {
                 setRoomActive(true);
             }
-            if(IsUnderConstruction && ConstructionTimer.IsPause)
+            if (IsUnderConstruction && ConstructionTimer.IsPause)
             {
                 ConstructionTimer.RestartTimer();
             }
@@ -167,7 +167,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             if (Workers.Count == 0)
             {
                 setRoomActive(false);
-                if(IsUnderConstruction)
+                if (IsUnderConstruction)
                 {
                     ConstructionTimer.PauseTimer();
                 }
@@ -193,31 +193,31 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     public void SkipRoom()
     {
-        UIManager.Instance.Conformation(AbleToSkipRoom,"are you sure you want to spend x in order to instatly build this room");
+        UIManager.Instance.Conformation(AbleToSkipRoom, "are you sure you want to spend x in order to instatly build this room");
     }
 
     public void EnableRoomConection(Vector3Int AdjacentPos)
     {
 
         Vector3Int delataPos = AdjacentPos - RoomPosition;
-        
-        if(Size != new Vector2Int(1,1))
+
+        if (Size != new Vector2Int(1, 1))
         {
-            for(int x = 0; x < Size.x; x++)
+            for (int x = 0; x < Size.x; x++)
             {
                 delataPos = AdjacentPos - RoomPosition - new Vector3Int(x, 0, 0);
-                if(MathF.Abs(delataPos.magnitude) == 1)
+                if (MathF.Abs(delataPos.magnitude) == 1)
                 {
                     SetRoomTiles(delataPos, x, 0);
                     return;
                 }
             }
-            for(int y = 0; y < Size.y; y++)
+            for (int y = 0; y < Size.y; y++)
             {
                 delataPos = AdjacentPos - RoomPosition - new Vector3Int(0, y, 0);
-                if(MathF.Abs(delataPos.magnitude) == 1)
+                if (MathF.Abs(delataPos.magnitude) == 1)
                 {
-                    SetRoomTiles(delataPos, 0 ,y);
+                    SetRoomTiles(delataPos, 0, y);
                     return;
                 }
             }
@@ -235,7 +235,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     #region PrivateMethods
 
 
-    private void SetRoomTiles(Vector3 deltaPos , int xOfset = 0, int yOfset = 0)
+    private void SetRoomTiles(Vector3 deltaPos, int xOfset = 0, int yOfset = 0)
     {
         Vector3 gridSize = RoomGridManager.Instance.roomGridSize;
         Vector3Int tilePosToChange = Vector3Int.zero;
@@ -248,7 +248,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         {
             tilePosToChange = GetConectorTile(Direction.Up);
             // this  offset is for rooms which are more than 1x1 size
-            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0);
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.left, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpLeft));
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.right, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpRight));
         }
@@ -256,26 +256,26 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         {
             tilePosToChange = GetConectorTile(Direction.Down);
             // this offset is for rooms which are more than 1x1 size
-            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0);
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.left, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownLeft));
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.right, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownRight));
         }
         if (deltaPos.x == 1)
         {
             tilePosToChange = GetConectorTile(Direction.Right);
-            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0); 
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0);
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.up, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpRight));
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.down, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownRight));
         }
         if (deltaPos.x == -1)
         {
             tilePosToChange = GetConectorTile(Direction.Left);
-            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0);  
+            tilePosToChange = new Vector3Int(tilePosToChange.x + (int)(gridSize.x * (xOfset)), tilePosToChange.y + (int)(gridSize.y * (yOfset)), 0);
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.up, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallUpLeft));
             _WallTileMap.SetTile(tilePosToChange + Vector3Int.down, TileMapHelper.GetTile(TileMapHelper.TileName.ConectingWallDownLeft));
         }
 
-    
+
         _WallTileMap.SetTile(tilePosToChange, null);
         _floorTileMap.SetTile(tilePosToChange, ConectingTile);
     }
@@ -285,8 +285,8 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         // have to offest as tilemaps are not starting 0,0 bottom left (I know it sucks but it sucks even more to fix it)
         Vector3Int offset = new Vector3Int(4, -5, 0);
         Vector3 gridSize = RoomGridManager.Instance.roomGridSize;
-        int hight = (int)gridSize.y+1;
-        int width = (int)gridSize.x+1;
+        int hight = (int)gridSize.y + 1;
+        int width = (int)gridSize.x + 1;
         Vector3Int[] AdjacentRooms = RoomGridManager.Instance.GetAdjacentGridCells(RoomPosition);
         foreach (Vector3Int room in AdjacentRooms)
         {
@@ -297,7 +297,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
                 {
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.down) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(width-1,0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeInnerLeft));
+                        _Shipedges.SetTile(new Vector3Int(width - 1, 0, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeInnerLeft));
                     }
                     else
                     {
@@ -305,7 +305,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
                     }
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.up) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(width-1, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimInnerRightDown));
+                        _Shipedges.SetTile(new Vector3Int(width - 1, hight, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeRimInnerRightDown));
                     }
                     else
                     {
@@ -356,7 +356,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
                 {
                     if (RoomGridManager.Instance.GetRoomAtPosition(room + Vector3Int.left) != null)
                     {
-                        _Shipedges.SetTile(new Vector3Int(0, hight-1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeInnerLeft));
+                        _Shipedges.SetTile(new Vector3Int(0, hight - 1, 0) + offset, TileMapHelper.GetTile(TileMapHelper.TileName.EdgeInnerLeft));
                     }
                     else
                     {
@@ -374,9 +374,9 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             }
         }
     }
-                    
-    
-    
+
+
+
 
 
     private void AbleToSkipRoom()
@@ -392,7 +392,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
         _buildTimer = new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat);
         ConstructionTimer = TimeDelayManager.Instance.AddTimer(_buildTimer);
-        if(Workers.Count == 0)
+        if (Workers.Count == 0)
         {
             ConstructionTimer.PauseTimer();
         }
@@ -403,18 +403,18 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         IsUnderConstruction = false;
         _underConstructionBanner.SetActive(false);
         _buildTimer = null;
-        if(Workers.Count != 0)
+        if (Workers.Count != 0)
         {
             setRoomActive(true);
         }
-        AlertManager.Instance.SendAlert(new Alert("Room Built","Room " + _roomName + " has been built", OpenRoomUIandFocusRoom, Alert.AlertPrority.low));
+        AlertManager.Instance.SendAlert(new Alert("Room Built", "Room " + _roomName + " has been built", OpenRoomUIandFocusRoom, Alert.AlertPrority.low));
         UpdateRoomStats();
 
 
         // code related to crew room but here as could later be relevent to other rooms
-        if(Level != 0)
+        if (Level != 0)
         {
-           int deltaMaxPeople = RoomStat.PoepleChange - _roomlevels[Level - 1].PoepleChange;
+            int deltaMaxPeople = RoomStat.PoepleChange - _roomlevels[Level - 1].PoepleChange;
             GlobalStats.Instance.MaxPeople += deltaMaxPeople;
         }
     }
@@ -452,7 +452,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     {
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
 
-        _WallTileMap.gameObject.GetComponent<TilemapRenderer>().material.SetFloat("_IsSelected",1);
+        _WallTileMap.gameObject.GetComponent<TilemapRenderer>().material.SetFloat("_IsSelected", 1);
         if (RoomType == RoomType.QuestRoom)
         {
             UIManager.Instance.OpenAvalibalQuestListView();
@@ -466,7 +466,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void OnDeselect()
     {
         _roomCameraPortal.GetComponent<Camera>().gameObject.SetActive(false);
-        _WallTileMap.gameObject.GetComponent<TilemapRenderer>().material.SetFloat("_IsSelected",0);
+        _WallTileMap.gameObject.GetComponent<TilemapRenderer>().material.SetFloat("_IsSelected", 0);
     }
 
     public bool OnHold()

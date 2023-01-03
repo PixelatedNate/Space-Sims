@@ -69,7 +69,7 @@ public class TouchControls : MonoBehaviour
     void Update()
     {
 
-        if(!CameraMovemntEnabled)
+        if (!CameraMovemntEnabled)
         {
             return;
         }
@@ -172,10 +172,10 @@ public class TouchControls : MonoBehaviour
             }
             if (Paning)
             {
-                float xvalue = Mathf.Clamp(Camera.main.transform.position.x + dir.x,maxPanDist.x*-1,maxPanDist.x);
-                float yvalue = Mathf.Clamp(Camera.main.transform.position.y + dir.y, maxPanDist.y*-1,maxPanDist.y);
+                float xvalue = Mathf.Clamp(Camera.main.transform.position.x + dir.x, maxPanDist.x * -1, maxPanDist.x);
+                float yvalue = Mathf.Clamp(Camera.main.transform.position.y + dir.y, maxPanDist.y * -1, maxPanDist.y);
 
-                Camera.main.transform.position = new Vector3(xvalue,yvalue,Camera.main.transform.position.z);
+                Camera.main.transform.position = new Vector3(xvalue, yvalue, Camera.main.transform.position.z);
             }
             else if (ClickDuration > HOLD_TIME_START) // this is not optermized so will run the check multipale times.
             {
@@ -284,7 +284,7 @@ public class TouchControls : MonoBehaviour
     public static AbstractRoom GetRoomUnderMouse()
     {
         RaycastHit2D[] hits = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        foreach(RaycastHit2D hit in hits)
+        foreach (RaycastHit2D hit in hits)
         {
             if (hit.collider != null)
             {

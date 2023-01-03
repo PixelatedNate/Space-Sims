@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +29,7 @@ public class QuestRequimentBoxView : MonoBehaviour
 
     public void SetPerson(PersonInfo personInfo, Quest quest)
     {
-        if(quest.questStaus == Quest.Status.InProgress || quest.questStaus == Quest.Status.Completed)
+        if (quest.questStaus == Quest.Status.InProgress || quest.questStaus == Quest.Status.Completed)
         {
             GetComponent<Button>().interactable = false;
         }
@@ -43,8 +41,8 @@ public class QuestRequimentBoxView : MonoBehaviour
         Head.sprite = personInfo.Head;
         Body.sprite = personInfo.Body;
         Cloths.sprite = personInfo.Clothes;
-        PersonName.text = personInfo.Name; 
-        if(personInfo.skills.GetSkill(quest.requiments.SkillRequiment) < quest.requiments.skillValueMin)
+        PersonName.text = personInfo.Name;
+        if (personInfo.skills.GetSkill(quest.requiments.SkillRequiment) < quest.requiments.skillValueMin)
         {
             Background.color = Color.red;
         }
@@ -73,7 +71,7 @@ public class QuestRequimentBoxView : MonoBehaviour
 
     public void AddListener()
     {
-       // GetComponent<Button>().onClick.AddListener(() => SelectPersonForQuest());
+        // GetComponent<Button>().onClick.AddListener(() => SelectPersonForQuest());
     }
 
     public void DeselectRequimentBox()

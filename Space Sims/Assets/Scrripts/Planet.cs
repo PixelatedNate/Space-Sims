@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Planet : MonoBehaviour, IInteractables
 {
@@ -50,9 +47,9 @@ public class Planet : MonoBehaviour, IInteractables
     // Start is called before the first frame update
     void Start()
     {
-        if(IsStartPlanet)
+        if (IsStartPlanet)
         {
-            if(NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
+            if (NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
             {
                 NavigationManager.CurrentPlanet = this;
             }
@@ -63,6 +60,6 @@ public class Planet : MonoBehaviour, IInteractables
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

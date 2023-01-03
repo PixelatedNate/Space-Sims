@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -21,6 +20,8 @@ public class PersonListView : MonoBehaviour
 
     SkillsList? skillfilter = null;
 
+    private bool Inverted { get; set; }
+
     private Action<PersonInfo> OnSelectMethod = null;
     private Quest QuestSelected = null;
 
@@ -30,7 +31,14 @@ public class PersonListView : MonoBehaviour
         QuestSelected = null;
         OnSelectMethod = null;
         people = GlobalStats.Instance.PlayersPeople;
-        FilterListByAge();
+        if (skillfilter == null)
+        {
+            FilterListByAge(Inverted);
+        }
+        else
+        {
+            FilterListBySkill((SkillsList)skillfilter, Inverted);
+        }
     }
 
     public void GetPersonForQuest(Action<PersonInfo> onSelectMethod, Quest quest)
@@ -39,9 +47,11 @@ public class PersonListView : MonoBehaviour
         OnSelectMethod = onSelectMethod;
         people = GlobalStats.Instance.PlayersPeople;
         FilterListBySkill(quest.requiments.SkillRequiment);
-       // ApplyDetailForQuest(quest);
-        
+        // ApplyDetailForQuest(quest);
+
     }
+
+
 
 
     private void ApplyDetailForQuest(Quest quest)
@@ -51,35 +61,65 @@ public class PersonListView : MonoBehaviour
         {
             child.GetComponent<PersonListViewItem>().SetQuestText(quest);
         }
-    //    GameObject ClearPersonBtn = GameObject.Instantiate(RemoveFromQuestBtn,PersonScrollPanal);
-      //  ClearPersonBtn.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(null));
+        //    GameObject ClearPersonBtn = GameObject.Instantiate(RemoveFromQuestBtn,PersonScrollPanal);
+        //  ClearPersonBtn.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(null));
     }
 
-    private void FilterListBySkill(SkillsList skill)
-       {
-         skillfilter = skill;
-         Filterlable.text = skill.ToString();
-         people.Sort((a,b) => b.skills.GetSkill(skill).CompareTo(a.skills.GetSkill(skill)));
-         PopulateList(); 
-       }
+    private void FilterListBySkill(SkillsList skill, bool inverse = false)
+    {
+        skillfilter = skill;
+        Filterlable.text = skill.ToString() +  " " + Icons.GetSkillIconForTextMeshPro(skill);
 
-       private void FilterListByAge()
-       {
-         skillfilter = null;
-         Filterlable.text = "Age";
-         people.Sort((a,b) => a.Age.CompareTo(b.Age));
-         PopulateList(); 
-       }
+        if (inverse)
+        {
+            people.Sort((a, b) => a.skills.GetSkill(skill).CompareTo(b.skills.GetSkill(skill)));
+        }
+        else
+        {
+            people.Sort((a, b) => b.skills.GetSkill(skill).CompareTo(a.skills.GetSkill(skill)));
+        }
+        PopulateList();
+    }
 
+    private void FilterListByAge(bool inverse = false)
+    {
+        skillfilter = null;
+        Filterlable.text = "Age " + Icons.GetAgeIconForTextMeshPro();
+        if (inverse)
+        {
+        people.Sort((a, b) => b.Age.CompareTo(a.Age));
+        }
+        else
+        {
+        people.Sort((a, b) => a.Age.CompareTo(b.Age));
+        }
+
+        PopulateList();
+    }
+
+
+    public void InvertOrder()
+    {
+        Inverted = !Inverted;
+        if(skillfilter == null)
+        {
+            FilterListByAge(Inverted);
+        }
+        else
+        {
+            FilterListBySkill((SkillsList)skillfilter, Inverted);
+        }
+    }
 
     public void NextFilter()
     {
+        Inverted = false;
         if (skillfilter == null)
         {
             FilterListBySkill((SkillsList)1);
             return;
         }
-        else if((int)skillfilter == Enum.GetValues(typeof(SkillsList)).Length)
+        else if ((int)skillfilter == Enum.GetValues(typeof(SkillsList)).Length)
         {
             FilterListByAge();
             return;
@@ -91,6 +131,7 @@ public class PersonListView : MonoBehaviour
     }
     public void PreviousFilter()
     {
+        Inverted = false;
         if (skillfilter == null)
         {
             FilterListBySkill((SkillsList)Enum.GetValues(typeof(SkillsList)).Length);
@@ -111,17 +152,17 @@ public class PersonListView : MonoBehaviour
     private void PopulateList()
     {
         foreach (Transform child in PersonScrollPanal)
-	    {
-	         Destroy(child.gameObject);
-	    }
-        foreach(PersonInfo personInfo in people)
         {
-           GameObject personViewItem = GameObject.Instantiate(PersonListItemTemplate ,PersonScrollPanal);
-           personViewItem.GetComponent<PersonListViewItem>().SetPerson(personInfo);
+            Destroy(child.gameObject);
+        }
+        foreach (PersonInfo personInfo in people)
+        {
+            GameObject personViewItem = GameObject.Instantiate(PersonListItemTemplate, PersonScrollPanal);
+            personViewItem.GetComponent<PersonListViewItem>().SetPerson(personInfo,skillfilter);
             if (OnSelectMethod != null)
-            {               
+            {
                 personViewItem.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(personInfo));
-                if(QuestSelected)
+                if (QuestSelected)
                 {
                     personViewItem.GetComponent<PersonListViewItem>().SetQuestText(QuestSelected);
                 }

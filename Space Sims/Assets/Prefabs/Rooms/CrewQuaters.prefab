@@ -1181,7 +1181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _size: {x: 1, y: 1}
-  _roomLight: {fileID: 0}
   _roomDarkFilter: {fileID: 6018632899319573560}
   _overlay: {fileID: 17034892118300070}
   _underConstructionBanner: {fileID: 2783010349800312805}
@@ -8361,7 +8360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2274685302405061865
 Transform:
   m_ObjectHideFlags: 0

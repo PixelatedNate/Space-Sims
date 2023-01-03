@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -37,7 +36,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 
 
     public void UpdatePageIcons()
-    { 
+    {
         for (int i = 0; i < PagesList.Length; i++)
         {
             if (i == PageSelected)
@@ -59,13 +58,13 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         float difference = eventData.pressPosition.x - eventData.position.x;
         float xpos = localPageLocation.x - difference;
-        if (PageSelected == PagesList.Length-1)
+        if (PageSelected == PagesList.Length - 1)
         {
             xpos = Mathf.Clamp(xpos, localPageLocation.x - PageWidth, Mathf.Infinity);
         }
         else if (PageSelected == 0)
-        { 
-            xpos = Mathf.Clamp(xpos,Mathf.NegativeInfinity,localPageLocation.x + PageWidth);
+        {
+            xpos = Mathf.Clamp(xpos, Mathf.NegativeInfinity, localPageLocation.x + PageWidth);
         }
         transform.localPosition = new Vector3(xpos, localPageLocation.y, localPageLocation.z);
         TouchControls.EnableCameramovemntAndSelection(false);
@@ -75,7 +74,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         float percentage = (eventData.pressPosition.x - eventData.position.x) / PageWidth;
         TouchControls.EnableCameramovemntAndSelection(true);
-        if(Mathf.Abs(percentage) >= percentThreshold)
+        if (Mathf.Abs(percentage) >= percentThreshold)
         {
             Vector3 newLocation = localPageLocation;
             if (percentage < 0 && PageSelected != 0)
@@ -84,7 +83,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
                 newLocation += new Vector3(PageWidth, 0, 0);
                 UpdatePageIcons();
             }
-            else if (percentage > 0 && PageSelected != PagesList.Length-1)
+            else if (percentage > 0 && PageSelected != PagesList.Length - 1)
             {
                 PageSelected++;
                 newLocation -= new Vector3(PageWidth, 0, 0);
@@ -114,12 +113,12 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     private void Awake()
     {
         localPage1Location = transform.localPosition;
-        localPageLocation = transform.localPosition;   
+        localPageLocation = transform.localPosition;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

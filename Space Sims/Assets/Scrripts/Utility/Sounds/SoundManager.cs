@@ -1,13 +1,12 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
 
     public static SoundManager Instance;
-    
+
     public enum Sound
     {
         UIclick,
@@ -48,7 +47,7 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField]
     private AudioSource _effectsSource;
-    
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -78,7 +77,7 @@ public class SoundManager : MonoBehaviour
         {
             if (Mathf.Abs(viewPortPoint.x) < 1 && Mathf.Abs(viewPortPoint.y) < 1)
             {
-                _effectsSource.PlayOneShot(GetAudioClip(sound),voloume);
+                _effectsSource.PlayOneShot(GetAudioClip(sound), voloume);
             }
         }
     }
@@ -111,7 +110,7 @@ public class SoundManager : MonoBehaviour
     }
 
 
-   IEnumerator SoundCleanUp(AudioSource audioSource)
+    IEnumerator SoundCleanUp(AudioSource audioSource)
     {
         yield return new WaitUntil(() => audioSource.isPlaying == false);
         Destroy(audioSource);
@@ -119,9 +118,9 @@ public class SoundManager : MonoBehaviour
 
     private AudioClip GetAudioClip(Sound sound)
     {
-        foreach(SoundAudioClip soundAudioClip in _soundAudioClips)
+        foreach (SoundAudioClip soundAudioClip in _soundAudioClips)
         {
-            if(soundAudioClip.sound == sound)
+            if (soundAudioClip.sound == sound)
             {
                 return soundAudioClip.audioClip;
             }
