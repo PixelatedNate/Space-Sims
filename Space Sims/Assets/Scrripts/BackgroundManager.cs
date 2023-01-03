@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BackgroundManager : MonoBehaviour
 {
 
-   public static BackgroundManager Instance;
+    public static BackgroundManager Instance;
 
     [SerializeField]
     private Image _backgroundImage;

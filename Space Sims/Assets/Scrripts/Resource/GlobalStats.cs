@@ -31,18 +31,18 @@ public class GlobalStats : MonoBehaviour
 
     private int _maxPeople;
     public int MaxPeople { get { return _maxPeople; } set { SetMaxPeople(value); } }
-    
-    public List<PersonInfo> PlayersPeople { get; set; } = new List<PersonInfo>();  
+
+    public List<PersonInfo> PlayersPeople { get; set; } = new List<PersonInfo>();
     public List<AbstractRoom> PlyaerRooms { get; set; } = new List<AbstractRoom>();
     public QuestRoom QuestRoom { get; set; }
 
 
-  //  private List<Quest> Quests { get; } = new List<Quest>();
+    //  private List<Quest> Quests { get; } = new List<Quest>();
 
 
     private bool _lowFood;
     private Alert _lowFoodAlert;
-    
+
 
 
     #region CustomGetterAndSetters
@@ -164,12 +164,12 @@ public class GlobalStats : MonoBehaviour
                 _lowFoodAlert = Alert.LowFoodAlert;
                 AlertManager.Instance.SendAlert(_lowFoodAlert);
                 _lowFood = true;
-            }            
+            }
             PlayerResources.Food = 0;
         }
-        if(PlayerResources.Food > 0 && _lowFood)
+        if (PlayerResources.Food > 0 && _lowFood)
         {
-            _lowFood = false; 
+            _lowFood = false;
             AlertManager.Instance.RemoveAlert(_lowFoodAlert);
         }
         else if (PlayerResources.Food >= MaxStorage.Food)
@@ -179,7 +179,7 @@ public class GlobalStats : MonoBehaviour
 
         if (PlayerResources.Fuel < 0)
         {
-        //    AlertManager.Instance.SendAlert(Alerts.LowFuel);
+            //    AlertManager.Instance.SendAlert(Alerts.LowFuel);
             PlayerResources.Fuel = 0;
         }
         else if (PlayerResources.Fuel >= MaxStorage.Fuel)

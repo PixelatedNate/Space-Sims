@@ -39,7 +39,7 @@ public class PassiveProductionRoom : AbstractRoom
         if (OutPutType == null)
         {
             return null;
-        } 
+        }
         return BaseOutputValue + CalculateAllPeoplesEffectOnProdution().GetResorce((ResourcesEnum)OutPutType);
     }
 
@@ -90,14 +90,14 @@ public class PassiveProductionRoom : AbstractRoom
     protected override void UpdateRoomStats()
     {
         GameResources delta;
-        if(!isRoomActive || IsUnderConstruction)
+        if (!isRoomActive || IsUnderConstruction)
         {
-           delta = new GameResources();
+            delta = new GameResources();
         }
         else
         {
             GameResources output = RoomStat.OutPut;
-            foreach(PersonInfo worker in Workers)
+            foreach (PersonInfo worker in Workers)
             {
                 output = output + CalculatePersonEffectOnProduction(worker);
             }
@@ -110,9 +110,9 @@ public class PassiveProductionRoom : AbstractRoom
     private GameResources CalculateAllPeoplesEffectOnProdution()
     {
         GameResources peoplesImpact = new GameResources();
-        foreach(PersonInfo worker in Workers)
+        foreach (PersonInfo worker in Workers)
         {
-           peoplesImpact = peoplesImpact + CalculatePersonEffectOnProduction(worker);
+            peoplesImpact = peoplesImpact + CalculatePersonEffectOnProduction(worker);
         }
         return peoplesImpact;
 
@@ -120,7 +120,7 @@ public class PassiveProductionRoom : AbstractRoom
 
     private GameResources CalculatePersonEffectOnProduction(PersonInfo person)
     {
-     return RoomStat.OutPut * (person.skills.GetSkill(DesiredSkill)/10);
+        return RoomStat.OutPut * (person.skills.GetSkill(DesiredSkill) / 10);
     }
 
     public override void SetOverLay(bool value)
@@ -140,7 +140,7 @@ public class PassiveProductionRoom : AbstractRoom
             _outputimg.gameObject.SetActive(false);
         }
         else
-        { 
+        {
             _outputimg.gameObject.SetActive(true);
             _outputimg.sprite = Icons.GetResourceIcon((ResourcesEnum)OutPutType);
             _output.text = "+" + OutputValue.ToString();
@@ -151,7 +151,7 @@ public class PassiveProductionRoom : AbstractRoom
             _upkeepimg.gameObject.SetActive(false);
         }
         else
-        { 
+        {
             _upkeepimg.gameObject.SetActive(true);
             _upkeepimg.sprite = Icons.GetResourceIcon((ResourcesEnum)UpkeepType);
             _upkeep.text = "-" + BaseUpkeepValue.ToString();
@@ -160,13 +160,13 @@ public class PassiveProductionRoom : AbstractRoom
 
     public override void PersonHover(PersonInfo personInfo)
     {
-        if(Workers.Contains(personInfo)) { UpdateOverlay(); return; }
+        if (Workers.Contains(personInfo)) { UpdateOverlay(); return; }
         _deltaAddPerosn.color = Color.green;
         _deltaAddPerosn.text = "+1";
         Color imgBackgroundColour = Color.green;
         imgBackgroundColour.a = 0.2f;
         overlayBackGroundImg.color = imgBackgroundColour;
-        if(Workers.Count == RoomStat.MaxWorkers)
+        if (Workers.Count == RoomStat.MaxWorkers)
         {
             imgBackgroundColour = Color.red;
             imgBackgroundColour.a = 0.2f;

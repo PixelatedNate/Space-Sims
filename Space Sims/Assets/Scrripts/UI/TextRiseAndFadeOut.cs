@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class TextRiseAndFadeOut : MonoBehaviour
 {
@@ -31,7 +29,7 @@ public class TextRiseAndFadeOut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 

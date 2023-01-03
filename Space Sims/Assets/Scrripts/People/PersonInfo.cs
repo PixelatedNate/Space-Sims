@@ -217,7 +217,7 @@ public class PersonInfo
 
     public void AssignQuest(Quest quest)
     {
-        if(AssginedQuest != null)
+        if (AssginedQuest != null)
         {
             if (AssginedQuest == quest)
             {
@@ -236,7 +236,7 @@ public class PersonInfo
         }
         else
         {
-         //   PersonMonoBehaviour.RemoveFromShip();
+            //   PersonMonoBehaviour.RemoveFromShip();
             GameObject.Destroy(PersonMonoBehaviour.gameObject);
             Room.RemoveWorker(PersonMonoBehaviour);
             Room = GlobalStats.Instance.QuestRoom;
@@ -280,7 +280,7 @@ public class PersonInfo
             do
             {
                 index = Random.Range(0, values.Length);
-           } while(Array.Exists(selectedValuesIndex, element => element == index));
+            } while (Array.Exists(selectedValuesIndex, element => element == index));
 
             selectedValues[i] = values[index];
         }
@@ -330,7 +330,7 @@ public class PersonInfo
     public void SetCloths(Sprite cloths)
     {
         _clothes = cloths;
-        if(PersonMonoBehaviour != null)
+        if (PersonMonoBehaviour != null)
         {
             PersonMonoBehaviour.ReRenderPerson();
         }

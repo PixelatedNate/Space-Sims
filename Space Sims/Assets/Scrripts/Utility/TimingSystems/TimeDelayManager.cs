@@ -19,12 +19,12 @@ public class TimeDelayManager : MonoBehaviour
 
         private double CalculatePercent()
         {
-         return RemainingDuration.TotalSeconds/(TotalDuration.TotalSeconds / 100);
+            return RemainingDuration.TotalSeconds / (TotalDuration.TotalSeconds / 100);
         }
 
         private TimeSpan CalculateRemainingDuration()
         {
-            if(!IsPause)
+            if (!IsPause)
             {
                 return EndTime - DateTime.Now;
             }
@@ -46,10 +46,10 @@ public class TimeDelayManager : MonoBehaviour
             EndTime = EndTime + (DateTime.Now - pauseTimeStart);
             IsPause = false;
         }
-        
+
 
         public Timer(DateTime endTime, Action endMethod)
-        {           
+        {
             this.EndTime = endTime;
             this.TotalDuration = EndTime - DateTime.Now;
             this.EndMethod = endMethod;
@@ -92,7 +92,7 @@ public class TimeDelayManager : MonoBehaviour
 
     public bool RemoveTimer(Timer t)
     {
-       return ActiveTimers.Remove(t);
+        return ActiveTimers.Remove(t);
     }
 
     private void OnTick(object source, EventArgs e)

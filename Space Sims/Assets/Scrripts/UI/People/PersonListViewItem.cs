@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,10 +11,10 @@ public class PersonListViewItem : MonoBehaviour
     [SerializeField]
     Image head, Body, Clothes;
 
-    public void SetPerson(PersonInfo person)
+    public void SetPerson(PersonInfo person, SkillsList? filter)
     {
         this.person = person;
-        SetStats();
+        SetStats(filter);
         SetPersonImg();
     }
     private void SetPersonImg()
@@ -40,7 +38,7 @@ public class PersonListViewItem : MonoBehaviour
             QuestText.color = Color.green;
             QuestText.text = "Allready Selcted";
         }
-        else if (!quest.DosePersonMeetRequiment(person)) 
+        else if (!quest.DosePersonMeetRequiment(person))
         {
             GetComponent<Button>().interactable = false;
             QuestText.color = Color.green;
@@ -49,15 +47,42 @@ public class PersonListViewItem : MonoBehaviour
 
     }
 
-    private void SetStats()
+    private void SetStats(SkillsList? filter)
     {
         PersonName.text = person.Name;
         Age.text = person.Age.ToString();
+        if(filter == null)
+        {
+            Age.fontSize += 2;
+        }
         Strenght.text = person.skills.GetSkill(SkillsList.Strength).ToString();
+        if(filter == SkillsList.Strength)
+        {
+            Strenght.fontSize += 2;
+        }
         Dexterity.text = person.skills.GetSkill(SkillsList.Dexterity).ToString();
+        if(filter == SkillsList.Dexterity)
+        {
+            Dexterity.fontSize += 2;
+        }
+
         Inteligence.text = person.skills.GetSkill(SkillsList.Intelligence).ToString();
+        if(filter == SkillsList.Intelligence)
+        {
+            Inteligence.fontSize += 2;
+        }
+
         Wisdom.text = person.skills.GetSkill(SkillsList.Wisdom).ToString();
+        if(filter == SkillsList.Wisdom)
+        {
+            Wisdom.fontSize += 2;
+        }
+
         Charisma.text = person.skills.GetSkill(SkillsList.Charisma).ToString();
+        if(filter == SkillsList.Charisma)
+        {
+            Charisma.fontSize += 2;
+        }
 
     }
 }

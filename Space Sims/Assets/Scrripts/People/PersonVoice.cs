@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public static class PersonVoice
 {
-    
+
     public static float GetPitch(PersonInfo personInfo)
     {
         float pitch = 1f;
@@ -22,7 +18,7 @@ public static class PersonVoice
                     }
                     return pitch;
                 }
-             case Race.Aquatic:
+            case Race.Aquatic:
                 {
                     if (personInfo.Gender == Gender.Male)
                     {
@@ -32,12 +28,12 @@ public static class PersonVoice
                     {
                         pitch = 1.2f;
                     }
-                    return pitch; 
+                    return pitch;
                 }
 
             case Race.Avian:
                 {
-                  if (personInfo.Gender == Gender.Male)
+                    if (personInfo.Gender == Gender.Male)
                     {
                         pitch = 0.6f;
                     }
@@ -50,7 +46,7 @@ public static class PersonVoice
 
             case Race.Bovine:
                 {
-                 if (personInfo.Gender == Gender.Male)
+                    if (personInfo.Gender == Gender.Male)
                     {
                         pitch = 1.2f;
                     }
@@ -73,7 +69,7 @@ public static class PersonVoice
                     }
                     return pitch;
                 }
-                                   
+
 
             case Race.Feline:
                 {
@@ -154,7 +150,7 @@ public static class PersonVoice
                     return pitch;
                 }
         }
-            return 1f;
+        return 1f;
     }
 
 

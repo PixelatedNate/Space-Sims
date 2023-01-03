@@ -38,7 +38,7 @@ public class PathFinding
             {
                 Debug.LogWarning("No path was found when parth finding Target was: " + target);
                 return null;
-            }          
+            }
             graph[currentPosition].Visted = true;
             foreach (Vector3Int adjacentTile in GetAdjacentTiles(currentPosition, tileMap))
             {
@@ -46,7 +46,7 @@ public class PathFinding
                 {
                     float newScore = 1; // can be modifyed for account for move speed such as walking on mud or rood e.t.c (not really relevent in our game so all tiles are equal)
                     float hValue = Mathf.Abs(Vector3Int.Distance(adjacentTile, target));
-                    graph.Add(adjacentTile, new Node<Vector3Int>() { Visted = false, PreviousPosition = currentPosition, H = hValue, Score = newScore }); 
+                    graph.Add(adjacentTile, new Node<Vector3Int>() { Visted = false, PreviousPosition = currentPosition, H = hValue, Score = newScore });
                 }
 
                 if (currentPosition == target)
@@ -96,32 +96,34 @@ public class PathFinding
                     Dictionary<AbstractRoom, LinkedList<Vector3Int>> path = new Dictionary<AbstractRoom, LinkedList<Vector3Int>>();
 
                     LinkedList<AbstractRoom> roomPath = BuildPath(currentPosition, startRoom, graph);
+
+                    roomPath.AddFirst(startRoom); // for this case we want to add the first postion onto the path as even though the person is in the room they still need to know the pathfinding out of the room.
                     AbstractRoom[] roomPathArray = roomPath.ToArray();
-                    
-                    Direction  SecondRoomDirection = GetRoomDirection(roomPathArray[0],roomPathArray[1]);
+
+                    Direction SecondRoomDirection = GetRoomDirection(roomPathArray[0], roomPathArray[1]);
                     Vector3Int FirstRoomEndPosition = roomPathArray[1].GetConectorTile(SecondRoomDirection);
 
-                    LinkedList<Vector3Int> firstRoomInternalPath = CalculateInternalRoomPath(roomPathArray[0].PathFindingTileMap, startPositionInFirstRoom,FirstRoomEndPosition);
+                    LinkedList<Vector3Int> firstRoomInternalPath = CalculateInternalRoomPath(roomPathArray[0].PathFindingTileMap, startPositionInFirstRoom, FirstRoomEndPosition);
                     path.Add(roomPathArray[0], firstRoomInternalPath);
 
-
-                    for(int i = 1; i < roomPathArray.Length-1; i++)
+                    for (int i = 1; i < roomPathArray.Length - 1; i++)
                     {
-                        Direction  previousRoomDirection = GetRoomDirection(roomPathArray[i],roomPathArray[i-1]);
+                        Direction previousRoomDirection = GetRoomDirection(roomPathArray[i], roomPathArray[i - 1]);
                         Vector3Int StartPosition = roomPathArray[i].GetConectorTile(previousRoomDirection);
-                        
-                        Direction  nextRoomDirection = GetRoomDirection(roomPathArray[i],roomPathArray[i+1]);
+
+                        Direction nextRoomDirection = GetRoomDirection(roomPathArray[i], roomPathArray[i + 1]);
                         Vector3Int endPosition = roomPathArray[i].GetConectorTile(nextRoomDirection);
 
                         LinkedList<Vector3Int> internalPath = CalculateInternalRoomPath(roomPathArray[i].PathFindingTileMap, StartPosition, endPosition);
+                        internalPath.AddFirst(StartPosition); // once again we want to add the start postion as they still need to go there when changning rooms.
                         path.Add(roomPathArray[i], internalPath);
                     }
 
                     int lastRoomIndex = roomPathArray.Length - 1;
-                    Direction LastRoompreviousDirection = GetRoomDirection(roomPathArray[lastRoomIndex], roomPathArray[lastRoomIndex - 1]);
-                    Vector3Int LastRoomStartPosition = roomPathArray[lastRoomIndex].GetConectorTile(SecondRoomDirection);
-                    Vector3Int LastRoomCenterTile = roomPathArray[lastRoomIndex].GetCenterTile();
-                    LinkedList<Vector3Int> LastRoomInternalPath = CalculateInternalRoomPath(roomPathArray[0].PathFindingTileMap,LastRoomStartPosition,LastRoomCenterTile);
+                    Direction lastRoompreviousDirection = GetRoomDirection(roomPathArray[lastRoomIndex], roomPathArray[lastRoomIndex - 1]);
+                    Vector3Int lastRoomStartPosition = roomPathArray[lastRoomIndex].GetConectorTile(lastRoompreviousDirection);
+                    Vector3Int lastRoomCenterTile = roomPathArray[lastRoomIndex].GetCenterTile();
+                    LinkedList<Vector3Int> LastRoomInternalPath = CalculateInternalRoomPath(roomPathArray[0].PathFindingTileMap, lastRoomStartPosition, lastRoomCenterTile);
                     path.Add(roomPathArray[lastRoomIndex], LastRoomInternalPath);
 
                     return path;
@@ -129,7 +131,7 @@ public class PathFinding
             }
         }
     }
-          
+
     private static Direction GetRoomDirection(AbstractRoom firstRoom, AbstractRoom secondRoom)
     {
 
@@ -173,22 +175,22 @@ public class PathFinding
     {
         List<AbstractRoom> adjacentRooms = new List<AbstractRoom>();
         AbstractRoom adjcentRoomLeft = RoomGridManager.Instance.GetRoomAtPosition(room.RoomPosition + Vector3Int.left);
-        if(adjcentRoomLeft != null)
+        if (adjcentRoomLeft != null)
         {
             adjacentRooms.Add(adjcentRoomLeft);
         }
         AbstractRoom adjcentRoomRight = RoomGridManager.Instance.GetRoomAtPosition(room.RoomPosition + Vector3Int.right);
-        if(adjcentRoomRight != null)
+        if (adjcentRoomRight != null)
         {
             adjacentRooms.Add(adjcentRoomRight);
         }
         AbstractRoom adjcentRoomUp = RoomGridManager.Instance.GetRoomAtPosition(room.RoomPosition + Vector3Int.up);
-        if(adjcentRoomUp != null)
+        if (adjcentRoomUp != null)
         {
             adjacentRooms.Add(adjcentRoomUp);
         }
         AbstractRoom adjcentRoomDown = RoomGridManager.Instance.GetRoomAtPosition(room.RoomPosition + Vector3Int.down);
-        if(adjcentRoomDown != null)
+        if (adjcentRoomDown != null)
         {
             adjacentRooms.Add(adjcentRoomDown);
         }
@@ -197,7 +199,7 @@ public class PathFinding
 
     }
 
-    
+
 
     private static Vector3Int[] GetAdjacentTiles(Vector3Int pos, Tilemap tilemap)
     {
@@ -244,7 +246,7 @@ public class PathFinding
 
 
 
-    private static T GetNodeKeyWithLowestScore<T>(Dictionary<T,Node<T>> graph) 
+    private static T GetNodeKeyWithLowestScore<T>(Dictionary<T, Node<T>> graph)
     {
         bool found = false;
         T lowestNode = graph.Keys.First();
@@ -261,9 +263,9 @@ public class PathFinding
                 }
             }
         }
-        if(!found)
+        if (!found)
         {
-            throw new System.Exception();   
+            throw new System.Exception();
         }
         return lowestNode;
     }

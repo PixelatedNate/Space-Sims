@@ -16,7 +16,7 @@ MonoBehaviour:
   Description: Look at this new quest for this palent
   requiments:
     Numpeople: 0
-    SkillRequiment: 0
+    SkillRequiment: 3
     skillValueMin: 0
   Duration: 0
   _reward:
@@ -27,5 +27,4 @@ MonoBehaviour:
       Premimum: 0
     _numberofpeopleReward: 0
   PeopleAssgined: []
-  questStaus: 0
   PossibleEncounters: []

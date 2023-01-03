@@ -26,26 +26,39 @@ public static class Icons
             default: throw new Exception("Enum Resources returned No corisponding value");
         }
     }
-    
-     public static int GetResourceIDForTextMeshPro(ResourcesEnum resourcesEnum)
+
+    public static string GetResourceIconForTextMeshPro(ResourcesEnum resourcesEnum)
     {
         switch (resourcesEnum)
         {
-            case ResourcesEnum.Fuel: return 4;
-            case ResourcesEnum.Food: return 3;
-            case ResourcesEnum.Minerals: return 6;
+            case ResourcesEnum.Fuel: return "<sprite=4>";
+            case ResourcesEnum.Food: return "<sprite=3>";
+            case ResourcesEnum.Minerals: return "<sprite=6>";
             default: throw new Exception("Enum Resources returned No corisponding value");
         }
     }
-
-    public static int GetPersonIconIDForTextMeshPro()
+    public static string GetSkillIconForTextMeshPro(SkillsList skillsList)
     {
-        return 7;
+        switch (skillsList)
+        {
+            case SkillsList.Strength: return "<sprite=8>";
+            case SkillsList.Charisma: return "<sprite=1>";
+            case SkillsList.Dexterity: return "<sprite=2>";
+            case SkillsList.Intelligence: return "<sprite=5>";
+            case SkillsList.Wisdom: return "<sprite=9>";
+            default: throw new Exception("Enum SkillList returned No corisponding value");
+        }
     }
 
 
-
-
+    public static string GetPersonIconForTextMeshPro()
+    {
+        return  "<sprite=7>";
+    }
+    public static string GetAgeIconForTextMeshPro()
+    {
+        return "<sprite=0>";
+    }
 
 
     public static Sprite GetSkillIcon(SkillsList skillEnum)

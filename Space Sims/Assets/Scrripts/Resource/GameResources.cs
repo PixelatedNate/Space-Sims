@@ -143,8 +143,8 @@ public class GameResources
             Fuel = (int)MathF.Floor(a.Fuel * b),
             Minerals = (int)MathF.Floor(a.Minerals * b),
             Premimum = (int)MathF.Floor(a.Premimum * b),
-        };  
-            
+        };
+
     }
 
 

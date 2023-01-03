@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24eebf4e3bb43c64ca98789dfcfdb888, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  Title: Quest 1
+  Title: Call for help
   Description: Send Distrese Signal
   requiments:
     Numpeople: 1
@@ -27,5 +27,4 @@ MonoBehaviour:
       Premimum: 0
     _numberofpeopleReward: 50
   PeopleAssgined: []
-  questStaus: 0
   PossibleEncounters: []

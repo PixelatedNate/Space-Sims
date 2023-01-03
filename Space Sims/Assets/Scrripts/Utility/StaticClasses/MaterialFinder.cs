@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class MaterialFinder
@@ -11,6 +9,6 @@ public static class MaterialFinder
 
     public static Material GetOutlineResourceMaterial()
     {
-     return Resources.Load<Material>(OutlineMaterialPath);
+        return Resources.Load<Material>(OutlineMaterialPath);
     }
 }

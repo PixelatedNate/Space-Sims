@@ -12,20 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24eebf4e3bb43c64ca98789dfcfdb888, type: 3}
   m_Name: Quest2
   m_EditorClassIdentifier: 
-  Title: Quest 4
+  Title: Into the Dark
   Description: What happened to quest 3?
   requiments:
     Numpeople: 4
     SkillRequiment: 4
     skillValueMin: 1
   Duration: 0
-  reward:
-    gameResourcesReward:
+  _reward:
+    _gameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 50
       Premimum: 0
-    peopleReward: []
+    _numberofpeopleReward: 0
   PeopleAssgined: []
-  questStaus: 0
   PossibleEncounters: []

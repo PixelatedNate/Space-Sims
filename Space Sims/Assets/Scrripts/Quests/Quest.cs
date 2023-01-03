@@ -10,9 +10,9 @@ public class Quest : ScriptableObject
 
     public enum Status
     {
-       Available,
-       InProgress,
-       Completed,
+        Available,
+        InProgress,
+        Completed,
     }
 
     [Serializable]
@@ -50,7 +50,7 @@ public class Quest : ScriptableObject
         public GameResources GameResourcesReward { get { return _gameResourcesReward; } }
         [SerializeField]
         int _numberofpeopleReward;
-        public int NumberOfPeopleReward { get { return _numberofpeopleReward; }  }
+        public int NumberOfPeopleReward { get { return _numberofpeopleReward; } }
     }
 
     private bool Inprogress = false;
@@ -77,7 +77,7 @@ public class Quest : ScriptableObject
     [SerializeField]
     private QuestEncounter[] PossibleEncounters;
 
-    public Timer QuestTimer {get; private set; }
+    public Timer QuestTimer { get; private set; }
 
     public void AssginPerson(PersonInfo person)
     {
@@ -97,16 +97,16 @@ public class Quest : ScriptableObject
             throw new Exception("trying to UnassginPerson not assgined to quest");
         }
         PeopleAssgined.Remove(person);
-    } 
+    }
 
     public void UnassginAllPeopople()
     {
         PeopleAssgined.Clear();
     }
-    
+
     public bool DosePersonMeetRequiment(PersonInfo person)
     {
-       return person.skills.GetSkill(requiments.SkillRequiment) > requiments.skillValueMin;
+        return person.skills.GetSkill(requiments.SkillRequiment) > requiments.skillValueMin;
     }
 
     public bool StartQuest()
@@ -115,13 +115,13 @@ public class Quest : ScriptableObject
         {
             return false;
         }
-        questStaus = Status.InProgress;        
+        questStaus = Status.InProgress;
         foreach (PersonInfo p in PeopleAssgined)
         {
             p.StartQuest(this);
         }
         TimeTickSystem.OnMajorTick += onMajorTick;
-        QuestTimer = new Timer(DateTime.Now.AddMinutes(Duration),new Action(CompleatQuest));
+        QuestTimer = new Timer(DateTime.Now.AddMinutes(Duration), new Action(CompleatQuest));
         TimeDelayManager.Instance.AddTimer(QuestTimer);
         return true;
     }
@@ -169,12 +169,12 @@ public class Quest : ScriptableObject
             p.CompleteQuest(new PersonInfo.Skills());
         }
 
-        for(int i = 0; i < reward.NumberOfPeopleReward; i++)
+        for (int i = 0; i < reward.NumberOfPeopleReward; i++)
         {
             PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom);
         }
 
-        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest , Alert.AlertPrority.low));
+        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low));
     }
 
 

@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static TimeDelayManager;
 
 public class QuestView : MonoBehaviour
 {
@@ -43,7 +41,7 @@ public class QuestView : MonoBehaviour
 
     public Quest questSelected { get; private set; }
     // Start is called before the first frame update
-   
+
     [SerializeField]
     private GameObject RequimentTemplate;
 
@@ -59,13 +57,13 @@ public class QuestView : MonoBehaviour
         {
             ProgressBar.parent.parent.gameObject.SetActive(false);
         }
-        else if(quest.questStaus == Quest.Status.InProgress)
-        { 
+        else if (quest.questStaus == Quest.Status.InProgress)
+        {
             TimeTickSystem.OnTick += OnTick;
             startBtn.enabled = false;
             SetProgressBarAndText();
         }
-        else if(quest.questStaus == Quest.Status.Completed)
+        else if (quest.questStaus == Quest.Status.Completed)
         {
             ProgressBar.parent.parent.gameObject.SetActive(true);
             TimeTickSystem.OnTick -= OnTick;
@@ -80,27 +78,27 @@ public class QuestView : MonoBehaviour
 
     public void SetActiveRequimentBoxView(QuestRequimentBoxView selectedQuestRequiment)
     {
-        if(SelectedQuestRequiment != null)
+        if (SelectedQuestRequiment != null)
         {
             SelectedQuestRequiment.DeselectRequimentBox();
         }
         SelectedQuestRequiment = selectedQuestRequiment;
     }
-    
+
     public void SetRequiments()
     {
         foreach (Transform child in RequimentPanel)
         {
             Destroy(child.gameObject);
         }
-        for(int i = 0; i < questSelected.requiments.Numpeople; i++)
+        for (int i = 0; i < questSelected.requiments.Numpeople; i++)
         {
             GameObject QuestRequimentItem = GameObject.Instantiate(RequimentTemplate, RequimentPanel);
             QuestRequimentBoxView questRequimentBoxView = QuestRequimentItem.GetComponent<QuestRequimentBoxView>();
             questRequimentBoxView.MainQuestView = this;
             if (questSelected.PeopleAssgined.Count >= i + 1)
             {
-                questRequimentBoxView.SetPerson(questSelected.PeopleAssgined[i],questSelected);
+                questRequimentBoxView.SetPerson(questSelected.PeopleAssgined[i], questSelected);
             }
             else
             {
@@ -114,27 +112,28 @@ public class QuestView : MonoBehaviour
     public void setLogs()
     {
         foreach (Transform child in LogPanal)
-	    {
-	         Destroy(child.gameObject);
-	    }
-        foreach(var log in questSelected.QuestLog)
         {
-           var LogUI = GameObject.Instantiate(LogUIPrefab,LogPanal);
-           LogUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = log.Discription;
+            Destroy(child.gameObject);
+        }
+        foreach (var log in questSelected.QuestLog)
+        {
+            var LogUI = GameObject.Instantiate(LogUIPrefab, LogPanal);
+            LogUI.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = log.Discription;
         }
         LogsTotal = questSelected.QuestLog.Count;
     }
 
     private void SelectRequimentBox(QuestRequimentBoxView requimentBox)
     {
-        if(SelectedQuestRequiment == requimentBox)
+        if (SelectedQuestRequiment == requimentBox)
         {
             SelectedQuestRequiment.DeselectRequimentBox();
             SelectedQuestRequiment = null;
-            UIManager.Instance.OpenQuestListView();              
+            UIManager.Instance.OpenQuestViewOnQuest(questSelected);
+            //UIManager.Instance.OpenQuestListView();              
             return;
         }
-        else if(SelectedQuestRequiment != null)
+        else if (SelectedQuestRequiment != null)
         {
             SelectedQuestRequiment.DeselectRequimentBox();
         }
@@ -146,10 +145,10 @@ public class QuestView : MonoBehaviour
     private void SelectPersonForQuest()
     {
         UIManager.Instance.OpenSelectPersonForQuestListView(PersonSelected, questSelected);
-    }   
+    }
     private void PersonSelected(PersonInfo newPersonInfo)
     {
-        if(SelectedQuestRequiment.SelectedPerson == newPersonInfo || newPersonInfo == null)
+        if (SelectedQuestRequiment.SelectedPerson == newPersonInfo || newPersonInfo == null)
         {
             questSelected.UnassginPerson(SelectedQuestRequiment.SelectedPerson);
             SelectedQuestRequiment.DeselectRequimentBox();
@@ -176,7 +175,7 @@ public class QuestView : MonoBehaviour
 
     public void SetButton()
     {
-        if(questSelected.requiments.Ismet(questSelected.PeopleAssgined.ToArray()))
+        if (questSelected.requiments.Ismet(questSelected.PeopleAssgined.ToArray()))
         {
             buttonImge.sprite = ReadyButtonImg;
         }
@@ -192,7 +191,7 @@ public class QuestView : MonoBehaviour
 
     public void StartQuest()
     {
-        if(questSelected.StartQuest())
+        if (questSelected.StartQuest())
         {
             startBtn.enabled = false;
             SelectQuest(questSelected);
@@ -202,7 +201,7 @@ public class QuestView : MonoBehaviour
 
     }
 
-    
+
     private void SetProgressBarAndText()
     {
         ProgressBar.parent.parent.gameObject.SetActive(true);
@@ -220,15 +219,13 @@ public class QuestView : MonoBehaviour
         {
             if (rewaredResources.GetResorce(re) != 0)
             {
-                int Index = Icons.GetResourceIDForTextMeshPro(re);
-                Reward.text = Reward.text + "<sprite=" + Index + ">" + ": " + rewaredResources.GetResorce(re).ToString() + " <br>";
+                Reward.text = Icons.GetResourceIconForTextMeshPro(re) + ": " + rewaredResources.GetResorce(re).ToString() + " <br>";
             }
         }
-     if(questSelected.reward.NumberOfPeopleReward != 0)
-            {
-                int IconIndex = Icons.GetPersonIconIDForTextMeshPro();
-                Reward.text = Reward.text + "<sprite=" + IconIndex + ">" + ": " + questSelected.reward.NumberOfPeopleReward + " <br>";
-            }
+        if (questSelected.reward.NumberOfPeopleReward != 0)
+        {
+            Reward.text = Reward.text + Icons.GetPersonIconForTextMeshPro() + ": " + questSelected.reward.NumberOfPeopleReward + " <br>";
+        }
     }
 
 
@@ -237,13 +234,13 @@ public class QuestView : MonoBehaviour
         if (questSelected.questStaus == Quest.Status.InProgress)
         {
             SetProgressBarAndText();
-            if(LogsTotal != questSelected.QuestLog.Count)
+            if (LogsTotal != questSelected.QuestLog.Count)
             {
                 setLogs();
             }
         }
         else
-        {           
+        {
             TimeLeft.text = "Completed";
             ProgressBar.localScale = new Vector3(1, 1, 1);
             TimeTickSystem.OnTick -= OnTick;

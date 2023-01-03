@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,7 +21,7 @@ public class AlertComponet : MonoBehaviour
         Name.text = ActiveAlert.name;
         discripiton.text = ActiveAlert.message;
         Time.text = ActiveAlert.time.ToString("HH:mm");
-        if(ActiveAlert.prority != Alert.AlertPrority.Permanet)
+        if (ActiveAlert.prority != Alert.AlertPrority.Permanet)
         {
             button.onClick.AddListener(ClearAlert);
         }

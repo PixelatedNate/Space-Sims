@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class QuestRoom : AbstractRoom
 {
 
     [SerializeField]
-    private TextMeshProUGUI _overlayCurrentPeople,  _deltaAddPerosn;
- 
+    private TextMeshProUGUI _overlayCurrentPeople, _deltaAddPerosn;
+
     void Start()
     {
         IntisaliseRoom();
@@ -41,7 +38,7 @@ public class QuestRoom : AbstractRoom
         _deltaAddPerosn.text = "";
         _overlay.SetActive(false);
     }
-    
+
     public override void IntisaliseRoom()
     {
         return;

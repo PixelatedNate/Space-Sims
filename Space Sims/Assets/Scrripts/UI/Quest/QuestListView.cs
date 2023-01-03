@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -34,7 +32,10 @@ public class QuestListView : MonoBehaviour
     {
         QuestInView = QuestManager.GetQuestsByStaus(quest.questStaus);
         SetBtnColours(quest.questStaus);
-        OpenQuest(quest);
+        if (SelectedQuest != quest)
+        {
+            OpenQuest(quest);
+        }
 
     }
 
@@ -43,34 +44,35 @@ public class QuestListView : MonoBehaviour
         availableBtnImg.color = Color.gray;
         ActiveBtnImg.color = Color.gray;
         CompletedBtmImg.color = Color.gray;
-        if(staus == Quest.Status.Available)
+        if (staus == Quest.Status.Available)
         {
             availableBtnImg.color = Color.white;
         }
-        else if(staus == Quest.Status.InProgress)
+        else if (staus == Quest.Status.InProgress)
         {
             ActiveBtnImg.color = Color.white;
         }
-        else if(staus == Quest.Status.Completed)
+        else if (staus == Quest.Status.Completed)
         {
             CompletedBtmImg.color = Color.white;
         }
 
     }
-        
+
 
 
 
     private void PopulateList()
     {
         foreach (Transform child in QuestScrollPanal)
-	    {
-	         Destroy(child.gameObject);
-	    }
-        foreach(Quest quest in QuestInView)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Quest quest in QuestInView)
         {
             GameObject questViewItem = GameObject.Instantiate(QuestListItemTemplate, QuestScrollPanal);
-            questViewItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quest.Title;
+            // questViewItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quest.Title;
+            questViewItem.GetComponent<QuestListItemView>().setQuest(quest);
             if (SelectedQuest == quest)
             {
                 questViewItem.transform.GetChild(1).gameObject.SetActive(true);
@@ -99,15 +101,15 @@ public class QuestListView : MonoBehaviour
         SelectedQuest = null;
         PopulateList();
     }
-    
+
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

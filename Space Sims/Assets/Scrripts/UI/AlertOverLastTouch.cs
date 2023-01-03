@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -38,16 +36,16 @@ public class AlertOverLastTouch : MonoBehaviour
     {
         GameObject alert = GameObject.Instantiate(PopUpTextPrefab, LastTouchPosition, Quaternion.identity, MainCanvers);
         alert.GetComponent<TextMeshProUGUI>().text = message;
-        alert.GetComponent<TextMeshProUGUI>().color = colour; 
+        alert.GetComponent<TextMeshProUGUI>().color = colour;
     }
 
 
 
 
 
-    private void Update()         
+    private void Update()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             LastTouchPosition = Input.mousePosition;
         }

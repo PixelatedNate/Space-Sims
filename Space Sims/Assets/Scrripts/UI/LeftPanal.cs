@@ -122,10 +122,10 @@ public class LeftPanal : MonoBehaviour
 
     private void DisableQuestView()
     {
-       if(questView.gameObject.activeInHierarchy)
-       {
-           questView.gameObject.SetActive(false);
-       }
+        if (questView.gameObject.activeInHierarchy)
+        {
+            questView.gameObject.SetActive(false);
+        }
     }
 
     private void DisableActiveView()
@@ -134,9 +134,9 @@ public class LeftPanal : MonoBehaviour
     }
 
     private void DisableActiveView(bool disableQuestView)
-    {   
+    {
         //ClothUIMenu.gameObject.SetActive(false);
-        if(disableQuestView)
+        if (disableQuestView)
         {
             DisableQuestView();
         }

@@ -1,10 +1,9 @@
+using RDG;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
-using RDG;
-using System.Collections;
-using System.Linq;
 
 public class Person : MonoBehaviour, IInteractables
 {
@@ -42,10 +41,10 @@ public class Person : MonoBehaviour, IInteractables
 
 
     LinkedList<Vector3Int> MovePath { get; set; }
-    
+
     AbstractRoom PathfindingRoom { get; set; }
 
-    Dictionary<AbstractRoom,LinkedList<Vector3Int>> RoomMovePath { get; set; }
+    Dictionary<AbstractRoom, LinkedList<Vector3Int>> RoomMovePath { get; set; }
     private AbstractRoom RoomUnderMouseOnDrag { get; set; }
 
 
@@ -91,6 +90,14 @@ public class Person : MonoBehaviour, IInteractables
 
     public bool AssginRoomToPerson(AbstractRoom room)
     {
+        if (room == null) // tried to drop person where there was no room like in space.
+        {
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Not a room", Color.red);
+            transform.position = Vector3.zero;
+            transform.position = PersonInfo.Room.transform.position;
+            return false;
+        }
+
         if (room == PersonInfo.Room)
         {
             return false;
@@ -100,7 +107,7 @@ public class Person : MonoBehaviour, IInteractables
         {
             if (oldRoom != null)
             {
-               oldRoom.RemoveWorker(this);
+                oldRoom.RemoveWorker(this);
             }
             MovePath = null;
             PersonInfo.Room = room;
@@ -108,14 +115,6 @@ public class Person : MonoBehaviour, IInteractables
         }
         else
         {
-            if (PersonInfo.Room != null)
-            {
-                transform.position = room.transform.position;
-            }
-            else
-            {
-                transform.position = Vector3.zero;
-            }
             Vector3Int personposition = room.PathFindingTileMap.WorldToCell(transform.position);
             RoomMovePath = PathFinding.CalculateRoomPath(personposition, room, PersonInfo.Room);
             MovePath = null;
@@ -148,11 +147,11 @@ public class Person : MonoBehaviour, IInteractables
 
         bool IsWalkingBetweenRooms = false;
 
-        if(RoomMovePath != null && RoomMovePath.Count > 1)
+        if (RoomMovePath != null && RoomMovePath.Count > 1)
         {
             walkSpeed = 2;
             IsWalkingBetweenRooms = true;
-            if(MovePath == null)
+            if (MovePath == null)
             {
                 PathfindingRoom = RoomMovePath.ElementAt(0).Key;
                 MovePath = RoomMovePath.ElementAt(0).Value;
@@ -173,7 +172,7 @@ public class Person : MonoBehaviour, IInteractables
         }
 
         if (MovePath != null && MovePath.Count > 0)
-        {           
+        {
             Vector3 worldSpacePositionNextPosition = PathfindingRoom.PathFindingTileMap.GetCellCenterWorld(MovePath.First.Value);
             Vector3 dir = (worldSpacePositionNextPosition - transform.position).normalized;
             transform.Translate(dir * walkSpeed * Time.deltaTime);
@@ -211,18 +210,18 @@ public class Person : MonoBehaviour, IInteractables
         }
         return new Vector3Int(x, y, 0);
     }
-   
+
 
     private void OnDestroy()
     {
         if (gameObject.scene.isLoaded)
-        { 
-             if (IsBeingHeld)
-             {
-                 throw new Exception("Trying to destroy a person whilstBeingheld");
-             }
-             GlobalStats.Instance.RemovePersonDelta(this);
-             PersonInfo.PersonMonoBehaviour = null;
+        {
+            if (IsBeingHeld)
+            {
+                throw new Exception("Trying to destroy a person whilstBeingheld");
+            }
+            GlobalStats.Instance.RemovePersonDelta(this);
+            PersonInfo.PersonMonoBehaviour = null;
         }
     }
 
@@ -250,7 +249,7 @@ public class Person : MonoBehaviour, IInteractables
 
             transform.position = mousePointOnWorld;
             AbstractRoom roomUnderMouse = TouchControls.GetRoomUnderMouse();
-            if(roomUnderMouse != RoomUnderMouseOnDrag)
+            if (roomUnderMouse != RoomUnderMouseOnDrag)
             {
                 if (RoomUnderMouseOnDrag != null)
                 {
@@ -273,7 +272,7 @@ public class Person : MonoBehaviour, IInteractables
     public void OnSelect()
     {
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_CLICK);
-        UIManager.Instance.OpenPersonView(_personInfo);     
+        UIManager.Instance.OpenPersonView(_personInfo);
     }
 
     public void SetOutline(bool value)
@@ -303,7 +302,7 @@ public class Person : MonoBehaviour, IInteractables
             throw new Exception("Cannot start a hold on someone who is allready being held");
         }
         UIManager.Instance.OpenPersonView(PersonInfo);
-        SoundManager.Instance.PlaySound(SoundManager.VoiceSounds.PickVoiceLines,PersonVoice.GetPitch(PersonInfo));
+        SoundManager.Instance.PlaySound(SoundManager.VoiceSounds.PickVoiceLines, PersonVoice.GetPitch(PersonInfo));
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_HEAVY_CLICK);
         RoomUnderMouseOnDrag = null;
         IsBeingHeld = true;
@@ -313,10 +312,10 @@ public class Person : MonoBehaviour, IInteractables
     public void OnHoldRelease()
     {
         UIManager.Instance.DeselectAll();
-        SoundManager.Instance.PlaySound(SoundManager.VoiceSounds.PutDownVoiceLines,PersonVoice.GetPitch(PersonInfo));
+        SoundManager.Instance.PlaySound(SoundManager.VoiceSounds.PutDownVoiceLines, PersonVoice.GetPitch(PersonInfo));
         AbstractRoom room = RoomGridManager.Instance.GetRoomAtPosition(transform.position);
         AssginRoomToPerson(room);
-        if(RoomUnderMouseOnDrag != null)
+        if (RoomUnderMouseOnDrag != null)
         {
             RoomUnderMouseOnDrag.ClearPersonHover();
         }

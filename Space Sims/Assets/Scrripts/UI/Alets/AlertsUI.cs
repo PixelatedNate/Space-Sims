@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -11,7 +10,7 @@ public class AlertsUI : MonoBehaviour
 
     [SerializeField]
     private Transform AlertsScrollPanal;
-    private Dictionary<Alert,GameObject> AlertsInView = new Dictionary<Alert, GameObject>();
+    private Dictionary<Alert, GameObject> AlertsInView = new Dictionary<Alert, GameObject>();
     [SerializeField]
     private GameObject AlertUIPrefab;
     [SerializeField]
@@ -44,12 +43,12 @@ public class AlertsUI : MonoBehaviour
         {
             uIButton.AlertTabSlideIn();
             IsOpen = false;
-        }       
+        }
     }
 
     public void AddAlert(Alert alert)
     {
-        if(AlertsInView.Count == 0)
+        if (AlertsInView.Count == 0)
         {
             ShowAlertPanal();
         }
@@ -75,7 +74,7 @@ public class AlertsUI : MonoBehaviour
     }
     public void RemoveAlert(Alert alert)
     {
-        if(alert.prority == Alert.AlertPrority.Permanet)
+        if (alert.prority == Alert.AlertPrority.Permanet)
         {
             PermentAlertCount--;
         }
@@ -85,7 +84,7 @@ public class AlertsUI : MonoBehaviour
         }
         GameObject.Destroy(AlertsInView[alert]);
         AlertsInView.Remove(alert);
-        if(AlertsInView.Count == 0)
+        if (AlertsInView.Count == 0)
         {
             HideAlertPanal();
         }

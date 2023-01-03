@@ -23,7 +23,7 @@ public class RoomGridManager : MonoBehaviour
 
     private bool ShowBuildRoom { get; set; } = false;
 
-    
+
     [SerializeField]
     GameObject EnginePrefabe;
     [SerializeField]
@@ -121,7 +121,7 @@ public class RoomGridManager : MonoBehaviour
     {
 
         // DOSN'T NOT SUPORT BUILD NEW ROOMS NON STANDERED SIZE DUE TO POSILBE OVERIDING EXSISTING ROOMS unless checked/sure manualy, i.e at frist spawn
- 
+
         if (RoomList.ContainsKey(cellPosition))
         {
             return null;
@@ -135,15 +135,15 @@ public class RoomGridManager : MonoBehaviour
         Vector3 newPos = cellCenter;
         newRoom.transform.position = newPos;
         newRoomScript.RoomPosition = cellPosition;
-       
+
         AddRoomToPos(cellPosition, newRoomScript);
-        for(int x = 1; x < newRoomScript.Size.x; x++)
+        for (int x = 1; x < newRoomScript.Size.x; x++)
         {
             AddRoomToPos(cellPosition + new Vector3Int(x, 0, 0), newRoomScript);
         }
-        for(int y = 1; y < newRoomScript.Size.y; y++)
+        for (int y = 1; y < newRoomScript.Size.y; y++)
         {
-           AddRoomToPos(cellPosition + new Vector3Int(0, y, 0), newRoomScript);
+            AddRoomToPos(cellPosition + new Vector3Int(0, y, 0), newRoomScript);
         }
         UpdateEdgeTiles();
         return newRoomScript;
@@ -171,7 +171,7 @@ public class RoomGridManager : MonoBehaviour
         Vector3Int[] adjacentCells = GetAdjacentGridCells(cellPosition);
         foreach (Vector3Int cell in adjacentCells)
         {
-            if(RoomList.ContainsKey(cell))
+            if (RoomList.ContainsKey(cell))
             {
                 if (RoomList[cell] != RoomList[cellPosition])
                 {
@@ -216,33 +216,33 @@ public class RoomGridManager : MonoBehaviour
         foreach (var room in RoomList)
         {
             room.Value.UpdateEdgeTiles();
-            if(GetRoomAtPosition(room.Key + Vector3Int.left) == null)
+            if (GetRoomAtPosition(room.Key + Vector3Int.left) == null)
             {
                 Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.left);
-                var engineGO = GameObject.Instantiate(EnginePrefabe,SpawnPoint,Quaternion.identity);
+                var engineGO = GameObject.Instantiate(EnginePrefabe, SpawnPoint, Quaternion.identity);
                 ExteralShipParts.Add(engineGO);
             }
-            if(GetRoomAtPosition(room.Key + Vector3Int.right) == null
-                && GetRoomAtPosition(room.Key + (Vector3Int.right*2) ) == null)
+            if (GetRoomAtPosition(room.Key + Vector3Int.right) == null
+                && GetRoomAtPosition(room.Key + (Vector3Int.right * 2)) == null)
             {
                 Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.right);
-                var cockPitGO = GameObject.Instantiate(CockPit,SpawnPoint,Quaternion.identity);
+                var cockPitGO = GameObject.Instantiate(CockPit, SpawnPoint, Quaternion.identity);
                 ExteralShipParts.Add(cockPitGO);
             }
-            if(GetRoomAtPosition(room.Key + Vector3Int.up) == null 
+            if (GetRoomAtPosition(room.Key + Vector3Int.up) == null
                 && GetRoomAtPosition(room.Key + Vector3Int.up + Vector3Int.left) == null
                 && GetRoomAtPosition(room.Key + Vector3Int.up + Vector3Int.right) == null)
             {
                 Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.up);
-                var upWing = GameObject.Instantiate(UpWing,SpawnPoint,Quaternion.identity);
+                var upWing = GameObject.Instantiate(UpWing, SpawnPoint, Quaternion.identity);
                 ExteralShipParts.Add(upWing);
             }
-         if(GetRoomAtPosition(room.Key + Vector3Int.down) == null 
-                && GetRoomAtPosition(room.Key + Vector3Int.down + Vector3Int.right) == null
-                && GetRoomAtPosition(room.Key + Vector3Int.down + Vector3Int.left) == null)
+            if (GetRoomAtPosition(room.Key + Vector3Int.down) == null
+                   && GetRoomAtPosition(room.Key + Vector3Int.down + Vector3Int.right) == null
+                   && GetRoomAtPosition(room.Key + Vector3Int.down + Vector3Int.left) == null)
             {
                 Vector3 SpawnPoint = roomGrid.GetCellCenterWorld(room.Key + Vector3Int.down);
-                var downWing = GameObject.Instantiate(DownWing,SpawnPoint,Quaternion.identity);
+                var downWing = GameObject.Instantiate(DownWing, SpawnPoint, Quaternion.identity);
                 ExteralShipParts.Add(downWing);
             }
 
@@ -251,7 +251,7 @@ public class RoomGridManager : MonoBehaviour
 
     private void RemoveAllExternalParts()
     {
-        foreach(GameObject part in ExteralShipParts)
+        foreach (GameObject part in ExteralShipParts)
         {
             Destroy(part);
         }
