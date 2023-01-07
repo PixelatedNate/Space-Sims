@@ -14,10 +14,6 @@ public class QuestListItemView : MonoBehaviour
     public void setQuest(Quest quest)
     {
         title.text = quest.Title;
-        //people.text = quest.requiments.Numpeople.ToString();
-        // requimentImage.sprite = Icons.GetSkillIcon(quest.requiments.SkillRequiment);
-        //requiment.text = quest.requiments.skillValueMin.ToString();
-
         SetRequiment(quest);
         SetRewaredText(quest);
     }

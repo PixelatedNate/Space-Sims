@@ -20,7 +20,9 @@ public class PersonListViewItem : MonoBehaviour
     private void SetPersonImg()
     {
         head.sprite = person.Head;
+        head.color = person.SkinColor;
         Body.sprite = person.Body;
+        Body.color = person.SkinColor;
         Clothes.sprite = person.Clothes;
     }
 

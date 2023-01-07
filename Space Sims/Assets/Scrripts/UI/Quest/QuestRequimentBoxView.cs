@@ -39,7 +39,9 @@ public class QuestRequimentBoxView : MonoBehaviour
         personIcon.SetActive(false);
         PersonDisplay.SetActive(true);
         Head.sprite = personInfo.Head;
+        Head.color = personInfo.SkinColor;
         Body.sprite = personInfo.Body;
+        Body.color = personInfo.SkinColor;
         Cloths.sprite = personInfo.Clothes;
         PersonName.text = personInfo.Name;
         if (personInfo.skills.GetSkill(quest.requiments.SkillRequiment) < quest.requiments.skillValueMin)

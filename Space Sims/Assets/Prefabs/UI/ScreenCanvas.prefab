@@ -1955,6 +1955,8 @@ MonoBehaviour:
   buttonImge: {fileID: 827264023}
   ReadyButtonImg: {fileID: 21300000, guid: 9227e939a959de8488d7452c80cd1394, type: 3}
   UnreadyButtonImg: {fileID: 21300000, guid: a4373c66a9a88bd488394a027e9a8bb7, type: 3}
+  LogPanal: {fileID: 0}
+  LogUIPrefab: {fileID: 0}
   pageSwiper: {fileID: 8038269053332241015}
   RequimentTemplate: {fileID: 8661863787121744171, guid: b2342460f6b2f9e4e8032ab34795b93e, type: 3}
 --- !u!1 &154191600
@@ -36729,14 +36731,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   percentThreshold: 0.2
   easing: 0.5
-  Page1:
-    page: {fileID: 781142547}
-    PageIcon: {fileID: 1152058201}
-  Page2:
-    page: {fileID: 2651114721812380747}
-    PageIcon: {fileID: 764847709}
-  numPages: 2
-  page: 1
+  PagesList: []
+  PageSelected: 0
 --- !u!1 &3361696317319088445
 GameObject:
   m_ObjectHideFlags: 0
@@ -39077,7 +39073,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3869709286264818788}
   - {fileID: 1084319745}
   - {fileID: 3869709285056396610}
   - {fileID: 3869709284985816032}
@@ -39164,7 +39159,6 @@ MonoBehaviour:
   Intelligence: {fileID: 3869709285374391633}
   Wisdom: {fileID: 3869709285679273830}
   Charisma: {fileID: 3869709285230741138}
-  _clothSelectionMenuUIView: {fileID: 121392894}
 --- !u!1 &3869709285068048083
 GameObject:
   m_ObjectHideFlags: 0
@@ -43961,42 +43955,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &3869709286264818795
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3869709286264818788}
-  m_Layer: 5
-  m_Name: DeleteLater
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &3869709286264818788
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3869709286264818795}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3869709285023097345}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3869709286280084580
 GameObject:
   m_ObjectHideFlags: 0
@@ -45125,7 +45083,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestScrollPanal: {fileID: 537650427}
   QuestListItemTemplate: {fileID: 8098886240984097612, guid: 479042f7ed472fd41a1a84ba59218315, type: 3}
-  questView: {fileID: 153594182}
   availableBtnImg: {fileID: 630672907}
   ActiveBtnImg: {fileID: 250212042}
   CompletedBtmImg: {fileID: 1875857738}
@@ -48846,6 +48803,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5256e4cdc4cb42643b09dc5d40114a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UiButton: {fileID: 0}
+  questView: {fileID: 0}
+  PersonCosmetics: {fileID: 0}
+  backStoryView: {fileID: 0}
 --- !u!95 &5378053278320974375
 Animator:
   serializedVersion: 4

@@ -6,7 +6,7 @@ public class TopBar : MonoBehaviour
 {
 
     [SerializeField]
-    private TextMeshProUGUI _fuel, _food, _minerals;
+    private TextMeshProUGUI _fuel, _food, _minerals, _premiumCurancy;
     [SerializeField]
     private TextMeshProUGUI _deltaFuel, _deltaFood, _deltaMinerals;
     [SerializeField]
@@ -40,6 +40,8 @@ public class TopBar : MonoBehaviour
 
         _numberofPeopel.text = numberofPeople.ToString();
         _maxPeople.text = maxPeopleCount.ToString();
+
+        _premiumCurancy.text = currentValues.Premimum.ToString();
     }
 
 
