@@ -174,7 +174,7 @@ public class Quest : ScriptableObject
             PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom);
         }
 
-        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low));
+        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low,Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
     }
 
 

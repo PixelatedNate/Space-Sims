@@ -20,8 +20,6 @@ public class QuestListView : MonoBehaviour
 
     public void SetView(Quest.Status status)
     {
-        //questView.gameObject.SetActive(false);
-        //QuestInView = GlobalStats.Instance.GetQuestsByStaus(status);
         QuestInView = QuestManager.GetQuestsByStaus(status);
         SelectedQuest = null;
         PopulateList();
@@ -71,17 +69,14 @@ public class QuestListView : MonoBehaviour
         foreach (Quest quest in QuestInView)
         {
             GameObject questViewItem = GameObject.Instantiate(QuestListItemTemplate, QuestScrollPanal);
-            // questViewItem.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = quest.Title;
-            questViewItem.GetComponent<QuestListItemView>().setQuest(quest);
+           questViewItem.GetComponent<QuestListItemView>().setQuest(quest);
             if (SelectedQuest == quest)
             {
-                questViewItem.transform.GetChild(1).gameObject.SetActive(true);
                 questViewItem.GetComponent<Image>().color = Color.yellow;
                 questViewItem.GetComponent<Button>().onClick.AddListener(() => CloseQuest(quest));
             }
             else
             {
-                questViewItem.transform.GetChild(1).gameObject.SetActive(false);
                 questViewItem.GetComponent<Button>().onClick.AddListener(() => OpenQuest(quest));
             }
         }

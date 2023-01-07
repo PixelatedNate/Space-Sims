@@ -40,8 +40,11 @@ public class GlobalStats : MonoBehaviour
     //  private List<Quest> Quests { get; } = new List<Quest>();
 
 
-    private bool _lowFood;
+    private bool _lowFood = false;
     private Alert _lowFoodAlert;
+
+    private bool _lowFuel = false;
+    private Alert _lowFuelAlert;
 
 
 
@@ -179,8 +182,18 @@ public class GlobalStats : MonoBehaviour
 
         if (PlayerResources.Fuel < 0)
         {
-            //    AlertManager.Instance.SendAlert(Alerts.LowFuel);
+            if (!_lowFuel)
+            {
+                _lowFuel = true;
+                _lowFuelAlert = Alert.LowFuelAlert;
+                AlertManager.Instance.SendAlert(_lowFuelAlert);
+            }
             PlayerResources.Fuel = 0;
+        }
+        else if(PlayerResources.Fuel > 0 && _lowFuel)
+        {
+            _lowFuel = false;
+            AlertManager.Instance.RemoveAlert(_lowFuelAlert);
         }
         else if (PlayerResources.Fuel >= MaxStorage.Fuel)
         {
