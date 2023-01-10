@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6547699982dcd84d997359a29be1f1a, type: 3}
+  m_Name: TopBar
+  m_EditorClassIdentifier: 
+  tipMenu: 0
+  HighlightedUIElements:
+  - TopResourceBar
+  pages:
+  - pagetitle: TopBar
+    pageText: This is the top bar it is very usefult for things
+    HighlightedUIElements: []
+  - pagetitle: Peopel
+    pageText: People work your ship
+    HighlightedUIElements:
+    - PeopleIconbg
+  - pagetitle: Food
+    pageText: People need food
+    HighlightedUIElements:
+    - FoodIconbg
+  - pagetitle: Fuel
+    pageText: Rooms need fuel
+    HighlightedUIElements:
+    - FuelIconbg
+  - pagetitle: Metal
+    pageText: Metal needed to build rooms
+    HighlightedUIElements:
+    - MineralIconbg
+  - pagetitle: Perimum Currancy
+    pageText: Give us money (pls :) )
+    HighlightedUIElements:
+    - MoneyIcon
+  completed: 1
