@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPerson(personInfo);
+        TipsAndToutorial.Instance.OpenTipMenu(TipsAndToutorial.ToutorialMenus.PersonView);
         alertsUI.CloseAlerts();
         if (rightPanal.activeRSideView == RightPanal.ActiveRSideView.BackStory)
         {
@@ -100,6 +101,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenQuestListViewBtn()
     {
+        TipsAndToutorial.Instance.OpenTipMenu(TipsAndToutorial.ToutorialMenus.QuestList);
         if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.QuestListView)
         {
             leftPanal.ClearAllView();
@@ -125,6 +127,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenPersonListView()
     {
+        TipsAndToutorial.Instance.OpenTipMenu(TipsAndToutorial.ToutorialMenus.PeopleList);
         if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.PersonList)
         {
             leftPanal.ClearAllView();

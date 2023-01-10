@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -15,7 +16,9 @@ public class TouchControls : MonoBehaviour
     [SerializeField]
     private float zoomSpeed = 2;
 
-    private static bool CameraMovemntEnabled { get; set; } = true;
+    private static bool NewCameraMovemntEnabled { get; set; } = true;
+
+    private bool CameraMovemntEnabled { get; set; } = true;
 
     private Button _button;   // prevent trigering of UI buttons when panning or performing other touch related actions
 
@@ -71,6 +74,7 @@ public class TouchControls : MonoBehaviour
 
         if (!CameraMovemntEnabled)
         {
+            CameraMovemntEnabled = NewCameraMovemntEnabled;
             return;
         }
         if (Input.GetMouseButtonUp(0) && !Zooming)
@@ -205,6 +209,7 @@ public class TouchControls : MonoBehaviour
         Zoom(Input.GetAxis("Mouse ScrollWheel"));
 
 #endif
+        CameraMovemntEnabled = NewCameraMovemntEnabled;
     }
 
 
@@ -341,20 +346,6 @@ public class TouchControls : MonoBehaviour
 
     public static void EnableCameramovemntAndSelection(bool value)
     {
-        CameraMovemntEnabled = value;
+        NewCameraMovemntEnabled = value;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

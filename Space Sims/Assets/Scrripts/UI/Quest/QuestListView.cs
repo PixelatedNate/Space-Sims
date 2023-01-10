@@ -85,6 +85,7 @@ public class QuestListView : MonoBehaviour
 
     private void OpenQuest(Quest quest)
     {
+        TipsAndToutorial.Instance.OpenTipMenu(TipsAndToutorial.ToutorialMenus.Quest);
         UIManager.Instance.OpenQuestView(quest);
         SelectedQuest = quest;
         PopulateList();
