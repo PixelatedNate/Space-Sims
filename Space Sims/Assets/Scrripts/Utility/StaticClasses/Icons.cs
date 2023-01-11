@@ -15,7 +15,7 @@ public static class Icons
     private const string WisdomIconPath = "ArtWork/Icons/Wisdom";
 
     private const string QuestCompletIconPath = "ArtWork/Icons/QuestComplet";
-
+    private const string PersonIconPath = "ArtWork/Icons/Person";
 
 
     public static Sprite GetResourceIcon(ResourcesEnum resourcesEnum)
@@ -82,6 +82,7 @@ public static class Icons
         switch (uIIcons)
         {
             case UIIcons.QuestComplete: return Resources.Load<Sprite>(QuestCompletIconPath);
+            case UIIcons.Person: return Resources.Load<Sprite>(PersonIconPath);
             default: throw new Exception("Enum UIIcons returned No corisponding value");
         }
     }

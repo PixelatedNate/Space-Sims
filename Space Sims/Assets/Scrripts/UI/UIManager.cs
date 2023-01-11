@@ -11,7 +11,6 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance;
 
     public bool IsNavigation { get; private set; } = false;
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -42,6 +41,8 @@ public class UIManager : MonoBehaviour
 
     private bool IsRightPanalOpen { get; set; }
 
+
+    private BuildRoomButton selectedbtn = null;
     private GameObject MainLight { get; set; }
     private GameObject MainCamera { get; set; }
     public void UpdateTopBar(GameResources currentResources, GameResources deltaResources, int numberofPoeple, int maxPeople, GameResources maxResources)
@@ -146,8 +147,18 @@ public class UIManager : MonoBehaviour
         alertsUI.CloseAlerts();
     }
 
-    public void OpenBuildRoomMenu(Vector3Int roomCellPos)
+    public void OpenBuildRoomMenu(Vector3Int roomCellPos, BuildRoomButton btn)
     {
+
+        if(selectedbtn == null)
+        {
+            selectedbtn = btn;
+        }
+        if(btn != selectedbtn)
+        {
+            selectedbtn.outline.SetActive(false);
+            selectedbtn = btn;
+        }
         leftPanal.OpenBuildRoomView(roomCellPos);
         alertsUI.CloseAlerts();
         rightPanal.ClearAllView();
@@ -211,6 +222,7 @@ public class UIManager : MonoBehaviour
 
     public void ClearLeftPanal()
     {
+        selectedbtn = null;
         leftPanal.ClearAllView();
     }
     public void ClearRightPanal()
