@@ -88,16 +88,16 @@ public class UIManager : MonoBehaviour
 
     public void OpenAvalibalQuestListView()
     {
-        OpenQuestListView(Quest.Status.Available);
+        OpenQuestListView(QuestStatus.Available);
     }
     public void OpenInProgressQuestView()
     {
-        OpenQuestListView(Quest.Status.InProgress);
+        OpenQuestListView(QuestStatus.InProgress);
     }
 
     public void OpenCompletedQuestViewView()
     {
-        OpenQuestListView(Quest.Status.Completed);
+        OpenQuestListView(QuestStatus.Completed);
     }
 
     public void OpenQuestListViewBtn()
@@ -114,13 +114,13 @@ public class UIManager : MonoBehaviour
         rightPanal.ClearAllView();
         alertsUI.CloseAlerts();
     }
-    public void OpenQuestListView(Quest.Status status = Quest.Status.Available)
+    public void OpenQuestListView(QuestStatus status = QuestStatus.Available)
     {
         leftPanal.SelectQuestListView(status);
         alertsUI.CloseAlerts();
     }
 
-    public void OpenQuestViewOnQuest(Quest quest)
+    public void OpenQuestViewOnQuest(WaittingQuest quest)
     {
         leftPanal.OpenOnQuest(quest);
         alertsUI.CloseAlerts();
@@ -140,7 +140,7 @@ public class UIManager : MonoBehaviour
         rightPanal.ClearAllView();
         alertsUI.CloseAlerts();
     }
-    public void OpenSelectPersonForQuestListView(Action<PersonInfo> OnSelectMethod, Quest quest)
+    public void OpenSelectPersonForQuestListView(Action<PersonInfo> OnSelectMethod, WaittingQuest quest)
     {
         leftPanal.activeLSideView = LeftPanal.ActiveLSideView.PersonList;
         leftPanal.SelectPersonForQuest(OnSelectMethod, quest);
@@ -170,7 +170,7 @@ public class UIManager : MonoBehaviour
 
     #region RightPanal
 
-    public void OpenQuestView(Quest quest)
+    public void OpenQuestView(AbstractQuest quest)
     {
         rightPanal.OpenQuest(quest);
         IsRightPanalOpen = true;

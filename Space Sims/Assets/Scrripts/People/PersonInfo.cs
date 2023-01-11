@@ -135,7 +135,7 @@ public class PersonInfo
     string hairPath;
     string clothesPath;
 
-    private Quest AssginedQuest = null;
+    private WaittingQuest AssginedQuest = null;
 
     const string MaleNamePath = "TextData/Names/People/male";
     const string FemaleNamePath = "TextData/Names/People/female";
@@ -197,7 +197,7 @@ public class PersonInfo
     public Color HairColor { get { return _hairColor; } }
 
     public bool IsQuesting { get { return CurrentQuest != null; } }
-    public Quest CurrentQuest { get; set; } = null;
+    public WaittingQuest CurrentQuest { get; set; } = null;
 
     public Person PersonMonoBehaviour { get; set; }
 
@@ -215,7 +215,7 @@ public class PersonInfo
         RandomizeSkills();
     }
 
-    public void AssignQuest(Quest quest)
+    public void AssignQuest(WaittingQuest quest)
     {
         if (AssginedQuest != null)
         {
@@ -228,7 +228,7 @@ public class PersonInfo
         AssginedQuest = quest;
     }
 
-    public void StartQuest(Quest quest)
+    public void StartQuest(WaittingQuest quest)
     {
         if (CurrentQuest != null)
         {

@@ -39,31 +39,35 @@ public class QuestView : MonoBehaviour
     private List<QuestRequimentBoxView> QuestRequimentBoxViews = new List<QuestRequimentBoxView>();
     private QuestRequimentBoxView SelectedQuestRequiment;
 
-    public Quest questSelected { get; private set; }
+    public WaittingQuest questSelected { get; private set; }
     // Start is called before the first frame update
 
     [SerializeField]
     private GameObject RequimentTemplate;
 
-    public void SelectQuest(Quest quest)
+    public void SelectQuest(AbstractQuest quest)
     {
-        questSelected = quest;
+        if (quest.GetType() != typeof(WaittingQuest))
+        {
+            return;
+        }
+        questSelected = (WaittingQuest)quest;
         Title.text = quest.Title;
         Discription.text = quest.Description;
         setRewaredText();
         SetRequiments();
         startBtn.enabled = enabled;
-        if (quest.questStaus == Quest.Status.Available)
+        if (quest.questStaus == QuestStatus.Available)
         {
             ProgressBar.parent.parent.gameObject.SetActive(false);
         }
-        else if (quest.questStaus == Quest.Status.InProgress)
+        else if (quest.questStaus == QuestStatus.InProgress)
         {
             TimeTickSystem.OnTick += OnTick;
             startBtn.enabled = false;
             SetProgressBarAndText();
         }
-        else if (quest.questStaus == Quest.Status.Completed)
+        else if (quest.questStaus == QuestStatus.Completed)
         {
             ProgressBar.parent.parent.gameObject.SetActive(true);
             TimeTickSystem.OnTick -= OnTick;
@@ -231,7 +235,7 @@ public class QuestView : MonoBehaviour
 
     private void OnTick(object source, EventArgs e)
     {
-        if (questSelected.questStaus == Quest.Status.InProgress)
+        if (questSelected.questStaus == QuestStatus.InProgress)
         {
             SetProgressBarAndText();
             if (LogsTotal != questSelected.QuestLog.Count)

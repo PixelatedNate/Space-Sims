@@ -8,7 +8,7 @@ public class QuestListView : MonoBehaviour
 
     [SerializeField]
     private Transform QuestScrollPanal;
-    private List<Quest> QuestInView = null;
+    private List<AbstractQuest> QuestInView = null;
 
     [SerializeField]
     GameObject QuestListItemTemplate;
@@ -16,9 +16,9 @@ public class QuestListView : MonoBehaviour
     [SerializeField]
     Image availableBtnImg, ActiveBtnImg, CompletedBtmImg;
 
-    Quest SelectedQuest;
+    AbstractQuest SelectedQuest;
 
-    public void SetView(Quest.Status status)
+    public void SetView(QuestStatus status)
     {
         QuestInView = QuestManager.GetQuestsByStaus(status);
         SelectedQuest = null;
@@ -26,7 +26,7 @@ public class QuestListView : MonoBehaviour
         SetBtnColours(status);
     }
 
-    public void OpenOnQuest(Quest quest)
+    public void OpenOnQuest(AbstractQuest quest)
     {
         QuestInView = QuestManager.GetQuestsByStaus(quest.questStaus);
         SetBtnColours(quest.questStaus);
@@ -37,20 +37,20 @@ public class QuestListView : MonoBehaviour
 
     }
 
-    public void SetBtnColours(Quest.Status staus)
+    public void SetBtnColours(QuestStatus staus)
     {
         availableBtnImg.color = Color.gray;
         ActiveBtnImg.color = Color.gray;
         CompletedBtmImg.color = Color.gray;
-        if (staus == Quest.Status.Available)
+        if (staus == QuestStatus.Available)
         {
             availableBtnImg.color = Color.white;
         }
-        else if (staus == Quest.Status.InProgress)
+        else if (staus == QuestStatus.InProgress)
         {
             ActiveBtnImg.color = Color.white;
         }
-        else if (staus == Quest.Status.Completed)
+        else if (staus == QuestStatus.Completed)
         {
             CompletedBtmImg.color = Color.white;
         }
@@ -66,7 +66,7 @@ public class QuestListView : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (Quest quest in QuestInView)
+        foreach (WaittingQuest quest in QuestInView)
         {
             GameObject questViewItem = GameObject.Instantiate(QuestListItemTemplate, QuestScrollPanal);
            questViewItem.GetComponent<QuestListItemView>().setQuest(quest);
@@ -83,7 +83,7 @@ public class QuestListView : MonoBehaviour
     }
 
 
-    private void OpenQuest(Quest quest)
+    private void OpenQuest(AbstractQuest quest)
     {
         TipsAndToutorial.Instance.OpenTipMenu(TipsAndToutorial.ToutorialMenus.Quest);
         UIManager.Instance.OpenQuestView(quest);
@@ -91,7 +91,7 @@ public class QuestListView : MonoBehaviour
         PopulateList();
     }
 
-    private void CloseQuest(Quest quest)
+    private void CloseQuest(WaittingQuest quest)
     {
         UIManager.Instance.ClearRightPanal();
         SelectedQuest = null;

@@ -4,16 +4,10 @@ using UnityEngine;
 using static TimeDelayManager;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Quests/Quest", order = 1)]
-public class Quest : ScriptableObject
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Quests/WaittingQuest", order = 1)]
+public class WaittingQuest : AbstractQuest
 {
 
-    public enum Status
-    {
-        Available,
-        InProgress,
-        Completed,
-    }
 
     [Serializable]
     public class Requiments
@@ -42,37 +36,19 @@ public class Quest : ScriptableObject
 
         }
     }
-    [Serializable]
-    public class Reward
-    {
-        [SerializeField]
-        GameResources _gameResourcesReward;
-        public GameResources GameResourcesReward { get { return _gameResourcesReward; } }
-        [SerializeField]
-        int _numberofpeopleReward;
-        public int NumberOfPeopleReward { get { return _numberofpeopleReward; } }
-    }
-
+    
     private bool Inprogress = false;
 
-    [SerializeField]
-    public string Title;
-    [TextArea(15, 20), SerializeField]
-    public string Description;
     [SerializeField]
     public Requiments requiments;
     [SerializeField]
     float Duration;
-    [SerializeField]
-    Reward _reward;
-    public Reward reward { get { return _reward; } }
-
+  
     [SerializeField]
     public List<PersonInfo> PeopleAssgined = new List<PersonInfo>();
 
     public List<QuestEncounter> QuestLog { get; private set; } = new List<QuestEncounter>();
 
-    public Status questStaus { get; set; } = Status.Available;
 
     [SerializeField]
     private QuestEncounter[] PossibleEncounters;
@@ -109,13 +85,13 @@ public class Quest : ScriptableObject
         return person.skills.GetSkill(requiments.SkillRequiment) > requiments.skillValueMin;
     }
 
-    public bool StartQuest()
+    public override bool StartQuest()
     {
         if (!requiments.Ismet(PeopleAssgined.ToArray()))
         {
             return false;
         }
-        questStaus = Status.InProgress;
+        questStaus = QuestStatus.InProgress;
         foreach (PersonInfo p in PeopleAssgined)
         {
             p.StartQuest(this);
@@ -155,7 +131,7 @@ public class Quest : ScriptableObject
         QuestLog.Add(qe);
     }
 
-    public void CompleatQuest()
+    public override void CompleatQuest()
     {
         SoundManager.Instance.PlaySound(SoundManager.Sound.QuestCompleted);
 
@@ -163,7 +139,7 @@ public class Quest : ScriptableObject
         GlobalStats.Instance.PlayerResources += reward.GameResourcesReward;
 
         TimeTickSystem.OnMajorTick -= onMajorTick;
-        questStaus = Status.Completed;
+        questStaus = QuestStatus.Completed;
         foreach (PersonInfo p in PeopleAssgined)
         {
             p.CompleteQuest(new PersonInfo.Skills());

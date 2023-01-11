@@ -9,22 +9,50 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24eebf4e3bb43c64ca98789dfcfdb888, type: 3}
+  m_Script: {fileID: 11500000, guid: 02ab4f71b5124b3428454fe91d91c361, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  Title: Call for help
-  Description: Send Distrese Signal
-  requiments:
-    Numpeople: 1
-    SkillRequiment: 4
-    skillValueMin: 3
-  Duration: 0.1
+  Title: Temp
+  Description: 'Hello this is a quest '
   _reward:
     _gameResourcesReward:
-      Fuel: 100000
-      Food: 100000
-      Minerals: 100000
+      Fuel: 786
+      Food: 786
+      Minerals: 876
       Premimum: 0
-    _numberofpeopleReward: 50
-  PeopleAssgined: []
+    _numberofpeopleReward: 5
+  requiments:
+    Numpeople: 2
+    SkillRequiment: 1
+    skillValueMin: 1
+  Duration: 1.5
+  PeopleAssgined:
+  - HomePlanet: Dominguez
+    Job: Career/Technical Education Teacher
+    Likes:
+    - Coffee roasting
+    - Foreign language learning
+    Dislikes:
+    - Vehicle restoration
+    - Whittling
+    skills:
+      _strength: 8
+      _dexterity: 5
+      _intelligence: 7
+      _wisdom: 8
+      _charisma: 2
+  - HomePlanet: Bobbyfisher
+    Job: Stonemason
+    Likes:
+    - Shopping
+    - Metalworking
+    Dislikes:
+    - Horseback riding
+    - Listening to music
+    skills:
+      _strength: 5
+      _dexterity: 1
+      _intelligence: 2
+      _wisdom: 2
+      _charisma: 2
   PossibleEncounters: []

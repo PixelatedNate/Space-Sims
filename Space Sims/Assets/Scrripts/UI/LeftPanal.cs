@@ -78,7 +78,7 @@ public class LeftPanal : MonoBehaviour
     }
 
 
-    public void OpenOnQuest(Quest quest)
+    public void OpenOnQuest(WaittingQuest quest)
     {
         DisableActiveView(false);
         activeLSideView = ActiveLSideView.QuestListView;
@@ -87,7 +87,7 @@ public class LeftPanal : MonoBehaviour
         QuestListView.OpenOnQuest(quest);
     }
 
-    public void SelectQuestListView(Quest.Status staus)
+    public void SelectQuestListView(QuestStatus staus)
     {
         DisableActiveView(false);
         activeLSideView = ActiveLSideView.QuestListView;
@@ -105,7 +105,7 @@ public class LeftPanal : MonoBehaviour
         activeLSideView = ActiveLSideView.PersonList;
     }
 
-    public void SelectPersonForQuest(Action<PersonInfo> onSelectMethod, Quest quest)
+    public void SelectPersonForQuest(Action<PersonInfo> onSelectMethod, WaittingQuest quest)
     {
         QuestListView.gameObject.SetActive(false);
         uiButton.LeftTabSlideOut();

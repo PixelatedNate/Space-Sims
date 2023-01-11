@@ -18,7 +18,7 @@ public class QuestRequimentBoxView : MonoBehaviour
     TextMeshProUGUI RequimentValue, PersonName;
 
     public PersonInfo SelectedPerson = null;
-    public Quest questSelected;
+    public WaittingQuest questSelected;
 
     public QuestView MainQuestView { private get; set; }
 
@@ -27,9 +27,9 @@ public class QuestRequimentBoxView : MonoBehaviour
         AddListener();
     }
 
-    public void SetPerson(PersonInfo personInfo, Quest quest)
+    public void SetPerson(PersonInfo personInfo, WaittingQuest quest)
     {
-        if (quest.questStaus == Quest.Status.InProgress || quest.questStaus == Quest.Status.Completed)
+        if (quest.questStaus == QuestStatus.InProgress || quest.questStaus == QuestStatus.Completed)        
         {
             GetComponent<Button>().interactable = false;
         }
@@ -60,7 +60,7 @@ public class QuestRequimentBoxView : MonoBehaviour
         SetRequiments(questSelected);
     }
 
-    public void SetRequiments(Quest quest)
+    public void SetRequiments(WaittingQuest quest)
     {
         Background.color = Color.gray;
         questSelected = quest;

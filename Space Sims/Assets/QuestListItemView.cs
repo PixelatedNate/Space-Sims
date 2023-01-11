@@ -11,21 +11,21 @@ public class QuestListItemView : MonoBehaviour
     Image requimentImage;
 
 
-    public void setQuest(Quest quest)
+    public void setQuest(WaittingQuest quest)
     {
         title.text = quest.Title;
         SetRequiment(quest);
         SetRewaredText(quest);
     }
 
-    public void SetRequiment(Quest quest)
+    public void SetRequiment(WaittingQuest quest)
     {
         requiment.text = null;
         requiment.text =  Icons.GetPersonIconForTextMeshPro() + ": " + quest.requiments.Numpeople + " <br>";
         requiment.text = requiment.text + Icons.GetSkillIconForTextMeshPro(quest.requiments.SkillRequiment) + ": " + quest.requiments.skillValueMin;
     }
 
-    public void SetRewaredText(Quest quest)
+    public void SetRewaredText(WaittingQuest quest)
     {
         rewared.text = null;
         GameResources rewaredResources = quest.reward.GameResourcesReward;

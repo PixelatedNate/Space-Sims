@@ -7,7 +7,7 @@ public class GlobalStats : MonoBehaviour
 
 
     [SerializeField]
-    Quest[] QuesttestsForMenu;
+    WaittingQuest[] QuesttestsForMenu;
 
     public static GlobalStats Instance;
 

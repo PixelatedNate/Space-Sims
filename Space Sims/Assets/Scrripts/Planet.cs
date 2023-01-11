@@ -7,7 +7,7 @@ public class Planet : MonoBehaviour, IInteractables
     string Name;
 
     [SerializeField]
-    Quest[] _quests;
+    WaittingQuest[] _quests;
 
     [SerializeField]
     private bool IsStartPlanet;
@@ -17,7 +17,7 @@ public class Planet : MonoBehaviour, IInteractables
     public Sprite Background { get { return _background; } }
 
     public Sprite PlanetSprite { get; private set; }
-    public Quest[] Quests { get { return _quests; } }
+    public WaittingQuest[] Quests { get { return _quests; } }
 
 
     private Material _orignalMaterial;

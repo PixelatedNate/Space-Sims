@@ -24,6 +24,7 @@ public static class NavigationManager
         {
             return false; // can't navigate to a diffrent palnet when allready in montion
         }
+        TouchControls.DeceletAll();
         BackgroundManager.Instance.setBackgroundToInTransit();
         DateTime ariveralTime = DateTime.Now.Add(CalcualteTravleTime(planet));
         PreviousPlanet = CurrentPlanet;

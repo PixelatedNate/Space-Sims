@@ -23,7 +23,7 @@ public class PersonListView : MonoBehaviour
     private bool Inverted { get; set; }
 
     private Action<PersonInfo> OnSelectMethod = null;
-    private Quest QuestSelected = null;
+    private WaittingQuest QuestSelected = null;
 
 
     public void SetView()
@@ -41,7 +41,7 @@ public class PersonListView : MonoBehaviour
         }
     }
 
-    public void GetPersonForQuest(Action<PersonInfo> onSelectMethod, Quest quest)
+    public void GetPersonForQuest(Action<PersonInfo> onSelectMethod, WaittingQuest quest)
     {
         QuestSelected = quest;
         OnSelectMethod = onSelectMethod;
@@ -54,7 +54,7 @@ public class PersonListView : MonoBehaviour
 
 
 
-    private void ApplyDetailForQuest(Quest quest)
+    private void ApplyDetailForQuest(WaittingQuest quest)
     {
 
         foreach (Transform child in PersonScrollPanal)
