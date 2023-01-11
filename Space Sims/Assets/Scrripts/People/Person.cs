@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
 using Random = UnityEngine.Random;
 
 public class Person : MonoBehaviour, IInteractables
@@ -171,6 +172,8 @@ public class Person : MonoBehaviour, IInteractables
             }
         }
 
+        Vector3Int personposition = PersonInfo.Room.PathFindingTileMap.WorldToCell(transform.position);
+
         if (MovePath != null && MovePath.Count > 0)
         {
             Vector3 worldSpacePositionNextPosition = PathfindingRoom.PathFindingTileMap.GetCellCenterWorld(MovePath.First.Value);
@@ -184,11 +187,11 @@ public class Person : MonoBehaviour, IInteractables
         else if (PersonInfo.Room != null && !IsWalkingBetweenRooms)
         {
             Vector3Int randomPoint;
-            Vector3Int personposition = PersonInfo.Room.PathFindingTileMap.WorldToCell(transform.position);
             randomPoint = GetRandomPathFindingPoint();
             PathfindingRoom = PersonInfo.Room;
             MovePath = PathFinding.CalculateInternalRoomPath(PersonInfo.Room.PathFindingTileMap, personposition, randomPoint);
         }
+        transform.GetChild(0).GetComponent<SortingGroup>().sortingOrder = PersonInfo.Room.GetPersonLayerInRoom(personposition);
     }
 
 
@@ -266,6 +269,15 @@ public class Person : MonoBehaviour, IInteractables
                 }
             }
         }
+    }
+
+
+    public void LeaveShipForGood()
+    {
+        PersonInfo.Room.RemoveWorker(this);
+        GlobalStats.Instance.RemovePersonDelta(this);
+        GlobalStats.Instance.PlayersPeople.Remove(PersonInfo);
+        GameObject.Destroy(gameObject);
     }
 
     #region InteractableInterace

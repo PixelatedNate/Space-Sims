@@ -29,6 +29,13 @@ public class GlobalStats : MonoBehaviour
     private GameResources _playerResources = new GameResources();
     public GameResources PlayerResources { get { return _playerResources; } set { SetPlayerResources(value); } }
 
+
+    private int NegativeFood = 0;
+
+    [SerializeField]
+    private int NegativeFoodPersonLevelVlue; // food is counted  into negative value when this value is reach a perosn will leave +ve value needed here
+
+
     private int _maxPeople;
     public int MaxPeople { get { return _maxPeople; } set { SetMaxPeople(value); } }
 
@@ -168,11 +175,21 @@ public class GlobalStats : MonoBehaviour
                 AlertManager.Instance.SendAlert(_lowFoodAlert);
                 _lowFood = true;
             }
+            NegativeFood = NegativeFood - PlayerResources.Food;
+
+            if (NegativeFood >= NegativeFoodPersonLevelVlue)
+            {
+                RandomPersonLeave();
+                NegativeFood = 0;
+
+                            }
+
             PlayerResources.Food = 0;
         }
         if (PlayerResources.Food > 0 && _lowFood)
         {
             _lowFood = false;
+            NegativeFood = 0;
             AlertManager.Instance.RemoveAlert(_lowFoodAlert);
         }
         else if (PlayerResources.Food >= MaxStorage.Food)
@@ -208,6 +225,17 @@ public class GlobalStats : MonoBehaviour
             PlayerResources.Minerals = MaxStorage.Minerals;
         }
 
+    }
+
+
+    public void RandomPersonLeave()
+    {
+        List<PersonInfo> peopleNotOnQuest = PlayersPeople.FindAll(p => p.IsQuesting == false);
+
+        PersonInfo personToLeave = peopleNotOnQuest[0];
+        Alert PersonLeaveAlert = new Alert(personToLeave.Name, "you coun't keep the person happy so they left", Alert.AlertPrority.High, Icons.GetMiscUIIcon(UIIcons.Person));
+        AlertManager.Instance.SendAlert(PersonLeaveAlert);
+        personToLeave.PersonMonoBehaviour.LeaveShipForGood();
     }
 
     #endregion

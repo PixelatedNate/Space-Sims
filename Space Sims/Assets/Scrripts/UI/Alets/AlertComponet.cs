@@ -32,7 +32,7 @@ public class AlertComponet : MonoBehaviour
        
         if(ActiveAlert.prority == Alert.AlertPrority.High)
         {
-            backgroundColourImage.color = Color.yellow;
+            backgroundColourImage.color = Color.red;
         }
         else if(ActiveAlert.prority == Alert.AlertPrority.low)
         {
