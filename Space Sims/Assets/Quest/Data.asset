@@ -25,6 +25,18 @@ MonoBehaviour:
       Food: 100000
       Minerals: 100000
       Premimum: 0
-    _numberofpeopleReward: 50
-  PeopleAssgined: []
+    _numberofpeopleReward: 10
+  PeopleAssgined:
+  - HomePlanet: "Nickanthony\r"
+    Job: "Computer Operator\r"
+    Likes:
+    - "Sewing\r"
+    Dislikes:
+    - "Basketball\r"
+    skills:
+      _strength: 5
+      _dexterity: 1
+      _intelligence: 9
+      _wisdom: 6
+      _charisma: 8
   PossibleEncounters: []
