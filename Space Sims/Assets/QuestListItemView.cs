@@ -11,10 +11,16 @@ public class QuestListItemView : MonoBehaviour
     Image requimentImage;
 
 
-    public void setQuest(WaittingQuest quest)
+    public void setQuest(AbstractQuest quest)
     {
         title.text = quest.Title;
-        SetRequiment(quest);
+
+        if (quest.GetType() == typeof(WaittingQuest))
+        {
+            SetRequiment((WaittingQuest)quest);
+        }
+        
+
         SetRewaredText(quest);
     }
 
@@ -25,7 +31,7 @@ public class QuestListItemView : MonoBehaviour
         requiment.text = requiment.text + Icons.GetSkillIconForTextMeshPro(quest.requiments.SkillRequiment) + ": " + quest.requiments.skillValueMin;
     }
 
-    public void SetRewaredText(WaittingQuest quest)
+    public void SetRewaredText(AbstractQuest quest)
     {
         rewared.text = null;
         GameResources rewaredResources = quest.reward.GameResourcesReward;

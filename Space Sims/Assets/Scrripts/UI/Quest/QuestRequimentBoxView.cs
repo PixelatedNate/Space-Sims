@@ -20,7 +20,7 @@ public class QuestRequimentBoxView : MonoBehaviour
     public PersonInfo SelectedPerson = null;
     public WaittingQuest questSelected;
 
-    public QuestView MainQuestView { private get; set; }
+    //public QuestView MainQuestView { private get; set; }
 
     private void Start()
     {

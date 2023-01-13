@@ -29,7 +29,14 @@ public abstract class AbstractQuest : ScriptableObject
     public Reward reward { get { return _reward; } }
     public QuestStatus questStaus { get; set; } = QuestStatus.Available;
 
+    public abstract void ResetQuest();
     public abstract bool StartQuest();
     public abstract void CompleatQuest();
 
+
+    protected void OpenAlertQuest()
+    {
+        GlobalStats.Instance.QuestRoom.FocusRoom();
+        UIManager.Instance.OpenQuestViewOnQuest(this);
+    }
 }

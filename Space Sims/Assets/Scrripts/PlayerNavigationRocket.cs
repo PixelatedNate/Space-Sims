@@ -16,12 +16,12 @@ public class PlayerNavigationRocket : MonoBehaviour
     {
         if (NavigationManager.CurrentPlanet != null)
         {
-            transform.position = NavigationManager.CurrentPlanet.transform.position;
+            transform.position = NavigationManager.CurrentPlanet.PlanetPosition;
             transform.Rotate(new Vector3(0, 0, OrbitSpeed * Time.deltaTime));
         }
         else if (NavigationManager.InNavigation)
         {
-            transform.position = NavigationManager.GetPositionRelativeToJourny();
+           // transform.position = NavigationManager.GetPositionRelativeToJourny();
         }
     }
 }

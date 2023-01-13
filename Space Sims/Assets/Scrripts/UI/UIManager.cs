@@ -120,7 +120,7 @@ public class UIManager : MonoBehaviour
         alertsUI.CloseAlerts();
     }
 
-    public void OpenQuestViewOnQuest(WaittingQuest quest)
+    public void OpenQuestViewOnQuest(AbstractQuest quest)
     {
         leftPanal.OpenOnQuest(quest);
         alertsUI.CloseAlerts();

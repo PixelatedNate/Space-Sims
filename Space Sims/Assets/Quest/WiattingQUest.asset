@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 02ab4f71b5124b3428454fe91d91c361, type: 3}
-  m_Name: Data
+  m_Name: WiattingQUest
   m_EditorClassIdentifier: 
   Title: Temp
   Description: 'Hello this is a quest '

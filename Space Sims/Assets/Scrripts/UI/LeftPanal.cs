@@ -78,7 +78,7 @@ public class LeftPanal : MonoBehaviour
     }
 
 
-    public void OpenOnQuest(WaittingQuest quest)
+    public void OpenOnQuest(AbstractQuest quest)
     {
         DisableActiveView(false);
         activeLSideView = ActiveLSideView.QuestListView;

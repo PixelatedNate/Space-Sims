@@ -9,17 +9,13 @@ public static class QuestManager
         return Quests.FindAll((a) => a.questStaus == status);
     }
 
-    public static void SetAvalibleQuest(WaittingQuest[] quests)
+    public static void SetAvalibleQuest(AbstractQuest[] quests)
     {
-
-
         Quests.RemoveAll((a) => a.questStaus == QuestStatus.Available);
 
-        foreach (WaittingQuest q in quests)
+        foreach (AbstractQuest q in quests)
         {
-            q.UnassginAllPeopople();
-            q.questStaus = QuestStatus.Available;
-            q.QuestLog.Clear();
+            q.ResetQuest();
         }
         Quests.AddRange(quests);
     }

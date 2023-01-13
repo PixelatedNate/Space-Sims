@@ -153,12 +153,11 @@ public class WaittingQuest : AbstractQuest
         AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low,Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
     }
 
-
-    private void OpenAlertQuest()
+    public override void ResetQuest()
     {
-        GlobalStats.Instance.QuestRoom.FocusRoom();
-        UIManager.Instance.OpenQuestViewOnQuest(this);
+        UnassginAllPeopople();
+        questStaus = QuestStatus.Available;
+        QuestLog.Clear();
     }
-
 }
 

@@ -66,7 +66,7 @@ public class QuestListView : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (WaittingQuest quest in QuestInView)
+        foreach (AbstractQuest quest in QuestInView)
         {
             GameObject questViewItem = GameObject.Instantiate(QuestListItemTemplate, QuestScrollPanal);
            questViewItem.GetComponent<QuestListItemView>().setQuest(quest);
@@ -91,7 +91,7 @@ public class QuestListView : MonoBehaviour
         PopulateList();
     }
 
-    private void CloseQuest(WaittingQuest quest)
+    private void CloseQuest(AbstractQuest quest)
     {
         UIManager.Instance.ClearRightPanal();
         SelectedQuest = null;
