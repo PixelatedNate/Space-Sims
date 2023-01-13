@@ -182,7 +182,7 @@ public class GlobalStats : MonoBehaviour
                 RandomPersonLeave();
                 NegativeFood = 0;
 
-                            }
+             }
 
             PlayerResources.Food = 0;
         }
@@ -230,6 +230,12 @@ public class GlobalStats : MonoBehaviour
 
     public void RandomPersonLeave()
     {
+        if(PlayersPeople.Count <= 2)
+        {
+            return;
+        }
+
+
         List<PersonInfo> peopleNotOnQuest = PlayersPeople.FindAll(p => p.IsQuesting == false);
 
         PersonInfo personToLeave = peopleNotOnQuest[0];
