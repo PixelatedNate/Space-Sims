@@ -44,8 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1334b1d02cd03a54180114e70a949207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerResources:
+  QuesttestsForMenu: []
+  _bassMaxStorage:
     Fuel: 0
     Food: 0
-    Other1: 0
+    Minerals: 0
     Premimum: 0
+  _startingResources:
+    Fuel: 0
+    Food: 0
+    Minerals: 0
+    Premimum: 0
+  NegativeFoodPersonLevelVlue: 500
