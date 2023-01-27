@@ -1945,7 +1945,7 @@ MonoBehaviour:
       Minerals: 0
       Premimum: 0
     _Upkeep:
-      Fuel: 5
+      Fuel: 10
       Food: 0
       Minerals: 0
       Premimum: 0

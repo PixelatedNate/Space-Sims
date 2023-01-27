@@ -55,4 +55,4 @@ MonoBehaviour:
     Food: 0
     Minerals: 0
     Premimum: 0
-  NegativeFoodPersonLevelVlue: 500
+  NegativeFoodPersonLevelVlue: 1
