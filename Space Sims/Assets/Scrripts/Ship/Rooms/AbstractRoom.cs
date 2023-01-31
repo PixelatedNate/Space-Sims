@@ -55,11 +55,19 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     protected bool isRoomActive { get; set; } = false;
 
-
     private TimeDelayManager.Timer _buildTimer;
 
 
     private Vector3Int offset = new Vector3Int(4, -5, 0);
+
+
+    private Alert constructionPusedAlert;
+
+
+    private void Awake()
+    {
+        constructionPusedAlert = new Alert("Construction Paused", "No worker is present in room", Alert.AlertPrority.Permanet, Icons.GetMiscUIIcon(UIIcons.RoomIcon));
+    }
 
     public Vector3Int GetConectorTile(Direction dir)
     {
@@ -148,7 +156,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             }
             if (IsUnderConstruction && ConstructionTimer.IsPause)
             {
-                ConstructionTimer.RestartTimer();
+                ResumeConstructionTimer(ConstructionTimer);
             }
             UpdateRoomStats();
             return true;
@@ -171,7 +179,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
                 setRoomActive(false);
                 if (IsUnderConstruction)
                 {
-                    ConstructionTimer.PauseTimer();
+                    PauseConstructionTimer(_buildTimer);
                 }
             }
         }
@@ -394,6 +402,19 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         ConstructionCompleat();
     }
 
+
+    private void PauseConstructionTimer(TimeDelayManager.Timer constructionTimer)
+    {
+        AlertManager.Instance.SendAlert(constructionPusedAlert);
+        constructionTimer.PauseTimer();
+    }
+    private void ResumeConstructionTimer(TimeDelayManager.Timer constructionTimer)
+    {
+        AlertManager.Instance.RemoveAlert(constructionPusedAlert);
+        constructionTimer.RestartTimer();
+    }
+
+
     private void BuildOrUpgradeRoom(int newLevel)
     {
         IsUnderConstruction = true;
@@ -403,7 +424,8 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         ConstructionTimer = TimeDelayManager.Instance.AddTimer(_buildTimer);
         if (Workers.Count == 0)
         {
-            ConstructionTimer.PauseTimer();
+            PauseConstructionTimer(_buildTimer);
+         //   ConstructionTimer.PauseTimer();
         }
         UpdateRoomStats();
     }

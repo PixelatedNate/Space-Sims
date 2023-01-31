@@ -574,8 +574,8 @@ MonoBehaviour:
   minZoom: 1
   MaxZoom: 30
   zoomSpeed: 2
-  SHORT_CLICK_END: 0.5
-  HOLD_TIME_START: 0.6
+  SHORT_CLICK_END: 0.2
+  HOLD_TIME_START: 0.3
   ClickDuration: 0
   PANDEADZONE: 0.25
   ActiveLayer:
