@@ -45,7 +45,7 @@ public class planetView : MonoBehaviour
 
     private void UpdateText()
     {
-        Name.text = SelectedPlanet.name;
+        Name.text = SelectedPlanet.PlanetName;
         NumberOfQuest.text = SelectedPlanet.Quests.Length.ToString();
         if (NavigationManager.InNavigation)
         {

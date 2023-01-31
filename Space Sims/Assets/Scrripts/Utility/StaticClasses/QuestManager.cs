@@ -2,24 +2,20 @@ using System.Collections.Generic;
 
 public static class QuestManager
 {
-    private static List<Quest> Quests { get; } = new List<Quest>();
+    private static List<AbstractQuest> Quests { get; } = new List<AbstractQuest>();
 
-    public static List<Quest> GetQuestsByStaus(Quest.Status status)
+    public static List<AbstractQuest> GetQuestsByStaus(QuestStatus status)
     {
         return Quests.FindAll((a) => a.questStaus == status);
     }
 
-    public static void SetAvalibleQuest(Quest[] quests)
+    public static void SetAvalibleQuest(AbstractQuest[] quests)
     {
+        Quests.RemoveAll((a) => a.questStaus == QuestStatus.Available);
 
-
-        Quests.RemoveAll((a) => a.questStaus == Quest.Status.Available);
-
-        foreach (Quest q in quests)
+        foreach (AbstractQuest q in quests)
         {
-            q.UnassginAllPeopople();
-            q.questStaus = Quest.Status.Available;
-            q.QuestLog.Clear();
+            q.ResetQuest();
         }
         Quests.AddRange(quests);
     }

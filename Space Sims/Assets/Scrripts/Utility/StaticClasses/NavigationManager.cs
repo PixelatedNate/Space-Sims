@@ -24,6 +24,7 @@ public static class NavigationManager
         {
             return false; // can't navigate to a diffrent palnet when allready in montion
         }
+        TouchControls.DeceletAll();
         BackgroundManager.Instance.setBackgroundToInTransit();
         DateTime ariveralTime = DateTime.Now.Add(CalcualteTravleTime(planet));
         PreviousPlanet = CurrentPlanet;
@@ -40,7 +41,7 @@ public static class NavigationManager
 
     }
 
-
+/*
     public static Vector2 GetPositionRelativeToJourny()
     {
         if (!InNavigation)
@@ -51,19 +52,31 @@ public static class NavigationManager
         else
         {
             float percentage = 1 - (float)_navTimer.PercentaceTravled / 100;
-            Vector2 CurrentPositoin = Vector2.Lerp(PreviousPlanet.transform.position, TargetPlanet.transform.position, percentage);
+    //        Vector2 CurrentPositoin = Vector2.Lerp(PreviousPlanet.transform.position, TargetPlanet.transform.position, percentage);
             return CurrentPositoin;
         }
     }
+    */
 
     private static void ArriveAtPlanet()
     {
         InNavigation = false;
         CurrentPlanet = TargetPlanet;
-        TargetPlanet = null;
         QuestManager.SetAvalibleQuest(CurrentPlanet.Quests);
+        TargetPlanet = null;
         BackgroundManager.Instance.setBackground(CurrentPlanet.Background);
         ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, true);
+        foreach(AbstractQuest quest in QuestManager.GetQuestsByStaus(QuestStatus.InProgress))
+        {
+            if(quest.GetType() == typeof(TransportQuest))
+            {
+                TransportQuest tq = (TransportQuest)quest;
+                if (tq.TargetPlanetName == CurrentPlanet.PlanetName)
+                {
+                    tq.CompleatQuest();
+                }
+            }
+        }
     }
 
 
@@ -76,11 +89,11 @@ public static class NavigationManager
 
     public static TimeSpan CalcualteTravleTime(Planet a, Planet b)
     {
-        return CalcualteTravleTime(a.transform.position, b.transform.position);
+        return CalcualteTravleTime(a.PlanetPosition, b.PlanetPosition);
     }
     public static TimeSpan CalcualteTravleTime(Vector3 a, Planet b)
     {
-        return CalcualteTravleTime(a, b.transform.position);
+        return CalcualteTravleTime(a, b.PlanetPosition);
     }
     public static TimeSpan CalcualteTravleTime(Vector3 a, Vector3 b)
     {

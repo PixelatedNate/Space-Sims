@@ -26,7 +26,7 @@ public class RightPanal : MonoBehaviour
     public ActiveRSideView? activeRSideView { get; private set; } = null;
 
 
-    public void OpenQuest(Quest quest)
+    public void OpenQuest(AbstractQuest quest)
     {
         if (activeRSideView == ActiveRSideView.Quest)
         {

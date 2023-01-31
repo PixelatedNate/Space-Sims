@@ -26,7 +26,7 @@ public class PersonListViewItem : MonoBehaviour
         Clothes.sprite = person.Clothes;
     }
 
-    public void SetQuestText(Quest quest)
+    public void SetQuestText(WaittingQuest quest)
     {
         if (person.IsQuesting)
         {
