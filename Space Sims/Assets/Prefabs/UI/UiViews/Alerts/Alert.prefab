@@ -192,7 +192,8 @@ MonoBehaviour:
   Time: {fileID: 2087383033047858745}
   button: {fileID: 7818143454845894339}
   AlertIconImg: {fileID: 6752092928602603396}
-  backgroundColourImage: {fileID: 5014487323746495998}
+  iconBackGroundColourImage: {fileID: 5014487323746495998}
+  textBackGroundColourImage: {fileID: 2199817474492575587}
 --- !u!1 &2087383033047858751
 GameObject:
   m_ObjectHideFlags: 0

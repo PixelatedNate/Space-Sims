@@ -66,7 +66,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     private void Awake()
     {
-        constructionPusedAlert = new Alert("Construction Paused", "No worker is present in room", Alert.AlertPrority.Permanet, Icons.GetMiscUIIcon(UIIcons.RoomIcon));
+        constructionPusedAlert = new Alert("Construction Paused", "No worker is present in room", OpenRoomUIandFocusRoom ,Alert.AlertPrority.Permanet, Icons.GetMiscUIIcon(UIIcons.RoomIcon));
     }
 
     public Vector3Int GetConectorTile(Direction dir)
@@ -125,7 +125,6 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             GlobalStats.Instance.PlayerResources -= _roomlevels[Level + 1].BuildCost;
             BuildOrUpgradeRoom(Level++);
             UIManager.Instance.DisplayRoomView(this);
-            //SoundManager.Instance.PlaySound(SoundManager.Sound.);
         }
         else
         {
@@ -195,7 +194,6 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void setRoomActive(bool active)
     {
         if (active == isRoomActive) { return; }
-        //_roomLight.SetActive(active);
         _roomDarkFilter.SetActive(!active);
         isRoomActive = active;
         UpdateRoomStats();

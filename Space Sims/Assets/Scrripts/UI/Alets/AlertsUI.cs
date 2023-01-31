@@ -56,19 +56,15 @@ public class AlertsUI : MonoBehaviour
         if (alert.prority == Alert.AlertPrority.Permanet)
         {
             PermentAlertCount++;
-            GameObject alertPermentGO = GameObject.Instantiate(PermentAlertUIPrefab, AlertsScrollPanal);
-            PermentAlertComponet alertPermentComponet = alertPermentGO.GetComponent<PermentAlertComponet>();
-            alertPermentComponet.SetAlert(alert);
-            AlertsInView.Add(alert, alertPermentGO);
         }
         else
         {
             GoodAlertCount++;
-            GameObject alertGO = GameObject.Instantiate(AlertUIPrefab, AlertsScrollPanal);
-            AlertComponet alertComponet = alertGO.GetComponent<AlertComponet>();
-            alertComponet.SetAlert(alert);
-            AlertsInView.Add(alert, alertGO);
         }
+        GameObject alertGO = GameObject.Instantiate(AlertUIPrefab, AlertsScrollPanal);
+        AlertComponet alertComponet = alertGO.GetComponent<AlertComponet>();
+        alertComponet.SetAlert(alert);
+        AlertsInView.Add(alert, alertGO);
         UpdateText();
 
     }
