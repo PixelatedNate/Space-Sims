@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -62,7 +61,7 @@ public class TouchControls : MonoBehaviour
             SelectedObject.OnDeselect();
         }
         catch { }
-            SelectedObject = null;
+        SelectedObject = null;
     }
 
 

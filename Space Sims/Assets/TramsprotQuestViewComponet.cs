@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,11 +17,11 @@ public class TramsprotQuestViewComponet : MonoBehaviour
     {
 
         targetLocation.text = transportQuest.TargetPlanetName;
-        if(transportQuest.TransaportPeople.Length != 0)
+        if (transportQuest.TransaportPeople.Length != 0)
         {
             TransportIconImage.sprite = Icons.GetMiscUIIcon(UIIcons.Person);
         }
-           transprotNumber.text = "X" + transportQuest.TransaportPeople.Length.ToString();
+        transprotNumber.text = "X" + transportQuest.TransaportPeople.Length.ToString();
 
     }
 

@@ -19,7 +19,7 @@ public class QuestListItemView : MonoBehaviour
         {
             SetRequiment((WaittingQuest)quest);
         }
-        
+
 
         SetRewaredText(quest);
     }
@@ -27,7 +27,7 @@ public class QuestListItemView : MonoBehaviour
     public void SetRequiment(WaittingQuest quest)
     {
         requiment.text = null;
-        requiment.text =  Icons.GetPersonIconForTextMeshPro() + ": " + quest.requiments.Numpeople + " <br>";
+        requiment.text = Icons.GetPersonIconForTextMeshPro() + ": " + quest.requiments.Numpeople + " <br>";
         requiment.text = requiment.text + Icons.GetSkillIconForTextMeshPro(quest.requiments.SkillRequiment) + ": " + quest.requiments.skillValueMin;
     }
 
@@ -44,7 +44,7 @@ public class QuestListItemView : MonoBehaviour
         }
         if (quest.reward.NumberOfPeopleReward != 0)
         {
-         rewared.text = rewared.text + Icons.GetPersonIconForTextMeshPro() + ": " + quest.reward.NumberOfPeopleReward + " <br>";
+            rewared.text = rewared.text + Icons.GetPersonIconForTextMeshPro() + ": " + quest.reward.NumberOfPeopleReward + " <br>";
         }
     }
 }

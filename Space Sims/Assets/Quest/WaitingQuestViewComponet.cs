@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -10,7 +9,7 @@ public class WaitingQuestViewComponet : MonoBehaviour
 
     [SerializeField]
     Transform RequimentPanel, ProgressBar;
- 
+
     [SerializeField]
     private GameObject RequimentTemplate;
 
@@ -18,10 +17,10 @@ public class WaitingQuestViewComponet : MonoBehaviour
 
     [SerializeField]
     Button startBtn;
-    
+
     [SerializeField]
     TextMeshProUGUI TimeLeft;
- 
+
     private List<QuestRequimentBoxView> QuestRequimentBoxViews = new List<QuestRequimentBoxView>();
     private QuestRequimentBoxView SelectedQuestRequiment;
 
@@ -67,7 +66,7 @@ public class WaitingQuestViewComponet : MonoBehaviour
         SetButton();
         setLogs();
     }
-            
+
     void SetRequiments()
     {
         foreach (Transform child in RequimentPanel)
@@ -78,7 +77,7 @@ public class WaitingQuestViewComponet : MonoBehaviour
         {
             GameObject QuestRequimentItem = GameObject.Instantiate(RequimentTemplate, RequimentPanel);
             QuestRequimentBoxView questRequimentBoxView = QuestRequimentItem.GetComponent<QuestRequimentBoxView>();
-        //    questRequimentBoxView.MainQuestView = this;
+            //    questRequimentBoxView.MainQuestView = this;
             if (questSelected.PeopleAssgined.Count >= i + 1)
             {
                 questRequimentBoxView.SetPerson(questSelected.PeopleAssgined[i], questSelected);
@@ -164,7 +163,7 @@ public class WaitingQuestViewComponet : MonoBehaviour
         }
     }
 
-   private void SetProgressBarAndText()
+    private void SetProgressBarAndText()
     {
         ProgressBar.parent.parent.gameObject.SetActive(true);
         TimeLeft.text = questSelected.QuestTimer.RemainingDuration.ToString("h'h 'm'm 's's'");

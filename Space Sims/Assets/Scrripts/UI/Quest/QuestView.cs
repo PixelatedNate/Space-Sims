@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +39,7 @@ public class QuestView : MonoBehaviour
     TramsprotQuestViewComponet transprotQuestViewComponet;
 
 
-  //  public WaittingQuest questSelected { get; private set; }
+    //  public WaittingQuest questSelected { get; private set; }
     public AbstractQuest questSelected { get; private set; }
 
     [SerializeField]
@@ -54,7 +53,7 @@ public class QuestView : MonoBehaviour
             transprotQuestViewComponet.gameObject.SetActive(false);
             waitingQuestView.SelectQuest((WaittingQuest)quest);
         }
-        if(quest.GetType() == typeof(TransportQuest))
+        if (quest.GetType() == typeof(TransportQuest))
         {
             waitingQuestView.gameObject.SetActive(false);
             transprotQuestViewComponet.gameObject.SetActive(true);

@@ -69,7 +69,7 @@ public class QuestListView : MonoBehaviour
         foreach (AbstractQuest quest in QuestInView)
         {
             GameObject questViewItem = GameObject.Instantiate(QuestListItemTemplate, QuestScrollPanal);
-           questViewItem.GetComponent<QuestListItemView>().setQuest(quest);
+            questViewItem.GetComponent<QuestListItemView>().setQuest(quest);
             if (SelectedQuest == quest)
             {
                 questViewItem.GetComponent<Image>().color = Color.yellow;

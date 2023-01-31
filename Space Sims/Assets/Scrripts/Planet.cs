@@ -26,4 +26,4 @@ public class Planet : ScriptableObject
 
     private Material _orignalMaterial;
 
-  }
+}

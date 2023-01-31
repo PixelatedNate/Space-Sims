@@ -41,22 +41,22 @@ public static class NavigationManager
 
     }
 
-/*
-    public static Vector2 GetPositionRelativeToJourny()
-    {
-        if (!InNavigation)
+    /*
+        public static Vector2 GetPositionRelativeToJourny()
         {
-            Debug.LogWarning("Trying to get Posittion Relative To Journy when no journy is in progress");
-            return Vector2.zero;
+            if (!InNavigation)
+            {
+                Debug.LogWarning("Trying to get Posittion Relative To Journy when no journy is in progress");
+                return Vector2.zero;
+            }
+            else
+            {
+                float percentage = 1 - (float)_navTimer.PercentaceTravled / 100;
+        //        Vector2 CurrentPositoin = Vector2.Lerp(PreviousPlanet.transform.position, TargetPlanet.transform.position, percentage);
+                return CurrentPositoin;
+            }
         }
-        else
-        {
-            float percentage = 1 - (float)_navTimer.PercentaceTravled / 100;
-    //        Vector2 CurrentPositoin = Vector2.Lerp(PreviousPlanet.transform.position, TargetPlanet.transform.position, percentage);
-            return CurrentPositoin;
-        }
-    }
-    */
+        */
 
     private static void ArriveAtPlanet()
     {
@@ -66,9 +66,9 @@ public static class NavigationManager
         TargetPlanet = null;
         BackgroundManager.Instance.setBackground(CurrentPlanet.Background);
         ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, true);
-        foreach(AbstractQuest quest in QuestManager.GetQuestsByStaus(QuestStatus.InProgress))
+        foreach (AbstractQuest quest in QuestManager.GetQuestsByStaus(QuestStatus.InProgress))
         {
-            if(quest.GetType() == typeof(TransportQuest))
+            if (quest.GetType() == typeof(TransportQuest))
             {
                 TransportQuest tq = (TransportQuest)quest;
                 if (tq.TargetPlanetName == CurrentPlanet.PlanetName)

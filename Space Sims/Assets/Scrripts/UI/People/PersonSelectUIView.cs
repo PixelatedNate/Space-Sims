@@ -15,6 +15,9 @@ public class PersonSelectUIView : MonoBehaviour
     [SerializeField]
     Transform Strength, Dexterity, Intelligence, Wisdom, Charisma;
 
+    [SerializeField]
+    GameObject QuestLinkBtn;
+
     public void SetPerson(PersonInfo person)
     {
         SelectedPerson = person;
@@ -24,6 +27,14 @@ public class PersonSelectUIView : MonoBehaviour
         if (person.PersonMonoBehaviour != null)
         {
             person.PersonMonoBehaviour.SetOutline(true);
+        }
+        if (person.CurrentQuest != null)
+        {
+            QuestLinkBtn.SetActive(true);
+        }
+        else
+        {
+            QuestLinkBtn.SetActive(false);
         }
     }
 
@@ -115,6 +126,14 @@ public class PersonSelectUIView : MonoBehaviour
     public void TogglePersonBackStory()
     {
         UIManager.Instance.OpenPersonBackStory(SelectedPerson);
+    }
+
+    public void GoToPersonLinkedQuest()
+    {
+        if (SelectedPerson.CurrentQuest != null)
+        {
+            UIManager.Instance.OpenQuestView(SelectedPerson.CurrentQuest);
+        }
     }
 
 

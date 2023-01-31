@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02ab4f71b5124b3428454fe91d91c361, type: 3}
+  m_Name: WiattingQUest 1
+  m_EditorClassIdentifier: 
+  Title: SecondTestQuest
+  Description: This is a second test quest
+  _reward:
+    _gameResourcesReward:
+      Fuel: 786
+      Food: 786
+      Minerals: 876
+      Premimum: 0
+    _numberofpeopleReward: 3
+  requiments:
+    Numpeople: 1
+    SkillRequiment: 1
+    skillValueMin: 1
+  Duration: 1.5
+  PeopleAssgined: []
+  PossibleEncounters: []

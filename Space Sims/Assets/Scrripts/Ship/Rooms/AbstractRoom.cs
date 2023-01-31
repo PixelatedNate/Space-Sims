@@ -64,7 +64,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public Vector3Int GetConectorTile(Direction dir)
     {
         // have to offest as tilemaps are not starting 0,0 bottom left (I know it sucks but it sucks even more to fix it)
-  //      Vector3Int offset = new Vector3Int(4, -5, 0);
+        //      Vector3Int offset = new Vector3Int(4, -5, 0);
         Vector3 gridSize = RoomGridManager.Instance.roomGridSize;
         int halfYValue = Mathf.CeilToInt(gridSize.y / 2);
         int halfXValue = Mathf.CeilToInt(gridSize.x / 2);
@@ -196,7 +196,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     public int GetPersonLayerInRoom(Vector3Int personPos)
     {
-        return (int)RoomGridManager.Instance.roomGridSize.y - ( personPos.y - offset.y);
+        return (int)RoomGridManager.Instance.roomGridSize.y - (personPos.y - offset.y);
 
     }
 

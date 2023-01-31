@@ -182,7 +182,7 @@ public class GlobalStats : MonoBehaviour
                 RandomPersonLeave();
                 NegativeFood = 0;
 
-                            }
+            }
 
             PlayerResources.Food = 0;
         }
@@ -207,7 +207,7 @@ public class GlobalStats : MonoBehaviour
             }
             PlayerResources.Fuel = 0;
         }
-        else if(PlayerResources.Fuel > 0 && _lowFuel)
+        else if (PlayerResources.Fuel > 0 && _lowFuel)
         {
             _lowFuel = false;
             AlertManager.Instance.RemoveAlert(_lowFuelAlert);

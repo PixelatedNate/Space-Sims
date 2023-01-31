@@ -150,11 +150,11 @@ public class UIManager : MonoBehaviour
     public void OpenBuildRoomMenu(Vector3Int roomCellPos, BuildRoomButton btn)
     {
 
-        if(selectedbtn == null)
+        if (selectedbtn == null)
         {
             selectedbtn = btn;
         }
-        if(btn != selectedbtn)
+        if (btn != selectedbtn)
         {
             selectedbtn.outline.SetActive(false);
             selectedbtn = btn;

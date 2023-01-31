@@ -17,11 +17,11 @@ MonoBehaviour:
     good.
   _reward:
     _gameResourcesReward:
-      Fuel: 0
-      Food: 0
+      Fuel: 10
+      Food: 50
       Minerals: 200
       Premimum: 0
-    _numberofpeopleReward: 10
+    _numberofpeopleReward: 0
   TransaportPeople:
   - HomePlanet: 
     Job: 
