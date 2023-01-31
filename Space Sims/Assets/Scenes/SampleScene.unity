@@ -574,8 +574,8 @@ MonoBehaviour:
   minZoom: 1
   MaxZoom: 30
   zoomSpeed: 2
-  SHORT_CLICK_END: 0.5
-  HOLD_TIME_START: 0.6
+  SHORT_CLICK_END: 0.2
+  HOLD_TIME_START: 0.3
   ClickDuration: 0
   PANDEADZONE: 0.25
   ActiveLayer:
@@ -671,7 +671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 944651634355311857, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 944651634355311857, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
       propertyPath: m_LocalRotation.w

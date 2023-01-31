@@ -96,14 +96,15 @@ public class LeftPanal : MonoBehaviour
         QuestListView.SetView(staus);
     }
 
-    public void SelectPersonListView(SkillsList? skill)
+    public void SelectPersonListView(Predicate<PersonInfo> filtter = null)
     {
         DisableActiveView();
         uiButton.LeftTabSlideOut();
         SetActiveView(PersonListView.gameObject);
-        PersonListView.SetView();
+        PersonListView.SetView(filtter);
         activeLSideView = ActiveLSideView.PersonList;
     }
+
 
     public void SelectPersonForQuest(Action<PersonInfo> onSelectMethod, WaittingQuest quest)
     {
@@ -113,12 +114,6 @@ public class LeftPanal : MonoBehaviour
         PersonListView.GetPersonForQuest(onSelectMethod, quest);
         activeLSideView = ActiveLSideView.PersonList;
     }
-
-    public void SelectPersonListView()
-    {
-        SelectPersonListView(null);
-    }
-
 
     private void DisableQuestView()
     {

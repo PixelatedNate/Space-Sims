@@ -2,6 +2,6 @@ public enum UIIcons
 {
     QuestComplete,
     Person,
-    //    RoomIcon,
+    RoomIcon,
     //    RoomUpgradeIcon,
 }

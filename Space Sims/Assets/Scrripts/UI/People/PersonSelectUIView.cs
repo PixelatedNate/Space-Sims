@@ -65,7 +65,7 @@ public class PersonSelectUIView : MonoBehaviour
         Age.text = SelectedPerson.Age.ToString();
         if (SelectedPerson.Room != null)
         {
-            Room.text = SelectedPerson.Room.gameObject.name;
+            Room.text = SelectedPerson.Room.RoomName;
         }
     }
 
@@ -101,6 +101,12 @@ public class PersonSelectUIView : MonoBehaviour
             CameraManager.Instance.CameraFollow(SelectedPerson.PersonMonoBehaviour.gameObject);
         }
     }
+
+    public void OpenPersonRoom()
+    {
+        UIManager.Instance.OpenRoomView(SelectedPerson.Room);      
+    }
+
 
     private void UpdateSkill(SkillsList skill, Transform skillDots)
     {

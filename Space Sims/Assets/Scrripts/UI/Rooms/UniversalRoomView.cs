@@ -57,6 +57,12 @@ public class UniversalRoomView : MonoBehaviour
         SelectedRoom.FocusRoom();
     }
 
+
+    public void ViewAllPeopleInRoom()
+    {
+        UIManager.Instance.OpenPersonListView((a => a.Room == SelectedRoom));
+    }
+
     private void EnableCorrectRoomView()
     {
         if (SelectedRoom is PassiveProductionRoom)
