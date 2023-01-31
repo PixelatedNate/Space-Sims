@@ -177,6 +177,7 @@ public class Person : MonoBehaviour, IInteractables
         if (MovePath != null && MovePath.Count > 0)
         {
             Vector3 worldSpacePositionNextPosition = PathfindingRoom.PathFindingTileMap.GetCellCenterWorld(MovePath.First.Value);
+            worldSpacePositionNextPosition.z = 0;
             Vector3 dir = (worldSpacePositionNextPosition - transform.position).normalized;
             transform.Translate(dir * walkSpeed * Time.deltaTime);
             if (Vector3.Distance(transform.position, worldSpacePositionNextPosition) < 0.05)

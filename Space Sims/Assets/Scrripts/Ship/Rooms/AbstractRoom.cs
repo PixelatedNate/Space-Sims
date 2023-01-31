@@ -124,7 +124,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         {
             GlobalStats.Instance.PlayerResources -= _roomlevels[Level + 1].BuildCost;
             BuildOrUpgradeRoom(Level++);
-            UIManager.Instance.DisplayRoomView(this);
+            UIManager.Instance.OpenRoomView(this);
         }
         else
         {
@@ -457,7 +457,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void OpenRoomUIandFocusRoom()
     {
         FocusRoom();
-        UIManager.Instance.DisplayRoomView(this);
+        UIManager.Instance.OpenRoomView(this);
     }
 
     public void FocusRoom()
@@ -488,7 +488,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         }
         else
         {
-            UIManager.Instance.DisplayRoomView(this);
+            UIManager.Instance.OpenRoomView(this);
         }
     }
 

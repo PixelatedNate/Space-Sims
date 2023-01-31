@@ -26,11 +26,15 @@ public class PersonListView : MonoBehaviour
     private WaittingQuest QuestSelected = null;
 
 
-    public void SetView()
+    public void SetView(Predicate<PersonInfo> filtter = null)
     {
         QuestSelected = null;
         OnSelectMethod = null;
         people = GlobalStats.Instance.PlayersPeople;
+        if(filtter != null)
+        {
+            people = people.FindAll(filtter);
+        }
         if (skillfilter == null)
         {
             FilterListByAge(Inverted);
@@ -80,7 +84,7 @@ public class PersonListView : MonoBehaviour
         }
         PopulateList();
     }
-
+   
     private void FilterListByAge(bool inverse = false)
     {
         skillfilter = null;

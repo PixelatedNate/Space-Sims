@@ -78,7 +78,7 @@ public class UIManager : MonoBehaviour
         rightPanal.ClearAllView();
     }
 
-    public void DisplayRoomView(AbstractRoom room)
+    public void OpenRoomView(AbstractRoom room)
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectRoom(room);
@@ -125,8 +125,12 @@ public class UIManager : MonoBehaviour
         leftPanal.OpenOnQuest(quest);
         alertsUI.CloseAlerts();
     }
-
-    public void OpenPersonListView()
+        
+    public void OpenPersonListViewbtn()
+    {
+        OpenPersonListView();
+    }
+    public void OpenPersonListView(Predicate<PersonInfo> filter = null)
     {
         TipsAndToutorial.Instance.OpenTipMenu(TipsAndToutorial.ToutorialMenus.PeopleList);
         if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.PersonList)
@@ -135,11 +139,13 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            leftPanal.SelectPersonListView();
+            leftPanal.SelectPersonListView(filter);
         }
         rightPanal.ClearAllView();
         alertsUI.CloseAlerts();
     }
+
+
     public void OpenSelectPersonForQuestListView(Action<PersonInfo> OnSelectMethod, WaittingQuest quest)
     {
         leftPanal.activeLSideView = LeftPanal.ActiveLSideView.PersonList;
