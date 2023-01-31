@@ -48,10 +48,13 @@ public class RoomGridManager : MonoBehaviour
     void Start()
     {
         roomGrid = GetComponent<Grid>();
-        AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
         AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
         AbstractRoom secondRoom = BuildNewRoom(new Vector3Int(1, 0, 0), RoomType.Fuel);
+        AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
         AbstractRoom forthRoom = BuildNewRoom(new Vector3Int(1, -1, 0), RoomType.Food);
+        AbstractRoom fithRoom = BuildNewRoom(new Vector3Int(0, -1, 0), RoomType.Minerals);
+        PrefabSpawner.Instance.SpawnPerson(fistRoom);
+        PrefabSpawner.Instance.SpawnPerson(fistRoom);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
         PrefabSpawner.Instance.SpawnPerson(fistRoom);
     }
@@ -172,6 +175,7 @@ public class RoomGridManager : MonoBehaviour
         foreach (Vector3Int cell in adjacentCells)
         {
             if (RoomList.ContainsKey(cell))
+
             {
                 if (RoomList[cell] != RoomList[cellPosition])
                 {

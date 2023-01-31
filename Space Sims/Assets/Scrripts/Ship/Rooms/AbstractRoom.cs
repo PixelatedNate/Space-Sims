@@ -465,7 +465,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         CameraManager.Instance.CameraFocus(gameObject);
     }
 
-    protected abstract void UpdateRoomStats();
+    public abstract void UpdateRoomStats();
     public abstract void SetOverLay(bool value);
 
     public abstract void PersonHover(PersonInfo personInfo);
