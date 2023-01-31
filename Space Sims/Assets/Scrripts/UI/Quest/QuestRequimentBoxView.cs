@@ -29,7 +29,7 @@ public class QuestRequimentBoxView : MonoBehaviour
 
     public void SetPerson(PersonInfo personInfo, WaittingQuest quest)
     {
-        if (quest.questStaus == QuestStatus.InProgress || quest.questStaus == QuestStatus.Completed)        
+        if (quest.questStaus == QuestStatus.InProgress || quest.questStaus == QuestStatus.Completed)
         {
             GetComponent<Button>().interactable = false;
         }

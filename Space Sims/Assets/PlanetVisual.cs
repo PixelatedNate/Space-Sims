@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlanetVisual : MonoBehaviour, IInteractables
@@ -10,7 +8,7 @@ public class PlanetVisual : MonoBehaviour, IInteractables
     private Material _orignalMaterial;
 
     public Sprite PlanetSprite { get; private set; }
-    
+
     public void OnDeselect()
     {
         GetComponent<SpriteRenderer>().material = _orignalMaterial;

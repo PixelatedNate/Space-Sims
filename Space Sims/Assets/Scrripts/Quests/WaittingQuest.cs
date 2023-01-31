@@ -36,14 +36,14 @@ public class WaittingQuest : AbstractQuest
 
         }
     }
-    
+
     private bool Inprogress = false;
 
     [SerializeField]
     public Requiments requiments;
     [SerializeField]
     float Duration;
-  
+
     [SerializeField]
     public List<PersonInfo> PeopleAssgined = new List<PersonInfo>();
 
@@ -150,7 +150,7 @@ public class WaittingQuest : AbstractQuest
             PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom);
         }
 
-        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low,Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
+        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
     }
 
     public override void ResetQuest()

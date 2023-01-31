@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -65,7 +63,7 @@ public class TipsAndToutorial : MonoBehaviour
 
     private void Start()
     {
-        foreach(ToutorialSegment tm in toutorialSegments)
+        foreach (ToutorialSegment tm in toutorialSegments)
         {
             tm.completed = false;
         }
@@ -79,7 +77,7 @@ public class TipsAndToutorial : MonoBehaviour
     {
         ToutorialEnabled = enabled;
         firstToutorialPanle.SetActive(false);
-        if(enabled)
+        if (enabled)
         {
             OpenTipMenu(ToutorialMenus.TopBar);
         }
@@ -89,7 +87,7 @@ public class TipsAndToutorial : MonoBehaviour
 
     public void OpenTipMenu(ToutorialMenus tipMenu)
     {
-        if(!ToutorialEnabled)
+        if (!ToutorialEnabled)
         {
             return;
         }
@@ -98,17 +96,17 @@ public class TipsAndToutorial : MonoBehaviour
         {
             return;
         }
-        if(tip.completed == true)
+        if (tip.completed == true)
         {
             return;
         }
         TouchControls.EnableCameramovemntAndSelection(false);
-        SetAllButtons(false);          
+        SetAllButtons(false);
         SetOutlineImage(tip.HighlightedUIElements);
         activeToutorial = tip;
         page = 0;
         backbutton.SetActive(false);
-        if(page == activeToutorial.pages.Length-1)
+        if (page == activeToutorial.pages.Length - 1)
         {
             nextbutton.SetActive(false);
         }
@@ -118,8 +116,8 @@ public class TipsAndToutorial : MonoBehaviour
         }
         ToutorialPanle.SetActive(true);
         toutorialTitle.text = tip.pages[0].pagetitle;
-        toutorialText.text =  tip.pages[0].pageText;
-     }
+        toutorialText.text = tip.pages[0].pageText;
+    }
 
 
     public void CloseTipMenu()
@@ -140,7 +138,7 @@ public class TipsAndToutorial : MonoBehaviour
             ClearOutlineImage(activeToutorial.pages[page].HighlightedUIElements);
             page++;
             backbutton.SetActive(true);
-            if(page == activeToutorial.pages.Length-1)
+            if (page == activeToutorial.pages.Length - 1)
             {
                 nextbutton.SetActive(false);
             }
@@ -148,7 +146,7 @@ public class TipsAndToutorial : MonoBehaviour
             toutorialText.text = activeToutorial.pages[page].pageText;
             SetOutlineImage(activeToutorial.pages[page].HighlightedUIElements);
         }
-     }
+    }
     public void PreviousTipMenuPage()
     {
         if (activeToutorial != null)
@@ -156,7 +154,7 @@ public class TipsAndToutorial : MonoBehaviour
             ClearOutlineImage(activeToutorial.pages[page].HighlightedUIElements);
             page--;
             nextbutton.SetActive(true);
-            if(page == 0)
+            if (page == 0)
             {
                 backbutton.SetActive(false);
             }
@@ -164,17 +162,17 @@ public class TipsAndToutorial : MonoBehaviour
             toutorialText.text = activeToutorial.pages[page].pageText;
             SetOutlineImage(activeToutorial.pages[page].HighlightedUIElements);
         }
-     }
+    }
 
 
 
     public void ClearOutlineImage(string[] elements)
     {
-        foreach(string element in elements)
+        foreach (string element in elements)
         {
             GameObject gm = GameObject.Find(element);
             gm.GetComponent<Image>().material = null;
-        } 
+        }
     }
 
     public void SetOutlineImage(string[] elements)
@@ -189,9 +187,9 @@ public class TipsAndToutorial : MonoBehaviour
 
     private ToutorialSegment GetToutortialByEnum(ToutorialMenus tipMenu)
     {
-        foreach(ToutorialSegment t in toutorialSegments)
+        foreach (ToutorialSegment t in toutorialSegments)
         {
-            if(t.tipMenu == tipMenu)
+            if (t.tipMenu == tipMenu)
             {
                 return t;
             }
@@ -203,7 +201,7 @@ public class TipsAndToutorial : MonoBehaviour
     public void SetAllButtons(bool enabled)
     {
         Button[] allbuttons = GameObject.FindObjectsOfType<Button>();
-        foreach(Button btn in allbuttons)
+        foreach (Button btn in allbuttons)
         {
             btn.enabled = enabled;
         }

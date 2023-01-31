@@ -10,7 +10,7 @@ public class AlertComponet : MonoBehaviour
     [SerializeField]
     private Button button;
 
-    [SerializeField] 
+    [SerializeField]
     Image AlertIconImg, backgroundColourImage;
 
     public void SetAlert(Alert alert)
@@ -29,12 +29,12 @@ public class AlertComponet : MonoBehaviour
         {
             button.onClick.AddListener(ClearAlert);
         }
-       
-        if(ActiveAlert.prority == Alert.AlertPrority.High)
+
+        if (ActiveAlert.prority == Alert.AlertPrority.High)
         {
             backgroundColourImage.color = Color.red;
         }
-        else if(ActiveAlert.prority == Alert.AlertPrority.low)
+        else if (ActiveAlert.prority == Alert.AlertPrority.low)
         {
             backgroundColourImage.color = Color.green;
         }

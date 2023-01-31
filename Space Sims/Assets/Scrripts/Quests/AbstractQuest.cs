@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AbstractQuest : ScriptableObject
@@ -20,7 +18,7 @@ public abstract class AbstractQuest : ScriptableObject
 
     [SerializeField]
     public string Title;
-    
+
     [TextArea(15, 20), SerializeField]
     public string Description;
 

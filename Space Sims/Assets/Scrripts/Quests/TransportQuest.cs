@@ -1,7 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Quests/TransportQuest", order = 2)]
 public class TransportQuest : AbstractQuest
@@ -13,6 +11,8 @@ public class TransportQuest : AbstractQuest
     [SerializeField]
     public string TargetPlanetName;
 
+    private List<Person> peopleOnShip;
+
     public override void CompleatQuest()
     {
         SoundManager.Instance.PlaySound(SoundManager.Sound.QuestCompleted);
@@ -20,17 +20,16 @@ public class TransportQuest : AbstractQuest
         GlobalStats.Instance.PlayerResources += reward.GameResourcesReward;
 
         questStaus = QuestStatus.Completed;
-        foreach (PersonInfo p in TransaportPeople)
+        foreach (Person p in peopleOnShip)
         {
-          //  p.PersonMonoBehaviour.LeaveShipForGood();
+            p.LeaveShipForGood();
         }
         for (int i = 0; i < reward.NumberOfPeopleReward; i++)
         {
             PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom);
         }
 
-        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low,Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
-
+        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
     }
 
     public override bool StartQuest()
@@ -38,7 +37,9 @@ public class TransportQuest : AbstractQuest
         questStaus = QuestStatus.InProgress;
         foreach (PersonInfo p in TransaportPeople)
         {
-            PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom);
+            var person = PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom).GetComponent<Person>();
+            peopleOnShip.Add(person);
+            person.PersonInfo.SetAsCargoForTransprotQuest(this);
         }
         return true;
     }

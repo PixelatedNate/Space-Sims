@@ -68,7 +68,7 @@ public class PersonListView : MonoBehaviour
     private void FilterListBySkill(SkillsList skill, bool inverse = false)
     {
         skillfilter = skill;
-        Filterlable.text = skill.ToString() +  " " + Icons.GetSkillIconForTextMeshPro(skill);
+        Filterlable.text = skill.ToString() + " " + Icons.GetSkillIconForTextMeshPro(skill);
 
         if (inverse)
         {
@@ -87,11 +87,11 @@ public class PersonListView : MonoBehaviour
         Filterlable.text = "Age " + Icons.GetAgeIconForTextMeshPro();
         if (inverse)
         {
-        people.Sort((a, b) => b.Age.CompareTo(a.Age));
+            people.Sort((a, b) => b.Age.CompareTo(a.Age));
         }
         else
         {
-        people.Sort((a, b) => a.Age.CompareTo(b.Age));
+            people.Sort((a, b) => a.Age.CompareTo(b.Age));
         }
 
         PopulateList();
@@ -101,7 +101,7 @@ public class PersonListView : MonoBehaviour
     public void InvertOrder()
     {
         Inverted = !Inverted;
-        if(skillfilter == null)
+        if (skillfilter == null)
         {
             FilterListByAge(Inverted);
         }
@@ -158,7 +158,7 @@ public class PersonListView : MonoBehaviour
         foreach (PersonInfo personInfo in people)
         {
             GameObject personViewItem = GameObject.Instantiate(PersonListItemTemplate, PersonScrollPanal);
-            personViewItem.GetComponent<PersonListViewItem>().SetPerson(personInfo,skillfilter);
+            personViewItem.GetComponent<PersonListViewItem>().SetPerson(personInfo, skillfilter);
             if (OnSelectMethod != null)
             {
                 personViewItem.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(personInfo));

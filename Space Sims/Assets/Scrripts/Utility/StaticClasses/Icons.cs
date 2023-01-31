@@ -55,7 +55,7 @@ public static class Icons
 
     public static string GetPersonIconForTextMeshPro()
     {
-        return  "<sprite=7>";
+        return "<sprite=7>";
     }
     public static string GetAgeIconForTextMeshPro()
     {

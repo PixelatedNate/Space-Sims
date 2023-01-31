@@ -21,7 +21,7 @@ public class PlayerNavigationRocket : MonoBehaviour
         }
         else if (NavigationManager.InNavigation)
         {
-           // transform.position = NavigationManager.GetPositionRelativeToJourny();
+            // transform.position = NavigationManager.GetPositionRelativeToJourny();
         }
     }
 }

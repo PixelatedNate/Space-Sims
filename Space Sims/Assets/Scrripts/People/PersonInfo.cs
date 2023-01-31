@@ -135,7 +135,6 @@ public class PersonInfo
     string hairPath;
     string clothesPath;
 
-    private WaittingQuest AssginedQuest = null;
 
     const string MaleNamePath = "TextData/Names/People/male";
     const string FemaleNamePath = "TextData/Names/People/female";
@@ -145,7 +144,6 @@ public class PersonInfo
     const string PlanetNamePath = "TextData/Names/Planets/PlanetNames";
 
     const string HobbiesNamePath = "TextData/Hobbies";
-
 
     //  [SerializeField]
     private string _name;
@@ -196,8 +194,35 @@ public class PersonInfo
 
     public Color HairColor { get { return _hairColor; } }
 
-    public bool IsQuesting { get { return CurrentQuest != null; } }
-    public WaittingQuest CurrentQuest { get; set; } = null;
+
+    private WaittingQuest AssginedQuest = null; // is a person aassgined to a quest that hasn't started yet
+
+    public AbstractQuest CurrentQuest { get; set; } = null; // is a person on a quest that is in progregress or part of a transprot quest;
+                                                            //   public bool isCargoForTransprotQuest { get }
+    public bool IsCargoForTransportQust
+    {
+        get
+        {
+            if (CurrentQuest != null)
+            {
+                return CurrentQuest .GetType() == typeof(TransportQuest);
+            }
+            else return false;
+        }
+    }
+
+    public bool IsQuesting
+    {
+        get
+        {
+            if (CurrentQuest != null)
+            {
+                return CurrentQuest.GetType() == typeof(WaittingQuest);
+            }
+            else return false;
+        }
+    }
+
 
     public Person PersonMonoBehaviour { get; set; }
 
@@ -215,6 +240,11 @@ public class PersonInfo
         RandomizeSkills();
     }
 
+    public void SetAsCargoForTransprotQuest(TransportQuest quest)
+    {
+        CurrentQuest = quest;
+    }
+
     public void AssignQuest(WaittingQuest quest)
     {
         if (AssginedQuest != null)
@@ -227,7 +257,6 @@ public class PersonInfo
         }
         AssginedQuest = quest;
     }
-
     public void StartQuest(WaittingQuest quest)
     {
         if (CurrentQuest != null)
@@ -236,7 +265,6 @@ public class PersonInfo
         }
         else
         {
-            //   PersonMonoBehaviour.RemoveFromShip();
             GameObject.Destroy(PersonMonoBehaviour.gameObject);
             Room.RemoveWorker(PersonMonoBehaviour);
             Room = GlobalStats.Instance.QuestRoom;
@@ -289,7 +317,6 @@ public class PersonInfo
     }
 
 
-
     private void RandomizeSkills()
     {
         skills.Strength = Random.Range(1, 11);
@@ -324,7 +351,7 @@ public class PersonInfo
         _skinColor = PersonSkin.GetRandomColor(Race);
         _hairColor = GetRandomColor();
 
-        //      Debug.Log("I have produced a " + Gender.ToString() + " " + _race);
+
     }
 
     public void SetCloths(Sprite cloths)
