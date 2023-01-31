@@ -44,6 +44,10 @@ public class GlobalStats : MonoBehaviour
     public QuestRoom QuestRoom { get; set; }
 
 
+
+    private float RawFuelNeeded;
+    public float FuelProductionMultiplyer { get; private set; } = 1; // this value is chagned to reflect low fuel and in turn reduce produciton.
+
     //  private List<Quest> Quests { get; } = new List<Quest>();
 
 
@@ -158,9 +162,15 @@ public class GlobalStats : MonoBehaviour
     private void RecalculateRoomDeltaTotal()
     {
         RoomDeltaResourcesTotal = new GameResources();
+        RawFuelNeeded = 0;
         foreach (var keyPair in RoomDeltaResources)
         {
             RoomDeltaResourcesTotal += keyPair.Value;
+            if (keyPair.Value.Fuel < 0)
+            {
+                RawFuelNeeded += MathF.Abs(keyPair.Value.Fuel);
+            }
+          
         }
         TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;
     }
@@ -201,14 +211,23 @@ public class GlobalStats : MonoBehaviour
         {
             if (!_lowFuel)
             {
-                _lowFuel = true;
-                _lowFuelAlert = Alert.LowFuelAlert;
-                AlertManager.Instance.SendAlert(_lowFuelAlert);
+               _lowFuel = true;
+               _lowFuelAlert = Alert.LowFuelAlert;
+               AlertManager.Instance.SendAlert(_lowFuelAlert);
             }
-            PlayerResources.Fuel = 0;
+              float  percent = RawFuelNeeded / 100f;
+              float  MissingFuelPercent = TotalDelta.Fuel / percent;
+              FuelProductionMultiplyer = (100f - Mathf.Abs(MissingFuelPercent))/100f;
+                foreach(AbstractRoom room in PlyaerRooms)
+                {
+                room.UpdateRoomStats();
+                }
+              Debug.Log(MissingFuelPercent);
+              PlayerResources.Fuel = 0;
         }
         else if (PlayerResources.Fuel > 0 && _lowFuel)
         {
+            FuelProductionMultiplyer = 1;
             _lowFuel = false;
             AlertManager.Instance.RemoveAlert(_lowFuelAlert);
         }
@@ -231,6 +250,11 @@ public class GlobalStats : MonoBehaviour
     public void RandomPersonLeave()
     {
         List<PersonInfo> peopleNotOnQuest = PlayersPeople.FindAll(p => p.IsQuesting == false);
+
+        if(peopleNotOnQuest.Count <= 4)
+        {
+            return;
+        }
 
         PersonInfo personToLeave = peopleNotOnQuest[0];
         Alert PersonLeaveAlert = new Alert(personToLeave.Name, "you coun't keep the person happy so they left", Alert.AlertPrority.High, Icons.GetMiscUIIcon(UIIcons.Person));

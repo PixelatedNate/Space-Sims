@@ -22,7 +22,7 @@ public class CrewQuatersRoom : AbstractRoom
         UpdateOverlay();
     }
 
-    protected override void UpdateRoomStats()
+    public override void UpdateRoomStats()
     {
 
     }

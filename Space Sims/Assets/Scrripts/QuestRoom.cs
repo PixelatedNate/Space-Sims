@@ -62,7 +62,7 @@ public class QuestRoom : AbstractRoom
         _overlayCurrentPeople.text = Workers.Count.ToString();
     }
 
-    protected override void UpdateRoomStats()
+    public override void UpdateRoomStats()
     {
         GameResources delta = new GameResources();
         GlobalStats.Instance.AddorUpdateRoomDelta(this, delta);

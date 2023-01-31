@@ -87,7 +87,7 @@ public class PassiveProductionRoom : AbstractRoom
         }
     }
 
-    protected override void UpdateRoomStats()
+    public override void UpdateRoomStats()
     {
         GameResources delta;
         if (!isRoomActive || IsUnderConstruction)
@@ -103,6 +103,8 @@ public class PassiveProductionRoom : AbstractRoom
             }
             delta = output - RoomStat.Upkeep;
         }
+        delta.Food = Mathf.RoundToInt((float)delta.Food * GlobalStats.Instance.FuelProductionMultiplyer);
+        delta.Minerals = Mathf.RoundToInt((float)delta.Minerals * GlobalStats.Instance.FuelProductionMultiplyer);
         GlobalStats.Instance.AddorUpdateRoomDelta(this, delta);
     }
 
