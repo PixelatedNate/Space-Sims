@@ -48,9 +48,6 @@ public class GlobalStats : MonoBehaviour
     private float RawFuelNeeded;
     public float FuelProductionMultiplyer { get; private set; } = 1; // this value is chagned to reflect low fuel and in turn reduce produciton.
 
-    //  private List<Quest> Quests { get; } = new List<Quest>();
-
-
     private bool _lowFood = false;
     private Alert _lowFoodAlert;
 
@@ -217,15 +214,17 @@ public class GlobalStats : MonoBehaviour
             }
               float  percent = RawFuelNeeded / 100f;
               float  MissingFuelPercent = TotalDelta.Fuel / percent;
-              FuelProductionMultiplyer = (100f - Mathf.Abs(MissingFuelPercent))/100f;
+            float productionPercent = 100f - Mathf.Abs(MissingFuelPercent);
+              FuelProductionMultiplyer = productionPercent/100f;
                 foreach(AbstractRoom room in PlyaerRooms)
                 {
                 room.UpdateRoomStats();
                 }
-              Debug.Log(MissingFuelPercent);
+              _lowFuelAlert.message = MathF.Round(productionPercent) + "% production from rooms!!";
+            AlertManager.Instance.UpdateAlert(_lowFuelAlert);
               PlayerResources.Fuel = 0;
         }
-        else if (PlayerResources.Fuel > 0 && _lowFuel)
+        else if (PlayerResources.Fuel >= 0 && _lowFuel)
         {
             FuelProductionMultiplyer = 1;
             _lowFuel = false;

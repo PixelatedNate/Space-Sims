@@ -19,6 +19,9 @@ public class LeftPanal : MonoBehaviour
     QuestListView QuestListView;
     [SerializeField]
     PersonListView PersonListView;
+    [SerializeField]
+    GameObject MilstonListView;
+
 
     [SerializeField]
     QuestView questView;
@@ -58,6 +61,14 @@ public class LeftPanal : MonoBehaviour
         SetActiveView(personView.gameObject);
         personView.SetPerson(personInfo);
     }
+
+    public void OpenMilston()
+    {
+        DisableActiveView();
+        uiButton.LeftTabSlideOut();
+        SetActiveView(MilstonListView);
+    }
+
 
     public void SelectPlanet(Planet planet)
     {
