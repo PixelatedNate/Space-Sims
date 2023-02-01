@@ -23,3 +23,14 @@ MonoBehaviour:
       Food: 0
       Minerals: 50
       Premimum: 0
+    completed: 0
+  - MilstonIcon: {fileID: 21300000, guid: 3b89927dffec07b4cb637eaf82de3357, type: 3}
+    title: Builder II
+    discription: Have 10 rooms
+    requiment: 10
+    resoureceRewared:
+      Fuel: 0
+      Food: 0
+      Minerals: 50
+      Premimum: 0
+    completed: 0

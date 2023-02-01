@@ -27,10 +27,33 @@ public class Milestone : ScriptableObject
         public int requiment;
         [SerializeField]
         public GameResources resoureceRewared;
+        public bool completed;
     }
 
     [SerializeField]
     public MilstoneProgressions[] progressions;
 
+    public void reset()
+    {
+        progressionIndex = 0;
+        foreach(MilstoneProgressions mp in progressions)
+        {
+            mp.completed = false;
+        }
+    }
+
+    public void Complete()
+    {
+        if (!CurrentMilstone.completed)
+        {
+            CurrentMilstone.completed = true;
+            GlobalStats.Instance.PlayerResources += CurrentMilstone.resoureceRewared;
+            if (progressionIndex != progressions.Length-1)
+            {
+                progressionIndex++;
+            }
+
+        }
+    }
 
 }
