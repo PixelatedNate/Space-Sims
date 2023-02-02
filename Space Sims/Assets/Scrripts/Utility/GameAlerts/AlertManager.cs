@@ -32,6 +32,16 @@ public class AlertManager : MonoBehaviour
         AlertsUI.AddAlert(alert);
     }
 
+    public void UpdateAlert(Alert alert)
+    {
+        if (Alerts.Contains(alert))
+        {
+            AlertsUI.UpdateAlert(alert);
+        }
+    }
+
+
+
     public void RemoveAlert(Alert alert)
     {
         Alerts.Remove(alert);

@@ -62,7 +62,6 @@ public static class Icons
         return "<sprite=0>";
     }
 
-
     public static Sprite GetSkillIcon(SkillsList skillEnum)
     {
         switch (skillEnum)

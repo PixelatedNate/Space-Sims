@@ -33,6 +33,7 @@ public class QuestListItemView : MonoBehaviour
 
     public void SetRewaredText(AbstractQuest quest)
     {
+        /*
         rewared.text = null;
         GameResources rewaredResources = quest.reward.GameResourcesReward;
         foreach (ResourcesEnum re in Enum.GetValues(typeof(ResourcesEnum)))
@@ -42,9 +43,13 @@ public class QuestListItemView : MonoBehaviour
                 rewared.text = rewared.text + Icons.GetResourceIconForTextMeshPro(re) + ": " + rewaredResources.GetResorce(re).ToString() + " <br>";
             }
         }
+        */
+        GameResources rewaredResources = quest.reward.GameResourcesReward;
+        rewared.text = rewaredResources.ToString();
         if (quest.reward.NumberOfPeopleReward != 0)
         {
-            rewared.text = rewared.text + Icons.GetPersonIconForTextMeshPro() + ": " + quest.reward.NumberOfPeopleReward + " <br>";
+            rewared.text = rewared.text + "\n" + Icons.GetPersonIconForTextMeshPro() + ": " + quest.reward.NumberOfPeopleReward + " <br>";
         }
+        
     }
 }

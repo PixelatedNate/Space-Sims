@@ -66,8 +66,19 @@ public class AlertsUI : MonoBehaviour
         alertComponet.SetAlert(alert);
         AlertsInView.Add(alert, alertGO);
         UpdateText();
+    }
+
+    public void UpdateAlert(Alert alert)
+    {
+        GameObject alertGO = AlertsInView[alert];
+        alertGO.GetComponent<AlertComponet>().SetAlert(alert);
+        UpdateText();
 
     }
+
+
+
+
     public void RemoveAlert(Alert alert)
     {
         if (alert.prority == Alert.AlertPrority.Permanet)

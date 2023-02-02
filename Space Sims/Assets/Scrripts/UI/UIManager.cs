@@ -100,6 +100,11 @@ public class UIManager : MonoBehaviour
         OpenQuestListView(QuestStatus.Completed);
     }
 
+    public void OpenMilestoneView()
+    {
+        leftPanal.OpenMilston();
+    }
+
     public void OpenQuestListViewBtn()
     {
         TipsAndToutorial.Instance.OpenTipMenu(TipsAndToutorial.ToutorialMenus.QuestList);

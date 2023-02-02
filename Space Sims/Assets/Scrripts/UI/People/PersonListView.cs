@@ -18,6 +18,12 @@ public class PersonListView : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI Filterlable;
 
+    [SerializeField]
+    Image FilterArrow;
+
+    [SerializeField]
+    Sprite DownFilterArrow, UpFilterArrow;
+
     SkillsList? skillfilter = null;
 
     private bool Inverted { get; set; }
@@ -76,10 +82,12 @@ public class PersonListView : MonoBehaviour
 
         if (inverse)
         {
+            FilterArrow.sprite = UpFilterArrow;
             people.Sort((a, b) => a.skills.GetSkill(skill).CompareTo(b.skills.GetSkill(skill)));
         }
         else
         {
+            FilterArrow.sprite = DownFilterArrow;
             people.Sort((a, b) => b.skills.GetSkill(skill).CompareTo(a.skills.GetSkill(skill)));
         }
         PopulateList();
@@ -91,10 +99,12 @@ public class PersonListView : MonoBehaviour
         Filterlable.text = "Age " + Icons.GetAgeIconForTextMeshPro();
         if (inverse)
         {
+            FilterArrow.sprite = UpFilterArrow;
             people.Sort((a, b) => b.Age.CompareTo(a.Age));
         }
         else
         {
+            FilterArrow.sprite = DownFilterArrow;
             people.Sort((a, b) => a.Age.CompareTo(b.Age));
         }
 

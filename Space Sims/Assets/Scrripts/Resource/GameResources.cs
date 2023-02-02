@@ -26,7 +26,46 @@ public class GameResources
     }
 
 
+    public override string ToString()
+    {
+        return ToString(false);
 
+    }
+
+
+    public string ToString(bool IncludeEmtpyValues)
+    {
+        string str = "";
+        if(Food != 0 || (IncludeEmtpyValues))
+        {
+            str += Icons.GetResourceIconForTextMeshPro(ResourcesEnum.Food) + ":" + Food;
+        }
+        if(Fuel != 0 || (IncludeEmtpyValues))
+        {
+            if(str != "")
+            {
+                str += "\n";
+            }
+            str += Icons.GetResourceIconForTextMeshPro(ResourcesEnum.Fuel) + ":" + Fuel;
+        }
+        if(Minerals != 0 || (IncludeEmtpyValues))
+        {
+            if(str != "")
+            {
+                str += "\n";
+            }
+            str += Icons.GetResourceIconForTextMeshPro(ResourcesEnum.Minerals) + ":" + Minerals;
+        }
+        if (Premimum != 0 || (IncludeEmtpyValues))
+        {
+            if (str != "")
+            {
+                str += "\n";
+            }
+            str += Icons.GetResourceIconForTextMeshPro(ResourcesEnum.Premimum) + ":" + Premimum;
+        }       
+        return str;
+    }
 
 
     public void SetResorce(ResourcesEnum resourcesEnum, int value)
