@@ -115,9 +115,15 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     public void UpgradeRoom()
     {
-        if (IsUnderConstruction || Level == _roomlevels.Length - 1)
+        if (IsUnderConstruction)
         {
-            throw new Exception("Trying to uprage a room which is max level or allready under construction");
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Allready UnderConstruction", Color.red);
+            return;
+        }
+        if (Level == _roomlevels.Length - 1)
+        { 
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Max level", Color.red);
+            return;
         }
 
         if (_roomlevels[Level + 1].BuildCost < GlobalStats.Instance.PlayerResources)
