@@ -64,6 +64,8 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     private Alert constructionPusedAlert;
 
 
+    public bool IsUnlocked { get { return UnlocksManager.UnlockedRooms.Contains(RoomType); } }
+
     private void Awake()
     {
         constructionPusedAlert = new Alert("Construction Paused", "No worker is present in room", OpenRoomUIandFocusRoom ,Alert.AlertPrority.Permanet, Icons.GetMiscUIIcon(UIIcons.RoomIcon));

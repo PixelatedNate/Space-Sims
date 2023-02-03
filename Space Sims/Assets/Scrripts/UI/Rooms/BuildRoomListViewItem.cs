@@ -55,6 +55,12 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void OnClick()
     {
+        if(!_room.IsUnlocked)
+        {
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Locked Room", Color.red);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
+            return;
+        }
         if (GlobalStats.Instance.PlayerResources >= _room.RoomStat.BuildCost)
         {
             GlobalStats.Instance.PlayerResources -= _room.RoomStat.BuildCost;
@@ -66,12 +72,26 @@ public class BuildRoomListViewItem : MonoBehaviour
         }
         else
         {
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Incerficent Resorces", Color.red);
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
+            return;
         }
+    }
+
+
+    public void SetRoomLocked()
+    {
+
     }
 
     public void UpdateItem()
     {
+        if(!_room.IsUnlocked)
+        { 
+            SetRoomLocked();
+            return;
+        }
+
         _roomName.text = _room.RoomName;
         _roomDiscription.text = _room.RoomDiscription;
         _buildCost.text = _room.RoomStat.BuildCost.Minerals.ToString();
