@@ -2,8 +2,8 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-[Serializable]
-public class PersonInfo
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/People/NewPerson", order = 1)]
+public class PersonInfo : ScriptableObject
 {
 
 
@@ -57,6 +57,30 @@ public class PersonInfo
             }
             else return 0;
         }
+        public void SetSkill(SkillsList skill, float value)
+        {
+            if (skill == SkillsList.Strength)
+            {
+                _strength = value;
+            }
+            if (skill == SkillsList.Wisdom)
+            {
+                _wisdom = value;
+            }
+            if (skill == SkillsList.Dexterity)
+            {
+                _dexterity = value;
+            }
+            if (skill == SkillsList.Intelligence)
+            {
+                _intelligence = value;
+            }
+            if (skill == SkillsList.Charisma)
+            {
+                _charisma = value;
+            }
+        }
+
 
         public void AddToSkill(SkillsList skill, float value)
         {
@@ -149,9 +173,7 @@ public class PersonInfo
     private string _name;
     public string Name { get { return _name; } set { _name = value; } }
 
-    // [SerializeField]
-    private Gender _gender;
-    public Gender Gender { get { return _gender; } }
+    public Gender Gender { get; set; }
 
 
     public String HomePlanet;
@@ -159,8 +181,7 @@ public class PersonInfo
     public String[] Likes;
     public String[] Dislikes;
 
-    private Race _race;
-    public Race Race { get { return _race; } }
+    public Race Race { get; set; }
 
 
     private short _age;
@@ -171,21 +192,16 @@ public class PersonInfo
 
     // [SerializeField]
     public GameResources Upkeep { get; set; } = new GameResources { Food = -5 };
-    //  [SerializeField]
-    private Sprite _head;
-    public Sprite Head { get { return _head; } }
-
-    //   [SerializeField]
-    private Sprite _body;
-    public Sprite Body { get { return _body; } }
+    public Sprite Head { get; set; } 
+    public Sprite Body { get; set; }
 
     //   [SerializeField]
     private Sprite _hair;
     public Sprite Hair { get { return _hair; } }
 
     //   [SerializeField]
-    private Sprite _clothes;
-    public Sprite Clothes { get { return _clothes; } }
+    //private Sprite _clothes;
+    public Sprite Clothes { get; set; }
 
     private Color _skinColor;
     public Color SkinColor { get { return _skinColor; } }
@@ -232,13 +248,20 @@ public class PersonInfo
 
     public void Randomize()
     {
-        _gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female;
-        _race = (Race)Random.Range(0, 10);
+        Gender = (Random.Range(0f, 1f) < 0.5f) ? Gender.Male : Gender.Female;
+        Race = (Race)Random.Range(0, 10);
         _age = (short)Random.Range(20, 80);
         RandomizeTextValues();
         RandomizeAppereance();
         RandomizeSkills();
     }
+
+
+    public void FirstTimeIntilize()
+    {
+        _skinColor = PersonSkin.GetRandomColor(Race);
+    }
+
 
     public void SetAsCargoForTransprotQuest(TransportQuest quest)
     {
@@ -330,24 +353,24 @@ public class PersonInfo
     {
         if (Gender == Gender.Female)
         {
-            HeadPath = "ArtWork/People/" + _race + "/Female/Heads";
-            BodyPath = "ArtWork/People/" + _race + "/Female/Bodies";
+            HeadPath = "ArtWork/People/" + Race + "/Female/Heads";
+            BodyPath = "ArtWork/People/" + Race + "/Female/Bodies";
             hairPath = "Artwork/Hair/Female";
             clothesPath = "Artwork/Clothes/Female";
         }
         else
         {
-            HeadPath = "ArtWork/People/" + _race + "/Male/Heads";
-            BodyPath = "ArtWork/People/" + _race + "/Male/Bodies";
+            HeadPath = "ArtWork/People/" + Race + "/Male/Heads";
+            BodyPath = "ArtWork/People/" + Race + "/Male/Bodies";
             hairPath = "Artwork/Hair/Male";
             clothesPath = "Artwork/Clothes/Male";
         }
 
 
-        _head = GetRandomSpriteFromPath(HeadPath);
-        _body = GetRandomSpriteFromPath(BodyPath);
+        Head = GetRandomSpriteFromPath(HeadPath);
+        Body = GetRandomSpriteFromPath(BodyPath);
         _hair = GetRandomSpriteFromPath(hairPath);
-        _clothes = GetRandomSpriteFromPath(clothesPath);
+        Clothes = GetRandomSpriteFromPath(clothesPath);
         _skinColor = PersonSkin.GetRandomColor(Race);
         _hairColor = GetRandomColor();
 
@@ -356,7 +379,7 @@ public class PersonInfo
 
     public void SetCloths(Sprite cloths)
     {
-        _clothes = cloths;
+        cloths = cloths;
         if (PersonMonoBehaviour != null)
         {
             PersonMonoBehaviour.ReRenderPerson();

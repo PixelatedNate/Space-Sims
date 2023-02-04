@@ -52,6 +52,25 @@ public class PrefabSpawner : MonoBehaviour
         }
     }
 
+    public GameObject SpawnPerson(AbstractRoom room, PersonInfo personInfo)
+    {
+        var person = GameObject.Instantiate(PersonTemplate);
+        personInfo.FirstTimeIntilize();
+        person.GetComponent<Person>().AssginPerson(personInfo);
+        if (person.GetComponent<Person>().AssginRoomToPerson(room))
+        {
+            person.transform.position = room.transform.position;
+            person.transform.position = person.transform.position - Vector3.forward;
+            return person;
+        }
+        else
+        {
+            GameObject.Destroy(person);
+            Debug.LogWarning("could not spawn person in room");
+            return null;
+        }
+    }
+
 
     public GameObject SpawnRoom(RoomType roomType)
     {

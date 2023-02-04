@@ -15,8 +15,9 @@ public class BuildRoomListViewItem : MonoBehaviour
     private TextMeshProUGUI _roomName, _buildTimeText, _roomDiscription, _buildCost, _upkeepCost, _output;
     [SerializeField]
     private Image _upkeepImg, _outputImg, _buildCostImg;
+
     [SerializeField]
-    private Image _backgroundImg;
+    GameObject LockedView, UnlockedView;
 
     [SerializeField]
     Image _buttonImg;
@@ -87,11 +88,14 @@ public class BuildRoomListViewItem : MonoBehaviour
     public void UpdateItem()
     {
         if(!_room.IsUnlocked)
-        { 
+        {
+            UnlockedView.SetActive(false);
+            LockedView.SetActive(true);
             SetRoomLocked();
             return;
         }
-
+        UnlockedView.SetActive(true);
+        LockedView.SetActive(false);
         _roomName.text = _room.RoomName;
         _roomDiscription.text = _room.RoomDiscription;
         _buildCost.text = _room.RoomStat.BuildCost.Minerals.ToString();

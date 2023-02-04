@@ -87,6 +87,8 @@ public class GlobalStats : MonoBehaviour
     void Start()
     {
         QuestManager.SetAvalibleQuest(QuesttestsForMenu);
+        UnlocksManager.UnlockRoom(RoomType.Food);
+        UnlocksManager.UnlockRoom(RoomType.Fuel);
         MaxStorage = _bassMaxStorage;
         PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;

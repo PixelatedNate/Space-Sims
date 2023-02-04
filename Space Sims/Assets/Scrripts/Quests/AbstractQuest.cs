@@ -10,8 +10,11 @@ public abstract class AbstractQuest : ScriptableObject
         GameResources _gameResourcesReward;
         public GameResources GameResourcesReward { get { return _gameResourcesReward; } }
         [SerializeField]
-        int _numberofpeopleReward;
+        public int _numberofpeopleReward;
         public int NumberOfPeopleReward { get { return _numberofpeopleReward; } }
+
+        public RoomType roomBlueprint;
+
     }
 
 
@@ -23,7 +26,7 @@ public abstract class AbstractQuest : ScriptableObject
     public string Description;
 
     [SerializeField]
-    Reward _reward;
+    Reward _reward = new Reward();
     public Reward reward { get { return _reward; } }
     public QuestStatus questStaus { get; set; } = QuestStatus.Available;
 

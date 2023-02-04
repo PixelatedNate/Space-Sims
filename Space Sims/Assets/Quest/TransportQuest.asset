@@ -12,25 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 619b159afdd1bcc48ba3d7c049d190d9, type: 3}
   m_Name: TransportQuest
   m_EditorClassIdentifier: 
-  Title: Go to TestForQuestGoHere
-  Description: Go to TestForQuestGoHere ASAP to drop this guy off no questions....
-    good.
+  Title: test
+  Description: this is a big test for me
   _reward:
     _gameResourcesReward:
-      Fuel: 10
-      Food: 50
-      Minerals: 200
+      Fuel: 0
+      Food: 0
+      Minerals: 1000
       Premimum: 0
     _numberofpeopleReward: 0
-  TransaportPeople:
-  - HomePlanet: 
-    Job: 
-    Likes: []
-    Dislikes: []
-    skills:
-      _strength: 0
-      _dexterity: 0
-      _intelligence: 0
-      _wisdom: 0
-      _charisma: 0
-  TargetPlanetName: TestForQuestGoHere
+    roomBlueprint: 0
+  TransaportPeople: []
+  TargetPlanetName: 
