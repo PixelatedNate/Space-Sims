@@ -6,7 +6,6 @@ public static class TileMapHelper
 {
 
 
-
     public enum TileName
     {
         EdgeRimUp,
@@ -36,10 +35,10 @@ public static class TileMapHelper
 
 
 
-    private const string ConectingWallDownLeft = "ArtWork/Tiles/Ship A (Inner Left Bottom)";
-    private const string ConectingWallDownRight = "ArtWork/Tiles/Ship A (Inner Right Bottom)";
-    private const string ConectingWallUpLeft = "ArtWork/Tiles/Ship A (Inner Right)";
-    private const string ConectingWallUpRight = "ArtWork/Tiles/Ship A (Inner Left)";
+    private const string ConectingWallDownLeft = "ArtWork/Tilesets/Ship Parts A_5";
+    private const string ConectingWallDownRight = "ArtWork/Tilesets/Ship Parts A_1";
+    private const string ConectingWallUpLeft = "ArtWork/Tilesets/Ship Parts A_0";
+    private const string ConectingWallUpRight = "ArtWork/Tilesets/Ship Parts A_8";
 
 
 
