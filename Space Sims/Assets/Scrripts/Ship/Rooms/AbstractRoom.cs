@@ -68,7 +68,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     private void Awake()
     {
-        constructionPusedAlert = new Alert("Construction Paused", "No worker is present in room", OpenRoomUIandFocusRoom ,Alert.AlertPrority.Permanet, Icons.GetMiscUIIcon(UIIcons.RoomIcon));
+        constructionPusedAlert = new Alert("Construction Paused", "No worker is present in room", OpenRoomUIandFocusRoom, Alert.AlertPrority.Permanet, Icons.GetMiscUIIcon(UIIcons.RoomIcon));
     }
 
     public Vector3Int GetConectorTile(Direction dir)
@@ -123,7 +123,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             return;
         }
         if (Level == _roomlevels.Length - 1)
-        { 
+        {
             AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Max level", Color.red);
             return;
         }
@@ -431,7 +431,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         if (Workers.Count == 0)
         {
             PauseConstructionTimer(_buildTimer);
-         //   ConstructionTimer.PauseTimer();
+            //   ConstructionTimer.PauseTimer();
         }
         UpdateRoomStats();
     }

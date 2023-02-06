@@ -35,7 +35,7 @@ public class RoomGridManager : MonoBehaviour
 
 
     [SerializeField]
-    PersonInfo[] StartingPeople;
+    PersonTemplate[] StartingPeople;
 
     void Awake()
     {
@@ -57,13 +57,13 @@ public class RoomGridManager : MonoBehaviour
         AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
         AbstractRoom forthRoom = BuildNewRoom(new Vector3Int(1, -1, 0), RoomType.Food);
         AbstractRoom fithRoom = BuildNewRoom(new Vector3Int(0, -1, 0), RoomType.Minerals);
-     
-        
-        foreach(PersonInfo personInfo in StartingPeople)
+
+
+        foreach (PersonTemplate personTemplate in StartingPeople)
         {
-        PrefabSpawner.Instance.SpawnPerson(fistRoom,personInfo);
+            PrefabSpawner.Instance.SpawnPerson(fistRoom, personTemplate);
         }
-        
+
 
 
         //PrefabSpawner.Instance.SpawnPerson(fistRoom);

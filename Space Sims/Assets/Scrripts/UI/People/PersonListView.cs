@@ -37,7 +37,7 @@ public class PersonListView : MonoBehaviour
         QuestSelected = null;
         OnSelectMethod = null;
         people = GlobalStats.Instance.PlayersPeople;
-        if(filtter != null)
+        if (filtter != null)
         {
             people = people.FindAll(filtter);
         }
@@ -92,7 +92,7 @@ public class PersonListView : MonoBehaviour
         }
         PopulateList();
     }
-   
+
     private void FilterListByAge(bool inverse = false)
     {
         skillfilter = null;

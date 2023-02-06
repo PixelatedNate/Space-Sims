@@ -12,7 +12,7 @@ public class QuestEncounter : ScriptableObject
     public int frequancy;
 
     [SerializeField]
-    PersonInfo.Skills PeopleRequiments;
+    Skills PeopleRequiments;
     [SerializeField]
     GameResources gameResources;
 

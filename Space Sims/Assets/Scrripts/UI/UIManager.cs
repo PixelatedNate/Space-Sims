@@ -130,7 +130,7 @@ public class UIManager : MonoBehaviour
         leftPanal.OpenOnQuest(quest);
         alertsUI.CloseAlerts();
     }
-        
+
     public void OpenPersonListViewbtn()
     {
         OpenPersonListView();

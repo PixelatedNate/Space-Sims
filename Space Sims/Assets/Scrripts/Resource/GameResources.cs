@@ -36,21 +36,21 @@ public class GameResources
     public string ToString(bool IncludeEmtpyValues)
     {
         string str = "";
-        if(Food != 0 || (IncludeEmtpyValues))
+        if (Food != 0 || (IncludeEmtpyValues))
         {
             str += Icons.GetResourceIconForTextMeshPro(ResourcesEnum.Food) + ":" + Food;
         }
-        if(Fuel != 0 || (IncludeEmtpyValues))
+        if (Fuel != 0 || (IncludeEmtpyValues))
         {
-            if(str != "")
+            if (str != "")
             {
                 str += "\n";
             }
             str += Icons.GetResourceIconForTextMeshPro(ResourcesEnum.Fuel) + ":" + Fuel;
         }
-        if(Minerals != 0 || (IncludeEmtpyValues))
+        if (Minerals != 0 || (IncludeEmtpyValues))
         {
-            if(str != "")
+            if (str != "")
             {
                 str += "\n";
             }
@@ -63,7 +63,7 @@ public class GameResources
                 str += "\n";
             }
             str += Icons.GetResourceIconForTextMeshPro(ResourcesEnum.Premimum) + ":" + Premimum;
-        }       
+        }
         return str;
     }
 

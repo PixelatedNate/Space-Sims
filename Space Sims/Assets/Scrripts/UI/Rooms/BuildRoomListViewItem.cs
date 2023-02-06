@@ -56,7 +56,7 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void OnClick()
     {
-        if(!_room.IsUnlocked)
+        if (!_room.IsUnlocked)
         {
             AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Locked Room", Color.red);
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
@@ -87,7 +87,7 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void UpdateItem()
     {
-        if(!_room.IsUnlocked)
+        if (!_room.IsUnlocked)
         {
             UnlockedView.SetActive(false);
             LockedView.SetActive(true);

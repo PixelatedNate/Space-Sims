@@ -9,16 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50fea7ba63e6afb49a30b86ce76c3fda, type: 3}
-  m_Name: Person1
+  m_Script: {fileID: 11500000, guid: 83372185c486aab42886c8b975b64a51, type: 3}
+  m_Name: Data
   m_EditorClassIdentifier: 
-  HomePlanet: 
-  Job: 
-  Likes: []
-  Dislikes: []
-  skills:
-    _strength: 2
-    _dexterity: 2
-    _intelligence: 2
-    _wisdom: 2
-    _charisma: 2
