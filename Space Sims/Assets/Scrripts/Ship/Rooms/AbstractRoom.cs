@@ -119,12 +119,12 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     {
         if (IsUnderConstruction)
         {
-            f.Instance.PlayAlertOverLastTouch("Allready UnderConstruction", Color.red);
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Allready UnderConstruction", Color.red);
             return;
         }
         if (Level == _roomlevels.Length - 1)
         {
-            f.Instance.PlayAlertOverLastTouch("Max level", Color.red);
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Max level", Color.red);
             return;
         }
 
@@ -136,7 +136,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         }
         else
         {
-            f.Instance.PlayAlertOverLastTouch("Insificent Resources", Color.red);
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Insificent Resources", Color.red);
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
         }
     }
@@ -146,7 +146,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     {
         if (Workers.Count == RoomStat.MaxWorkers)
         {
-            f.Instance.PlayAlertOverLastTouch("Room Full", Color.red);
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Room Full", Color.red);
             return false;
         }
         if (Workers.Contains(person.PersonInfo))

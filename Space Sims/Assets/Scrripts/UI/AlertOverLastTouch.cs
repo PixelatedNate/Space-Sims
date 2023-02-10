@@ -1,11 +1,11 @@
 using TMPro;
 using UnityEngine;
 
-public class f : MonoBehaviour
+public class AlertOverLastTouch : MonoBehaviour
 {
 
 
-    public static f Instance;
+    public static AlertOverLastTouch Instance;
 
     private void Awake()
     {
