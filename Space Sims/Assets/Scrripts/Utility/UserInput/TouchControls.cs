@@ -108,7 +108,7 @@ public class TouchControls : MonoBehaviour
                         IInteractables currentSelectedObject = SelectedObject;
                         if (SelectedObject != null)
                         {
-                            SelectedObject.OnDeselect();
+                            DeceletAll();
                             SelectedObject = null;
                         }
                         var selected = GetInteractableUnderMouse(ActiveLayer);

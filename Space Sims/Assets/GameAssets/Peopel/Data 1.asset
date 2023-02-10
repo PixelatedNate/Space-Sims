@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83372185c486aab42886c8b975b64a51, type: 3}
+  m_Name: Data 1
+  m_EditorClassIdentifier: 
+  RandomName: 1
+  PersonName: 
+  RandomGender: 0
+  Gender: 1
+  RandomRace: 0
+  Race: 0
+  MinAge: 21
+  MaxAge: 62
+  MinSkills:
+    _strength: 2
+    _dexterity: 2
+    _intelligence: 1
+    _wisdom: 2
+    _charisma: 5
+  MaxSkills:
+    _strength: 5
+    _dexterity: 8
+    _intelligence: 2
+    _wisdom: 2
+    _charisma: 5
+  RandomHead: 0
+  Head: {fileID: 21300000, guid: 79ec958aa10e76f458468574de600b77, type: 3}
+  RandomBody: 0
+  Body: {fileID: 21300000, guid: 0f1d7afb6a5c3d5428ff2930021e11b3, type: 3}
+  RandomCloths: 1
+  Clothes: {fileID: 21300000, guid: d8d2cca0268a5bb45a84e034e1ed1dbb, type: 3}
