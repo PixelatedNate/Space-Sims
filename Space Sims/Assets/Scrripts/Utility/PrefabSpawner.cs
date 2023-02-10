@@ -17,7 +17,7 @@ public class PrefabSpawner : MonoBehaviour
     }
 
     [SerializeField]
-    private GameObject PersonTemplate;
+    private GameObject PersonPrefab;
 
     [SerializeField]
     private GameObject FuelRoomTemplate;
@@ -32,12 +32,12 @@ public class PrefabSpawner : MonoBehaviour
 
     public GameObject SpawnPerson()
     {
-        return GameObject.Instantiate(PersonTemplate);
+        return GameObject.Instantiate(PersonPrefab);
     }
     public GameObject SpawnPerson(AbstractRoom room)
     {
-        var person = GameObject.Instantiate(PersonTemplate);
-        person.GetComponent<Person>().RandomisePerson();
+        var person = GameObject.Instantiate(PersonPrefab);
+        //person.GetComponent<Person>().RandomisePerson();
         if (person.GetComponent<Person>().AssginRoomToPerson(room))
         {
             person.transform.position = room.transform.position;
@@ -50,6 +50,51 @@ public class PrefabSpawner : MonoBehaviour
             Debug.LogWarning("could not spawn person in room");
             return null;
         }
+    }
+
+    public GameObject SpawnPerson(AbstractRoom room, PersonTemplate personTemplate)
+    {
+
+        PersonInfo personInfo = new PersonInfo(personTemplate);
+        
+        var person = GameObject.Instantiate(PersonPrefab);
+        person.GetComponent<Person>().AssginPerson(personInfo);
+        if (person.GetComponent<Person>().AssginRoomToPerson(room))
+        {
+            person.transform.position = room.transform.position;
+            person.transform.position = person.transform.position - Vector3.forward;
+            GlobalStats.Instance.PlayersPeople.Add(personInfo);
+            return person;
+        }
+        else
+        {
+            GameObject.Destroy(person);
+            Debug.LogWarning("could not spawn person in room");
+            return null;
+        }
+
+
+        /*
+     //   PersonInfo newPersonInfo = personInfo.Clone();
+        
+        var person = GameObject.Instantiate(PersonTemplate);
+        newPersonInfo.FirstTimeIntilize();
+        Debug.Log(newPersonInfo);  
+        person.GetComponent<Person>().AssginPerson(newPersonInfo);
+        if (person.GetComponent<Person>().AssginRoomToPerson(room))
+        {
+            person.transform.position = room.transform.position;
+            person.transform.position = person.transform.position - Vector3.forward;
+            return person;
+        }
+        else
+        {
+            GameObject.Destroy(person);
+            Debug.LogWarning("could not spawn person in room");
+            return null;
+        }
+        */
+        throw new Exception("Commneted out temperioly");
     }
 
 

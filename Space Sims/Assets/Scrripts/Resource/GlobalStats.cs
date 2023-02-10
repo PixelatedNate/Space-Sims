@@ -7,7 +7,9 @@ public class GlobalStats : MonoBehaviour
 
 
     [SerializeField]
-    AbstractQuest[] QuesttestsForMenu;
+    QuestData[] startingQuest;
+    [SerializeField]
+    QuestLineData[] startingQuestLines;
 
     public static GlobalStats Instance;
 
@@ -86,7 +88,13 @@ public class GlobalStats : MonoBehaviour
     }
     void Start()
     {
-        QuestManager.SetAvalibleQuest(QuesttestsForMenu);
+        QuestManager.AddNewQuest(startingQuest);
+        foreach (QuestLineData questline in startingQuestLines)
+        {
+            QuestManager.AddNewQuestLine(questline);
+        }
+        UnlocksManager.UnlockRoom(RoomType.Food);
+        UnlocksManager.UnlockRoom(RoomType.Fuel);
         MaxStorage = _bassMaxStorage;
         PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;
@@ -167,7 +175,7 @@ public class GlobalStats : MonoBehaviour
             {
                 RawFuelNeeded += MathF.Abs(keyPair.Value.Fuel);
             }
-          
+
         }
         TotalDelta = PersonDeltaResourcesTotal + RoomDeltaResourcesTotal;
     }
@@ -208,21 +216,21 @@ public class GlobalStats : MonoBehaviour
         {
             if (!_lowFuel)
             {
-               _lowFuel = true;
-               _lowFuelAlert = Alert.LowFuelAlert;
-               AlertManager.Instance.SendAlert(_lowFuelAlert);
+                _lowFuel = true;
+                _lowFuelAlert = Alert.LowFuelAlert;
+                AlertManager.Instance.SendAlert(_lowFuelAlert);
             }
-              float  percent = RawFuelNeeded / 100f;
-              float  MissingFuelPercent = TotalDelta.Fuel / percent;
+            float percent = RawFuelNeeded / 100f;
+            float MissingFuelPercent = TotalDelta.Fuel / percent;
             float productionPercent = 100f - Mathf.Abs(MissingFuelPercent);
-              FuelProductionMultiplyer = productionPercent/100f;
-                foreach(AbstractRoom room in PlyaerRooms)
-                {
+            FuelProductionMultiplyer = productionPercent / 100f;
+            foreach (AbstractRoom room in PlyaerRooms)
+            {
                 room.UpdateRoomStats();
-                }
-              _lowFuelAlert.message = MathF.Round(productionPercent) + "% production from rooms!!";
+            }
+            _lowFuelAlert.message = MathF.Round(productionPercent) + "% production from rooms!!";
             AlertManager.Instance.UpdateAlert(_lowFuelAlert);
-              PlayerResources.Fuel = 0;
+            PlayerResources.Fuel = 0;
         }
         else if (PlayerResources.Fuel >= 0 && _lowFuel)
         {
@@ -250,7 +258,7 @@ public class GlobalStats : MonoBehaviour
     {
         List<PersonInfo> peopleNotOnQuest = PlayersPeople.FindAll(p => p.IsQuesting == false);
 
-        if(peopleNotOnQuest.Count <= 4)
+        if (peopleNotOnQuest.Count <= 4)
         {
             return;
         }

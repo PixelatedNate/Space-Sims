@@ -4,56 +4,27 @@ using UnityEngine;
 using static TimeDelayManager;
 using Random = UnityEngine.Random;
 
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Quests/WaittingQuest", order = 1)]
-public class WaittingQuest : AbstractQuest
-{
+public class WaittingQuest : AbstractQuest {
 
 
-    [Serializable]
-    public class Requiments
-    {
-        [SerializeField]
-        public int Numpeople;
-        [SerializeField]
-        public SkillsList SkillRequiment;
-        [SerializeField]
-        public int skillValueMin;
-
-        public bool Ismet(PersonInfo[] people)
-        {
-            if (people.Length != Numpeople)
-            {
-                return false;
-            }
-            foreach (PersonInfo p in people)
-            {
-                if (p.skills.GetSkill(SkillRequiment) < skillValueMin)
-                {
-                    return false;
-                }
-            }
-            return true;
-
-        }
-    }
 
     private bool Inprogress = false;
 
-    [SerializeField]
-    public Requiments requiments;
-    [SerializeField]
-    float Duration;
-
-    [SerializeField]
     public List<PersonInfo> PeopleAssgined = new List<PersonInfo>();
-
     public List<QuestEncounter> QuestLog { get; private set; } = new List<QuestEncounter>();
 
-
-    [SerializeField]
-    private QuestEncounter[] PossibleEncounters;
-
     public Timer QuestTimer { get; private set; }
+    public override QuestData QuestData => WaittingQuestData;
+
+    public WaitingQuestData WaittingQuestData { get; }
+    
+
+    public WaittingQuest(WaitingQuestData questdata, QuestLine questLine = null)
+    {
+        this.WaittingQuestData = questdata;
+        this.questLine = questLine;
+    }
+
 
     public void AssginPerson(PersonInfo person)
     {
@@ -63,7 +34,7 @@ public class WaittingQuest : AbstractQuest
         }
         person.AssignQuest(this);
         PeopleAssgined.Add(person);
-        bool requimentsMet = requiments.Ismet(PeopleAssgined.ToArray());
+        bool requimentsMet = WaittingQuestData.QuestRequiments.Ismet(PeopleAssgined.ToArray());
     }
 
     public void UnassginPerson(PersonInfo person)
@@ -82,12 +53,12 @@ public class WaittingQuest : AbstractQuest
 
     public bool DosePersonMeetRequiment(PersonInfo person)
     {
-        return person.skills.GetSkill(requiments.SkillRequiment) > requiments.skillValueMin;
+        return person.skills.GetSkill(WaittingQuestData.QuestRequiments.SkillRequiment) > WaittingQuestData.QuestRequiments.skillValueMin;
     }
 
     public override bool StartQuest()
     {
-        if (!requiments.Ismet(PeopleAssgined.ToArray()))
+        if (!WaittingQuestData.QuestRequiments.Ismet(PeopleAssgined.ToArray()))
         {
             return false;
         }
@@ -97,7 +68,7 @@ public class WaittingQuest : AbstractQuest
             p.StartQuest(this);
         }
         TimeTickSystem.OnMajorTick += onMajorTick;
-        QuestTimer = new Timer(DateTime.Now.AddMinutes(Duration), new Action(CompleatQuest));
+        QuestTimer = new Timer(WaittingQuestData.Duration, new Action(CompleatQuest));
         TimeDelayManager.Instance.AddTimer(QuestTimer);
         return true;
     }
@@ -107,7 +78,7 @@ public class WaittingQuest : AbstractQuest
     {
         Dictionary<QuestEncounter, int> events = new Dictionary<QuestEncounter, int>();
         int valueOffset = 0;
-        foreach (QuestEncounter qe in PossibleEncounters)
+        foreach (QuestEncounter qe in WaittingQuestData.PossibleEncounters)
         {
             int value = valueOffset + qe.frequancy;
             events.Add(qe, value);
@@ -133,31 +104,26 @@ public class WaittingQuest : AbstractQuest
 
     public override void CompleatQuest()
     {
+        base.CompleatQuest();
+
         SoundManager.Instance.PlaySound(SoundManager.Sound.QuestCompleted);
 
         //add stuff like reweards for quest compleation
-        GlobalStats.Instance.PlayerResources += reward.GameResourcesReward;
+        GlobalStats.Instance.PlayerResources += QuestData.reward.GameResourcesReward;
 
         TimeTickSystem.OnMajorTick -= onMajorTick;
         questStaus = QuestStatus.Completed;
         foreach (PersonInfo p in PeopleAssgined)
         {
-            p.CompleteQuest(new PersonInfo.Skills());
+            p.CompleteQuest(new Skills());
         }
 
-        for (int i = 0; i < reward.NumberOfPeopleReward; i++)
+        for (int i = 0; i < QuestData.reward.people.Length; i++)
         {
-            PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom);
+            PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom,QuestData.reward.people[i]);
         }
 
-        AlertManager.Instance.SendAlert(new Alert("Quest Complet", Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
-    }
-
-    public override void ResetQuest()
-    {
-        UnassginAllPeopople();
-        questStaus = QuestStatus.Available;
-        QuestLog.Clear();
+        AlertManager.Instance.SendAlert(new Alert("Quest Complet",QuestData.Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
     }
 }
 

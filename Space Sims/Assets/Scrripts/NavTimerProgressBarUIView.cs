@@ -6,7 +6,7 @@ public class NavTimerProgressBarUIView : MonoBehaviour
 {
     private TimeDelayManager.Timer NavTimer { get; set; }
 
-    private Planet _planet;
+    private PlanetContainer _planet;
 
     [SerializeField]
     private Transform _progressbar;
@@ -20,7 +20,7 @@ public class NavTimerProgressBarUIView : MonoBehaviour
         UIManager.Instance.OpenPlanetView(_planet);
     }
 
-    public void TrackTimer(TimeDelayManager.Timer timer, Planet targetPlanet)
+    public void TrackTimer(TimeDelayManager.Timer timer, PlanetContainer targetPlanet)
     {
         _planet = targetPlanet;
         _progressbar.localScale = new Vector3(0, 1, 1); // ensuer bar is reset

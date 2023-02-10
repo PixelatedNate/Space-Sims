@@ -721,6 +721,22 @@ PrefabInstance:
       propertyPath: _buildRoomTemplate
       value: 
       objectReference: {fileID: 7957068511739355582, guid: feac673830432e44f9e99417c897956d, type: 3}
+    - target: {fileID: 944651634355311858, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
+      propertyPath: StartingPeople.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 944651634355311858, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
+      propertyPath: StartingPeople.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c783797f1f261554cbc2cdd56f79af54, type: 2}
+    - target: {fileID: 944651634355311858, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
+      propertyPath: StartingPeople.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4fafdc55dcae1854da275038c94f9789, type: 2}
+    - target: {fileID: 944651634355311858, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
+      propertyPath: StartingPeople.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 4fafdc55dcae1854da275038c94f9789, type: 2}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 944651634355311857, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}

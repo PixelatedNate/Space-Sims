@@ -51,30 +51,6 @@ public class Person : MonoBehaviour, IInteractables
 
     bool IsMouseOver = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //testing
-        if (PersonInfo == null)
-        {
-            RandomisePerson();
-        }
-    }
-
-
-    public void RandomisePerson()
-    {
-        if (PersonInfo != null)
-        {
-            GlobalStats.Instance.PlayersPeople.Remove(PersonInfo);
-        }
-        PersonInfo person = new PersonInfo();
-        person.Randomize();
-        AssginPerson(person);
-        ReRenderPerson();
-        GlobalStats.Instance.PlayersPeople.Add(PersonInfo);
-    }
-
     public void AssginPerson(PersonInfo person)
     {
         if (PersonInfo != null)
@@ -93,7 +69,7 @@ public class Person : MonoBehaviour, IInteractables
     {
         if (room == null) // tried to drop person where there was no room like in space.
         {
-            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Not a room", Color.red);
+            f.Instance.PlayAlertOverLastTouch("Not a room", Color.red);
             transform.position = Vector3.zero;
             transform.position = PersonInfo.Room.transform.position;
             return false;
@@ -290,14 +266,13 @@ public class Person : MonoBehaviour, IInteractables
 
     public void SetOutline(bool value)
     {
-
         if (value)
         {
             SelectOutline.sprite = PersonInfo.Body;
             SelectOutline.gameObject.SetActive(true);
             SelectOutline.sharedMaterial.SetTexture("_Head", PersonInfo.Head.texture);
             SelectOutline.sharedMaterial.SetTexture("_Cloths", PersonInfo.Clothes.texture);
-            SelectOutline.sharedMaterial.SetTexture("_Hair", PersonInfo.Hair.texture);
+            //     SelectOutline.sharedMaterial.SetTexture("_Hair", PersonInfo.Hair.texture);
         }
         else
         {

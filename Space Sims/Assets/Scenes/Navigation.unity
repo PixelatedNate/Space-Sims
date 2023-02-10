@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a7c28423109364fbbb0a2dcc501512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 11400000, guid: 1443d61dbfb208344bbeb08205a58bf1, type: 2}
+  planetData: {fileID: 11400000, guid: 5c392b99ba7fb284cab99f1097263132, type: 2}
   _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &65851502
 GameObject:
@@ -585,7 +585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a7c28423109364fbbb0a2dcc501512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 11400000, guid: 770b0ea6fd2a583448d4b6f8136b4b98, type: 2}
+  planetData: {fileID: 11400000, guid: 9e062e5fad7f69e47bb95325b45a1d62, type: 2}
   _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1060808996
 GameObject:
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a7c28423109364fbbb0a2dcc501512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 11400000, guid: b0a5bf23e93d1514bac284963afffc4e, type: 2}
+  planetData: {fileID: 11400000, guid: c8e902702b147e24f8c3ef7a87bfa653, type: 2}
   _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1184314518
 GameObject:
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a7c28423109364fbbb0a2dcc501512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 11400000, guid: 7839c400ff7587540a08781716a93a4b, type: 2}
+  planetData: {fileID: 11400000, guid: c1ff527904732144095fe0ea2ce0aa3e, type: 2}
   _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1233590285
 GameObject:
@@ -1131,7 +1131,6 @@ GameObject:
   - component: {fileID: 1233590286}
   - component: {fileID: 1233590289}
   - component: {fileID: 1233590287}
-  - component: {fileID: 1233590290}
   m_Layer: 7
   m_Name: planets small-01 (3)
   m_TagString: Untagged
@@ -1232,20 +1231,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1233590290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233590285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6a7c28423109364fbbb0a2dcc501512, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planet: {fileID: 11400000, guid: 9bfdd901e73f42842950ad85b7936c2e, type: 2}
-  _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1 &1270269997
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a7c28423109364fbbb0a2dcc501512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  planet: {fileID: 11400000, guid: 8d59dbdfbbcec414daee4a05da9a9e9e, type: 2}
+  planetData: {fileID: 11400000, guid: bd0f9e19a480a2c4e884086ea2fb9155, type: 2}
   _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!222 &1133425097592706377
 CanvasRenderer:

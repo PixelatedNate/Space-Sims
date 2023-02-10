@@ -33,6 +33,10 @@ public class RoomGridManager : MonoBehaviour
     [SerializeField]
     GameObject DownWing;
 
+
+    [SerializeField]
+    PersonTemplate[] StartingPeople;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -53,10 +57,18 @@ public class RoomGridManager : MonoBehaviour
         AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
         AbstractRoom forthRoom = BuildNewRoom(new Vector3Int(1, -1, 0), RoomType.Food);
         AbstractRoom fithRoom = BuildNewRoom(new Vector3Int(0, -1, 0), RoomType.Minerals);
-        PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        PrefabSpawner.Instance.SpawnPerson(fistRoom);
+
+        foreach (PersonTemplate personTemplate in StartingPeople)
+        {
+            PrefabSpawner.Instance.SpawnPerson(fistRoom, personTemplate);
+        }
+
+
+
+        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
+        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
+        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
+        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
     }
 
     #region PublicMethods

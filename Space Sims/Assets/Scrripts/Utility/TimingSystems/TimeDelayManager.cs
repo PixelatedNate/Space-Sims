@@ -54,12 +54,14 @@ public class TimeDelayManager : MonoBehaviour
             this.TotalDuration = EndTime - DateTime.Now;
             this.EndMethod = endMethod;
         }
-        public Timer(int minutes, Action endMethod)
+
+        public Timer(TimeSpan duration, Action endMethod)
         {
-            this.EndTime = DateTime.Now.AddMinutes(minutes);
-            this.TotalDuration = EndTime - DateTime.Now;
+            this.EndTime = DateTime.Now.Add(duration);
+            this.TotalDuration = duration;
             this.EndMethod = endMethod;
         }
+
     }
 
     public static TimeDelayManager Instance { get; set; }

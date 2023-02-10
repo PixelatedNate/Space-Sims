@@ -9,11 +9,11 @@ public static class NavigationManager
 
     public static float UniversSpeedModifyer = 0.25f;
 
-    public static Planet CurrentPlanet { get; set; }
-    public static Planet TargetPlanet { get; set; }
-    public static Planet PreviousPlanet { get; set; }
+    public static PlanetContainer CurrentPlanet { get; set; }
+    public static PlanetContainer TargetPlanet { get; set; }
+    public static PlanetContainer PreviousPlanet { get; set; }
 
-    public static bool NavigateToTargetPlanet(Planet planet)
+    public static bool NavigateToTargetPlanet(PlanetContainer planet)
     {
         if (planet == CurrentPlanet)
         {
@@ -41,37 +41,20 @@ public static class NavigationManager
 
     }
 
-    /*
-        public static Vector2 GetPositionRelativeToJourny()
-        {
-            if (!InNavigation)
-            {
-                Debug.LogWarning("Trying to get Posittion Relative To Journy when no journy is in progress");
-                return Vector2.zero;
-            }
-            else
-            {
-                float percentage = 1 - (float)_navTimer.PercentaceTravled / 100;
-        //        Vector2 CurrentPositoin = Vector2.Lerp(PreviousPlanet.transform.position, TargetPlanet.transform.position, percentage);
-                return CurrentPositoin;
-            }
-        }
-        */
-
     private static void ArriveAtPlanet()
     {
         InNavigation = false;
         CurrentPlanet = TargetPlanet;
-        QuestManager.SetAvalibleQuest(CurrentPlanet.Quests);
+      //  QuestManager.SetAvalibleQuest(CurrentPlanetQuests);
         TargetPlanet = null;
-        BackgroundManager.Instance.setBackground(CurrentPlanet.Background);
+        BackgroundManager.Instance.setBackground(CurrentPlanet.planetData.Background);
         ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, true);
         foreach (AbstractQuest quest in QuestManager.GetQuestsByStaus(QuestStatus.InProgress))
         {
             if (quest.GetType() == typeof(TransportQuest))
             {
                 TransportQuest tq = (TransportQuest)quest;
-                if (tq.TargetPlanetName == CurrentPlanet.PlanetName)
+                if (tq.transportQuestData.TargetPlanetData == CurrentPlanet.planetData)
                 {
                     tq.CompleatQuest();
                 }
@@ -82,16 +65,16 @@ public static class NavigationManager
 
 
 
-    public static TimeSpan CalcualteTravleTime(Planet b)
+    public static TimeSpan CalcualteTravleTime(PlanetContainer b)
     {
         return (CalcualteTravleTime(CurrentPlanet, b));
     }
 
-    public static TimeSpan CalcualteTravleTime(Planet a, Planet b)
+    public static TimeSpan CalcualteTravleTime(PlanetContainer a, PlanetContainer b)
     {
         return CalcualteTravleTime(a.PlanetPosition, b.PlanetPosition);
     }
-    public static TimeSpan CalcualteTravleTime(Vector3 a, Planet b)
+    public static TimeSpan CalcualteTravleTime(Vector3 a, PlanetContainer b)
     {
         return CalcualteTravleTime(a, b.PlanetPosition);
     }

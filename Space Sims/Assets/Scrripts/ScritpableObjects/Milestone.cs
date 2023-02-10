@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Milestone", order = 1)]
@@ -36,7 +34,7 @@ public class Milestone : ScriptableObject
     public void reset()
     {
         progressionIndex = 0;
-        foreach(MilstoneProgressions mp in progressions)
+        foreach (MilstoneProgressions mp in progressions)
         {
             mp.completed = false;
         }
@@ -48,7 +46,7 @@ public class Milestone : ScriptableObject
         {
             CurrentMilstone.completed = true;
             GlobalStats.Instance.PlayerResources += CurrentMilstone.resoureceRewared;
-            if (progressionIndex != progressions.Length-1)
+            if (progressionIndex != progressions.Length - 1)
             {
                 progressionIndex++;
             }

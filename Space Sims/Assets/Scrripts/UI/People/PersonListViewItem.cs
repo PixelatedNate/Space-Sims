@@ -34,7 +34,7 @@ public class PersonListViewItem : MonoBehaviour
             QuestText.color = Color.red;
             QuestText.text = "On Quest";
         }
-        else if(person.IsCargoForTransportQust)
+        else if (person.IsCargoForTransportQust)
         {
             GetComponent<Button>().interactable = false;
             QuestText.color = Color.red;

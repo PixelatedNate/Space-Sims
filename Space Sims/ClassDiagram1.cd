@@ -1,0 +1,793 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="MilestoneView" Collapsed="true">
+    <Position X="20.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAQACAAGECACAAAAAAAAAAAABIEBIAABAAAAAA=</HashCode>
+      <FileName>Assets\MilestoneView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlanetVisual" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAACAAAAAAAAAAAAAAAAAAAgABAAAAAMAAoAA=</HashCode>
+      <FileName>Assets\PlanetVisual.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="QuestListItemView" Collapsed="true">
+    <Position X="17.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAQQAAAAAAAAAAAAAAAEAAAAEAAAAAAQgAAAAA=</HashCode>
+      <FileName>Assets\QuestListItemView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BackgroundManager" Collapsed="true">
+    <Position X="22.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAIACAAAAIAAAAAAAAAQIAgAAAAAEA=</HashCode>
+      <FileName>Assets\Scrripts\BackgroundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlanetContainer" Collapsed="true">
+    <Position X="22.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\DataObjects\PlanetContainer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlanetData" Collapsed="true">
+    <Position X="24.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAiAQAAgAA=</HashCode>
+      <FileName>Assets\Scrripts\DataObjects\PlanetData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameStart" Collapsed="true">
+    <Position X="26" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\GameStart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NavTimerProgressBarUIView" Collapsed="true">
+    <Position X="26" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAABEBAAAAAAAAACgAABAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scrripts\NavTimerProgressBarUIView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathFinding" Collapsed="true">
+    <Position X="15.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECCAAAgAAAAEAAAAAAABCAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\People\PathFinding.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Person" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEQJgYgAAAQBAAAAIAAFKAEAAQAAAwABAAAIAHAAJAA=</HashCode>
+      <FileName>Assets\Scrripts\People\Person.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PersonInfo" Collapsed="true">
+    <Position X="24.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAIBJAAAAQCaiIAngBABUAEAgCAAAGAAQCgCgAiAA=</HashCode>
+      <FileName>Assets\Scrripts\People\PersonInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersonSkin" Collapsed="true">
+    <Position X="13.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BhAEAAAEAEAAAAAAAAAAAAAAgQAAAAAAAAgAACAEAAA=</HashCode>
+      <FileName>Assets\Scrripts\People\PersonSkin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersonTemplate" Collapsed="true">
+    <Position X="15.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAACAAAgAAMSAAQAJBQAAAAAAAAAEgAAAAAAEABA=</HashCode>
+      <FileName>Assets\Scrripts\People\PersonTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersonTemplateEditor" Collapsed="true">
+    <Position X="17.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAQABBCAAgAEACBAAAgCAAwAAIAASABAIAABAABAAA=</HashCode>
+      <FileName>Assets\Scrripts\People\PersonTemplateEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersonVoice" Collapsed="true">
+    <Position X="19" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\People\PersonVoice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersonBackStoryView" Collapsed="true">
+    <Position X="20.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAEABAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\PersonBackStoryView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersonFootSteps" Collapsed="true">
+    <Position X="22.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAACAAAAAAAAAAIAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\PersonFootSteps.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Planet" Collapsed="true">
+    <Position X="20.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAgAAAAAACAEAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Planet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerNavigationRocket" Collapsed="true">
+    <Position X="12" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scrripts\PlayerNavigationRocket.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestRoom" Collapsed="true">
+    <Position X="3" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAACAQAABAAAAAAABgAAAAIAAAAAACCAAA=</HashCode>
+      <FileName>Assets\Scrripts\QuestRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AbstractQuest" Collapsed="true">
+    <Position X="1.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAgAAAAAAAAAAgAEgAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\AbstractQuest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestData" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\QuestData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestDataEditor" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\QuestDataEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestEncounter" Collapsed="true">
+    <Position X="15.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAQAAAAAAgCAAIAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\QuestEncounter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransportQuest" Collapsed="true">
+    <Position X="2.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAEgAI=</HashCode>
+      <FileName>Assets\Scrripts\Quests\TransportQuest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransportQuestData" Collapsed="true">
+    <Position X="5.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAgA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\TransportQuestData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransportQuestDataEditor" Collapsed="true">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\TransportQuestDataEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TransprotQuestViewComponet" Collapsed="true">
+    <Position X="10.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\TransprotQuestViewComponet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaitingQuestData" Collapsed="true">
+    <Position X="7.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAACAAAgA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\WaitingQuestData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaitingQuestViewComponet" Collapsed="true">
+    <Position X="24.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>qAOABDIAAgAAFAACAAAQAAAABAiADgAAAIAAAAQAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\WaitingQuestViewComponet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaittingQuest" Collapsed="true">
+    <Position X="0.5" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIBAAEAAAAAQAEAAAAAAAQAAIgAAgAAAACAABAEgAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\WaittingQuest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WaittingQuestDataEditor" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Quests\WaittingQuestDataEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameResources" Collapsed="true">
+    <Position X="24.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAEYAGAAgAAEAAAAAAAAgAAAgQAByA=</HashCode>
+      <FileName>Assets\Scrripts\Resource\GameResources.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GlobalStats" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QGCAgAgAgCIJAAoAgACBIACAAEIJiAABQjArAAIIGEg=</HashCode>
+      <FileName>Assets\Scrripts\Resource\GlobalStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SaveingAndLoading" Collapsed="true">
+    <Position X="17.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\SaveingAndLoading.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Milestone" Collapsed="true">
+    <Position X="17.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAEAAQAAAIAAAAAAAAAAAAAAAAQEAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\ScritpableObjects\Milestone.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ToutorialSegment" Collapsed="true">
+    <Position X="26" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAiAAAAAAAAAAAAAEIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\ScritpableObjects\ToutorialSegment.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AbstractRoom" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhCDUyBAICBQmgLgEBACEiAyAJikQAAJFAAiENKCIUA=</HashCode>
+      <FileName>Assets\Scrripts\Ship\Rooms\AbstractRoom.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="ActiveProductionRoom" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Ship\Rooms\ProductionRooms\ActiveProductionRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PassiveProductionRoom" Collapsed="true">
+    <Position X="0.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAkAAAICAACBYQABAAAAACQBhGAAAIAEGADFBCBAA=</HashCode>
+      <FileName>Assets\Scrripts\Ship\Rooms\ProductionRooms\PassiveProductionRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Room" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AhADgQBQJCAQCgIwABACAiASAIAGAAABAAAgDFDCIAQ=</HashCode>
+      <FileName>Assets\Scrripts\Ship\Rooms\Room.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="RoomGridManager" Collapsed="true">
+    <Position X="13.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAARAgACAJQAgAIBAAIAEABYABAAAAwCAgAAgBIEA=</HashCode>
+      <FileName>Assets\Scrripts\Ship\Rooms\RoomGridManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RoomStats" Collapsed="true">
+    <Position X="15.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAIAAAAQAAAACAZgAAAAAIACAAAEAAAAAAAACAAggA=</HashCode>
+      <FileName>Assets\Scrripts\Ship\Rooms\RoomStats.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrewQuatersRoom" Collapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAACAACAQAABAAAAAAADgAAAAIAAAAAACCAAA=</HashCode>
+      <FileName>Assets\Scrripts\Ship\Rooms\StorageRooms\CrewQuatersRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ShipDecoration" Collapsed="true">
+    <Position X="20.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\ShipDecoration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TutorialManager" Collapsed="true">
+    <Position X="12" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\TutorialManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="f" Collapsed="true">
+    <Position X="19" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEAAAACAAAAAAAAAAASAAAAAAAAAAQAAAABAAAEA=</HashCode>
+      <FileName>Assets\Scrripts\UI\AlertOverLastTouch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlertComponet" Collapsed="true">
+    <Position X="15.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIBAAAAACAAgAAAAAEQAQAAAAKAAAAAABAAAAQA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Alets\AlertComponet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlertsUI" Collapsed="true">
+    <Position X="20.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQCAAIAAAgAAQABAIAgAhAAggAAEAAAAAARAAEAAAg=</HashCode>
+      <FileName>Assets\Scrripts\UI\Alets\AlertsUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PermentAlertComponet" Collapsed="true">
+    <Position X="17.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAACAAgAAAAAAQAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Alets\PermentAlertComponet.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ButtonManager" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scrripts\UI\ButtonManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClothCosmeticSelectionUI" Collapsed="true">
+    <Position X="15.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABCAAAAgAAIAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\ClothCosmeticSelectionUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ClothSelectionMenuUIView" Collapsed="true">
+    <Position X="17.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAAggAAAAQAAgAAAIAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\ClothSelectionMenuUIView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConformationUI" Collapsed="true">
+    <Position X="19" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAQAAAAAAAAAAKAAAAAAAAIIAAAAABAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\ConformationUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LeftPanal" Collapsed="true">
+    <Position X="13.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIBAAAAAEFQAAAACAACAsDCAAwgjQAAgAAAAABQAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\LeftPanal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PageSwiper" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAgAQAIAAAABEEAAAACgAAACAIAAAAAAACUA=</HashCode>
+      <FileName>Assets\Scrripts\UI\PageSwiper.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PersonListView" Collapsed="true">
+    <Position X="26" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAgQEAAEAIEAIAgAiEAgAgIAKgAAAQAAQAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\People\PersonListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersonListViewItem" Collapsed="true">
+    <Position X="10.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAACAhAAAAAAAAEAJAAAAAAIAAAQEAEAACACAEAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\People\PersonListViewItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PersonSelectUIView" Collapsed="true">
+    <Position X="12" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAgAgAAogAANABAAwgAAJAAABIEAAAGEAAEGA=</HashCode>
+      <FileName>Assets\Scrripts\UI\People\PersonSelectUIView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="planetView" Collapsed="true">
+    <Position X="26" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgEAIAAAAggAIQAAAIAABIAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\planetView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestListView" Collapsed="true">
+    <Position X="19" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AASAgAIMACgAAAAAAAAQCAAgCAAAgAAQAAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Quest\QuestListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestRequimentBoxView" Collapsed="true">
+    <Position X="22.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAIAAABiAAApAAAQAJAAgAQCIAAAAAAIAgAABgAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Quest\QuestRequimentBoxView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestView" Collapsed="true">
+    <Position X="24.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KAEABDBAAgAAEEACCAAQAAAABAiABAAAAIAAAAAAgQA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Quest\QuestView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RightPanal" Collapsed="true">
+    <Position X="10.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAIgAAAEAAAAAAAAAAQAAICAAAQACAAAAEAAAAAAAQ=</HashCode>
+      <FileName>Assets\Scrripts\UI\RightPanal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildRoomButton" Collapsed="true">
+    <Position X="24.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABACAAAAAAAAACAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Rooms\BuildRoomButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildRoomListView" Collapsed="true">
+    <Position X="26" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Rooms\BuildRoomListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BuildRoomListViewItem" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAQQAACADAAAEABABAAAgECABAASgAQAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Rooms\BuildRoomListViewItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CrewQuatersRoomView" Collapsed="true">
+    <Position X="20.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAQIAAAgAgAAAAAIAAAAAAAAAAACAAAAAAgAAEAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Rooms\CrewQuatersRoomView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PassiveProductionRoomView" Collapsed="true">
+    <Position X="13.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQCQIAAAiAAAgAAAIAAAAAQBAAAACAAAgAAkAAEAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Rooms\PassiveProductionRoomView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UniversalRoomView" Collapsed="true">
+    <Position X="19" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAZIwAAAAAAAIQAAEACAACAAIAECACAAQAQAACAIBA=</HashCode>
+      <FileName>Assets\Scrripts\UI\Rooms\UniversalRoomView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SettingsUIMenu" Collapsed="true">
+    <Position X="19" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAJAAAAAAAAAAAAAAEAAAAAAAAAAQAIAAAAAAAAKAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\SettingsUIMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextRiseAndFadeOut" Collapsed="true">
+    <Position X="10.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAgAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\TextRiseAndFadeOut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TopBar" Collapsed="true">
+    <Position X="22.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAiABCAABgBAEACAAAEAEAAAAASAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\TopBar.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIButton" Collapsed="true">
+    <Position X="13.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gsQBAACABiCgAAACIQAIAAAAAAAAAAUCBAAAAgAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UI\UIButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager" Collapsed="true">
+    <Position X="17.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgBAAgAARABAAwAAikkHCABCQAhAigABQhABAREgCGw=</HashCode>
+      <FileName>Assets\Scrripts\UI\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UICanvasBtnHandler" Collapsed="true">
+    <Position X="15.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\UICanvasBtnHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CameraManager" Collapsed="true">
+    <Position X="13.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQCAIAAAAACAAAAIAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\CameraManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DontDestroyOnLoad" Collapsed="true">
+    <Position X="22.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\DontDestroyOnLoad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AlertManager" Collapsed="true">
+    <Position X="17.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAACABAAAAAAAAAAAAgAAAAAAQAAAAAAAAEI=</HashCode>
+      <FileName>Assets\Scrripts\Utility\GameAlerts\AlertManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Alert" Collapsed="true">
+    <Position X="13.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAEAAAAgBAEAAAAAAAAAAEAAAAAAAAAAAAAiA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\GameAlerts\Alerts.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PrefabSpawner" Collapsed="true">
+    <Position X="13.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAEAAAABAAAAAAAAAUAAAiAAAAFg=</HashCode>
+      <FileName>Assets\Scrripts\Utility\PrefabSpawner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MobilePushNotification" Collapsed="true">
+    <Position X="22.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAACAAACAAAAAAAAQAAAAAAAAAEAAAQABAAAAAAEA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\PushNotification\MobilePushNotification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ResourceHelper" Collapsed="true">
+    <Position X="26" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\ResourceHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Skills" Collapsed="true">
+    <Position X="24.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACIAAQAAAAIAUCQAwAABAFAAAAAAAAACAAAByA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\Skills.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundManager" Collapsed="true">
+    <Position X="26" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAABAAAABAIiAIAAAAAAAQAAAAAAAAEg=</HashCode>
+      <FileName>Assets\Scrripts\Utility\Sounds\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NewBehaviourScript" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\Sounds\Sounds.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Icons" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAABhAAAACCAAAAAgABAAEAAAACAAGGAQIAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\Icons.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MaterialFinder" Collapsed="true">
+    <Position X="15.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\MaterialFinder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MilestoneHelper" Collapsed="true">
+    <Position X="19" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\MilestoneHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NavigationManager" Collapsed="true">
+    <Position X="24.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQgEAAAAAAAQAAKAIAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\NavigationManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="QuestManager" Collapsed="true">
+    <Position X="20.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAACCAQIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\QuestManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SkillColourMap" Collapsed="true">
+    <Position X="22.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\SkillColourMap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TileMapHelper" Collapsed="true">
+    <Position X="12" Y="7.5" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="TileMapHelper.TileName" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scrripts\Utility\StaticClasses\TileMapHelper.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gQAAAAAEgAAACAAggACAAACAAACABAAAAACAAAAABAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\TileMapHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tiles" Collapsed="true">
+    <Position X="13.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\Tiles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tools" Collapsed="true">
+    <Position X="20.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\Tools.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UnlocksManager" Collapsed="true">
+    <Position X="20.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\StaticClasses\UnlocksManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimeDelayManager" Collapsed="true">
+    <Position X="15.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAEAAACAAAAAAAAAACAAAQAAAAAAAgEA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\TimingSystems\TimeDelayManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimeTickSystem" Collapsed="true">
+    <Position X="17.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAQAAABAAAAAAAACAAAAAAAAAAAgAk=</HashCode>
+      <FileName>Assets\Scrripts\Utility\TimingSystems\TimeTickSystem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AbstractToutorialSection" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\Tutorial\ToutorialSection\AbstractToutorialSection.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TouchControls" Collapsed="true">
+    <Position X="24.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EIQACIAABCAAgAoQEAAEIAgEUoABAAJAAAABAAgAFDQ=</HashCode>
+      <FileName>Assets\Scrripts\Utility\UserInput\TouchControls.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TipsAndToutorial" Collapsed="true">
+    <Position X="19" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAhAIACACAAAAASlAIgAAAACQBAAAAAQUACAAAiCEA=</HashCode>
+      <FileName>Assets\TipsAndToutorial.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RDG.Vibration" Collapsed="true">
+    <Position X="22.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEEAAQQAAEQAAAABAAAIFgAAgAAIGwACACKYAAAQ=</HashCode>
+      <FileName>Assets\Scrripts\Utility\Vibration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="IInteractables" Collapsed="true">
+    <Position X="10.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAIAA=</HashCode>
+      <FileName>Assets\Scrripts\Utility\Interfaces\IInteractables.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Direction" Collapsed="true">
+    <Position X="10.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>Assets\Scrripts\Enums\Direction.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Gender" Collapsed="true">
+    <Position X="12" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Enums\Gender.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="UIIcons" Collapsed="true">
+    <Position X="22.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAIAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Enums\MiscUIIcons.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="QuestStatus" Collapsed="true">
+    <Position X="13.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAABAAAAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Enums\QuestStatus.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Race" Collapsed="true">
+    <Position X="15.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAQAAQAACAAAAIAAAAAAAIQAAEAQAAAAAAQgAAA=</HashCode>
+      <FileName>Assets\Scrripts\Enums\Race.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ResourcesEnum" Collapsed="true">
+    <Position X="17.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAgAAAgQAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Enums\ResourcesEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="RoomType" Collapsed="true">
+    <Position X="19" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAgYAAAA=</HashCode>
+      <FileName>Assets\Scrripts\Enums\RoomType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SkillsList" Collapsed="true">
+    <Position X="20.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAEAAAAAAAABAAAAAAAAACAAAACA=</HashCode>
+      <FileName>Assets\Scrripts\Enums\SkillsList.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

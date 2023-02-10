@@ -104,7 +104,7 @@ public class PersonSelectUIView : MonoBehaviour
 
     public void OpenPersonRoom()
     {
-        UIManager.Instance.OpenRoomView(SelectedPerson.Room);      
+        UIManager.Instance.OpenRoomView(SelectedPerson.Room);
     }
 
 

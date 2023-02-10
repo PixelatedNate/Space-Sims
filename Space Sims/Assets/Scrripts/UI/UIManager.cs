@@ -70,7 +70,7 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void OpenPlanetView(Planet planet)
+    public void OpenPlanetView(PlanetContainer planet)
     {
         RoomGridManager.Instance.SetBuildMode(false);
         leftPanal.SelectPlanet(planet);
@@ -130,7 +130,7 @@ public class UIManager : MonoBehaviour
         leftPanal.OpenOnQuest(quest);
         alertsUI.CloseAlerts();
     }
-        
+
     public void OpenPersonListViewbtn()
     {
         OpenPersonListView();
@@ -350,7 +350,7 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void TrackNavTimer(TimeDelayManager.Timer timer, Planet targetPlanet)
+    public void TrackNavTimer(TimeDelayManager.Timer timer, PlanetContainer targetPlanet)
     {
         navTimerUI.gameObject.SetActive(true);
         navTimerUI.TrackTimer(timer, targetPlanet);

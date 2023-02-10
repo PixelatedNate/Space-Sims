@@ -64,9 +64,11 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     private Alert constructionPusedAlert;
 
 
+    public bool IsUnlocked { get { return UnlocksManager.UnlockedRooms.Contains(RoomType); } }
+
     private void Awake()
     {
-        constructionPusedAlert = new Alert("Construction Paused", "No worker is present in room", OpenRoomUIandFocusRoom ,Alert.AlertPrority.Permanet, Icons.GetMiscUIIcon(UIIcons.RoomIcon));
+        constructionPusedAlert = new Alert("Construction Paused", "No worker is present in room", OpenRoomUIandFocusRoom, Alert.AlertPrority.Permanet, Icons.GetMiscUIIcon(UIIcons.RoomIcon));
     }
 
     public Vector3Int GetConectorTile(Direction dir)
@@ -117,12 +119,12 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     {
         if (IsUnderConstruction)
         {
-            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Allready UnderConstruction", Color.red);
+            f.Instance.PlayAlertOverLastTouch("Allready UnderConstruction", Color.red);
             return;
         }
         if (Level == _roomlevels.Length - 1)
-        { 
-            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Max level", Color.red);
+        {
+            f.Instance.PlayAlertOverLastTouch("Max level", Color.red);
             return;
         }
 
@@ -134,7 +136,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         }
         else
         {
-            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Insificent Resources", Color.red);
+            f.Instance.PlayAlertOverLastTouch("Insificent Resources", Color.red);
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
         }
     }
@@ -144,7 +146,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     {
         if (Workers.Count == RoomStat.MaxWorkers)
         {
-            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Room Full", Color.red);
+            f.Instance.PlayAlertOverLastTouch("Room Full", Color.red);
             return false;
         }
         if (Workers.Contains(person.PersonInfo))
@@ -429,7 +431,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         if (Workers.Count == 0)
         {
             PauseConstructionTimer(_buildTimer);
-         //   ConstructionTimer.PauseTimer();
+            //   ConstructionTimer.PauseTimer();
         }
         UpdateRoomStats();
     }

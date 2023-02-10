@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +14,7 @@ public class MilestoneView : MonoBehaviour
 
     [SerializeField]
     Image milestoneIcon;
-        
+
     [SerializeField]
     Milestone milstone;
 
@@ -56,7 +54,7 @@ public class MilestoneView : MonoBehaviour
 
     public void ClaimRewared()
     {
-        if(!IsCompleate)
+        if (!IsCompleate)
         {
             return;
         }
@@ -65,7 +63,7 @@ public class MilestoneView : MonoBehaviour
             IsCompleate = false;
             milstone.Complete();
         }
-       
+
     }
 
 
