@@ -17,6 +17,10 @@ public abstract class AbstractQuest {
         {
             questLine.AddNextQuest();
         }
+        if (QuestData.reward.roomBlueprintUnlock)
+        {
+            UnlocksManager.UnlockRoom(QuestData.reward.roomBlueprint);
+        }
     }
 
     protected void OpenAlertQuest()

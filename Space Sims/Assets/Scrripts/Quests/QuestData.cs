@@ -19,7 +19,10 @@ public abstract class QuestData : ScriptableObject
         public PersonTemplate[] people;
 
         [SerializeField]
-        public RoomType? roomBlueprint;
+        public bool roomBlueprintUnlock;
+
+        [SerializeField]
+        public RoomType roomBlueprint;
 
     }
 
