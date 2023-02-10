@@ -7,7 +7,6 @@ using UnityEngine;
 public class QuestDataEditor : Editor
 {
     bool showRewareds;
-    bool roomBluePrints = false;
 
     public override void OnInspectorGUI()
     {
@@ -28,19 +27,15 @@ public class QuestDataEditor : Editor
             questDataTarget.reward.GameResourcesReward.Minerals = EditorGUILayout.IntField("Minerals", questDataTarget.reward.GameResourcesReward.Minerals);
             questDataTarget.reward.GameResourcesReward.Minerals = questDataTarget.reward.GameResourcesReward.Minerals < 0 ? 0 : questDataTarget.reward.GameResourcesReward.Minerals;
 
-            RoomType selectedRoomBluePrint;
-            selectedRoomBluePrint = questDataTarget.reward.roomBlueprint != null ? (RoomType)questDataTarget.reward.roomBlueprint : RoomType.Food;
-
             EditorGUILayout.BeginHorizontal();
-
-            roomBluePrints = EditorGUILayout.Toggle("Blueprint", roomBluePrints);
-            if (roomBluePrints)
+            questDataTarget.reward.roomBlueprintUnlock = EditorGUILayout.Toggle("Blueprint", questDataTarget.reward.roomBlueprintUnlock);
+            if (questDataTarget.reward.roomBlueprintUnlock)
             {
-                questDataTarget.reward.roomBlueprint = (RoomType)EditorGUILayout.EnumPopup("Room BluePrints", selectedRoomBluePrint);
+                questDataTarget.reward.roomBlueprint = (RoomType)EditorGUILayout.EnumPopup("Room BluePrints", questDataTarget.reward.roomBlueprint);
             }
             else
             {
-                questDataTarget.reward.roomBlueprint = null;
+                questDataTarget.reward.roomBlueprint = RoomType.CrewQuaters;
             }
             EditorGUILayout.EndHorizontal();
 
