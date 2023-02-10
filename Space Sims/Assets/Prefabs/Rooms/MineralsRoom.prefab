@@ -2781,7 +2781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2075764914435078914
 Transform:
   m_ObjectHideFlags: 0
@@ -3150,17 +3150,17 @@ MonoBehaviour:
     _outPut:
       Fuel: 0
       Food: 0
-      Minerals: 7
+      Minerals: 2
       Premimum: 0
     _Upkeep:
-      Fuel: 20
+      Fuel: 10
       Food: 0
       Minerals: 0
       Premimum: 0
     _storage:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 100
       Premimum: 0
     _peopleChange: 0
   _roomName: MineralRoom

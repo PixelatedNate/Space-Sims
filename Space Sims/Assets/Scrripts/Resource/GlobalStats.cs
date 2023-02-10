@@ -235,6 +235,10 @@ public class GlobalStats : MonoBehaviour
         else if (PlayerResources.Fuel >= 0 && _lowFuel)
         {
             FuelProductionMultiplyer = 1;
+               foreach(AbstractRoom room in PlyaerRooms)
+               {
+                room.UpdateRoomStats();
+               }
             _lowFuel = false;
             AlertManager.Instance.RemoveAlert(_lowFuelAlert);
         }
