@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class planetView : MonoBehaviour
 {
-    Planet SelectedPlanet;
+    PlanetContainer SelectedPlanet;
 
     [SerializeField]
     Image PlanetImg;
@@ -15,7 +15,7 @@ public class planetView : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI Name, TravalTime, NumberOfQuest;
 
-    public void SetPlanet(Planet planet)
+    public void SetPlanet(PlanetContainer planet)
     {
         SelectedPlanet = planet;
         UpdateText();
@@ -40,13 +40,13 @@ public class planetView : MonoBehaviour
 
     private void UpdateImage()
     {
-        PlanetImg.sprite = SelectedPlanet.PlanetSprite;
+        PlanetImg.sprite = SelectedPlanet.planetData.PlanetSprite;
     }
 
     private void UpdateText()
     {
-        Name.text = SelectedPlanet.PlanetName;
-        NumberOfQuest.text = SelectedPlanet.Quests.Length.ToString();
+        Name.text = SelectedPlanet.planetData.PlanetName;
+        //NumberOfQuest.text = SelectedPlanet. Quests.Length.ToString();
         if (NavigationManager.InNavigation)
         {
             TravalTime.text = "Unable To calcualte whilst in transit";

@@ -58,7 +58,6 @@ public class RoomGridManager : MonoBehaviour
         AbstractRoom forthRoom = BuildNewRoom(new Vector3Int(1, -1, 0), RoomType.Food);
         AbstractRoom fithRoom = BuildNewRoom(new Vector3Int(0, -1, 0), RoomType.Minerals);
 
-
         foreach (PersonTemplate personTemplate in StartingPeople)
         {
             PrefabSpawner.Instance.SpawnPerson(fistRoom, personTemplate);

@@ -35,7 +35,7 @@ public class QuestView : MonoBehaviour
     [SerializeField]
     WaitingQuestViewComponet waitingQuestView;
     [SerializeField]
-    TramsprotQuestViewComponet transprotQuestViewComponet;
+    TransprotQuestViewComponet transprotQuestViewComponet;
 
 
     //  public WaittingQuest questSelected { get; private set; }
@@ -60,8 +60,8 @@ public class QuestView : MonoBehaviour
             buttonImge.sprite = ReadyButtonImg;
         }
         questSelected = quest;
-        Title.text = quest.Title;
-        Discription.text = quest.Description;
+        Title.text = quest.QuestData.Title;
+        Discription.text = quest.QuestData. Description;
         setRewaredText();
     }
 
@@ -79,11 +79,11 @@ public class QuestView : MonoBehaviour
 
     private void setRewaredText()
     {
-        GameResources rewaredResources = questSelected.reward.GameResourcesReward;
+        GameResources rewaredResources = questSelected.QuestData.reward.GameResourcesReward;
         Reward.text = rewaredResources.ToString(false);
-        if (questSelected.reward.NumberOfPeopleReward != 0)
+        if (questSelected.QuestData.reward.people.Length != 0)
         {
-            Reward.text = Reward.text + "\n" + Icons.GetPersonIconForTextMeshPro() + ": " + questSelected.reward.NumberOfPeopleReward + " <br>";
+            Reward.text = Reward.text + "\n" + Icons.GetPersonIconForTextMeshPro() + ": " + questSelected.QuestData.reward.people.Length + " <br>";
         }
     }
 }

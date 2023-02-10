@@ -56,7 +56,7 @@ public class PersonListView : MonoBehaviour
         QuestSelected = quest;
         OnSelectMethod = onSelectMethod;
         people = GlobalStats.Instance.PlayersPeople;
-        FilterListBySkill(quest.requiments.SkillRequiment);
+        FilterListBySkill(quest.WaittingQuestData.QuestRequiments.SkillRequiment);
         // ApplyDetailForQuest(quest);
 
     }
@@ -176,7 +176,7 @@ public class PersonListView : MonoBehaviour
             if (OnSelectMethod != null)
             {
                 personViewItem.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(personInfo));
-                if (QuestSelected)
+                if (personInfo.IsQuesting)
                 {
                     personViewItem.GetComponent<PersonListViewItem>().SetQuestText(QuestSelected);
                 }

@@ -70,7 +70,7 @@ public class LeftPanal : MonoBehaviour
     }
 
 
-    public void SelectPlanet(Planet planet)
+    public void SelectPlanet(PlanetContainer planet)
     {
         DisableActiveView();
         uiButton.LeftTabSlideOut();

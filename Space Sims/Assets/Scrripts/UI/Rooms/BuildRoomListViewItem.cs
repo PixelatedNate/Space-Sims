@@ -58,7 +58,7 @@ public class BuildRoomListViewItem : MonoBehaviour
     {
         if (!_room.IsUnlocked)
         {
-            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Locked Room", Color.red);
+            f.Instance.PlayAlertOverLastTouch("Locked Room", Color.red);
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
             return;
         }
@@ -73,7 +73,7 @@ public class BuildRoomListViewItem : MonoBehaviour
         }
         else
         {
-            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Incerficent Resorces", Color.red);
+            f.Instance.PlayAlertOverLastTouch("Incerficent Resorces", Color.red);
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
             return;
         }

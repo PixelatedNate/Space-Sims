@@ -3,11 +3,13 @@ using UnityEngine;
 public class PlanetVisual : MonoBehaviour, IInteractables
 {
     [SerializeField]
-    Planet planet;
-    [SerializeField]
-    private Material _orignalMaterial;
+    PlanetData planetData;
 
-    public Sprite PlanetSprite { get; private set; }
+    //[SerializeField]
+     private Material _orignalMaterial;
+
+
+    private PlanetContainer PlanetContainer { get; set; }
 
     public void OnDeselect()
     {
@@ -26,7 +28,7 @@ public class PlanetVisual : MonoBehaviour, IInteractables
 
     public void OnSelect()
     {
-        UIManager.Instance.OpenPlanetView(planet);
+        UIManager.Instance.OpenPlanetView(PlanetContainer);
         _orignalMaterial = GetComponent<SpriteRenderer>().material;
         GetComponent<SpriteRenderer>().material = MaterialFinder.GetOutlineResourceMaterial();
     }
@@ -34,17 +36,14 @@ public class PlanetVisual : MonoBehaviour, IInteractables
     // Start is called before the first frame update
     void Start()
     {
-        planet.PlanetPosition = transform.position;
-        if (planet.IsStartPlanet)
+        PlanetContainer = new PlanetContainer(planetData, transform.position);
+        transform.GetComponent<SpriteRenderer>().sprite = planetData.PlanetSprite;
+        if (planetData.IsStartPlanet)
         {
             if (NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
             {
-                NavigationManager.CurrentPlanet = planet;
+                NavigationManager.CurrentPlanet = PlanetContainer;
             }
         }
-        planet.PlanetSprite = GetComponent<SpriteRenderer>().sprite;
     }
-
-
-
 }

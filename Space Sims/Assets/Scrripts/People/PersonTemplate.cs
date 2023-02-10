@@ -5,25 +5,42 @@ using UnityEngine;
 public class PersonTemplate : ScriptableObject
 {
 
-    public bool RandomName { get; set; }
-    public string PersonName { get; set; }
-    public bool RandomGender { get; set; }
-    public Gender Gender { get; set; }
-    public bool RandomRace { get; set; }
-    public Race Race { get; set; }
+    [SerializeField]
+    public bool RandomName;
+    [SerializeField]
+    public string PersonName;
+    [SerializeField]
+    public bool RandomGender;
+    [SerializeField]
+    public Gender Gender;
+    [SerializeField]
+    public bool RandomRace;
+    [SerializeField]
+    public Race Race;
 
-    public short MinAge { get; set; } = 16;
-    public short MaxAge { get; set; } = 100;
+    [SerializeField]
+    public short MinAge;
 
-    public Skills MinSkills { get; set; } = new Skills();
-    public Skills MaxSkills { get; set; } = new Skills();
+    [SerializeField]
+    public short MaxAge;
+    [SerializeField]
+    public Skills MinSkills = new Skills();
+    
+    [SerializeField]
+    public Skills MaxSkills  = new Skills();
 
-    public bool RandomHead { get; set; }
-    public Sprite Head { get; set; }
-    public bool RandomBody { get; set; }
-    public Sprite Body { get; set; }
+    [SerializeField]
+    public bool RandomHead;
+    [SerializeField]
+    public Sprite Head;
+    [SerializeField]
+    public bool RandomBody;
+    [SerializeField]
+    public Sprite Body;
 
-    public bool RandomCloths { get; set; }
-    public Sprite Clothes { get; set; }
+    [SerializeField]
+    public bool RandomCloths;
 
+    [SerializeField]
+    public Sprite Clothes;
 }

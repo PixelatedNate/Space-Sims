@@ -44,7 +44,7 @@ public class QuestRequimentBoxView : MonoBehaviour
         Body.color = personInfo.SkinColor;
         Cloths.sprite = personInfo.Clothes;
         PersonName.text = personInfo.Name;
-        if (personInfo.skills.GetSkill(quest.requiments.SkillRequiment) < quest.requiments.skillValueMin)
+        if (personInfo.skills.GetSkill(quest.WaittingQuestData.QuestRequiments.SkillRequiment) < quest.WaittingQuestData.QuestRequiments.skillValueMin)
         {
             Background.color = Color.red;
         }
@@ -52,7 +52,7 @@ public class QuestRequimentBoxView : MonoBehaviour
         {
             Background.color = Color.green;
         }
-        RequimentValue.text = personInfo.skills.GetSkill(quest.requiments.SkillRequiment).ToString();
+        RequimentValue.text = personInfo.skills.GetSkill(quest.WaittingQuestData.QuestRequiments.SkillRequiment).ToString();
     }
 
     public void UnSetPerson()
@@ -67,8 +67,8 @@ public class QuestRequimentBoxView : MonoBehaviour
         SelectedPerson = null;
         personIcon.SetActive(true);
         PersonDisplay.SetActive(false);
-        Requiment.sprite = Icons.GetSkillIcon(quest.requiments.SkillRequiment);
-        RequimentValue.text = quest.requiments.skillValueMin.ToString() + "+";
+        Requiment.sprite = Icons.GetSkillIcon(quest.WaittingQuestData.QuestRequiments.SkillRequiment);
+        RequimentValue.text = quest.WaittingQuestData.QuestRequiments.skillValueMin.ToString() + "+";
     }
 
     public void AddListener()

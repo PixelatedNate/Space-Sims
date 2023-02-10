@@ -7,7 +7,9 @@ public class GlobalStats : MonoBehaviour
 
 
     [SerializeField]
-    AbstractQuest[] QuesttestsForMenu;
+    QuestData[] startingQuest;
+    [SerializeField]
+    QuestLineData[] startingQuestLines;
 
     public static GlobalStats Instance;
 
@@ -86,7 +88,11 @@ public class GlobalStats : MonoBehaviour
     }
     void Start()
     {
-        QuestManager.SetAvalibleQuest(QuesttestsForMenu);
+        QuestManager.AddNewQuest(startingQuest);
+        foreach (QuestLineData questline in startingQuestLines)
+        {
+            QuestManager.AddNewQuestLine(questline);
+        }
         UnlocksManager.UnlockRoom(RoomType.Food);
         UnlocksManager.UnlockRoom(RoomType.Fuel);
         MaxStorage = _bassMaxStorage;

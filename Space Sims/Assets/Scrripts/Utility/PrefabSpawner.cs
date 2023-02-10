@@ -56,13 +56,14 @@ public class PrefabSpawner : MonoBehaviour
     {
 
         PersonInfo personInfo = new PersonInfo(personTemplate);
-
+        
         var person = GameObject.Instantiate(PersonPrefab);
         person.GetComponent<Person>().AssginPerson(personInfo);
         if (person.GetComponent<Person>().AssginRoomToPerson(room))
         {
             person.transform.position = room.transform.position;
             person.transform.position = person.transform.position - Vector3.forward;
+            GlobalStats.Instance.PlayersPeople.Add(personInfo);
             return person;
         }
         else

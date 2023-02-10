@@ -3,12 +3,21 @@ using UnityEngine;
 
 public abstract class AbstractQuest {
 
-    protected QuestData QuestData;
+    public abstract QuestData QuestData { get; }
 
     public QuestStatus questStaus { get; set; } = QuestStatus.Available;
 
+    public QuestLine questLine;
+
     public abstract bool StartQuest();
-    public abstract void CompleatQuest();
+
+    public virtual void CompleatQuest()
+    {
+        if(questLine != null)
+        {
+            questLine.AddNextQuest();
+        }
+    }
 
     protected void OpenAlertQuest()
     {

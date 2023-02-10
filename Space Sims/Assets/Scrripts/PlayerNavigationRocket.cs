@@ -16,7 +16,6 @@ public class PlayerNavigationRocket : MonoBehaviour
     {
         if (NavigationManager.CurrentPlanet != null)
         {
-            transform.position = NavigationManager.CurrentPlanet.PlanetPosition;
             transform.Rotate(new Vector3(0, 0, OrbitSpeed * Time.deltaTime));
         }
         else if (NavigationManager.InNavigation)

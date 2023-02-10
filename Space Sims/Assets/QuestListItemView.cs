@@ -12,42 +12,31 @@ public class QuestListItemView : MonoBehaviour
 
     public void setQuest(AbstractQuest quest)
     {
-        title.text = quest.Title;
+        title.text = quest.QuestData.Title;
 
         if (quest.GetType() == typeof(WaittingQuest))
         {
             SetRequiment((WaittingQuest)quest);
         }
 
-
         SetRewaredText(quest);
     }
 
     public void SetRequiment(WaittingQuest quest)
     {
+        WaitingQuestData questData = (WaitingQuestData)quest.QuestData;
         requiment.text = null;
-        requiment.text = Icons.GetPersonIconForTextMeshPro() + ": " + quest.requiments.Numpeople + " <br>";
-        requiment.text = requiment.text + Icons.GetSkillIconForTextMeshPro(quest.requiments.SkillRequiment) + ": " + quest.requiments.skillValueMin;
+        requiment.text = Icons.GetPersonIconForTextMeshPro() + ": " + questData.QuestRequiments.Numpeople + " <br>";
+        requiment.text = requiment.text + Icons.GetSkillIconForTextMeshPro(questData.QuestRequiments.SkillRequiment) + ": " + questData.QuestRequiments.skillValueMin;
     }
 
     public void SetRewaredText(AbstractQuest quest)
     {
-        /*
-        rewared.text = null;
-        GameResources rewaredResources = quest.reward.GameResourcesReward;
-        foreach (ResourcesEnum re in Enum.GetValues(typeof(ResourcesEnum)))
-        {
-            if (rewaredResources.GetResorce(re) != 0)
-            {
-                rewared.text = rewared.text + Icons.GetResourceIconForTextMeshPro(re) + ": " + rewaredResources.GetResorce(re).ToString() + " <br>";
-            }
-        }
-        */
-        GameResources rewaredResources = quest.reward.GameResourcesReward;
+        GameResources rewaredResources = quest.QuestData.reward.GameResourcesReward;
         rewared.text = rewaredResources.ToString();
-        if (quest.reward.NumberOfPeopleReward != 0)
+        if (quest.QuestData.reward.people.Length != 0)
         {
-            rewared.text = rewared.text + "\n" + Icons.GetPersonIconForTextMeshPro() + ": " + quest.reward.NumberOfPeopleReward + " <br>";
+            rewared.text = rewared.text + "\n" + Icons.GetPersonIconForTextMeshPro() + ": " + quest.QuestData.reward.people.Length + " <br>";
         }
 
     }

@@ -82,7 +82,7 @@ public class PersonInfo
     {
         this.Race = template.RandomRace ? Tools.GetRandomEnumValue<Race>(typeof(Race)) : template.Race;
         this.Gender = template.RandomGender ? Tools.GetRandomEnumValue<Gender>(typeof(Gender)) : template.Gender;
-        this.Name = template.RandomName ? ResourceHelper.PersonHelper.GetRandomName(this.Gender) : template.name;
+        this.Name = template.RandomName ? ResourceHelper.PersonHelper.GetRandomName(this.Gender) : template.PersonName;
         this.Age = (short)Random.Range(template.MinAge, template.MaxAge);
 
         this.SkinColor = PersonSkin.GetRandomColor(this.Race);

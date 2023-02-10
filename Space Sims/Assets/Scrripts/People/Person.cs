@@ -69,7 +69,7 @@ public class Person : MonoBehaviour, IInteractables
     {
         if (room == null) // tried to drop person where there was no room like in space.
         {
-            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Not a room", Color.red);
+            f.Instance.PlayAlertOverLastTouch("Not a room", Color.red);
             transform.position = Vector3.zero;
             transform.position = PersonInfo.Room.transform.position;
             return false;

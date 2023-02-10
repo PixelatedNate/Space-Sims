@@ -32,8 +32,10 @@ public class PersonTemplateEditor : Editor
 
     public override void OnInspectorGUI()
     {
-        PersonTemplate personTemplateTarget = (PersonTemplate)target;
 
+
+        PersonTemplate personTemplateTarget = (PersonTemplate)target;
+        EditorUtility.SetDirty(personTemplateTarget);
 
         string HeadPath = "ArtWork/People/" + personTemplateTarget.Race + "/" + personTemplateTarget.Gender + "/Heads";
         string BodyPath = "ArtWork/People/" + personTemplateTarget.Race + "/" + personTemplateTarget.Gender + "/Bodies";
@@ -170,11 +172,9 @@ public class PersonTemplateEditor : Editor
                 personTemplateTarget.MaxSkills.SetSkill(skill, maxSkill);
             }
         }
+
         #endregion
-
     }
-
-
 
     public int FindMatchingIndex(Sprite sprite, Sprite[] list)
     {
