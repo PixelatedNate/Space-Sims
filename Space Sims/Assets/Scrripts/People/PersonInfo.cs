@@ -129,6 +129,13 @@ public class PersonInfo
         }
         AssginedQuest = quest;
     }
+
+    public void UnassignQuest()
+    {
+        AssginedQuest = null;
+    }
+
+
     public void StartQuest(WaittingQuest quest)
     {
         if (CurrentQuest != null)

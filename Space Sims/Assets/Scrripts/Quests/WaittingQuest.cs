@@ -43,6 +43,7 @@ public class WaittingQuest : AbstractQuest {
         {
             throw new Exception("trying to UnassginPerson not assgined to quest");
         }
+        person.UnassignQuest();
         PeopleAssgined.Remove(person);
     }
 
