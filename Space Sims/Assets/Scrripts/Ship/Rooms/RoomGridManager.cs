@@ -53,10 +53,7 @@ public class RoomGridManager : MonoBehaviour
     {
         roomGrid = GetComponent<Grid>();
         AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
-        AbstractRoom secondRoom = BuildNewRoom(new Vector3Int(1, 0, 0), RoomType.Fuel);
         AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
-        AbstractRoom forthRoom = BuildNewRoom(new Vector3Int(1, -1, 0), RoomType.Food);
-        AbstractRoom fithRoom = BuildNewRoom(new Vector3Int(0, -1, 0), RoomType.Minerals);
 
         foreach (PersonTemplate personTemplate in StartingPeople)
         {

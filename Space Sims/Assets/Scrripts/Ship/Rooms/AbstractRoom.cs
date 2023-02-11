@@ -445,6 +445,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
             setRoomActive(true);
         }
         AlertManager.Instance.SendAlert(new Alert("Room Built", "Room " + _roomName + " has been built", OpenRoomUIandFocusRoom, Alert.AlertPrority.low, Icons.GetSkillIcon(SkillsList.Strength)));
+        GlobalStats.Instance.MaxStorage += RoomStat.Storage;
         UpdateRoomStats();
 
 

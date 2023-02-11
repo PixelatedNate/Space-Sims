@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetData: {fileID: 11400000, guid: 5c392b99ba7fb284cab99f1097263132, type: 2}
-  _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  ship: {fileID: 1840011104}
 --- !u!1 &65851502
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetData: {fileID: 11400000, guid: 9e062e5fad7f69e47bb95325b45a1d62, type: 2}
-  _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  ship: {fileID: 1840011104}
 --- !u!1 &1060808996
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetData: {fileID: 11400000, guid: c8e902702b147e24f8c3ef7a87bfa653, type: 2}
-  _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  ship: {fileID: 1840011104}
 --- !u!1 &1184314518
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetData: {fileID: 11400000, guid: c1ff527904732144095fe0ea2ce0aa3e, type: 2}
-  _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  ship: {fileID: 1840011104}
 --- !u!1 &1233590285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,7 +1486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planetData: {fileID: 11400000, guid: bd0f9e19a480a2c4e884086ea2fb9155, type: 2}
-  _orignalMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  ship: {fileID: 1840011104}
 --- !u!222 &1133425097592706377
 CanvasRenderer:
   m_ObjectHideFlags: 0

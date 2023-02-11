@@ -16,12 +16,15 @@ public class WaittingQuestDataEditor : QuestDataEditor
         WaitingQuestData questDataTarget = (WaitingQuestData)target;
 
         EditorGUILayout.LabelField("Duration");
-        EditorGUILayout.BeginHorizontal();
         int hours = EditorGUILayout.IntField("hh:", questDataTarget.DurationHour);
         questDataTarget.DurationHour = hours < 0 ? 0 : hours;
         int minuits = EditorGUILayout.IntField("mm:", questDataTarget.DurationMinuits);
         questDataTarget.DurationMinuits = minuits < 0 ? 0 : minuits;
-        EditorGUILayout.EndHorizontal();
+        questDataTarget.DurationMinuits = minuits > 60 ? 60 : minuits;
+        int seconds = EditorGUILayout.IntField("ss:", questDataTarget.DurationSeconds);
+        questDataTarget.DurationSeconds = seconds < 0 ? 0 : seconds;
+        questDataTarget.DurationSeconds = seconds > 60 ? 60 : seconds;
+
 
         showRequiments = EditorGUILayout.Foldout(showRequiments, "Requiments");
         if (showRequiments)

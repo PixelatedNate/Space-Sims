@@ -1325,7 +1325,7 @@ MonoBehaviour:
   - _buildCost:
       Fuel: 0
       Food: 0
-      Minerals: 1000
+      Minerals: 100
       Premimum: 0
     _maxWorkers: 2
     _buildTime: 0.25
@@ -1335,12 +1335,12 @@ MonoBehaviour:
       Minerals: 0
       Premimum: 0
     _Upkeep:
-      Fuel: 5
+      Fuel: 0
       Food: 0
       Minerals: 0
       Premimum: 0
     _storage:
-      Fuel: 1000
+      Fuel: 100
       Food: 0
       Minerals: 0
       Premimum: 0
@@ -8657,7 +8657,7 @@ Tilemap:
       - {fileID: 1432594876, guid: aab61a41d8dd18f458ad6e0ae2bf0829, type: 3}
       - {fileID: 1790480616, guid: aab61a41d8dd18f458ad6e0ae2bf0829, type: 3}
       - {fileID: 1068410290, guid: aab61a41d8dd18f458ad6e0ae2bf0829, type: 3}
-      m_AnimationSpeed: 6
+      m_AnimationSpeed: 6.0000005
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
