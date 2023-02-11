@@ -13,6 +13,8 @@ public class QuestDataEditor : Editor
 
         QuestData questDataTarget = (QuestData)target;
 
+        EditorUtility.SetDirty(questDataTarget);
+
          questDataTarget.Title = EditorGUILayout.TextField("Quest Title", questDataTarget.Title);
          EditorGUILayout.LabelField("Quest Discription");
          questDataTarget.Description = EditorGUILayout.TextArea(questDataTarget.Description);

@@ -11,9 +11,10 @@ public class TransportQuestDataEditor : QuestDataEditor
 
     public override void OnInspectorGUI()
     {
-
-        base.OnInspectorGUI();
         TransportQuestData questDataTarget = (TransportQuestData)target;
+        
+        base.OnInspectorGUI();
+
         var m_IntProperty = serializedObject.FindProperty("TargetPlanetData");
             
         EditorGUILayout.PropertyField(m_IntProperty, includeChildren: true);

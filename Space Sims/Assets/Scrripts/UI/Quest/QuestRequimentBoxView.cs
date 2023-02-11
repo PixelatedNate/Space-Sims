@@ -57,6 +57,7 @@ public class QuestRequimentBoxView : MonoBehaviour
 
     public void UnSetPerson()
     {
+        SelectedPerson = null;
         SetRequiments(questSelected);
     }
 
