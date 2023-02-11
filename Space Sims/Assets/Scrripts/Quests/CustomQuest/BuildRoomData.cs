@@ -10,6 +10,6 @@ public class BuildRoomData : QuestData
 
     public override AbstractQuest CreateQuest(QuestLine questline = null)
     {
-        return new BuildRoomQuest(this);
+        return new BuildRoomQuest(this, questline);
     }
 }
