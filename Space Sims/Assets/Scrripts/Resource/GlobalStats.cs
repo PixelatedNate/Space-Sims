@@ -20,7 +20,7 @@ public class GlobalStats : MonoBehaviour
 
     [SerializeField]
     private GameResources _bassMaxStorage;
-    public GameResources MaxStorage { get; set; } = new GameResources();
+    public GameResources MaxStorage { get; private set; } = new GameResources();
     private GameResources RoomDeltaResourcesTotal { get; set; } = new GameResources();
 
     private GameResources TotalDelta { get; set; } = new GameResources();
@@ -93,8 +93,8 @@ public class GlobalStats : MonoBehaviour
         {
             QuestManager.AddNewQuestLine(questline);
         }
-        UnlocksManager.UnlockRoom(RoomType.Food);
-        UnlocksManager.UnlockRoom(RoomType.Fuel);
+        //UnlocksManager.UnlockRoom(RoomType.Food);
+        //UnlocksManager.UnlockRoom(RoomType.Fuel);
         MaxStorage = _bassMaxStorage;
         PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;
