@@ -10,19 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Prison Break
+  m_Name: Lost in the Dark
   m_EditorClassIdentifier: 
-  Title: Prison Break
-  Description: Gotta Get this Guy out he ain't smart but pretty strong
+  Title: 
+  Description: 
   reward:
-    NumberOfPeopleReward: 0
     people:
-    - {fileID: 11400000, guid: 09ab472e0e065b04c9c7f546a787456e, type: 2}
-    roomBlueprint: 0
+    - {fileID: 11400000, guid: 521115656601daa41a7795c1d92cadd1, type: 2}
+    roomBlueprintUnlock: 0
+    roomBlueprint: 3
   QuestRequiments:
     Numpeople: 1
-    SkillRequiment: 1
-    skillValueMin: 1
+    SkillRequiment: 5
+    skillValueMin: 5
   PossibleEncounters: []
   DurationHour: 0
   DurationMinuits: 1

@@ -10,17 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: LookOut
+  m_Name: Diamonds Forever
   m_EditorClassIdentifier: 
-  Title: 
-  Description: 
+  Title: Diamonds Are Forever
+  Description: Get them sparkle clicky clackies
   reward:
-    people: []
-    roomBlueprint: 0
+    people:
+    - {fileID: 11400000, guid: 308cc64455d112f46832fd1c298c0f6f, type: 2}
+    roomBlueprintUnlock: 1
+    roomBlueprint: 2
   QuestRequiments:
-    Numpeople: 0
-    SkillRequiment: 2
-    skillValueMin: 0
+    Numpeople: 1
+    SkillRequiment: 5
+    skillValueMin: 5
   PossibleEncounters: []
-  DurationHour: 25
-  DurationMinuits: 26
+  DurationHour: 0
+  DurationMinuits: 1
