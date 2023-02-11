@@ -2904,6 +2904,10 @@ PrefabInstance:
       propertyPath: Reward
       value: 
       objectReference: {fileID: 918887583}
+    - target: {fileID: 435263007812607242, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: UnreadyButtonImg
+      value: 
+      objectReference: {fileID: 21300000, guid: a4373c66a9a88bd488394a027e9a8bb7, type: 3}
     - target: {fileID: 435263007972288618, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2927,6 +2931,10 @@ PrefabInstance:
     - target: {fileID: 435263007972288618, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -37.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 435263008057533076, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 435263008103694979, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
