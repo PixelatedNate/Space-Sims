@@ -16,7 +16,8 @@ MonoBehaviour:
   Description: 
   reward:
     people: []
-    roomBlueprint: 0
+    roomBlueprintUnlock: 0
+    roomBlueprint: 3
   QuestRequiments:
     Numpeople: 0
     SkillRequiment: 2
@@ -24,3 +25,4 @@ MonoBehaviour:
   PossibleEncounters: []
   DurationHour: 25
   DurationMinuits: 26
+  DurationSeconds: 0

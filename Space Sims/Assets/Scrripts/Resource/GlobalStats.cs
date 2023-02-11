@@ -20,7 +20,7 @@ public class GlobalStats : MonoBehaviour
 
     [SerializeField]
     private GameResources _bassMaxStorage;
-    private GameResources MaxStorage { get; set; } = new GameResources();
+    public GameResources MaxStorage { get; set; } = new GameResources();
     private GameResources RoomDeltaResourcesTotal { get; set; } = new GameResources();
 
     private GameResources TotalDelta { get; set; } = new GameResources();

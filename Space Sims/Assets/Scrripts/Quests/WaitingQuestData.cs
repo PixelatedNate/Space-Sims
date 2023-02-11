@@ -36,12 +36,14 @@ public class WaitingQuestData : QuestData
     public QuestEncounter[] PossibleEncounters;
     
 
-    public TimeSpan Duration { get { return new TimeSpan(DurationHour, DurationMinuits, 00);  } }
+    public TimeSpan Duration { get { return new TimeSpan(DurationHour, DurationMinuits, DurationSeconds);  } }
 
     [SerializeField]
     public int DurationHour;
     [SerializeField]
     public int DurationMinuits;
+    [SerializeField]
+    public int DurationSeconds;
 
     public override AbstractQuest CreateQuest(QuestLine questline = null)
     {
