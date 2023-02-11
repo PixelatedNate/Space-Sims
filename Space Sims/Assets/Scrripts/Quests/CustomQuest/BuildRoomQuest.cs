@@ -22,7 +22,7 @@ public class BuildRoomQuest : AbstractQuest
 
     public void CheckIfRequimentsAreMetOnTick(object source, EventArgs e)
     {
-        if(GlobalStats.Instance.PlyaerRooms.FindAll(a => a.RoomType == buildRoomData.roomToBuild).Count > 0)
+        if(GlobalStats.Instance.PlyaerRooms.FindAll(a => a.RoomType == buildRoomData.roomToBuild && !a.IsUnderConstruction).Count > 0)
         {
             CompleatQuest();
             AlertManager.Instance.SendAlert(new Alert("Quest Complet",QuestData.Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
