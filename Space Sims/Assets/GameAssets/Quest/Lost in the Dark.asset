@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: MQ3
+  m_Name: Lost in the Dark
   m_EditorClassIdentifier: 
-  Title: Diamonds Are Forever
-  Description: Get them sparkle clicky clackies
+  Title: Lost in the Dark
+  Description: Hey, who turned out the lights?
   reward:
     people:
-    - {fileID: 11400000, guid: 308cc64455d112f46832fd1c298c0f6f, type: 2}
+    - {fileID: 11400000, guid: 521115656601daa41a7795c1d92cadd1, type: 2}
     roomBlueprintUnlock: 1
-    roomBlueprint: 2
+    roomBlueprint: 1
   QuestRequiments:
     Numpeople: 1
     SkillRequiment: 5
     skillValueMin: 5
   PossibleEncounters: []
   DurationHour: 0
-  DurationMinuits: 1
+  DurationMinuits: 0
+  DurationSeconds: 30

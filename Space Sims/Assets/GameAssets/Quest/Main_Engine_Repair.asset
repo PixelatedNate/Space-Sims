@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Main_Engine_Repair
   m_EditorClassIdentifier: 
   quests:
-  - {fileID: 11400000, guid: f1110da41e78c08489bf72816256ebcd, type: 2}
-  - {fileID: 11400000, guid: 043df5996198ed54fbd80161de70fe75, type: 2}
-  - {fileID: 11400000, guid: 692ae51c9f6e4b646babbfcd182699f4, type: 2}
+  - {fileID: 11400000, guid: 578ba56e45a3f874abdfb214318561a7, type: 2}
+  - {fileID: 11400000, guid: 16427ec3fc3584647995b4fe6bfe0168, type: 2}
+  - {fileID: 11400000, guid: 40db4ff780682b64ebd55bdc9c3ac889, type: 2}

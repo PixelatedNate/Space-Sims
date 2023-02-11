@@ -18,8 +18,8 @@ MonoBehaviour:
   Gender: 1
   RandomRace: 0
   Race: 8
-  MinAge: 0
-  MaxAge: 0
+  MinAge: 25
+  MaxAge: 39
   MinSkills:
     _strength: 2
     _dexterity: 2

@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Prison Break
+  m_Name: Diamonds Are Forever
   m_EditorClassIdentifier: 
-  Title: check this out
-  Description: some distrction for new quest
+  Title: 
+  Description: 
   reward:
-    people:
-    - {fileID: 11400000, guid: 09ab472e0e065b04c9c7f546a787456e, type: 2}
+    people: []
     roomBlueprintUnlock: 0
-    roomBlueprint: 0
+    roomBlueprint: 3
   QuestRequiments:
-    Numpeople: 1
-    SkillRequiment: 1
-    skillValueMin: 1
+    Numpeople: 0
+    SkillRequiment: 0
+    skillValueMin: 0
   PossibleEncounters: []
-  DurationHour: 12
-  DurationMinuits: 2
-  DurationSeconds: 18
+  DurationHour: 0
+  DurationMinuits: 0
+  DurationSeconds: 0

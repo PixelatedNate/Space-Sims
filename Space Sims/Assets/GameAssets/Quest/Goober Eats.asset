@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8257bd3a77db0854d9707535c340fb7b, type: 3}
-  m_Name: tomoBuild
+  m_Name: Goober Eats
   m_EditorClassIdentifier: 
-  Title: Buidl Fule Roo,
-  Description: build fuel Room
+  Title: Goober Eats?
+  Description: I....I think I will start my own food delivery service.
   reward:
     people: []
     roomBlueprintUnlock: 0
     roomBlueprint: 3
-  roomToBuild: 1
+  roomToBuild: 0
