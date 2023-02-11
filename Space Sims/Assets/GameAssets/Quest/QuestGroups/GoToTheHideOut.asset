@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: GoToTheHideOut
   m_EditorClassIdentifier: 
   Title: go to Hill
-  Description: 
+  Description: 'Test for transprot quest '
   reward:
     people: []
+    roomBlueprintUnlock: 0
     roomBlueprint: 0
   TransaportPeople: []
   TargetPlanetData: {fileID: 11400000, guid: 9e062e5fad7f69e47bb95325b45a1d62, type: 2}

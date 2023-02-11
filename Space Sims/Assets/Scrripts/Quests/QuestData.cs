@@ -26,8 +26,10 @@ public abstract class QuestData : ScriptableObject
 
     }
 
+    [SerializeField]
     public string Title;
     
+    [SerializeField]
     public string Description;
 
     [SerializeField]

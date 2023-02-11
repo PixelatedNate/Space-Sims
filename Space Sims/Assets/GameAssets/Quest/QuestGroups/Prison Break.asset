@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: Prison Break
   m_EditorClassIdentifier: 
-  Title: Prison Break
-  Description: Gotta Get this Guy out he ain't smart but pretty strong
+  Title: check this out
+  Description: some distrction for new quest
   reward:
-    NumberOfPeopleReward: 0
     people:
     - {fileID: 11400000, guid: 09ab472e0e065b04c9c7f546a787456e, type: 2}
+    roomBlueprintUnlock: 0
     roomBlueprint: 0
   QuestRequiments:
     Numpeople: 1
