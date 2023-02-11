@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: To Go Please!
+  m_Name: MQ1
   m_EditorClassIdentifier: 
   Title: 
   Description: 
   reward:
     people:
-    - {fileID: 11400000, guid: feffff737f6f864408476d3e78c4af3a, type: 2}
-    roomBlueprintUnlock: 1
-    roomBlueprint: 0
+    - {fileID: 11400000, guid: 521115656601daa41a7795c1d92cadd1, type: 2}
+    roomBlueprintUnlock: 0
+    roomBlueprint: 3
   QuestRequiments:
     Numpeople: 1
     SkillRequiment: 5

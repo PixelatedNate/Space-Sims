@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Diamonds Forever
+  m_Name: MQ2
   m_EditorClassIdentifier: 
-  Title: Diamonds Are Forever
-  Description: Get them sparkle clicky clackies
+  Title: 
+  Description: 
   reward:
     people:
-    - {fileID: 11400000, guid: 308cc64455d112f46832fd1c298c0f6f, type: 2}
+    - {fileID: 11400000, guid: feffff737f6f864408476d3e78c4af3a, type: 2}
     roomBlueprintUnlock: 1
-    roomBlueprint: 2
+    roomBlueprint: 0
   QuestRequiments:
     Numpeople: 1
     SkillRequiment: 5
