@@ -31,12 +31,7 @@ public class QuestListItemView : MonoBehaviour
 
     public void SetRewaredText(AbstractQuest quest)
     {
-        GameResources rewaredResources = quest.QuestData.reward.GameResourcesReward;
-        rewared.text = rewaredResources.ToString();
-        if (quest.QuestData.reward.people.Length != 0)
-        {
-            rewared.text = rewared.text + "\n" + Icons.GetPersonIconForTextMeshPro() + ": " + quest.QuestData.reward.people.Length + " <br>";
-        }
-
+        //./GameResources rewaredResources = quest.QuestData.reward.GameResourcesReward;
+        rewared.text = quest.QuestData.reward.ToString();
     }
 }
