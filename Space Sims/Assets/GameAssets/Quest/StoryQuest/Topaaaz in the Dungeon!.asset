@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8257bd3a77db0854d9707535c340fb7b, type: 3}
   m_Name: Topaaaz in the Dungeon!
   m_EditorClassIdentifier: 
-  Title: 
-  Description: 
+  Title: Topaaz in the Dungeon!
+  Description: I think you ought to know..
   reward:
     people: []
     roomBlueprintUnlock: 0
     roomBlueprint: 3
-  roomToBuild: 0
+  roomToBuild: 2

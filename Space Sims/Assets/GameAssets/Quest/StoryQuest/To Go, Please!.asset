@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Diamonds Are Forever
+  m_Name: To Go, Please!
   m_EditorClassIdentifier: 
-  Title: 
-  Description: 
+  Title: To Go, Please!
+  Description: I'm gettin' hungry and I'm down to 9 fingers.
   reward:
-    people: []
-    roomBlueprintUnlock: 0
-    roomBlueprint: 3
+    people:
+    - {fileID: 11400000, guid: feffff737f6f864408476d3e78c4af3a, type: 2}
+    roomBlueprintUnlock: 1
+    roomBlueprint: 0
   QuestRequiments:
-    Numpeople: 0
-    SkillRequiment: 0
-    skillValueMin: 0
+    Numpeople: 1
+    SkillRequiment: 5
+    skillValueMin: 5
   PossibleEncounters: []
   DurationHour: 0
   DurationMinuits: 0
-  DurationSeconds: 0
+  DurationSeconds: 2
