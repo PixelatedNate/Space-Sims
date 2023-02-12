@@ -24,6 +24,20 @@ public abstract class QuestData : ScriptableObject
         [SerializeField]
         public RoomType roomBlueprint;
 
+        public override string ToString()
+        {
+            String str = GameResourcesReward.ToString();
+            if(people.Length != 0)
+            {
+                str += "\n" + Icons.GetPersonIconForTextMeshPro() + ":" + people.Length;
+            }
+            if(roomBlueprintUnlock)
+            {
+                str += "\n" + Icons.GetBluePrintIconForTextMeshPro() + ":" +  roomBlueprint.ToString();
+            }
+            return str;
+        }
+
     }
 
     [SerializeField]
