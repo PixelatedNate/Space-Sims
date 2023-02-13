@@ -88,15 +88,16 @@ public class GlobalStats : MonoBehaviour
     }
     void Start()
     {
-        QuestManager.AddNewQuest(startingQuest);
-        foreach (QuestLineData questline in startingQuestLines)
-        {
-            QuestManager.AddNewQuestLine(questline);
-        }
+
+            QuestManager.AddNewQuest(startingQuest);
+            foreach (QuestLineData questline in startingQuestLines)
+            {
+                QuestManager.AddNewQuestLine(questline);
+            }
         UnlocksManager.UnlockRoom(RoomType.Food);
         UnlocksManager.UnlockRoom(RoomType.Fuel);
-        MaxStorage = _bassMaxStorage;
-        PlayerResources = _startingResources;
+            MaxStorage = _bassMaxStorage;
+            PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;
     }
 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public abstract class AbstractRoom : MonoBehaviour, IInteractables
+public abstract class AbstractRoom : MonoBehaviour, IInteractables, Saveable
 {
 
     [SerializeField]
@@ -33,7 +33,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     [SerializeField]
     private RoomType _roomType;
     public RoomType RoomType { get { return _roomType; } }
-    private int Level { get; set; } = 0;
+    public int Level { get; private set; } = 0;
     public RoomStats RoomStat { get { return _roomlevels[Level]; } }
     public bool IsUnderConstruction { get; private set; }
     public TimeDelayManager.Timer ConstructionTimer { get; private set; }
@@ -514,5 +514,23 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void OnHoldRelease() { }
 
     #endregion
+
+    #region Savable
+
+    public void Save()
+    {
+        RoomSaveData data = new RoomSaveData(this);
+        data.Save();
+    }
+
+    public void Load(string path)
+    {
+        RoomSaveData data = SaveSystem.LoadData<RoomSaveData>(path);
+        this.Level = data.level;
+        this.RoomPosition = new Vector3Int(data.roomPosition[0], data.roomPosition[1], data.roomPosition[2]);
+    }
+
+    #endregion
+
 
 }

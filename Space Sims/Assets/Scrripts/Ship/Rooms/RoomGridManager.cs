@@ -52,21 +52,35 @@ public class RoomGridManager : MonoBehaviour
     void Start()
     {
         roomGrid = GetComponent<Grid>();
-        AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
-        AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
 
+        LoadRooms();
+       
         foreach (PersonTemplate personTemplate in StartingPeople)
         {
-            PrefabSpawner.Instance.SpawnPerson(fistRoom, personTemplate);
+         //   PrefabSpawner.Instance.SpawnPerson(fistRoom, personTemplate);
+        }
+    }
+
+    private void LoadRooms()
+    {
+        RoomSaveData[] roomData = SaveSystem.GetAllSavedRoomData();
+        if(roomData.Length == 0)
+        {
+            AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
+            AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
+        }
+        else
+        {
+            foreach(RoomSaveData data in roomData)
+            {
+                Vector3Int position = new Vector3Int(data.roomPosition[0], data.roomPosition[1], data.roomPosition[2]);
+                BuildNewRoom(position, (RoomType)data.roomType);
+            }
         }
 
 
-
-        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
     }
+
 
     #region PublicMethods
 
