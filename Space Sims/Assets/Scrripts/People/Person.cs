@@ -212,8 +212,12 @@ public class Person : MonoBehaviour, IInteractables
         HeadRender.sprite = PersonInfo.Head;
         HeadRender.material.color = PersonInfo.SkinColor;
         ClothesRender.sprite = PersonInfo.Clothes;
-        HairRender.sprite = PersonInfo.Hair;
-        HairRender.material.color = PersonInfo.HairColor;
+        if(PersonInfo.Race == Race.Human && PersonInfo.Gender == Gender.Female)
+        {
+            HairRender.sprite = PersonInfo.Hair;
+            HairRender.material.color = PersonInfo.HairColor;
+        }
+       
     }
 
 
