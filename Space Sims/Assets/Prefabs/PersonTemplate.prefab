@@ -605,7 +605,7 @@ MonoBehaviour:
   TESTICON: {fileID: 0}
   HeadRender: {fileID: 5306872157971662188}
   BodyRender: {fileID: 5306872157769727578}
-  HairRender: {fileID: 6375083385428195090}
+  HairRender: {fileID: 0}
   ClothesRender: {fileID: 1256350654047703989}
   SelectOutline: {fileID: 1000238303228266051}
   TempSelected: {fileID: 4891307746359028935}
