@@ -9,18 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8257bd3a77db0854d9707535c340fb7b, type: 3}
-  m_Name: Topaaaz in the Dungeon!
+  m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
+  m_Name: Q3
   m_EditorClassIdentifier: 
-  Title: Topaaz in the Dungeon!
-  Description: Build that mineral room, I think you ought to know..
+  Title: Q3
+  Description: Random Side quest
   reward:
     GameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 1000
+      Minerals: 0
       Premimum: 0
-    people: []
+    people:
+    - {fileID: 11400000, guid: c869c2de1f93bee4e87f66c4c0bde548, type: 2}
     roomBlueprintUnlock: 0
     roomBlueprint: 3
-  roomToBuild: 2
+  QuestRequiments:
+    Numpeople: 1
+    SkillRequiment: 1
+    skillValueMin: 8
+  PossibleEncounters: []
+  DurationHour: 0
+  DurationMinuits: 3
+  DurationSeconds: 0

@@ -19,7 +19,7 @@ public class QuestDataEditor : Editor
          EditorGUILayout.LabelField("Quest Discription");
          questDataTarget.Description = EditorGUILayout.TextArea(questDataTarget.Description);
 
-         showRewareds = EditorGUILayout.Foldout(showRewareds, "Rewareds");
+         showRewareds = EditorGUILayout.Foldout(showRewareds, "Rewards");
 
         if (showRewareds)
         {

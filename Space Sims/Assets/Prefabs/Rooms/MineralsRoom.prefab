@@ -1443,7 +1443,7 @@ Tilemap:
       - {fileID: -1334704428, guid: ca28284c0e8eca04b905823c76f1e49d, type: 3}
       - {fileID: -394819074, guid: ca28284c0e8eca04b905823c76f1e49d, type: 3}
       - {fileID: 281903029, guid: ca28284c0e8eca04b905823c76f1e49d, type: 3}
-      m_AnimationSpeed: 5.0000005
+      m_AnimationSpeed: 5
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 10, y: -3, z: 0}
@@ -3150,7 +3150,7 @@ MonoBehaviour:
     _outPut:
       Fuel: 0
       Food: 0
-      Minerals: 10
+      Minerals: 5
       Premimum: 0
     _Upkeep:
       Fuel: 5
@@ -3160,9 +3160,10 @@ MonoBehaviour:
     _storage:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 1000
       Premimum: 0
     _peopleChange: 0
+  RoomCostModifyer: 1
   _roomName: MineralRoom
   _roomDiscription: 
   _roomType: 2

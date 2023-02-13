@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Goober Eats
   m_EditorClassIdentifier: 
   Title: Goober Eats?
-  Description: I....I think I will start my own food delivery service.
+  Description: I....I think I will start my own food delivery service. Build a food
+    room, we can deliver across the galaxy!
   reward:
     GameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 1000
       Premimum: 0
     people: []
     roomBlueprintUnlock: 0

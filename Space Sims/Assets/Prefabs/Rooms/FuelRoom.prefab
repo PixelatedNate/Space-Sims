@@ -1345,7 +1345,7 @@ MonoBehaviour:
       Minerals: 0
       Premimum: 0
     _peopleChange: 0
-  RoomCostModifyer: 3
+  RoomCostModifyer: 1
   _roomName: Fuel
   _roomDiscription: 
   _roomType: 1

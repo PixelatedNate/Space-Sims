@@ -13,8 +13,14 @@ MonoBehaviour:
   m_Name: Diamonds Are Forever
   m_EditorClassIdentifier: 
   Title: Diamonds Are Forever
-  Description: Get them sparkle clicky clackies
+  Description: Get them sparkle clicky clackies....just uhh find us some Mineral
+    Room blueprints.
   reward:
+    GameResourcesReward:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
     people:
     - {fileID: 11400000, guid: 308cc64455d112f46832fd1c298c0f6f, type: 2}
     roomBlueprintUnlock: 1
@@ -25,5 +31,5 @@ MonoBehaviour:
     skillValueMin: 5
   PossibleEncounters: []
   DurationHour: 0
-  DurationMinuits: 0
-  DurationSeconds: 2
+  DurationMinuits: 2
+  DurationSeconds: 0

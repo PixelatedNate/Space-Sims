@@ -13,17 +13,23 @@ MonoBehaviour:
   m_Name: To Go, Please!
   m_EditorClassIdentifier: 
   Title: To Go, Please!
-  Description: some distrction for new quest
+  Description: I'm gettin' hungry and I'm down to 9 fingers! See if you can find
+    us the plans to build a food room.
   reward:
+    GameResourcesReward:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
     people:
-    - {fileID: 11400000, guid: 09ab472e0e065b04c9c7f546a787456e, type: 2}
+    - {fileID: 11400000, guid: feffff737f6f864408476d3e78c4af3a, type: 2}
     roomBlueprintUnlock: 1
-    roomBlueprint: 1
+    roomBlueprint: 0
   QuestRequiments:
     Numpeople: 1
     SkillRequiment: 1
     skillValueMin: 1
   PossibleEncounters: []
   DurationHour: 0
-  DurationMinuits: 0
-  DurationSeconds: 2
+  DurationMinuits: 1
+  DurationSeconds: 0

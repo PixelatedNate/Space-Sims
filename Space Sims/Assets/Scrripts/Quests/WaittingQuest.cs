@@ -121,7 +121,7 @@ public class WaittingQuest : AbstractQuest {
             PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom,QuestData.reward.people[i]);
         }
 
-        AlertManager.Instance.SendAlert(new Alert("Quest Complet",QuestData.Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
+        AlertManager.Instance.SendAlert(new Alert("Quest Complete",QuestData.Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
     }
 }
 
