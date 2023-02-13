@@ -22,6 +22,9 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     private RoomStats[] _roomlevels;
 
     [SerializeField]
+    public float RoomCostModifyer;
+
+    [SerializeField]
     private string _roomName;
     public string RoomName { get { return _roomName; } }
 

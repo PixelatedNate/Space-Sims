@@ -57,6 +57,12 @@ public class GlobalStats : MonoBehaviour
     private Alert _lowFuelAlert;
 
 
+    public AbstractRoom[] GetAllPlyerRoomsOfType(RoomType type)
+    {
+        List<AbstractRoom> rooms = PlyaerRooms.FindAll(r => r.RoomType == type);
+        return rooms.ToArray();
+    }
+
 
     #region CustomGetterAndSetters
 
@@ -93,8 +99,8 @@ public class GlobalStats : MonoBehaviour
         {
             QuestManager.AddNewQuestLine(questline);
         }
-        //UnlocksManager.UnlockRoom(RoomType.Food);
-        //UnlocksManager.UnlockRoom(RoomType.Fuel);
+        UnlocksManager.UnlockRoom(RoomType.Food);
+        UnlocksManager.UnlockRoom(RoomType.Fuel);
         MaxStorage = _bassMaxStorage;
         PlayerResources = _startingResources;
         TimeTickSystem.OnTick += OnTick;

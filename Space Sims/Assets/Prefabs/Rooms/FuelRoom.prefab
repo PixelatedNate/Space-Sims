@@ -1345,6 +1345,7 @@ MonoBehaviour:
       Minerals: 0
       Premimum: 0
     _peopleChange: 0
+  RoomCostModifyer: 3
   _roomName: Fuel
   _roomDiscription: 
   _roomType: 1
@@ -8657,7 +8658,7 @@ Tilemap:
       - {fileID: 1432594876, guid: aab61a41d8dd18f458ad6e0ae2bf0829, type: 3}
       - {fileID: 1790480616, guid: aab61a41d8dd18f458ad6e0ae2bf0829, type: 3}
       - {fileID: 1068410290, guid: aab61a41d8dd18f458ad6e0ae2bf0829, type: 3}
-      m_AnimationSpeed: 6.0000005
+      m_AnimationSpeed: 6
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:

@@ -109,8 +109,6 @@ public class WaittingQuest : AbstractQuest {
 
         SoundManager.Instance.PlaySound(SoundManager.Sound.QuestCompleted);
 
-        //add stuff like reweards for quest compleation
-
         TimeTickSystem.OnMajorTick -= onMajorTick;
         questStaus = QuestStatus.Completed;
         foreach (PersonInfo p in PeopleAssgined)

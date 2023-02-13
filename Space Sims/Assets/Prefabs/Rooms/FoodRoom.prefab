@@ -2553,7 +2553,7 @@ MonoBehaviour:
   - _buildCost:
       Fuel: 0
       Food: 0
-      Minerals: 1000
+      Minerals: 100
       Premimum: 0
     _maxWorkers: 2
     _buildTime: 0.2
@@ -2573,6 +2573,7 @@ MonoBehaviour:
       Minerals: 0
       Premimum: 0
     _peopleChange: 0
+  RoomCostModifyer: 1
   _roomName: FoodRoom
   _roomDiscription: 
   _roomType: 0
