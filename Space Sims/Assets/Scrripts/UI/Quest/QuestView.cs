@@ -87,11 +87,6 @@ public class QuestView : MonoBehaviour
 
     private void setRewaredText()
     {
-        GameResources rewaredResources = questSelected.QuestData.reward.GameResourcesReward;
-        Reward.text = rewaredResources.ToString(false);
-        if (questSelected.QuestData.reward.people.Length != 0)
-        {
-            Reward.text = Reward.text + "\n" + Icons.GetPersonIconForTextMeshPro() + ": " + questSelected.QuestData.reward.people.Length + " <br>";
-        }
+        Reward.text = questSelected.QuestData.reward.ToString();
     }
 }

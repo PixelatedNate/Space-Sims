@@ -57,6 +57,13 @@ public static class Icons
     {
         return "<sprite=7>";
     }
+
+    public static string GetBluePrintIconForTextMeshPro()
+    {
+        return "<sprite=12>";
+    }
+
+
     public static string GetAgeIconForTextMeshPro()
     {
         return "<sprite=0>";

@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: To Go, Please!
+  m_Name: Prison Break
   m_EditorClassIdentifier: 
-  Title: To Go, Please!
-  Description: I'm gettin' hungry and I'm down to 9 fingers.
+  Title: check this out
+  Description: some distrction for new quest
   reward:
     people:
-    - {fileID: 11400000, guid: feffff737f6f864408476d3e78c4af3a, type: 2}
+    - {fileID: 11400000, guid: 09ab472e0e065b04c9c7f546a787456e, type: 2}
     roomBlueprintUnlock: 1
-    roomBlueprint: 0
+    roomBlueprint: 1
   QuestRequiments:
     Numpeople: 1
-    SkillRequiment: 5
-    skillValueMin: 5
+    SkillRequiment: 1
+    skillValueMin: 1
   PossibleEncounters: []
-  DurationHour: 0
-  DurationMinuits: 0
-  DurationSeconds: 2
+  DurationHour: 12
+  DurationMinuits: 2
+  DurationSeconds: 18
