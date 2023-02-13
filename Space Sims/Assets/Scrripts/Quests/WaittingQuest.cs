@@ -110,7 +110,6 @@ public class WaittingQuest : AbstractQuest {
         SoundManager.Instance.PlaySound(SoundManager.Sound.QuestCompleted);
 
         //add stuff like reweards for quest compleation
-        GlobalStats.Instance.PlayerResources += QuestData.reward.GameResourcesReward;
 
         TimeTickSystem.OnMajorTick -= onMajorTick;
         questStaus = QuestStatus.Completed;

@@ -13,6 +13,7 @@ public abstract class AbstractQuest {
 
     public virtual void CompleatQuest()
     {
+        GlobalStats.Instance.PlayerResources += QuestData.reward.GameResourcesReward;
         if(questLine != null)
         {
             questLine.AddNextQuest();

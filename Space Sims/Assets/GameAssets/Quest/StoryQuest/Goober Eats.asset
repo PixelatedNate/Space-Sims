@@ -15,6 +15,11 @@ MonoBehaviour:
   Title: Goober Eats?
   Description: I....I think I will start my own food delivery service.
   reward:
+    GameResourcesReward:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
     people: []
     roomBlueprintUnlock: 0
     roomBlueprint: 3

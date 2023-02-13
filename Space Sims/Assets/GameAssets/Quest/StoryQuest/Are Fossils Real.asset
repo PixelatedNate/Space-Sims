@@ -15,7 +15,18 @@ MonoBehaviour:
   Title: Are Fossils Real?
   Description: We need that ship juice!
   reward:
-    people: []
+    GameResourcesReward:
+      Fuel: 0
+      Food: 0
+      Minerals: 0
+      Premimum: 0
+    people:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     roomBlueprintUnlock: 0
     roomBlueprint: 3
   roomToBuild: 1
