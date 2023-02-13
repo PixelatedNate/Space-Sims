@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Prison Break
+  m_Name: To Go, Please!
   m_EditorClassIdentifier: 
-  Title: check this out
+  Title: To Go, Please!
   Description: some distrction for new quest
   reward:
     people:
@@ -24,6 +24,6 @@ MonoBehaviour:
     SkillRequiment: 1
     skillValueMin: 1
   PossibleEncounters: []
-  DurationHour: 12
-  DurationMinuits: 2
-  DurationSeconds: 18
+  DurationHour: 0
+  DurationMinuits: 0
+  DurationSeconds: 2

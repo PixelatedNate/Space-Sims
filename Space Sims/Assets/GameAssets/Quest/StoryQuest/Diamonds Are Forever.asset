@@ -26,4 +26,4 @@ MonoBehaviour:
   PossibleEncounters: []
   DurationHour: 0
   DurationMinuits: 0
-  DurationSeconds: 30
+  DurationSeconds: 2
