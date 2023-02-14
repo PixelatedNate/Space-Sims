@@ -12,11 +12,16 @@ public class Dialog : MonoBehaviour
     private int index;
 
     // Start is called before the first frame update
-    void Start()
+
+    void Awake()
     {
         textComponent.text = string.Empty;
         StartDialogue();
         TouchControls.EnableCameramovemntAndSelection(false);
+    }
+    void Start()
+    {
+       
     }
 
     // Update is called once per frame
@@ -42,9 +47,9 @@ public class Dialog : MonoBehaviour
     }
     IEnumerator TypeLine()
     {
-
         foreach (char c in lines[index].ToCharArray())
         {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.CatChat);
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }

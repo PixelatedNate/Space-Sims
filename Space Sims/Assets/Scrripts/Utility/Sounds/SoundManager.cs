@@ -15,6 +15,7 @@ public class SoundManager : MonoBehaviour
         RoomPlaced,
         QuestCompleted,
         MetalFootSteps,
+        CatChat,
     }
 
 
