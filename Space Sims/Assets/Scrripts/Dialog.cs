@@ -16,6 +16,7 @@ public class Dialog : MonoBehaviour
     {
         textComponent.text = string.Empty;
         StartDialogue();
+        TouchControls.EnableCameramovemntAndSelection(false);
     }
 
     // Update is called once per frame
@@ -41,6 +42,7 @@ public class Dialog : MonoBehaviour
     }
     IEnumerator TypeLine()
     {
+
         foreach (char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
@@ -57,6 +59,7 @@ public class Dialog : MonoBehaviour
         }
         else
         {
+            TouchControls.EnableCameramovemntAndSelection(true);
             gameObject.SetActive(false);
         }
     }
