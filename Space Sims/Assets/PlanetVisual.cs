@@ -39,19 +39,29 @@ public class PlanetVisual : MonoBehaviour, IInteractables
     // Start is called before the first frame update
     void Start()
     {
-        PlanetContainer = new PlanetContainer(planetData, transform.position);
-        transform.GetComponent<SpriteRenderer>().sprite = planetData.PlanetSprite;
-        if (planetData.IsStartPlanet)
+        if (NavigationManager.PlanetList.ContainsKey(planetData))
         {
-            if (NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
+            PlanetContainer = NavigationManager.PlanetList[planetData];
+            transform.GetComponent<SpriteRenderer>().sprite = planetData.PlanetSprite;
+        }
+        else
+        {
+            PlanetContainer = new PlanetContainer(planetData, transform.position);
+            transform.GetComponent<SpriteRenderer>().sprite = planetData.PlanetSprite;
+            if (planetData.IsStartPlanet)
             {
-                NavigationManager.CurrentPlanet = PlanetContainer;
+                if (NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
+                {
+                    NavigationManager.CurrentPlanet = PlanetContainer;
 
+                }
             }
         }
+
         if (NavigationManager.CurrentPlanet.PlanetPosition == PlanetContainer.PlanetPosition)
         {
             ship.position = PlanetContainer.PlanetPosition;
         }
+
     }
 }

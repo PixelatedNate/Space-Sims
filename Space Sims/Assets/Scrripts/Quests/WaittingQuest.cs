@@ -26,11 +26,6 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
     {
         this.WaittingQuestData = ResourceHelper.QuestHelper.GetWaittingQuestData(saveData.QuestDataName);
         this.questStaus = (QuestStatus)saveData.questStatus;
-        if (questStaus == QuestStatus.InProgress)
-        {
-            Debug.LogWarning("in progress");
-            this.QuestTimer = TimeDelayManager.Timer.ReconstructTimer(saveData.timmerId, new Action(CompleatQuest));
-        }
         foreach (string personId in saveData.PeopleAssginedId)
         {
 
@@ -44,7 +39,13 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
                 person = new PersonInfo(SaveSystem.GetPersonData(personId));
             }
             AssginPerson(person);
-            person.StartQuest(this);
+            if (questStaus == QuestStatus.InProgress)
+            {
+                Debug.LogWarning("in progress");
+                this.QuestTimer = TimeDelayManager.Timer.ReconstructTimer(saveData.timmerId, new Action(CompleatQuest));
+                person.StartQuest(this);
+            }
+
         }
     }
 

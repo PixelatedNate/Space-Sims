@@ -1,11 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class NavigationManager
 {
+
+    public static Dictionary<PlanetData,PlanetContainer> PlanetList = new Dictionary<PlanetData,PlanetContainer>();
     public static bool InNavigation { get; private set; } = false;
 
-    private static TimeDelayManager.Timer _navTimer;
+    public static TimeDelayManager.Timer _navTimer;
 
     public static float UniversSpeedModifyer = 0.25f;
 
@@ -62,7 +65,17 @@ public static class NavigationManager
         }
     }
 
+    public static void Load(NavigationSaveData saveData)
+    {
+        InNavigation = saveData.InNavigation;
+        //curr
 
+
+        if(InNavigation)
+        {
+            //do this.
+        }
+    }
 
 
     public static TimeSpan CalcualteTravleTime(PlanetContainer b)

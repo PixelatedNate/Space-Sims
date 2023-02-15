@@ -31,7 +31,7 @@ public class PersonSaveData
 
     public PersonSaveData(PersonInfo personInfo)
     {
-        this.personId = GUID.Generate().ToString();
+        this.personId = System.Guid.NewGuid().ToString();
 
         this.PersonName = personInfo.Name;
         this.HomePlanet = personInfo.HomePlanet;
@@ -52,6 +52,7 @@ public class PersonSaveData
         this.HeadName = personInfo.Head.name;
         this.BodyName = personInfo.Body.name;
         this.ClothsName = personInfo.Clothes.name;
+
     }
 
 }

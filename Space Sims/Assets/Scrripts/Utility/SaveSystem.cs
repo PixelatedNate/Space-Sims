@@ -7,9 +7,11 @@ public static class SaveSystem
 {
     public static string RootPath { get { return Application.persistentDataPath + "/Save"; } }
     public static string SaveStatsPath { get { return Application.persistentDataPath + "/Save/GlobalData.gd"; } }
+    public static string NavigationSavePath { get { return Application.persistentDataPath + "/Save/Navigation.gd"; } }
    
     public static string RoomPath { get { return Application.persistentDataPath + "/Save/Rooms"; } }
     public static string PeoplePath { get { return Application.persistentDataPath + "/Save/People"; } }
+    public static string PlanetPath { get { return Application.persistentDataPath + "/Save/Planet"; } }
     public static string WaittingQuestPath { get { return Application.persistentDataPath + "/Save/Quests/WaittingQuests"; } }
     public static string TransportQuestPath { get { return Application.persistentDataPath + "/Save/Quests/TransportQuests"; } }
     public static string TimerPath { get { return Application.persistentDataPath + "/Save/Timers"; } }
@@ -28,6 +30,13 @@ public static class SaveSystem
         var path = RoomPath + "/" + System.IO.Path.GetRandomFileName();
         SaveData<RoomSaveData>(roomData, path);
     }
+
+    public static void Save(this NavigationSaveData data)
+    {
+        SaveData<NavigationSaveData>(data, NavigationSavePath);
+    }
+
+
 
     public static void Save(this PersonSaveData personData, PersonInfo personInfo)
     {
@@ -66,6 +75,16 @@ public static class SaveSystem
         SaveData<GlobalStatsSaving>(data, SaveStatsPath);
     }
 
+    public static void Save(this PlanetConttainerSaveData data)
+    {
+        if (!Directory.Exists(PlanetPath))
+        {
+            System.IO.Directory.CreateDirectory(TimerPath);
+        }
+        var path = PlanetPath + "/" + data.planetDataName.ToString() + ".planet";
+        SaveData<PlanetConttainerSaveData>(data, path);
+    }
+
 
 
     public static void SaveAll()
@@ -80,8 +99,9 @@ public static class SaveSystem
         }
         QuestManager.SaveQuests();
         GlobalStatsSaving saveData = new GlobalStatsSaving(GlobalStats.Instance.PlayerResources);
-        Debug.Log(saveData.PlayerFood);
         saveData.Save();
+        NavigationSaveData navData = new NavigationSaveData();
+        navData.Save();
     }
 
     public static RoomSaveData[] GetAllSavedRoomData()
