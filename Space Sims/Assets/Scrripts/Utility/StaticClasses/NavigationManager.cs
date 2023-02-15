@@ -5,7 +5,7 @@ using UnityEngine;
 public static class NavigationManager
 {
 
-    public static Dictionary<PlanetData,PlanetContainer> PlanetList = new Dictionary<PlanetData,PlanetContainer>();
+    public static Dictionary<PlanetData, PlanetContainer> PlanetList { get; set; } = new Dictionary<PlanetData, PlanetContainer>();
     public static bool InNavigation { get; private set; } = false;
 
     public static TimeDelayManager.Timer _navTimer;
@@ -68,12 +68,38 @@ public static class NavigationManager
     public static void Load(NavigationSaveData saveData)
     {
         InNavigation = saveData.InNavigation;
-        //curr
 
+        foreach(string s in saveData.planetId)
+        {
+            PlanetConttainerSaveData planetContainerSaveData = SaveSystem.LoadData<PlanetConttainerSaveData>(SaveSystem.PlanetPath + "/" + s + SaveSystem.PlanetPrefix);
+            PlanetContainer plantContaire = new PlanetContainer(planetContainerSaveData);
+            PlanetList.Add(plantContaire.planetData, plantContaire);
+            
+            if(s == saveData.currentPlanetNameId)
+            {
+                CurrentPlanet = plantContaire;
+            }
+            if(s == saveData.TargetPalnetNameId)
+            {
+                TargetPlanet = plantContaire;
+            }
+            if(s == saveData.PreviousPalnetNameId)
+            {
+                PreviousPlanet = plantContaire;
+            }
+
+        }
 
         if(InNavigation)
         {
-            //do this.
+            _navTimer = TimeDelayManager.Timer.ReconstructTimer(saveData.timmerId, ArriveAtPlanet);
+            BackgroundManager.Instance.setBackgroundToInTransit();
+            UIManager.Instance.TrackNavTimer(_navTimer, TargetPlanet);
+            ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, false);
+        }
+        else if(CurrentPlanet != null)
+        {
+            BackgroundManager.Instance.setBackground(CurrentPlanet.planetData.Background);
         }
     }
 

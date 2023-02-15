@@ -11,31 +11,50 @@ public class NavigationSaveData {
     public string timmerId;
 
 
-    public string planetId;
+    public string[] planetId;
 
 
-    public string currentPlanetName;
-    public string TargetPalnetName;
-    public string PreviousPalnetName;
+    public string currentPlanetNameId;
+    public string TargetPalnetNameId;
+    public string PreviousPalnetNameId;
 
 
     public NavigationSaveData()
     {
         this.InNavigation = NavigationManager.InNavigation;
 
-        this.currentPlanetName = NavigationManager.CurrentPlanet.planetData.name;
-        
+
+        this.planetId = new string[NavigationManager.PlanetList.Count];
+
+        int index = 0;
+        foreach(var keyValuePair in NavigationManager.PlanetList)
+        {
+            var plantData = keyValuePair.Value.Save();
+            if (this.InNavigation)
+            {
+                if (keyValuePair.Value == NavigationManager.TargetPlanet)
+                {
+                    this.TargetPalnetNameId = plantData.planetId;
+                }
+                if (keyValuePair.Value == NavigationManager.PreviousPlanet)
+                {
+                    this.PreviousPalnetNameId = plantData.planetId;
+                }
+            }
+            else if (keyValuePair.Value == NavigationManager.CurrentPlanet)
+            {
+                this.currentPlanetNameId = plantData.planetId;
+            }
+            planetId[index] = plantData.planetId;
+            index++;
+        }
+
         if(this.InNavigation)
         {
             TimerSaveData timmerData = NavigationManager._navTimer.Save();
             this.timmerId = timmerData.ID;
-            this.TargetPalnetName = NavigationManager.TargetPlanet.planetData.name;
-            this.PreviousPalnetName = NavigationManager.PreviousPlanet.planetData.name;
         }
-        else
-        {
-            this.currentPlanetName = NavigationManager.CurrentPlanet.planetData.name;
-        }
-    }
+
+      }
 
 }

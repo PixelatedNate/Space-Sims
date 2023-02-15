@@ -12,6 +12,7 @@ public static class SaveSystem
     public static string RoomPath { get { return Application.persistentDataPath + "/Save/Rooms"; } }
     public static string PeoplePath { get { return Application.persistentDataPath + "/Save/People"; } }
     public static string PlanetPath { get { return Application.persistentDataPath + "/Save/Planet"; } }
+    public static string PlanetPrefix = ".Planet";
     public static string WaittingQuestPath { get { return Application.persistentDataPath + "/Save/Quests/WaittingQuests"; } }
     public static string TransportQuestPath { get { return Application.persistentDataPath + "/Save/Quests/TransportQuests"; } }
     public static string TimerPath { get { return Application.persistentDataPath + "/Save/Timers"; } }
@@ -79,9 +80,9 @@ public static class SaveSystem
     {
         if (!Directory.Exists(PlanetPath))
         {
-            System.IO.Directory.CreateDirectory(TimerPath);
+            System.IO.Directory.CreateDirectory(PlanetPath);
         }
-        var path = PlanetPath + "/" + data.planetDataName.ToString() + ".planet";
+        var path = PlanetPath + "/" + data.planetId.ToString() + PlanetPrefix;
         SaveData<PlanetConttainerSaveData>(data, path);
     }
 

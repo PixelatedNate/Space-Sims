@@ -9,6 +9,14 @@ public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
         this.PlanetPosition = pos;
     }
 
+    public PlanetContainer(PlanetConttainerSaveData saveData)
+    {
+        this.planetData = ResourceHelper.PlanetHelper.GetPlanetData(saveData.planetDataName);
+        this.PlanetPosition = new Vector3(saveData.planetPosition[0], saveData.planetPosition[1], saveData.planetPosition[2]);
+    }
+
+
+
     public PlanetData planetData { get; private set; }
     public Vector3 PlanetPosition;
 

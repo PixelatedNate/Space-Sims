@@ -47,6 +47,7 @@ public class PlanetVisual : MonoBehaviour, IInteractables
         else
         {
             PlanetContainer = new PlanetContainer(planetData, transform.position);
+            NavigationManager.PlanetList.Add(planetData, PlanetContainer);
             transform.GetComponent<SpriteRenderer>().sprite = planetData.PlanetSprite;
             if (planetData.IsStartPlanet)
             {
@@ -58,10 +59,13 @@ public class PlanetVisual : MonoBehaviour, IInteractables
             }
         }
 
-        if (NavigationManager.CurrentPlanet.PlanetPosition == PlanetContainer.PlanetPosition)
+        if (NavigationManager.CurrentPlanet != null)
         {
-            ship.position = PlanetContainer.PlanetPosition;
+            if (NavigationManager.CurrentPlanet.PlanetPosition == PlanetContainer.PlanetPosition)
+            {
+                ship.position = PlanetContainer.PlanetPosition;
+            }
         }
-
+       
     }
 }

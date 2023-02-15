@@ -94,6 +94,21 @@ public static class ResourceHelper
 
     }
 
+   public static class PlanetHelper
+    {
+        private const string PlanetPath = "Planets/";
+
+
+        public static PlanetData GetPlanetData(string name)
+        {
+            string path = PlanetPath + name;
+            PlanetData plant = Resources.Load<PlanetData>(path);
+            return plant;
+        }
+
+    }
+
+
 
     private static Sprite GetRandomSpriteFromPath(string path)
     {

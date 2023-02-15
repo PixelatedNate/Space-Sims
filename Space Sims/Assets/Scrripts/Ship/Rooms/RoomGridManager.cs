@@ -93,6 +93,8 @@ public class RoomGridManager : MonoBehaviour
             GlobalStatsSaving saveStatas = SaveSystem.LoadData<GlobalStatsSaving>(SaveSystem.SaveStatsPath);
             Debug.Log(saveStatas.PlayerFood);
             GlobalStats.Instance.LoadData(saveStatas);
+            NavigationSaveData navSaveData  = SaveSystem.LoadData<NavigationSaveData>(SaveSystem.NavigationSavePath);
+            NavigationManager.Load(navSaveData);
         }
 
 
