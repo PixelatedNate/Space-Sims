@@ -24,6 +24,6 @@ MonoBehaviour:
     SkillRequiment: 1
     skillValueMin: 1
   PossibleEncounters: []
-  DurationHour: 12
-  DurationMinuits: 2
-  DurationSeconds: 18
+  DurationHour: 0
+  DurationMinuits: 0
+  DurationSeconds: 20

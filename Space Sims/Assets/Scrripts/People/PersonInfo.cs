@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PersonInfo
+public class PersonInfo : ISaveable<PersonSaveData>
 {
 
     string HeadPath;
@@ -77,6 +77,36 @@ public class PersonInfo
 
     public AbstractRoom Room { get; set; }
 
+    public PersonInfo(PersonSaveData saveData)
+    {
+        SaveSystem.LoadedPeople.Add(saveData.personId, this);
+
+
+        this.Name = saveData.PersonName;
+        this.HomePlanet = saveData.HomePlanet;
+        this.Job = saveData.Job;
+        this.Likes = saveData.Likes;
+        this.Dislikes = saveData.Dislikes;
+
+        this.Gender = (Gender)saveData.Gender;
+        this.Race = (Race)saveData.Race;
+        this.Age = saveData.Age;
+
+        this.skills = new Skills()
+        {
+            Strength = saveData.strength,
+            Dexterity = saveData.dexterity,
+            Intelligence = saveData.intelligence,
+            Wisdom = saveData.wisdom,
+            Charisma = saveData.charisma,
+        };
+
+        this.SkinColor = PersonSkin.GetRandomColor(this.Race);
+        this.Head = ResourceHelper.PersonHelper.GetHeadFromSpriteName(this, saveData.HeadName);
+        this.Body = ResourceHelper.PersonHelper.GetBodyFromSpriteName(this, saveData.BodyName);
+        this.Clothes = ResourceHelper.PersonHelper.GetClothsFromSpriteName(this, saveData.ClothsName);
+
+    }
 
     public PersonInfo(PersonTemplate template)
     {
@@ -144,8 +174,11 @@ public class PersonInfo
         }
         else
         {
-            GameObject.Destroy(PersonMonoBehaviour.gameObject);
-            Room.RemoveWorker(PersonMonoBehaviour);
+            if (PersonMonoBehaviour != null)
+            {
+                GameObject.Destroy(PersonMonoBehaviour.gameObject);
+                Room.RemoveWorker(PersonMonoBehaviour);
+            }
             Room = GlobalStats.Instance.QuestRoom;
             CurrentQuest = quest;
         }
@@ -169,4 +202,20 @@ public class PersonInfo
         }
     }
 
+    public PersonSaveData Save()
+    {
+        PersonSaveData saveData = new PersonSaveData(this);
+        saveData.Save(this);
+        return saveData;
+    }
+
+    public void Load(string Path)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Load(PersonSaveData data)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public class TransportQuest : AbstractQuest
 {
@@ -26,7 +25,7 @@ public class TransportQuest : AbstractQuest
         {
             p.LeaveShipForGood();
         }
-        for (int i = 0; i < QuestData.reward.people.Length ; i++)
+        for (int i = 0; i < QuestData.reward.people.Length; i++)
         {
             PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom, QuestData.reward.people[i]);
         }
@@ -39,7 +38,7 @@ public class TransportQuest : AbstractQuest
         questStaus = QuestStatus.InProgress;
         foreach (PersonTemplate p in transportQuestData.TransaportPeople)
         {
-            var person = PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom,p).GetComponent<Person>();
+            var person = PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom, p).GetComponent<Person>();
             peopleOnShip.Add(person);
             person.PersonInfo.SetAsCargoForTransprotQuest(this);
         }

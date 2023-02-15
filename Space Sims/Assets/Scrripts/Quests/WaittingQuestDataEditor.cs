@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
 
 [CustomEditor(typeof(WaitingQuestData), true)]
@@ -33,7 +31,7 @@ public class WaittingQuestDataEditor : QuestDataEditor
             questDataTarget.QuestRequiments.SkillRequiment = (SkillsList)EditorGUILayout.EnumPopup("Skill Requiments", questDataTarget.QuestRequiments.SkillRequiment);
             questDataTarget.QuestRequiments.skillValueMin = EditorGUILayout.IntField("Skill min", questDataTarget.QuestRequiments.skillValueMin);
         }
-               
+
     }
 
 }

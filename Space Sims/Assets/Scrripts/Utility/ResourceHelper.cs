@@ -26,6 +26,30 @@ public static class ResourceHelper
         {
             return (GetRandomHead(personInfo.Race, personInfo.Gender));
         }
+        public static Sprite GetHeadFromSpriteName(PersonInfo personInfo, string SpriteName)
+        {
+            string headPath = PeopleArtWorkPath + personInfo.Race.ToString() + "/" + personInfo.Gender.ToString() + "/Heads/" + SpriteName;
+            Sprite headSprite = Resources.Load<Sprite>(headPath);
+            return headSprite;
+        }
+        public static Sprite GetBodyFromSpriteName(PersonInfo personInfo, string spriteName)
+        {
+            string bodyPath = PeopleArtWorkPath + personInfo.Race.ToString() + "/" + personInfo.Gender.ToString() + "/Bodies/" + spriteName;
+            Sprite headSprite = Resources.Load<Sprite>(bodyPath);
+            return headSprite;
+        }
+
+        public static Sprite GetClothsFromSpriteName(PersonInfo personInfo, string spriteName)
+        {
+            string clothPath = ClothsPath + personInfo.Gender + "/" + spriteName;
+            Sprite headSprite = Resources.Load<Sprite>(clothPath);
+            return headSprite;
+        }
+
+
+
+
+
 
         public static Sprite GetRandomHead(Race race, Gender gender)
         {
@@ -56,6 +80,20 @@ public static class ResourceHelper
     }
 
 
+    public static class QuestHelper
+    {
+        private const string questPath = "Quests/WaittingQuests/";
+
+
+        public static WaitingQuestData GetWaittingQuestData(string name)
+        {
+            string path = questPath + name;
+            WaitingQuestData questData = Resources.Load<WaitingQuestData>(path);
+            return questData;
+        }
+
+    }
+
 
     private static Sprite GetRandomSpriteFromPath(string path)
     {
@@ -63,7 +101,6 @@ public static class ResourceHelper
         int index = Random.Range(0, sprits.Length);
         return sprits[index];
     }
-
 
     public static string[] PickRandomFromLocation(string path, int number = 1)
     {

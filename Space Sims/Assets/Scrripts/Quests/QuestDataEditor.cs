@@ -1,6 +1,4 @@
-using System.Collections.Generic;
 using UnityEditor;
-using UnityEngine;
 
 
 [CustomEditor(typeof(QuestData), true)]
@@ -15,11 +13,11 @@ public class QuestDataEditor : Editor
 
         EditorUtility.SetDirty(questDataTarget);
 
-         questDataTarget.Title = EditorGUILayout.TextField("Quest Title", questDataTarget.Title);
-         EditorGUILayout.LabelField("Quest Discription");
-         questDataTarget.Description = EditorGUILayout.TextArea(questDataTarget.Description);
+        questDataTarget.Title = EditorGUILayout.TextField("Quest Title", questDataTarget.Title);
+        EditorGUILayout.LabelField("Quest Discription");
+        questDataTarget.Description = EditorGUILayout.TextArea(questDataTarget.Description);
 
-         showRewareds = EditorGUILayout.Foldout(showRewareds, "Rewareds");
+        showRewareds = EditorGUILayout.Foldout(showRewareds, "Rewareds");
 
         if (showRewareds)
         {

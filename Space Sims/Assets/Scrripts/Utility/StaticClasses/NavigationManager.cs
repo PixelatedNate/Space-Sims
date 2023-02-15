@@ -45,7 +45,7 @@ public static class NavigationManager
     {
         InNavigation = false;
         CurrentPlanet = TargetPlanet;
-      //  QuestManager.SetAvalibleQuest(CurrentPlanetQuests);
+        //  QuestManager.SetAvalibleQuest(CurrentPlanetQuests);
         TargetPlanet = null;
         BackgroundManager.Instance.setBackground(CurrentPlanet.planetData.Background);
         ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, true);

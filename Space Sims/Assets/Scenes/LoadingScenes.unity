@@ -1942,27 +1942,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _bassMaxStorage.Food
-      value: 10000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _bassMaxStorage.Fuel
-      value: 10000
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _startingResources.Food
-      value: 10000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _startingResources.Fuel
-      value: 10000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _bassMaxStorage.Minerals
-      value: 1810
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: startingQuest.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: NegativeFoodPersonLevelVlue
@@ -1970,16 +1970,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _startingResources.Minerals
-      value: 1629
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: _startingResources.Premimum
-      value: 10000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: startingQuest.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: c80fb68d612bb844aa8612a253baec0f, type: 2}
+      objectReference: {fileID: 11400000, guid: 0c8c98b04cc03c04c92cb3cb5f41e0b1, type: 2}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: startingQuest.Array.data[1]
       value: 

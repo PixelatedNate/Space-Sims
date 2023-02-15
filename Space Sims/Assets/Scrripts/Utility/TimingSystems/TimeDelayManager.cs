@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TimeDelayManager : MonoBehaviour
 {
-    public class Timer
+    public class Timer : ISaveable<TimerSaveData>
     {
-        public DateTime StartTime { get; set; }
+        //    public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
         public Action EndMethod { get; }
         public TimeSpan TotalDuration { get; private set; }
@@ -15,7 +15,7 @@ public class TimeDelayManager : MonoBehaviour
 
         public double PercentaceTravled { get { return CalculatePercent(); } }
 
-        private DateTime pauseTimeStart;
+        public DateTime pauseTimeStart { get; private set; }
 
         private double CalculatePercent()
         {
@@ -47,6 +47,29 @@ public class TimeDelayManager : MonoBehaviour
             IsPause = false;
         }
 
+        public static Timer ReconstructTimer(string saveTimerName, Action endMethod)
+        {
+            string Timmerpath = SaveSystem.TimerPath + "/" + saveTimerName + SaveSystem.TimerPrefix;
+            TimerSaveData timerData = SaveSystem.LoadData<TimerSaveData>(Timmerpath);
+            Timer t = new Timer(timerData, endMethod);
+            return t;
+        }
+
+        public Timer(TimerSaveData saveData, Action endMethod)
+        {
+            this.EndTime = new DateTime(saveData.EndYear, saveData.EndMonth, saveData.EndDay, saveData.EndHour, saveData.EndMinuit, saveData.EndSecond);
+            this.TotalDuration = new TimeSpan(saveData.DurationHour, saveData.DurationMinuit, saveData.DurationSecond);
+            this.EndMethod = endMethod;
+            IsPause = saveData.IsPause;
+            if (IsPause)
+            {
+                this.pauseTimeStart = new DateTime(saveData.PuauseYear, saveData.PuauseMonth, saveData.PuauseDay, saveData.PuauseHour, saveData.PuauseMinuit, saveData.PuauseSecond);
+            }
+
+            // add puase stuff
+
+            TimeDelayManager.Instance.AddTimer(this);
+        }
 
         public Timer(DateTime endTime, Action endMethod)
         {
@@ -55,12 +78,31 @@ public class TimeDelayManager : MonoBehaviour
             this.EndMethod = endMethod;
         }
 
+
         public Timer(TimeSpan duration, Action endMethod)
         {
             this.EndTime = DateTime.Now.Add(duration);
             this.TotalDuration = duration;
             this.EndMethod = endMethod;
         }
+        public TimerSaveData Save()
+        {
+            TimerSaveData data = new TimerSaveData(this);
+            data.Save();
+            return data;
+        }
+
+        public void Load(string Path)
+        {
+            throw new NotImplementedException();
+        }
+        public void Load(TimerSaveData data)
+        {
+            throw new NotImplementedException();
+        }
+
+
+
 
     }
 
@@ -86,7 +128,7 @@ public class TimeDelayManager : MonoBehaviour
 
     public Timer AddTimer(Timer timer)
     {
-        timer.StartTime = DateTime.Now;
+        //timer.StartTime = DateTime.Now;
         ActiveTimers.Add(timer);
         ActiveTimers.Sort((timer1, timer2) => timer1.EndTime.CompareTo(timer2.EndTime));
         return timer;

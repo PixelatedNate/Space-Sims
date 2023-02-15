@@ -8,7 +8,7 @@ public static class QuestManager
 
     public static void AddNewQuest(QuestData[] questDatas)
     {
-        foreach(QuestData questData in questDatas)
+        foreach (QuestData questData in questDatas)
         {
             var quest = questData.CreateQuest();
             Quests.Add(quest);
@@ -26,6 +26,30 @@ public static class QuestManager
     }
 
 
+    public static void SaveQuests()
+    {
+        foreach (AbstractQuest quest in Quests)
+        {
+            if (quest.GetType() == typeof(WaittingQuest))
+            {
+                WaittingQuest waittingQuest = (WaittingQuest)quest;
+                waittingQuest.Save();
+            }
+        }
+    }
+
+    public static void LoadQuests()
+    {
+        WaittingQuestSaveData[] SaveQuests = SaveSystem.GetAllWaittingSavedQuest();
+        foreach (WaittingQuestSaveData savequest in SaveQuests)
+        {
+            WaittingQuest quest = new WaittingQuest(savequest);
+            AddNewQuest(quest);
+        }
+    }
+
+
+
 
     public static void AddNewQuestLine(QuestLineData questLineData)
     {
@@ -33,7 +57,6 @@ public static class QuestManager
         QuestLines.Add(questline);
         questline.AddNextQuest();
     }
-
 
     public static List<AbstractQuest> GetQuestsByStaus(QuestStatus status)
     {

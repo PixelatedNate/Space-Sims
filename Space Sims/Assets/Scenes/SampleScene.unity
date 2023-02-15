@@ -718,6 +718,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6489694816920084423, guid: 0f4594a32317a9044bf03ee346909474, type: 3}
     - target: {fileID: 944651634355311858, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
+      propertyPath: StartingPeople
+      value: 
+      objectReference: {fileID: 11400000, guid: 94938c8a41a5ce34c8d06965d52e8aec, type: 2}
+    - target: {fileID: 944651634355311858, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
       propertyPath: _buildRoomTemplate
       value: 
       objectReference: {fileID: 7957068511739355582, guid: feac673830432e44f9e99417c897956d, type: 3}

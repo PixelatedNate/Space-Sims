@@ -60,7 +60,6 @@ public class GlobalStats : MonoBehaviour
 
     #region CustomGetterAndSetters
 
-
     private void SetMaxPeople(int value)
     {
         _maxPeople = value;
@@ -88,17 +87,61 @@ public class GlobalStats : MonoBehaviour
     }
     void Start()
     {
-
+        MaxStorage = _bassMaxStorage;
+        RoomSaveData[] roomData = SaveSystem.GetAllSavedRoomData();
+        if (roomData.Length == 0)
+        {
             QuestManager.AddNewQuest(startingQuest);
             foreach (QuestLineData questline in startingQuestLines)
             {
                 QuestManager.AddNewQuestLine(questline);
             }
-        UnlocksManager.UnlockRoom(RoomType.Food);
-        UnlocksManager.UnlockRoom(RoomType.Fuel);
+
+            UnlocksManager.UnlockRoom(RoomType.Food);
+            UnlocksManager.UnlockRoom(RoomType.Fuel);
             MaxStorage = _bassMaxStorage;
             PlayerResources = _startingResources;
+            TimeTickSystem.OnTick += OnTick;
+        }
+
+    }
+
+    public void LoadData(GlobalStatsSaving saveData)
+    {
+        GameResources saveResourceData = new GameResources() {
+            Food = saveData.PlayerFood,
+            Fuel = saveData.PlayerFuel,
+            Minerals = saveData.PlayerMinerals,
+            Premimum = saveData.PlayerPremimum
+        };
+
+        Debug.Log(saveResourceData.Food);
+        PlayerResources = saveResourceData;
+        Debug.Log(PlayerResources.Food);
+
+        TimeSpan offlineTime = DateTime.UtcNow - new DateTime(saveData.SaveTimeTickUTC,DateTimeKind.Utc);
+
+        long TicksMissed = (long)MathF.Floor((float)offlineTime.TotalSeconds / TimeTickSystem.TICK_TIMER);
+
+        foreach(int i in saveData.UnlockedRooms)
+        {
+            UnlocksManager.UnlockRoom((RoomType)i);
+        }
+
+        SimulateTicks(TicksMissed);
+
         TimeTickSystem.OnTick += OnTick;
+    }
+
+
+    private void SimulateTicks(long ticks)
+    {
+        for(int i = 0; i < ticks; i++)
+        {
+            Tick();    
+        }
+
+
     }
 
 
@@ -152,6 +195,10 @@ public class GlobalStats : MonoBehaviour
     #region PrivateMethods
 
     private void OnTick(object source, EventArgs e)
+    {
+        Tick();
+    }
+    private void Tick()
     {
         PlayerResources += TotalDelta;
     }
@@ -236,10 +283,10 @@ public class GlobalStats : MonoBehaviour
         else if (PlayerResources.Fuel >= 0 && _lowFuel)
         {
             FuelProductionMultiplyer = 1;
-               foreach(AbstractRoom room in PlyaerRooms)
-               {
+            foreach (AbstractRoom room in PlyaerRooms)
+            {
                 room.UpdateRoomStats();
-               }
+            }
             _lowFuel = false;
             AlertManager.Instance.RemoveAlert(_lowFuelAlert);
         }
@@ -257,7 +304,6 @@ public class GlobalStats : MonoBehaviour
         }
 
     }
-
 
     public void RandomPersonLeave()
     {

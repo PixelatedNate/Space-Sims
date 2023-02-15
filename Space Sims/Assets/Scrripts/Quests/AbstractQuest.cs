@@ -1,19 +1,16 @@
-using System;
-using UnityEngine;
-
-public abstract class AbstractQuest {
+public abstract class AbstractQuest
+{
 
     public abstract QuestData QuestData { get; }
 
-    public QuestStatus questStaus { get; set; } = QuestStatus.Available;
-
+    public QuestStatus questStaus { get; set; }
     public QuestLine questLine;
 
     public abstract bool StartQuest();
 
     public virtual void CompleatQuest()
     {
-        if(questLine != null)
+        if (questLine != null)
         {
             questLine.AddNextQuest();
         }
@@ -28,4 +25,5 @@ public abstract class AbstractQuest {
         GlobalStats.Instance.QuestRoom.FocusRoom();
         UIManager.Instance.OpenQuestViewOnQuest(this);
     }
+
 }

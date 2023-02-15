@@ -9,7 +9,7 @@ public class PlanetVisual : MonoBehaviour, IInteractables
     Transform ship;
 
     //[SerializeField]
-     private Material _orignalMaterial;
+    private Material _orignalMaterial;
 
 
     private PlanetContainer PlanetContainer { get; set; }
@@ -46,10 +46,10 @@ public class PlanetVisual : MonoBehaviour, IInteractables
             if (NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
             {
                 NavigationManager.CurrentPlanet = PlanetContainer;
-                
+
             }
         }
-        if(NavigationManager.CurrentPlanet.PlanetPosition == PlanetContainer.PlanetPosition)
+        if (NavigationManager.CurrentPlanet.PlanetPosition == PlanetContainer.PlanetPosition)
         {
             ship.position = PlanetContainer.PlanetPosition;
         }

@@ -7,5 +7,5 @@ public enum RoomType
     Fuel,
     Minerals,
     CrewQuaters,
-    QuestRoom ,
+    QuestRoom,
 }

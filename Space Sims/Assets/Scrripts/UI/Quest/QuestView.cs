@@ -61,7 +61,7 @@ public class QuestView : MonoBehaviour
         }
         questSelected = quest;
         Title.text = quest.QuestData.Title;
-        Discription.text = quest.QuestData. Description;
+        Discription.text = quest.QuestData.Description;
         setRewaredText();
     }
 
