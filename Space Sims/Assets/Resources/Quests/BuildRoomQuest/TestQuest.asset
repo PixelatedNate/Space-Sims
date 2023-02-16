@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b91ba607ceecb2c4eac5365b0eb35f44, type: 3}
-  m_Name: Data
+  m_Script: {fileID: 11500000, guid: 8257bd3a77db0854d9707535c340fb7b, type: 3}
+  m_Name: TestQuest
   m_EditorClassIdentifier: 
-  quests:
-  - {fileID: 11400000, guid: 0c8c98b04cc03c04c92cb3cb5f41e0b1, type: 2}
-  - {fileID: 11400000, guid: c80fb68d612bb844aa8612a253baec0f, type: 2}
+  Title: build room
+  Description: build room
+  reward:
+    people: []
+    roomBlueprintUnlock: 0
+    roomBlueprint: 0
+  roomToBuild: 0

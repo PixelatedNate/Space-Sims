@@ -1,4 +1,4 @@
-public class QuestLine
+public class QuestLine : ISaveable<QuestLineSaveData>
 {
 
     public QuestLine(QuestLineData data)
@@ -6,8 +6,14 @@ public class QuestLine
         questLineData = data;
         index = 0;
     }
+    public QuestLine(QuestLineSaveData data)
+    {
+        questLineData = ResourceHelper.QuestHelper.GetQuestLineData(data.QuestLineDataName);
+        index = data.index;
+    }
 
-    int index = 0;
+
+    public  int index = 0;
     public QuestLineData questLineData { get; set; }
 
     bool completed = false;
@@ -25,4 +31,21 @@ public class QuestLine
         }
     }
 
+    public QuestLineSaveData Save()
+    {
+        QuestLineSaveData data = new QuestLineSaveData(this);
+        data.Save();
+        return data;
+
+    }
+
+    public void Load(string Path)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Load(QuestLineSaveData data)
+    {
+        throw new System.NotImplementedException();
+    }
 }

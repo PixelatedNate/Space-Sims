@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 
-public class TransportQuest : AbstractQuest
+public class TransportQuest : AbstractQuest, ISaveable<TransportQuestSaveData>
 {
-    private List<Person> peopleOnShip = new List<Person>();
+    public List<Person> peopleOnShip { get; private set; } = new List<Person>();
     public override QuestData QuestData => transportQuestData;
     public TransportQuestData transportQuestData { get; }
 
@@ -11,6 +11,26 @@ public class TransportQuest : AbstractQuest
         this.transportQuestData = questdata;
         this.questLine = questLine;
     }
+
+    public TransportQuest(TransportQuestSaveData saveData)
+    {
+        populateFromSave(saveData);
+        this.transportQuestData = ResourceHelper.QuestHelper.GetTransprotQuestData(saveData.QuestDataName);
+        foreach (string personId in saveData.peopleOnShipId)
+        {
+            PersonInfo person;
+            if (SaveSystem.LoadedPeople.ContainsKey(personId))
+            {
+                person = SaveSystem.LoadedPeople[personId];
+            }
+            else
+            {
+                person = new PersonInfo(SaveSystem.GetPersonData(personId));
+            }
+            peopleOnShip.Add(person.PersonMonoBehaviour);
+        }
+    }
+
 
     public override void CompleatQuest()
     {
@@ -46,4 +66,20 @@ public class TransportQuest : AbstractQuest
         return true;
     }
 
+    public TransportQuestSaveData Save()
+    {
+        TransportQuestSaveData saveData = new TransportQuestSaveData(this);
+        saveData.Save();
+        return saveData;
+    }
+
+    public void Load(string Path)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void Load(TransportQuestSaveData data)
+    {
+        throw new System.NotImplementedException();
+    }
 }

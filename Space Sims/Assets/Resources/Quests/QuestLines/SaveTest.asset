@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91ba607ceecb2c4eac5365b0eb35f44, type: 3}
   m_Name: SaveTest
   m_EditorClassIdentifier: 
-  quests: []
+  quests:
+  - {fileID: 11400000, guid: 0c8c98b04cc03c04c92cb3cb5f41e0b1, type: 2}
+  - {fileID: 11400000, guid: 0af63fcd2a1dd3848a0eda5c5102b420, type: 2}

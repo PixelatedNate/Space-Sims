@@ -24,8 +24,8 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
 
     public WaittingQuest(WaittingQuestSaveData saveData)
     {
+        populateFromSave(saveData);
         this.WaittingQuestData = ResourceHelper.QuestHelper.GetWaittingQuestData(saveData.QuestDataName);
-        this.questStaus = (QuestStatus)saveData.questStatus;
         foreach (string personId in saveData.PeopleAssginedId)
         {
 

@@ -82,15 +82,40 @@ public static class ResourceHelper
 
     public static class QuestHelper
     {
-        private const string questPath = "Quests/WaittingQuests/";
+        private const string WaittingQuestPath = "Quests/WaittingQuests/";
+        private const string TranpsortQuestPath = "Quests/TransportQuests/";
+        private const string questLinePath = "Quests/QuestLines/";
+        private const string BuildQuestPath = "Quests/BuildRoomQuest/";
 
 
         public static WaitingQuestData GetWaittingQuestData(string name)
         {
-            string path = questPath + name;
+            string path = WaittingQuestPath + name;
             WaitingQuestData questData = Resources.Load<WaitingQuestData>(path);
             return questData;
         }
+        public static BuildRoomData GetBuildQuestData(string name)
+        {
+            string path = BuildQuestPath + name;
+            BuildRoomData questData = Resources.Load<BuildRoomData>(path);
+            return questData;
+        }
+
+       public static TransportQuestData GetTransprotQuestData(string name)
+        {
+            string path = TranpsortQuestPath + name;
+            TransportQuestData questData = Resources.Load<TransportQuestData>(path);
+            return questData;
+        }
+
+
+        public static QuestLineData GetQuestLineData(string name)
+        {
+            string path = questLinePath + name;
+            QuestLineData questData = Resources.Load<QuestLineData>(path);
+            return questData;
+        }
+
 
     }
 

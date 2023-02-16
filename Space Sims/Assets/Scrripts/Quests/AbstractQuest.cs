@@ -20,6 +20,16 @@ public abstract class AbstractQuest
         }
     }
 
+    protected void populateFromSave(AbstractQuestSaveData saveData)
+    {
+        this.questStaus = (QuestStatus)saveData.questStatus;
+        if(saveData.QuestLineId != null)
+        {
+          QuestLineSaveData questLineData = SaveSystem.LoadData<QuestLineSaveData>(SaveSystem.QuestLinePath + "/" + saveData.QuestLineId + SaveSystem.QuestLinePrefix);
+            questLine = new QuestLine(questLineData);
+        }
+    }
+
     protected void OpenAlertQuest()
     {
         GlobalStats.Instance.QuestRoom.FocusRoom();

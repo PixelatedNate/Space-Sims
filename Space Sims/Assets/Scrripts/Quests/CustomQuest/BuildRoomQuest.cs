@@ -1,12 +1,22 @@
 using System;
 
-public class BuildRoomQuest : AbstractQuest
+public class BuildRoomQuest : AbstractQuest, ISaveable<BuildRoomSaveData>
 {
     public BuildRoomQuest(BuildRoomData buildRoomData)
     {
         this.buildRoomData = buildRoomData;
     }
 
+    public BuildRoomQuest(BuildRoomSaveData buildRoomSaveData)
+    {
+        base.populateFromSave(buildRoomSaveData);
+        this.buildRoomData = ResourceHelper.QuestHelper.GetBuildQuestData(buildRoomSaveData.QuestDataName);
+        if (questStaus == QuestStatus.InProgress)
+        {
+            TimeTickSystem.OnTick += CheckIfRequimentsAreMetOnTick;
+        }
+    }
+    
     public override QuestData QuestData => buildRoomData;
     public BuildRoomData buildRoomData;
 
@@ -26,5 +36,22 @@ public class BuildRoomQuest : AbstractQuest
             questStaus = QuestStatus.Completed;
             TimeTickSystem.OnTick -= CheckIfRequimentsAreMetOnTick;
         }
+    }
+
+    public BuildRoomSaveData Save()
+    {
+        BuildRoomSaveData data = new BuildRoomSaveData(this);
+        data.Save();
+        return data;
+    }
+
+    public void Load(string Path)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Load(BuildRoomSaveData data)
+    {
+        throw new NotImplementedException();
     }
 }

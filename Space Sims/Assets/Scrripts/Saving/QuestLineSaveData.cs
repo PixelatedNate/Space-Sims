@@ -4,17 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
-public class QuestLineSaveData 
+public class QuestLineSavieData 
 {
-   public string Id;
-   public int index;
-   public string QuestLineDataName;
+    public int index;
+    public string QuestLineDataName;
 
 
-    public QuestLineSaveData(QuestLine questLine)
+    public QuestLineSavieData(QuestLine questLine)
     {
-        this.Id = Guid.NewGuid().ToString();
-
         this.index = questLine.index;
         this.QuestLineDataName = questLine.questLineData.name;
     }

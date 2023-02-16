@@ -15,6 +15,10 @@ public static class SaveSystem
     public static string PlanetPrefix = ".Planet";
     public static string WaittingQuestPath { get { return Application.persistentDataPath + "/Save/Quests/WaittingQuests"; } }
     public static string TransportQuestPath { get { return Application.persistentDataPath + "/Save/Quests/TransportQuests"; } }
+    public static string BuildRoomQuestPath { get { return Application.persistentDataPath + "/Save/Quests/BuildRoomQuest"; } }
+    public static string QuestLinePath { get { return Application.persistentDataPath + "/Save/Quests/QuestLines"; } }
+    public static string QuestLinePrefix = ".QL";
+
     public static string TimerPath { get { return Application.persistentDataPath + "/Save/Timers"; } }
     public static string TimerPrefix = ".Timer";
 
@@ -58,8 +62,31 @@ public static class SaveSystem
         }
         var path = WaittingQuestPath + "/" + System.IO.Path.GetRandomFileName();
         SaveData<WaittingQuestSaveData>(waittingQuestData, path);
+    }
+
+    public static void Save(this TransportQuestSaveData transportQuestSaveData)
+    {
+        if (!Directory.Exists(TransportQuestPath))
+        {
+            System.IO.Directory.CreateDirectory(TransportQuestPath);
+        }
+        var path = TransportQuestPath  + "/" + System.IO.Path.GetRandomFileName();
+        SaveData<TransportQuestSaveData>(transportQuestSaveData, path);
+    }
+
+    public static void Save(this BuildRoomSaveData QuestSaveData)
+    {
+        if (!Directory.Exists(BuildRoomQuestPath))
+        {
+            System.IO.Directory.CreateDirectory(BuildRoomQuestPath);
+        }
+        var path = BuildRoomQuestPath + "/" + System.IO.Path.GetRandomFileName();
+        SaveData<BuildRoomSaveData>(QuestSaveData, path);
 
     }
+
+
+
 
 
     public static void Save(this TimerSaveData timerData)
@@ -86,6 +113,24 @@ public static class SaveSystem
         SaveData<PlanetConttainerSaveData>(data, path);
     }
 
+   public static void Save(this QuestLineSaveData data)
+    {
+        if (!Directory.Exists(QuestLinePath))
+        {
+            System.IO.Directory.CreateDirectory(QuestLinePath);
+        }
+        var path = QuestLinePath + "/" + data.Id.ToString() + QuestLinePrefix;
+        SaveData<QuestLineSaveData>(data, path);
+    }
+
+
+    public static void ClearSave()
+    {
+       if (Directory.Exists(RootPath))
+        {
+            Directory.Delete(RootPath, true);
+        }
+    }
 
 
     public static void SaveAll()
@@ -120,16 +165,16 @@ public static class SaveSystem
         return roomsaveData.ToArray();
     }
 
-    public static WaittingQuestSaveData[] GetAllWaittingSavedQuest()
+    public static T[] GetAllSavedQuest<T>(string path)
     {
-        if (!Directory.Exists(WaittingQuestPath))
+        if (!Directory.Exists(path))
         {
-            return null;
+            return new T[0];
         }
-        List<WaittingQuestSaveData> questsaveData = new List<WaittingQuestSaveData>();
-        foreach (string waittingQuestPath in Directory.GetFiles(WaittingQuestPath))
+        List<T> questsaveData = new List<T>();
+        foreach (string fullPath in Directory.GetFiles(path))
         {
-            WaittingQuestSaveData data = LoadData<WaittingQuestSaveData>(waittingQuestPath);
+            T data = LoadData<T>(fullPath);
             questsaveData.Add(data);
         }
         return questsaveData.ToArray();
