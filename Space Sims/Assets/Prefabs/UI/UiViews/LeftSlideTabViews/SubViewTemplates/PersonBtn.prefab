@@ -1945,6 +1945,7 @@ GameObject:
   - component: {fileID: 221467568251093825}
   - component: {fileID: 221467568251093824}
   - component: {fileID: 9040294782509649416}
+  - component: {fileID: 2741160595558457696}
   m_Layer: 5
   m_Name: PersonBtn
   m_TagString: Untagged
@@ -2084,6 +2085,26 @@ MonoBehaviour:
   head: {fileID: 221467567968523104}
   Body: {fileID: 221467567752052096}
   Clothes: {fileID: 221467566516626850}
+--- !u!95 &2741160595558457696
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 221467568251093826}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fd639fc78d6ca14e9d048b8d041dec7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7857993464668827343
 GameObject:
   m_ObjectHideFlags: 0
