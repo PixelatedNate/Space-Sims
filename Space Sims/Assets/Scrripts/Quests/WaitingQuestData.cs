@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Quests/WaittingQuest", order = 2)]
@@ -34,9 +32,9 @@ public class WaitingQuestData : QuestData
     public Requiments QuestRequiments = new Requiments();
     [SerializeField]
     public QuestEncounter[] PossibleEncounters;
-    
 
-    public TimeSpan Duration { get { return new TimeSpan(DurationHour, DurationMinuits, DurationSeconds);  } }
+
+    public TimeSpan Duration { get { return new TimeSpan(DurationHour, DurationMinuits, DurationSeconds); } }
 
     [SerializeField]
     public int DurationHour;

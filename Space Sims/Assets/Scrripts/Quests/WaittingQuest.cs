@@ -4,11 +4,8 @@ using UnityEngine;
 using static TimeDelayManager;
 using Random = UnityEngine.Random;
 
-public class WaittingQuest : AbstractQuest {
-
-
-
-    private bool Inprogress = false;
+public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
+{
 
     public List<PersonInfo> PeopleAssgined = new List<PersonInfo>();
     public List<QuestEncounter> QuestLog { get; private set; } = new List<QuestEncounter>();
@@ -17,7 +14,7 @@ public class WaittingQuest : AbstractQuest {
     public override QuestData QuestData => WaittingQuestData;
 
     public WaitingQuestData WaittingQuestData { get; }
-    
+
 
     public WaittingQuest(WaitingQuestData questdata, QuestLine questLine = null)
     {
@@ -25,13 +22,37 @@ public class WaittingQuest : AbstractQuest {
         this.questLine = questLine;
     }
 
+    public WaittingQuest(WaittingQuestSaveData saveData)
+    {
+        populateFromSave(saveData);
+        this.WaittingQuestData = ResourceHelper.QuestHelper.GetWaittingQuestData(saveData.QuestDataName);
+        foreach (string personId in saveData.PeopleAssginedId)
+        {
+
+            PersonInfo person;
+            if (SaveSystem.LoadedPeople.ContainsKey(personId))
+            {
+                person = SaveSystem.LoadedPeople[personId];
+            }
+            else
+            {
+                person = new PersonInfo(SaveSystem.GetPersonData(personId));
+            }
+            AssginPerson(person);
+            if (questStaus == QuestStatus.InProgress)
+            {
+                Debug.LogWarning("in progress");
+                this.QuestTimer = TimeDelayManager.Timer.ReconstructTimer(saveData.timmerId, new Action(CompleatQuest));
+                person.StartQuest(this);
+            }
+
+        }
+    }
+
+
 
     public void AssginPerson(PersonInfo person)
     {
-        if (Inprogress)
-        {
-            throw new Exception("Trying to assginPerson to a quest in progress");
-        }
         person.AssignQuest(this);
         PeopleAssgined.Add(person);
         bool requimentsMet = WaittingQuestData.QuestRequiments.Ismet(PeopleAssgined.ToArray());
@@ -59,6 +80,11 @@ public class WaittingQuest : AbstractQuest {
 
     public override bool StartQuest()
     {
+        if (questStaus != QuestStatus.Available)
+        {
+            Debug.LogWarning("trying to start a quest in progress or completed");
+            return false;
+        }
         if (!WaittingQuestData.QuestRequiments.Ismet(PeopleAssgined.ToArray()))
         {
             return false;
@@ -121,10 +147,29 @@ public class WaittingQuest : AbstractQuest {
 
         for (int i = 0; i < QuestData.reward.people.Length; i++)
         {
-            PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom,QuestData.reward.people[i]);
+            PrefabSpawner.Instance.SpawnPerson(GlobalStats.Instance.QuestRoom, QuestData.reward.people[i]);
         }
 
-        AlertManager.Instance.SendAlert(new Alert("Quest Complet",QuestData.Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
+        AlertManager.Instance.SendAlert(new Alert("Quest Complet", QuestData.Title, OpenAlertQuest, Alert.AlertPrority.low, Icons.GetMiscUIIcon(UIIcons.QuestComplete)));
     }
+
+    public WaittingQuestSaveData Save()
+    {
+        WaittingQuestSaveData saveData = new WaittingQuestSaveData(this);
+        saveData.Save();
+        return saveData;
+    }
+
+    public void Load(string path)
+    {
+        // if(data.)
+
+    }
+
+    public void Load(WaittingQuestSaveData data)
+    {
+
+    }
+
 }
 

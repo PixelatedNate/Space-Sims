@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public abstract class AbstractRoom : MonoBehaviour, IInteractables
+public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<RoomSaveData>
 {
 
     [SerializeField]
@@ -33,7 +33,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     [SerializeField]
     private RoomType _roomType;
     public RoomType RoomType { get { return _roomType; } }
-    private int Level { get; set; } = 0;
+    public int Level { get; private set; } = 0;
     public RoomStats RoomStat { get { return _roomlevels[Level]; } }
     public bool IsUnderConstruction { get; private set; }
     public TimeDelayManager.Timer ConstructionTimer { get; private set; }
@@ -55,7 +55,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     protected bool isRoomActive { get; set; } = false;
 
-    private TimeDelayManager.Timer _buildTimer;
+    //private TimeDelayManager.Timer _buildTimer;
 
 
     private Vector3Int offset = new Vector3Int(4, -5, 0);
@@ -186,7 +186,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
                 setRoomActive(false);
                 if (IsUnderConstruction)
                 {
-                    PauseConstructionTimer(_buildTimer);
+                    PauseConstructionTimer(ConstructionTimer);
                 }
             }
         }
@@ -404,7 +404,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
 
     private void AbleToSkipRoom()
     {
-        TimeDelayManager.Instance.RemoveTimer(_buildTimer);
+        TimeDelayManager.Instance.RemoveTimer(ConstructionTimer);
         ConstructionCompleat();
     }
 
@@ -426,11 +426,11 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
         IsUnderConstruction = true;
         _underConstructionBanner.SetActive(true);
         GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
-        _buildTimer = new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat);
-        ConstructionTimer = TimeDelayManager.Instance.AddTimer(_buildTimer);
+        ConstructionTimer = new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat);
+        // ConstructionTimer = TimeDelayManager.Instance.AddTimer(_buildTimer);
         if (Workers.Count == 0)
         {
-            PauseConstructionTimer(_buildTimer);
+            PauseConstructionTimer(ConstructionTimer);
             //   ConstructionTimer.PauseTimer();
         }
         UpdateRoomStats();
@@ -439,7 +439,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     {
         IsUnderConstruction = false;
         _underConstructionBanner.SetActive(false);
-        _buildTimer = null;
+        ConstructionTimer = null;
         if (Workers.Count != 0)
         {
             setRoomActive(true);
@@ -514,5 +514,43 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables
     public void OnHoldRelease() { }
 
     #endregion
+
+    #region Savable
+
+    public RoomSaveData Save()
+    {
+        RoomSaveData data = new RoomSaveData(this);
+        data.Save();
+        return data;
+    }
+
+    public void Load(string path)
+    {
+        RoomSaveData data = SaveSystem.LoadData<RoomSaveData>(path);
+        Load(data);
+
+    }
+    public void Load(RoomSaveData data)
+    {
+        this.Level = data.level;
+        this.RoomPosition = new Vector3Int(data.roomPosition[0], data.roomPosition[1], data.roomPosition[2]);
+        this.IsUnderConstruction = data.UnderCostruction;
+        if (data.UnderCostruction)
+        {
+            _underConstructionBanner.SetActive(true);
+            string Timmerpath = SaveSystem.TimerPath + "/" + data.ConstructionTimerId + SaveSystem.TimerPrefix;
+            TimerSaveData timerData = SaveSystem.LoadData<TimerSaveData>(Timmerpath);
+            ConstructionTimer = new TimeDelayManager.Timer(timerData, ConstructionCompleat);
+            if (timerData.IsPause)
+            {
+                AlertManager.Instance.SendAlert(constructionPusedAlert);
+            }
+        }
+    }
+
+
+
+    #endregion
+
 
 }

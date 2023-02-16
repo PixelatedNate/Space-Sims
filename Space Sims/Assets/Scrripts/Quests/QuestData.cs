@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class QuestData : ScriptableObject
@@ -42,14 +40,14 @@ public abstract class QuestData : ScriptableObject
 
     [SerializeField]
     public string Title;
-    
+
     [SerializeField]
     public string Description;
 
     [SerializeField]
     public Reward reward = new Reward();
 
-    public abstract AbstractQuest CreateQuest(QuestLine questline = null);    
+    public abstract AbstractQuest CreateQuest(QuestLine questline = null);
 
 }
 

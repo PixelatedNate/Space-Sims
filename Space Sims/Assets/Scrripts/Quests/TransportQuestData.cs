@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Quests/TransportQuest", order = 1)]
@@ -12,7 +10,7 @@ public class TransportQuestData : QuestData
 
     public override AbstractQuest CreateQuest(QuestLine questline = null)
     {
-        var quest = new TransportQuest(this,questline);
+        var quest = new TransportQuest(this, questline);
         return quest;
     }
 }

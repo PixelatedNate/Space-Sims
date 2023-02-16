@@ -4,7 +4,7 @@ using UnityEngine;
 public class TimeTickSystem : MonoBehaviour
 {
 
-    private const float TICK_TIMER = 1f;
+    public const float TICK_TIMER = 1f;
     private const float MAJOR_TICK_TIMER = 5f;
 
     private float tickTimer;

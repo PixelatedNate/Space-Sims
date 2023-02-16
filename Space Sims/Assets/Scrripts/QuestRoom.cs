@@ -11,7 +11,6 @@ public class QuestRoom : AbstractRoom
     {
         IntisaliseRoom();
         GlobalStats.Instance.PlyaerRooms.Add(this);
-        GlobalStats.Instance.QuestRoom = this;
     }
 
     public override bool AddWorker(Person person)

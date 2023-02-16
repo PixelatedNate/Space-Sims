@@ -25,9 +25,9 @@ public class PersonTemplate : ScriptableObject
     public short MaxAge;
     [SerializeField]
     public Skills MinSkills = new Skills();
-    
+
     [SerializeField]
-    public Skills MaxSkills  = new Skills();
+    public Skills MaxSkills = new Skills();
 
     [SerializeField]
     public bool RandomHead;

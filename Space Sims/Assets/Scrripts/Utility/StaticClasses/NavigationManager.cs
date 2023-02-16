@@ -1,11 +1,14 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public static class NavigationManager
 {
+
+    public static Dictionary<PlanetData, PlanetContainer> PlanetList { get; set; } = new Dictionary<PlanetData, PlanetContainer>();
     public static bool InNavigation { get; private set; } = false;
 
-    private static TimeDelayManager.Timer _navTimer;
+    public static TimeDelayManager.Timer _navTimer;
 
     public static float UniversSpeedModifyer = 0.25f;
 
@@ -45,7 +48,7 @@ public static class NavigationManager
     {
         InNavigation = false;
         CurrentPlanet = TargetPlanet;
-      //  QuestManager.SetAvalibleQuest(CurrentPlanetQuests);
+        //  QuestManager.SetAvalibleQuest(CurrentPlanetQuests);
         TargetPlanet = null;
         BackgroundManager.Instance.setBackground(CurrentPlanet.planetData.Background);
         ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, true);
@@ -62,7 +65,43 @@ public static class NavigationManager
         }
     }
 
+    public static void Load(NavigationSaveData saveData)
+    {
+        InNavigation = saveData.InNavigation;
 
+        foreach(string s in saveData.planetId)
+        {
+            PlanetConttainerSaveData planetContainerSaveData = SaveSystem.LoadData<PlanetConttainerSaveData>(SaveSystem.PlanetPath + "/" + s + SaveSystem.PlanetPrefix);
+            PlanetContainer plantContaire = new PlanetContainer(planetContainerSaveData);
+            PlanetList.Add(plantContaire.planetData, plantContaire);
+            
+            if(s == saveData.currentPlanetNameId)
+            {
+                CurrentPlanet = plantContaire;
+            }
+            if(s == saveData.TargetPalnetNameId)
+            {
+                TargetPlanet = plantContaire;
+            }
+            if(s == saveData.PreviousPalnetNameId)
+            {
+                PreviousPlanet = plantContaire;
+            }
+
+        }
+
+        if(InNavigation)
+        {
+            _navTimer = TimeDelayManager.Timer.ReconstructTimer(saveData.timmerId, ArriveAtPlanet);
+            BackgroundManager.Instance.setBackgroundToInTransit();
+            UIManager.Instance.TrackNavTimer(_navTimer, TargetPlanet);
+            ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, false);
+        }
+        else if(CurrentPlanet != null)
+        {
+            BackgroundManager.Instance.setBackground(CurrentPlanet.planetData.Background);
+        }
+    }
 
 
     public static TimeSpan CalcualteTravleTime(PlanetContainer b)

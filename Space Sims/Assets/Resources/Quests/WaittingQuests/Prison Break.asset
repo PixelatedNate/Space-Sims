@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
+  m_Name: Prison Break
+  m_EditorClassIdentifier: 
+  Title: check this out
+  Description: some distrction for new quest
+  reward:
+    people:
+    - {fileID: 11400000, guid: 09ab472e0e065b04c9c7f546a787456e, type: 2}
+    roomBlueprintUnlock: 1
+    roomBlueprint: 1
+  QuestRequiments:
+    Numpeople: 1
+    SkillRequiment: 1
+    skillValueMin: 1
+  PossibleEncounters: []
+  DurationHour: 0
+  DurationMinuits: 0
+  DurationSeconds: 20

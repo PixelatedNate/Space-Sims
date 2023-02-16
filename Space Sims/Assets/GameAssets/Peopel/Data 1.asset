@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RandomName: 1
   PersonName: 
-  RandomGender: 0
+  RandomGender: 1
   Gender: 1
-  RandomRace: 0
+  RandomRace: 1
   Race: 0
   MinAge: 21
   MaxAge: 62
@@ -32,9 +32,9 @@ MonoBehaviour:
     _intelligence: 2
     _wisdom: 2
     _charisma: 5
-  RandomHead: 0
+  RandomHead: 1
   Head: {fileID: 21300000, guid: 79ec958aa10e76f458468574de600b77, type: 3}
-  RandomBody: 0
+  RandomBody: 1
   Body: {fileID: 21300000, guid: 0f1d7afb6a5c3d5428ff2930021e11b3, type: 3}
   RandomCloths: 1
   Clothes: {fileID: 21300000, guid: d8d2cca0268a5bb45a84e034e1ed1dbb, type: 3}

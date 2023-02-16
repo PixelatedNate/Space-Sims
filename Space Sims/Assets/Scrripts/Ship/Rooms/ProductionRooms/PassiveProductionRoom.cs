@@ -53,11 +53,6 @@ public class PassiveProductionRoom : AbstractRoom
     }
     #endregion
 
-    public override void IntisaliseRoom()
-    {
-        SetUpkeepAndOutPut();
-    }
-
     void Start()
     {
         IntisaliseRoom();
@@ -65,6 +60,11 @@ public class PassiveProductionRoom : AbstractRoom
         UpdateRoomStats();
         SetWallColor(SkillColourMap.GetSkillColour(DesiredSkill));
     }
+    public override void IntisaliseRoom()
+    {
+        SetUpkeepAndOutPut();
+    }
+
 
     private void SetUpkeepAndOutPut()
     {

@@ -34,8 +34,12 @@ public class RoomGridManager : MonoBehaviour
     GameObject DownWing;
 
 
+    //  [SerializeField]
+    //   PersonTemplate[] StartingPeople;
+
     [SerializeField]
-    PersonTemplate[] StartingPeople;
+    PersonTemplate StartingPeople;
+
 
     void Awake()
     {
@@ -52,21 +56,50 @@ public class RoomGridManager : MonoBehaviour
     void Start()
     {
         roomGrid = GetComponent<Grid>();
-        AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
-        AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
 
-        foreach (PersonTemplate personTemplate in StartingPeople)
+        LoadRooms();
+
+        //  foreach (PersonTemplate personTemplate in StartingPeople)
+        //    {
+        //   PrefabSpawner.Instance.SpawnPerson(fistRoom, personTemplate);
+        //   }
+    }
+
+    private void LoadRooms()
+    {
+        RoomSaveData[] roomData = SaveSystem.GetAllSavedRoomData();
+        if (roomData.Length == 0)
         {
-            PrefabSpawner.Instance.SpawnPerson(fistRoom, personTemplate);
+            AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
+            AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
+            PrefabSpawner.Instance.SpawnPerson(fistRoom, StartingPeople);
+
+        }
+        else
+        {
+            foreach (RoomSaveData data in roomData)
+            {
+                Vector3Int position = new Vector3Int(data.roomPosition[0], data.roomPosition[1], data.roomPosition[2]);
+                AbstractRoom room = BuildNewRoom(position, (RoomType)data.roomType);
+                room.Load(data);
+                foreach (string personId in data.PeopleIds)
+                {
+                    var personpath = SaveSystem.PeoplePath + "/" + personId + ".person";
+                    PersonSaveData personData = SaveSystem.LoadData<PersonSaveData>(personpath);
+                    PrefabSpawner.Instance.SpawnPerson(room, new PersonInfo(personData));
+                }
+            }
+            QuestManager.LoadQuests();
+            GlobalStatsSaving saveStatas = SaveSystem.LoadData<GlobalStatsSaving>(SaveSystem.SaveStatsPath);
+            Debug.Log(saveStatas.PlayerFood);
+            GlobalStats.Instance.LoadData(saveStatas);
+            NavigationSaveData navSaveData  = SaveSystem.LoadData<NavigationSaveData>(SaveSystem.NavigationSavePath);
+            NavigationManager.Load(navSaveData);
         }
 
 
-
-        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
-        //PrefabSpawner.Instance.SpawnPerson(fistRoom);
     }
+
 
     #region PublicMethods
 
@@ -133,7 +166,6 @@ public class RoomGridManager : MonoBehaviour
     {
 
         // DOSN'T NOT SUPORT BUILD NEW ROOMS NON STANDERED SIZE DUE TO POSILBE OVERIDING EXSISTING ROOMS unless checked/sure manualy, i.e at frist spawn
-
         if (RoomList.ContainsKey(cellPosition))
         {
             return null;
@@ -142,6 +174,13 @@ public class RoomGridManager : MonoBehaviour
         //Spawn the room Prefab and set up the room.
         GameObject newRoom = PrefabSpawner.Instance.SpawnRoom(roomType);
         newRoom.transform.parent = transform;
+
+        if (roomType == RoomType.QuestRoom)
+        {
+            QuestRoom questRoomScript = newRoom.GetComponent<QuestRoom>();
+            GlobalStats.Instance.QuestRoom = questRoomScript;
+        }
+
         AbstractRoom newRoomScript = newRoom.GetComponent<AbstractRoom>();
         Vector3 cellCenter = roomGrid.GetCellCenterWorld(cellPosition);
         Vector3 newPos = cellCenter;
