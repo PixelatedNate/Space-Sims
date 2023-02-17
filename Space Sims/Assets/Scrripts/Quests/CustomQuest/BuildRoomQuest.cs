@@ -2,9 +2,10 @@ using System;
 
 public class BuildRoomQuest : AbstractQuest, ISaveable<BuildRoomSaveData>
 {
-    public BuildRoomQuest(BuildRoomData buildRoomData)
+    public BuildRoomQuest(BuildRoomData buildRoomData, QuestLine questLine)
     {
         this.buildRoomData = buildRoomData;
+        this.questLine = questLine;
     }
 
     public BuildRoomQuest(BuildRoomSaveData buildRoomSaveData)

@@ -10,30 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Q3
+  m_Name: FirstTestQuest
   m_EditorClassIdentifier: 
-  Title: Q3
-  Description: Random Side quest
+  Title: 'test '
+  Description: test 2
   reward:
     GameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 1000
       Premimum: 0
     people:
-    - {fileID: 11400000, guid: c869c2de1f93bee4e87f66c4c0bde548, type: 2}
-    roomBlueprintUnlock: 0
-    roomBlueprint: 3
+    - {fileID: 11400000, guid: 2e59742630d87b44692de592ab7006b7, type: 2}
+    roomBlueprintUnlock: 1
+    roomBlueprint: 0
   QuestRequiments:
     Numpeople: 1
     SkillRequiment: 1
-    skillValueMin: 8
+    skillValueMin: 1
   PossibleEncounters: []
   DurationHour: 0
-<<<<<<<< HEAD:Space Sims/Assets/Resources/Quests/WaittingQuests/Prison Break.asset
   DurationMinuits: 0
-  DurationSeconds: 20
-========
-  DurationMinuits: 3
-  DurationSeconds: 0
->>>>>>>> Main_Knapps:Space Sims/Assets/GameAssets/Quest/SideQuest/Q3.asset
+  DurationSeconds: 5

@@ -528,7 +528,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -552,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 5, y: 8.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -720,7 +720,7 @@ PrefabInstance:
     - target: {fileID: 944651634355311858, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
       propertyPath: StartingPeople
       value: 
-      objectReference: {fileID: 11400000, guid: 94938c8a41a5ce34c8d06965d52e8aec, type: 2}
+      objectReference: {fileID: 11400000, guid: c783797f1f261554cbc2cdd56f79af54, type: 2}
     - target: {fileID: 944651634355311858, guid: ff07f1597ba0f0f4caf9b17383ddf2ca, type: 3}
       propertyPath: _buildRoomTemplate
       value: 

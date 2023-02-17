@@ -10,6 +10,7 @@ public class QuestListItemView : MonoBehaviour
     public void setQuest(AbstractQuest quest)
     {
         title.text = quest.QuestData.Title;
+        this.name = quest.QuestData.name;
 
         if (quest.GetType() == typeof(WaittingQuest))
         {

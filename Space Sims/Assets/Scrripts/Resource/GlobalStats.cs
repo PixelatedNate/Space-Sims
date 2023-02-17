@@ -106,6 +106,11 @@ public class GlobalStats : MonoBehaviour
 
     }
 
+    public AbstractRoom[] GetAllPlyerRoomsOfType(RoomType roomType)
+    {
+        return PlyaerRooms.FindAll(r => r.RoomType == roomType).ToArray();
+    }
+
     public void LoadData(GlobalStatsSaving saveData)
     {
         GameResources saveResourceData = new GameResources() {
