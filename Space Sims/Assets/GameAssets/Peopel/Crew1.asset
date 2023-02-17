@@ -10,31 +10,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83372185c486aab42886c8b975b64a51, type: 3}
-  m_Name: Data
+  m_Name: Crew1
   m_EditorClassIdentifier: 
-  RandomName: 0
+  RandomName: 1
   PersonName: Jeff
   RandomGender: 0
   Gender: 0
   RandomRace: 0
-  Race: 5
-  MinAge: 41
-  MaxAge: 59
+  Race: 6
+  MinAge: 23
+  MaxAge: 50
   MinSkills:
-    _strength: 1
-    _dexterity: 7
-    _intelligence: 0
-    _wisdom: 1
-    _charisma: 0
+    _strength: 5
+    _dexterity: 5
+    _intelligence: 5
+    _wisdom: 5
+    _charisma: 5
   MaxSkills:
-    _strength: 6
-    _dexterity: 9
-    _intelligence: 6
-    _wisdom: 2
-    _charisma: 10
+    _strength: 5
+    _dexterity: 5
+    _intelligence: 5
+    _wisdom: 5
+    _charisma: 5
   RandomHead: 0
-  Head: {fileID: 21300000, guid: 0a59b109a859aa74c8bb8dcf64f2a304, type: 3}
-  RandomBody: 1
-  Body: {fileID: 21300000, guid: 2c4cfe4ec4d6e6643ac61eb3deee293e, type: 3}
+  Head: {fileID: 21300000, guid: 4e6f7c48400d38c4595f5a6a7bdad5b1, type: 3}
+  RandomBody: 0
+  Body: {fileID: 21300000, guid: 307e71d184f2bc0488bb8be7c9c7577e, type: 3}
   RandomCloths: 0
-  Clothes: {fileID: 21300000, guid: a90b17e51f268db41bb81225485253b4, type: 3}
+  Clothes: {fileID: 21300000, guid: 1d4580fbbcddd5a45aadba03df201c95, type: 3}

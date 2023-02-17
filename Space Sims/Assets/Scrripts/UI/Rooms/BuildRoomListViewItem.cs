@@ -32,7 +32,7 @@ public class BuildRoomListViewItem : MonoBehaviour
     private void OnTick(object source, EventArgs e)
     {
         Color c = _buttonImg.color;
-        if (GlobalStats.Instance.PlayerResources >= _room.RoomStat.BuildCost)
+        if (GlobalStats.Instance.PlayerResources >= getCost())
         {
             c.a = 0;
         }
@@ -62,9 +62,9 @@ public class BuildRoomListViewItem : MonoBehaviour
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
             return;
         }
-        if (GlobalStats.Instance.PlayerResources >= _room.RoomStat.BuildCost)
+        if (GlobalStats.Instance.PlayerResources >= getCost())
         {
-            GlobalStats.Instance.PlayerResources -= _room.RoomStat.BuildCost;
+            GlobalStats.Instance.PlayerResources -=  getCost();
             AbstractRoom newRoom = RoomGridManager.Instance.BuildNewRoom(RoomPosition, _room.RoomType);
             UIManager.Instance.DeselectAll();
             newRoom.BuildRoom();
@@ -79,6 +79,12 @@ public class BuildRoomListViewItem : MonoBehaviour
         }
     }
 
+    private GameResources getCost()
+    {
+        float cost = _room.RoomStat.BuildCost.Minerals + (_room.RoomStat.BuildCost.Minerals * _room.RoomCostModifyer * GlobalStats.Instance.GetAllPlyerRoomsOfType(_room.RoomType).Length);
+        int intcost = Mathf.FloorToInt(cost);
+        return new GameResources(ResourcesEnum.Minerals, intcost);
+    }
 
     public void SetRoomLocked()
     {
@@ -98,7 +104,7 @@ public class BuildRoomListViewItem : MonoBehaviour
         LockedView.SetActive(false);
         _roomName.text = _room.RoomName;
         _roomDiscription.text = _room.RoomDiscription;
-        _buildCost.text = _room.RoomStat.BuildCost.Minerals.ToString();
+        _buildCost.text = getCost().Minerals.ToString();
 
         TimeSpan buildTime = new TimeSpan(0, (int)_room.RoomStat.BuildTime, 0);
         _buildTimeText.text = buildTime.ToString();

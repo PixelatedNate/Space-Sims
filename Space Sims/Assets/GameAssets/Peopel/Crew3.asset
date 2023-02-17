@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83372185c486aab42886c8b975b64a51, type: 3}
+  m_Name: Crew3
+  m_EditorClassIdentifier: 
+  RandomName: 1
+  PersonName: 
+  RandomGender: 0
+  Gender: 1
+  RandomRace: 0
+  Race: 8
+  MinAge: 25
+  MaxAge: 39
+  MinSkills:
+    _strength: 2
+    _dexterity: 2
+    _intelligence: 8
+    _wisdom: 2
+    _charisma: 2
+  MaxSkills:
+    _strength: 2
+    _dexterity: 2
+    _intelligence: 8
+    _wisdom: 2
+    _charisma: 2
+  RandomHead: 0
+  Head: {fileID: 21300000, guid: 20dbde7bd5adf4949a0c3956c1f6b582, type: 3}
+  RandomBody: 0
+  Body: {fileID: 21300000, guid: 662625183b2417241bcba5cc4753333d, type: 3}
+  RandomCloths: 0
+  Clothes: {fileID: 21300000, guid: 0e3d2c6bab1a6504993903c3e9f18fd9, type: 3}

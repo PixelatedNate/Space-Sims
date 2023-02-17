@@ -11,7 +11,8 @@ public abstract class QuestData : ScriptableObject
             GameResourcesReward = new GameResources();
         }
 
-        public GameResources GameResourcesReward { get; set; }
+        [SerializeField]
+        public GameResources GameResourcesReward;
 
         [SerializeField]
         public PersonTemplate[] people;
