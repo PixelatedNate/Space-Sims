@@ -190,6 +190,7 @@ public class PersonInfo : ISaveable<PersonSaveData>
         var newTemplate = PrefabSpawner.Instance.SpawnPerson();
         newTemplate.transform.position = Room.transform.position;
         PersonMonoBehaviour = newTemplate.GetComponent<Person>();
+        Room.Workers.Add(this);
         PersonMonoBehaviour.AssginPerson(this);
     }
 
