@@ -101,7 +101,10 @@ public class PersonInfo : ISaveable<PersonSaveData>
             Charisma = saveData.charisma,
         };
 
-        this.SkinColor = PersonSkin.GetRandomColor(this.Race);
+        //this.SkinColor = PersonSkin.GetRandomColor(this.Race);
+
+        this.SkinColor = new Color(saveData.r, saveData.g, saveData.b);
+
         this.Head = ResourceHelper.PersonHelper.GetHeadFromSpriteName(this, saveData.HeadName);
         this.Body = ResourceHelper.PersonHelper.GetBodyFromSpriteName(this, saveData.BodyName);
         this.Clothes = ResourceHelper.PersonHelper.GetClothsFromSpriteName(this, saveData.ClothsName);

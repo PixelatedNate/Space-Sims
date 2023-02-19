@@ -29,6 +29,11 @@ public class PersonSaveData
     public string BodyName;
     public string ClothsName;
 
+
+    public float r;
+    public float g;
+    public float b;
+
     public PersonSaveData(PersonInfo personInfo)
     {
         this.personId = System.Guid.NewGuid().ToString();
@@ -53,6 +58,9 @@ public class PersonSaveData
         this.BodyName = personInfo.Body.name;
         this.ClothsName = personInfo.Clothes.name;
 
+        this.r = personInfo.SkinColor.r;
+        this.g = personInfo.SkinColor.g;
+        this.b = personInfo.SkinColor.b;
     }
 
 }
