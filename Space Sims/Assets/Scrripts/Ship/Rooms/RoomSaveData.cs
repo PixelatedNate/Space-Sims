@@ -27,7 +27,7 @@ public class RoomSaveData
 
         if (room.IsUnderConstruction)
         {
-            TimerSaveData data = room.ConstructionTimer.Save();
+            TimerSaveData data = room.ConstructionTimer.Save("Room Built"," Your new " + room.RoomType.ToString() + " room has been built");
             this.ConstructionTimerId = data.ID;
         }
         else

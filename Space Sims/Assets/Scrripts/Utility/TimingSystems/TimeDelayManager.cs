@@ -85,12 +85,25 @@ public class TimeDelayManager : MonoBehaviour
             this.TotalDuration = duration;
             this.EndMethod = endMethod;
         }
+
         public TimerSaveData Save()
         {
             TimerSaveData data = new TimerSaveData(this);
             data.Save();
             return data;
         }
+
+        public TimerSaveData Save(string notificationTitle, string notificationText)
+        {
+            TimerSaveData data = new TimerSaveData(this);
+            data.Save();
+            if (!this.IsPause)
+            {
+                MobilePushNotification.Instance.sendNotificationNow(notificationTitle, notificationText, (float)RemainingDuration.TotalSeconds);
+            }
+            return data;
+        }
+
 
         public void Load(string Path)
         {
