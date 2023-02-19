@@ -88,7 +88,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: NavTutorial
+    m_ConditionEvent: Blink
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -3340519567579447024}
@@ -113,7 +113,7 @@ AnimatorController:
   m_Name: Right_Top
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: NavTutorial
+  - m_Name: Blink
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -141,7 +141,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: NavTutorial
+    m_ConditionEvent: Blink
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8911458231987728023}

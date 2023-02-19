@@ -19,16 +19,16 @@ MonoBehaviour:
     GameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 1000
       Premimum: 0
     people:
-    - {fileID: 11400000, guid: feffff737f6f864408476d3e78c4af3a, type: 2}
+    - {fileID: 11400000, guid: 2e59742630d87b44692de592ab7006b7, type: 2}
     roomBlueprintUnlock: 1
     roomBlueprint: 0
   QuestRequiments:
     Numpeople: 1
-    SkillRequiment: 1
-    skillValueMin: 1
+    SkillRequiment: 5
+    skillValueMin: 5
   PossibleEncounters: []
   DurationHour: 0
   DurationMinuits: 1

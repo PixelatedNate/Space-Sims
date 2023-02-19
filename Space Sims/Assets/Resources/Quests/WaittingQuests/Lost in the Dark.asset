@@ -10,25 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Q5
+  m_Name: Lost in the Dark
   m_EditorClassIdentifier: 
-  Title: Q5
-  Description: Random Side quest
+  Title: Lost in the Dark
+  Description: If we're going to get this ship running we are going to need fuel.
+    See if you can find some blueprints to build us a fuel room yeah?
   reward:
     GameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 1000
       Premimum: 0
     people:
-    - {fileID: 11400000, guid: c869c2de1f93bee4e87f66c4c0bde548, type: 2}
-    roomBlueprintUnlock: 0
-    roomBlueprint: 3
+    - {fileID: 11400000, guid: 26f1f5890e096ea44a7b5a3fb697d692, type: 2}
+    roomBlueprintUnlock: 1
+    roomBlueprint: 1
   QuestRequiments:
     Numpeople: 1
-    SkillRequiment: 1
-    skillValueMin: 8
+    SkillRequiment: 5
+    skillValueMin: 5
   PossibleEncounters: []
   DurationHour: 0
-  DurationMinuits: 3
-  DurationSeconds: 0
+  DurationMinuits: 0
+  DurationSeconds: 30

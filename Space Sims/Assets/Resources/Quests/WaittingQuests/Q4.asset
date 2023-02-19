@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Q2
+  m_Name: Q4
   m_EditorClassIdentifier: 
-  Title: Q2
+  Title: Q4
   Description: Random Side quest
   reward:
     GameResourcesReward:
@@ -21,12 +21,12 @@ MonoBehaviour:
       Minerals: 0
       Premimum: 0
     people:
-    - {fileID: 11400000, guid: c869c2de1f93bee4e87f66c4c0bde548, type: 2}
+    - {fileID: 11400000, guid: c640e90fba54215448ee89134c38ffbb, type: 2}
     roomBlueprintUnlock: 0
     roomBlueprint: 3
   QuestRequiments:
     Numpeople: 1
-    SkillRequiment: 3
+    SkillRequiment: 1
     skillValueMin: 8
   PossibleEncounters: []
   DurationHour: 0

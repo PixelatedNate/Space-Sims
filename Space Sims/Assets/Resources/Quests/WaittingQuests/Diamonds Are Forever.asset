@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: Lost in the Dark
+  m_Name: Diamonds Are Forever
   m_EditorClassIdentifier: 
-  Title: Lost in the Dark
-  Description: If we're going to get this ship running we are going to need fuel.
-    See if you can find some blueprints to build us a fuel room yeah?
+  Title: Diamonds Are Forever
+  Description: Get them sparkle clicky clackies....just uhh find us some Mineral
+    Room blueprints.
   reward:
     GameResourcesReward:
       Fuel: 0
@@ -22,14 +22,14 @@ MonoBehaviour:
       Minerals: 1000
       Premimum: 0
     people:
-    - {fileID: 11400000, guid: 521115656601daa41a7795c1d92cadd1, type: 2}
+    - {fileID: 11400000, guid: 308cc64455d112f46832fd1c298c0f6f, type: 2}
     roomBlueprintUnlock: 1
-    roomBlueprint: 1
+    roomBlueprint: 2
   QuestRequiments:
     Numpeople: 1
     SkillRequiment: 5
     skillValueMin: 5
   PossibleEncounters: []
   DurationHour: 0
-  DurationMinuits: 0
-  DurationSeconds: 30
+  DurationMinuits: 2
+  DurationSeconds: 0

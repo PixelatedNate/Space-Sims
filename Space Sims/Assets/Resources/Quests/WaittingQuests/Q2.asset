@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: FirstTestQuest
+  m_Name: Q2
   m_EditorClassIdentifier: 
-  Title: 'test '
-  Description: test 2
+  Title: Q2
+  Description: Random Side quest
   reward:
     GameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 1000
+      Minerals: 0
       Premimum: 0
     people:
-    - {fileID: 11400000, guid: 2e59742630d87b44692de592ab7006b7, type: 2}
-    roomBlueprintUnlock: 1
-    roomBlueprint: 0
+    - {fileID: 11400000, guid: c640e90fba54215448ee89134c38ffbb, type: 2}
+    roomBlueprintUnlock: 0
+    roomBlueprint: 3
   QuestRequiments:
     Numpeople: 1
-    SkillRequiment: 1
-    skillValueMin: 1
+    SkillRequiment: 3
+    skillValueMin: 8
   PossibleEncounters: []
   DurationHour: 0
-  DurationMinuits: 0
-  DurationSeconds: 5
+  DurationMinuits: 3
+  DurationSeconds: 0
