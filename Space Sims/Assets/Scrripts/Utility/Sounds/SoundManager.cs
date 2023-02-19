@@ -16,6 +16,8 @@ public class SoundManager : MonoBehaviour
         QuestCompleted,
         MetalFootSteps,
         CatChat,
+        BadAlert,
+        GoodAlert
     }
 
 

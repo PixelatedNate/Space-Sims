@@ -48,6 +48,10 @@ public abstract class QuestData : ScriptableObject
     [SerializeField]
     public Reward reward = new Reward();
 
+
+    [SerializeField]
+    public int DialogIndex = -1;
+
     public abstract AbstractQuest CreateQuest(QuestLine questline = null);
 
 }
