@@ -191,21 +191,27 @@ MonoBehaviour:
   - lines: Click on the Available Quest.
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: On the right is your quest data.
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: Click the button to Start the quest.
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: Now we wait for our crew member to finish the job!
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
 --- !u!114 &9479484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7354,35 +7360,45 @@ MonoBehaviour:
   - lines: Welcome to Pocket Space Colony!
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: My name is Greg, not Gregory.. just Greg.
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: I am going to be your guide.
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: Please start by clicking the Quest Icon in the top left of the screen
       and select your first quest.
     button: {fileID: 986678642}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: This is where you can view and see quest
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: Click the Active Quest Button
     button: {fileID: 0}
     AltbuttonName: FirstTestQuest
+    CloseMenuAfter: 0
   - lines: 'this new menu shows more information about quest '
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
   - lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: QuestInsertBox(Clone)
+    CloseMenuAfter: 0
   - lines: Click the button to Start the quest.
     button: {fileID: 1352152931}
     AltbuttonName: 
+    CloseMenuAfter: 1
   - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
       Have a look around at all the menu's whilst we wait for the quest to compleat
     button: {fileID: 0}
     AltbuttonName: 
+    CloseMenuAfter: 0
 --- !u!114 &2069111489 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 435263007812607242, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
