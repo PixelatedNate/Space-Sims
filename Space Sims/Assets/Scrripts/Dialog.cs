@@ -42,16 +42,17 @@ public class Dialog : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (TargetButton == null && Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == linesobj[index].lines)
+            if(textComponent.text == linesobj[index].lines && TargetButton == null)
             {
                 NextLine();
             }
-            else
+            else if(textComponent.text != linesobj[index].lines)
             {
-              //  StopAllCoroutines();
-              //  textComponent.text = lines[index];
+                StopAllCoroutines();
+                textComponent.text = linesobj[index].lines;
+                setButton();
             }
         }
     }
@@ -63,21 +64,23 @@ public class Dialog : MonoBehaviour
     }
     IEnumerator TypeLine()
     {
-        foreach (char c in linesobj[index].lines.ToCharArray())
+          foreach (char c in linesobj[index].lines.ToCharArray())
         {
             SoundManager.Instance.PlaySound(SoundManager.Sound.CatChat);
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
-        TargetButton = linesobj[index].button;
-        
-        if(linesobj[index].AltbuttonName != "")
-        {
-            TargetButton = GameObject.Find(linesobj[index].AltbuttonName).GetComponent<Button>();
-        }
+        setButton();
+       
+    }
 
+
+    public void setButton()
+    {
         if(TargetButton != null)
         {
+            TargetButton.enabled = true;
+
             TargetButton.onClick.AddListener(NextLine);
             if (TargetButton.GetComponent<Animator>() == null)
             {
@@ -88,7 +91,11 @@ public class Dialog : MonoBehaviour
                 TargetButton.GetComponent<Animator>().SetBool("Blink", true);
             }
         }
+
     }
+
+
+
     void NextLine()
     {
         if (TargetButton != null)
@@ -108,7 +115,23 @@ public class Dialog : MonoBehaviour
         {
             index++;
             textComponent.text = string.Empty;
+            TargetButton = linesobj[index].button;
+
+            if(linesobj[index].AltbuttonName != "")
+           {
+               TargetButton = GameObject.Find(linesobj[index].AltbuttonName).GetComponent<Button>();
+           }
+    
+           if(TargetButton != null)
+           {
+               TargetButton.enabled = false;
+           }
+  
+            
             StartCoroutine(TypeLine());
+
+
+
         }
         else
         {
