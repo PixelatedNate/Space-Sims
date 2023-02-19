@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 9479484}
   - component: {fileID: 9479483}
   m_Layer: 5
-  m_Name: Dialog_2
+  m_Name: Already Used
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,27 +191,21 @@ MonoBehaviour:
   - lines: Click on the Available Quest.
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
   - lines: On the right is your quest data.
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
   - lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
   - lines: Click the button to Start the quest.
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
   - lines: Now we wait for our crew member to finish the job!
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
   - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
 --- !u!114 &9479484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -631,7 +625,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogChat:
   - {fileID: 2036965736}
-  - {fileID: 9479481}
   - {fileID: 120875822}
   - {fileID: 1623260078}
   - {fileID: 1517099129}
@@ -805,7 +798,7 @@ GameObject:
   - component: {fileID: 120875825}
   - component: {fileID: 120875824}
   m_Layer: 5
-  m_Name: Dialog_3
+  m_Name: Dialog_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -855,7 +848,30 @@ MonoBehaviour:
   - Good thing you unlocked that blueprint from the last quest.
   - Select this quest and choose start.
   textSpeed: 0.05
-  linesobj: []
+  linesobj:
+  - lines: Alright time to build your first fuel room.
+    button: {fileID: 0}
+    AltbuttonName: 
+  - lines: Good thing you unlocked that blueprint from the last quest.
+    button: {fileID: 0}
+    AltbuttonName: 
+  - lines: Go ahead and tap on the build icon.
+    button: {fileID: 1644581822}
+    AltbuttonName: 
+  - lines: Choose the location of your new room.
+    button: {fileID: 0}
+    AltbuttonName: 
+  - lines: Choose the room to build, in this case the Fuel room.
+    button: {fileID: 2084151699}
+    AltbuttonName: 
+  - lines: Now you will need to assign a crew member to the room for the construction
+      to complete.
+    button: {fileID: 0}
+    AltbuttonName: 
+  - lines: Go ahead now, tap and hold on to a crew member and drag them to your new
+      room.
+    button: {fileID: 0}
+    AltbuttonName: 
 --- !u!114 &120875825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2641,7 +2657,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9133112860675421945, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
   m_PrefabInstance: {fileID: 9217279126325118338}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &570165476
+--- !u!95 &570165480
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -5515,7 +5531,7 @@ PrefabInstance:
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: startingQuestLines.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 0df3df60eb756974ba1006332e7008c8, type: 2}
+      objectReference: {fileID: 11400000, guid: d2f22cbcf47d1e94dbd7cbca2594c40c, type: 2}
     - target: {fileID: 190188818586086805, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: startingQuestLines.Array.data[1]
       value: 
@@ -5916,6 +5932,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1644581822 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2073627612304912151, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+  m_PrefabInstance: {fileID: 9217279126325118338}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644581817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1654689833
 GameObject:
   m_ObjectHideFlags: 0
@@ -7273,7 +7300,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2036965737
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7360,45 +7387,31 @@ MonoBehaviour:
   - lines: Welcome to Pocket Space Colony!
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
   - lines: My name is Greg, not Gregory.. just Greg.
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
   - lines: I am going to be your guide.
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
   - lines: Please start by clicking the Quest Icon in the top left of the screen
       and select your first quest.
     button: {fileID: 986678642}
     AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: This is where you can view and see quest
+  - lines: Click on the Available Quest.
     button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: Click the Active Quest Button
-    button: {fileID: 0}
-    AltbuttonName: FirstTestQuest
-    CloseMenuAfter: 0
-  - lines: 'this new menu shows more information about quest '
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
+    AltbuttonName: Lost in the Dark
   - lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: QuestInsertBox(Clone)
-    CloseMenuAfter: 0
-  - lines: Click the button to Start the quest.
+  - lines: Choose your crew member.
+    button: {fileID: 0}
+    AltbuttonName: PersonBtn(Clone)
+  - lines: Tap the button to Start the quest.
     button: {fileID: 1352152931}
     AltbuttonName: 
-    CloseMenuAfter: 1
   - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
-      Have a look around at all the menu's whilst we wait for the quest to compleat
     button: {fileID: 0}
     AltbuttonName: 
-    CloseMenuAfter: 0
 --- !u!114 &2069111489 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 435263007812607242, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
@@ -7415,6 +7428,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 435263007812607247, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
   m_PrefabInstance: {fileID: 9217279126325118338}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2084151699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9133112859662519467, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+  m_PrefabInstance: {fileID: 9217279126325118338}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2129079708
 GameObject:
   m_ObjectHideFlags: 0
