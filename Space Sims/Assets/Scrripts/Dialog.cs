@@ -24,6 +24,8 @@ public class Dialog : MonoBehaviour
         public Button button;
         [Tooltip("Ifbutton is not pressent yet in game")]
         public string AltbuttonName;
+        public bool CloseMenuAfter = false;
+
     }
 
     // Start is called before the first frame update
@@ -91,6 +93,11 @@ public class Dialog : MonoBehaviour
     }
     void NextLine()
     {
+        if (linesobj[index].CloseMenuAfter)
+        {
+            UIManager.Instance.DeselectAll();
+        }
+
         if (TargetButton != null)
         {
             TargetButton.onClick.RemoveListener(NextLine);
