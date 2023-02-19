@@ -29,6 +29,8 @@ public class PersonSaveData
     public string BodyName;
     public string ClothsName;
 
+    public float[] skinColourVector3 = new float[3];
+
     public PersonSaveData(PersonInfo personInfo)
     {
         this.personId = System.Guid.NewGuid().ToString();
@@ -52,6 +54,10 @@ public class PersonSaveData
         this.HeadName = personInfo.Head.name;
         this.BodyName = personInfo.Body.name;
         this.ClothsName = personInfo.Clothes.name;
+
+        this.skinColourVector3[0] = personInfo.SkinColor.r;
+        this.skinColourVector3[1] = personInfo.SkinColor.g;
+        this.skinColourVector3[2] = personInfo.SkinColor.b;
 
     }
 
