@@ -305,6 +305,8 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: ff04760a94691cc41a03765f8e1a8382, type: 3}
   - sound: 6
     audioClip: {fileID: 8300000, guid: 97afddbc2baa525489fbcda2014f7e1a, type: 3}
+  - sound: 7
+    audioClip: {fileID: 8300000, guid: b72bdb65371384047bc4e43253ecb5b5, type: 3}
   _voiceSoundAudioClips:
   - sound: 0
     audioClips:

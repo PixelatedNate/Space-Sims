@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class DialogManager : MonoBehaviour
 {
+    public static DialogManager Instance;
+
     public GameObject[] DialogChat;
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    
+    
+    public void StartDiaglogIndex(int i)
     {
-        
+        DialogChat[i].SetActive(true);
     }
+    
 }

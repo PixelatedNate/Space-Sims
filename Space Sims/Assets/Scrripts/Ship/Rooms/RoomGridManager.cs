@@ -73,7 +73,7 @@ public class RoomGridManager : MonoBehaviour
             AbstractRoom fistRoom = BuildNewRoom(Vector3Int.zero, RoomType.CrewQuaters);
             AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
             PrefabSpawner.Instance.SpawnPerson(fistRoom, StartingPeople);
-
+            DialogManager.Instance.StartDiaglogIndex(0);
         }
         else
         {
@@ -94,7 +94,7 @@ public class RoomGridManager : MonoBehaviour
             Debug.Log(saveStatas.PlayerFood);
             GlobalStats.Instance.LoadData(saveStatas);
             NavigationSaveData navSaveData  = SaveSystem.LoadData<NavigationSaveData>(SaveSystem.NavigationSavePath);
-            NavigationManager.Load(navSaveData);
+            NavigationManager.Load(navSaveData);            
         }
 
 
