@@ -5631,7 +5631,7 @@ PrefabInstance:
     - target: {fileID: 4842336659247741131, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: FuelRoomTemplate
       value: 
-      objectReference: {fileID: 4152872870442615271, guid: 233bace08e74f1c4cabec957b004e02a, type: 3}
+      objectReference: {fileID: 4152872870442615271, guid: 8cdf00b575a1b57468ba5b7a3baa9dd8, type: 3}
     - target: {fileID: 4842336659247741131, guid: 6c66632259c058e4f91023b8b55d9c9b, type: 3}
       propertyPath: QuestRoomTemplate
       value: 
@@ -9062,6 +9062,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9133112860675421947, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: _room
+      value: 
+      objectReference: {fileID: -4413028007973865921, guid: 8cdf00b575a1b57468ba5b7a3baa9dd8, type: 3}
     - target: {fileID: 9133112860828290636, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

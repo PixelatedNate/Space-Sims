@@ -430,7 +430,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
         _underConstructionBanner.SetActive(true);
         GlobalStats.Instance.AddorUpdateRoomDelta(this, new GameResources());
         ConstructionTimer = new TimeDelayManager.Timer(DateTime.Now.AddMinutes(_roomlevels[newLevel].BuildTime), ConstructionCompleat);
-        // ConstructionTimer = TimeDelayManager.Instance.AddTimer(_buildTimer);
+        ConstructionTimer = TimeDelayManager.Instance.AddTimer(ConstructionTimer);
         if (Workers.Count == 0)
         {
             PauseConstructionTimer(ConstructionTimer);
