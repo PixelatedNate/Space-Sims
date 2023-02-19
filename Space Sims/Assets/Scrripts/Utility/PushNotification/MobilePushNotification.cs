@@ -34,24 +34,32 @@ public class MobilePushNotification : MonoBehaviour
     void Start()
     {
         AndroidNotificationCenter.RegisterNotificationChannel(taskCompleteChannel);
-        sendNotification("Test", "this is a test");
-        sendNotification("Test", "this is a test", 15);
-        sendNotification("Test", "this is a test", 60);
-
+     //   sendNotification("Test", "this is a test");
+     //   sendNotification("Test", "this is a test", 15);
+    //    sendNotification("Test", "this is a test", 60);
+        AndroidNotificationCenter.CancelAllScheduledNotifications();
 
     }
 
 
-    public void sendNotification(string title, string text, float firetimeSeconds = 0)
+    public void sendNotificationNow(string title, string text, float firetimeSeconds = 0)
     {
         var notification = new AndroidNotification();
         notification.Title = title;
         notification.Text = text;
         notification.FireTime = System.DateTime.Now.AddSeconds(firetimeSeconds + 1);
         notifications.Add(notification);
+        AndroidNotificationCenter.SendNotification(notification, "channel_taskComplete");
     }
-
-
+    public AndroidNotification sendNotification(string title, string text, float firetimeSeconds = 0)
+    {
+        var notification = new AndroidNotification();
+        notification.Title = title;
+        notification.Text = text;
+        notification.FireTime = System.DateTime.Now.AddSeconds(firetimeSeconds + 1);
+        notifications.Add(notification);
+        return notification;
+    }
 
 
 #if UNITY_ANDROID || UNITY_EDITOR
@@ -69,6 +77,8 @@ public class MobilePushNotification : MonoBehaviour
             notifications.Clear();
         }
     }
+
+
 
 #endif
 

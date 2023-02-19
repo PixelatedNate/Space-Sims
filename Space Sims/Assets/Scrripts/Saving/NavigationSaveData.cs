@@ -53,6 +53,8 @@ public class NavigationSaveData {
         {
             TimerSaveData timmerData = NavigationManager._navTimer.Save();
             this.timmerId = timmerData.ID;
+            MobilePushNotification.Instance.sendNotificationNow("Arrived at planet", "your ship has arrived at it's destonations", (float)NavigationManager._navTimer.RemainingDuration.TotalSeconds)
+
         }
 
       }

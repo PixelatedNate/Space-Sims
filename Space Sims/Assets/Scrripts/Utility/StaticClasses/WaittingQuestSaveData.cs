@@ -33,6 +33,10 @@ public class WaittingQuestSaveData : AbstractQuestSaveData
         {
             TimerSaveData data = quest.QuestTimer.Save();
             this.timmerId = data.ID;
+            if(!data.IsPause)
+            {
+                MobilePushNotification.Instance.sendNotificationNow("Quest Compleated", "Your quest " + quest.QuestData.name + " has been compleated",(float)quest.QuestTimer.RemainingDuration.TotalSeconds);
+            }
         }
     }
 

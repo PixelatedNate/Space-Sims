@@ -98,6 +98,7 @@ public static class SaveSystem
         var path = TimerPath + "/" + timerData.ID.ToString() + TimerPrefix;
         SaveData<TimerSaveData>(timerData, path);
     }
+
     public static void Save(this GlobalStatsSaving data)
     {
         SaveData<GlobalStatsSaving>(data, SaveStatsPath);
