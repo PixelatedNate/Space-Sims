@@ -25,6 +25,7 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 308cc64455d112f46832fd1c298c0f6f, type: 2}
     roomBlueprintUnlock: 1
     roomBlueprint: 2
+  DialogIndex: -1
   QuestRequiments:
     Numpeople: 1
     SkillRequiment: 5

@@ -625,7 +625,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DialogChat:
   - {fileID: 2036965736}
-  - {fileID: 9479481}
   - {fileID: 120875822}
   - {fileID: 1623260078}
   - {fileID: 1517099129}
@@ -863,8 +862,8 @@ MonoBehaviour:
     button: {fileID: 0}
     AltbuttonName: 
   - lines: Choose the room to build, in this case the Fuel room.
-    button: {fileID: 0}
-    AltbuttonName: BuildRoomListVIew (4)
+    button: {fileID: 2084151699}
+    AltbuttonName: 
   - lines: Now you will need to assign a crew member to the room for the construction
       to complete.
     button: {fileID: 0}
@@ -2658,7 +2657,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9133112860675421945, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
   m_PrefabInstance: {fileID: 9217279126325118338}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &570165476
+--- !u!95 &570165480
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -7429,6 +7428,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 435263007812607247, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
   m_PrefabInstance: {fileID: 9217279126325118338}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2084151699 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9133112859662519467, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+  m_PrefabInstance: {fileID: 9217279126325118338}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2129079708
 GameObject:
   m_ObjectHideFlags: 0

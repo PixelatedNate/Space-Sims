@@ -79,7 +79,14 @@ public class Dialog : MonoBehaviour
         if(TargetButton != null)
         {
             TargetButton.onClick.AddListener(NextLine);
-            TargetButton.GetComponent<Animator>().SetBool("Blink",true);
+            if (TargetButton.GetComponent<Animator>() == null)
+            {
+                TargetButton.GetComponentInParent<Animator>().SetBool("Blink", true);
+            }
+            else
+            {
+                TargetButton.GetComponent<Animator>().SetBool("Blink", true);
+            }
         }
     }
     void NextLine()
@@ -87,7 +94,14 @@ public class Dialog : MonoBehaviour
         if (TargetButton != null)
         {
             TargetButton.onClick.RemoveListener(NextLine);
-            TargetButton.GetComponent<Animator>().SetBool("Blink", false);
+            if (TargetButton.GetComponent<Animator>() == null)
+            {
+                TargetButton.GetComponentInParent<Animator>().SetBool("Blink", false);
+            }
+            else
+            {
+                TargetButton.GetComponent<Animator>().SetBool("Blink", false);
+            }
             TargetButton = null;
         }
         if (index < linesobj.Length - 1)
