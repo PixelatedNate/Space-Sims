@@ -43,6 +43,11 @@ public class QuestDataEditor : Editor
 
             serializedObject.ApplyModifiedProperties();
         }
+
+        EditorGUILayout.HelpBox("Leave as -1 if no dialog wanted", MessageType.Warning);
+        questDataTarget.DialogIndex = EditorGUILayout.IntField("DialogAtEndOfQuest",questDataTarget.DialogIndex);
+
+
     }
 }
 

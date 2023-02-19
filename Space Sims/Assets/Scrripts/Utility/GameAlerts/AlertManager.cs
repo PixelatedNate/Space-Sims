@@ -30,6 +30,15 @@ public class AlertManager : MonoBehaviour
         }
         Alerts.Add(alert);
         AlertsUI.AddAlert(alert);
+        if (alert.prority == Alert.AlertPrority.Permanet)
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.BadAlert);
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound(SoundManager.Sound.QuestCompleted);
+        }
+
     }
 
     public void UpdateAlert(Alert alert)
