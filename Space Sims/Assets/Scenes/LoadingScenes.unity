@@ -636,7 +636,7 @@ MonoBehaviour:
   DialogChat:
   - {fileID: 2036965736}
   - {fileID: 120875822}
-  - {fileID: 1623260078}
+  - {fileID: 729384848}
   - {fileID: 1517099129}
 --- !u!1 &77863461
 GameObject:
@@ -817,19 +817,39 @@ MonoBehaviour:
     AltbuttonName: 
     CloseMenuAfter: 0
     eventEndTrigger: 0
-  - lines: Now you will need to assign a crew member to the room for the construction
-      to complete.
+  - lines: Let's take a moment to look at your crew.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    eventEndTrigger: 0
+  - lines: Tap on the Crew List Icon.
+    button: {fileID: 9217279126325118346}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    eventEndTrigger: 0
+  - lines: This is where you can see every one of your crew members.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    eventEndTrigger: 0
+  - lines: You will notice there is a yellow border around the room you just built.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    eventEndTrigger: 0
+  - lines: What a coincidence! Wisdom is also yellow.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    eventEndTrigger: 0
+  - lines: I recommend you pick crew that have the highest wisdom to accompany fuel
+      for maximum productivity!
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
     eventEndTrigger: 0
   - lines: Go ahead now, tap and hold on to a crew member and drag them to your new
       room.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-    eventEndTrigger: 1
-  - lines: Wow so cool
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -2729,7 +2749,7 @@ GameObject:
   - component: {fileID: 729384851}
   - component: {fileID: 729384850}
   m_Layer: 5
-  m_Name: Dialog_6
+  m_Name: Dialog_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2779,7 +2799,12 @@ MonoBehaviour:
   - See right there, go ahead and select the quest for the food blueprint.
   - Wonderful!... gurgle....Let's hope they get back soon.
   textSpeed: 0.05
-  linesobj: []
+  linesobj:
+  - lines: Hey, I dunno about you... but I'm hungry.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    eventEndTrigger: 1
 --- !u!114 &729384851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4940,7 +4965,7 @@ GameObject:
   - component: {fileID: 1517099132}
   - component: {fileID: 1517099131}
   m_Layer: 5
-  m_Name: Dialog_5
+  m_Name: Already Used3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5331,7 +5356,7 @@ GameObject:
   - component: {fileID: 1623260081}
   - component: {fileID: 1623260080}
   m_Layer: 5
-  m_Name: Dialog_4
+  m_Name: Already Used2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
