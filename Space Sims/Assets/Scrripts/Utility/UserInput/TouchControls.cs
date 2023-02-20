@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TouchControls : MonoBehaviour
 {
 
-    Vector3 TouchStartPos;
+    static Vector3 TouchStartPos;
     [SerializeField]
     private float minZoom = 1;
     [SerializeField]
@@ -78,6 +78,7 @@ public class TouchControls : MonoBehaviour
         if (!CameraMovemntEnabled)
         {
             CameraMovemntEnabled = NewCameraMovemntEnabled;
+            Zooming = false;
             return;
         }
         if (Input.GetMouseButtonUp(0) && !Zooming)
@@ -347,6 +348,8 @@ public class TouchControls : MonoBehaviour
 
     public static void EnableCameramovemntAndSelection(bool value)
     {
-        NewCameraMovemntEnabled = value;
+        NewCameraMovemntEnabled = value;     
+        TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
+
 }
