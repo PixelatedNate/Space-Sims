@@ -190,26 +190,32 @@ MonoBehaviour:
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: On the right is your quest data.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Click the button to Start the quest.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Now we wait for our crew member to finish the job!
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
 --- !u!114 &9479484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,32 +796,44 @@ MonoBehaviour:
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Good thing you unlocked that blueprint from the last quest.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Go ahead and tap on the build icon.
     button: {fileID: 1644581822}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Choose the location of your new room.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Choose the room to build, in this case the Fuel room.
     button: {fileID: 2084151699}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Now you will need to assign a crew member to the room for the construction
       to complete.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Go ahead now, tap and hold on to a crew member and drag them to your new
       room.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 1
+  - lines: Wow so cool
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    eventEndTrigger: 0
 --- !u!114 &120875825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6486,39 +6504,48 @@ MonoBehaviour:
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: My name is Greg, not Gregory.. just Greg.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: I am going to be your guide.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Please start by clicking the Quest Icon in the top left of the screen
       and select your first quest.
     button: {fileID: 986678642}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Click on the Available Quest.
     button: {fileID: 0}
     AltbuttonName: Lost in the Dark
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: QuestInsertBox(Clone)
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Choose your crew member.
     button: {fileID: 0}
     AltbuttonName: PersonBtn(Clone)
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Tap the button to Start the quest.
     button: {fileID: 1352152931}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
 --- !u!114 &2069111489 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 435263007812607242, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
