@@ -12,6 +12,10 @@ public abstract class AbstractQuest
 
     public virtual void CompleatQuest()
     {
+        if (CustomEventTriggers.OnQuestCompleted.onEventDelaget != null)
+        {
+            CustomEventTriggers.OnQuestCompleted.onEventDelaget.Invoke(this);
+        }
         if (questLine != null)
         {
             questLine.AddNextQuest();

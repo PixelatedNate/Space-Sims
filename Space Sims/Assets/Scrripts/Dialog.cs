@@ -12,8 +12,6 @@ public class Dialog : MonoBehaviour
     public float textSpeed;
     private int index;
     public Lines[] linesobj;
-
-
     private Button TargetButton;
 
     [Serializable]
@@ -24,8 +22,9 @@ public class Dialog : MonoBehaviour
         public Button button;
         [Tooltip("Ifbutton is not pressent yet in game")]
         public string AltbuttonName;
-
         public bool CloseMenuAfter = false;
+        public CustomEventTriggers.EventName eventEndTrigger = CustomEventTriggers.EventName.None;
+
     }
 
     // Start is called before the first frame update
@@ -50,7 +49,7 @@ public class Dialog : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == linesobj[index].lines && TargetButton == null)
+            if(textComponent.text == linesobj[index].lines && TargetButton == null && linesobj[index].eventEndTrigger == CustomEventTriggers.EventName.None)
             {
                 NextLine();
             }
@@ -58,7 +57,7 @@ public class Dialog : MonoBehaviour
             {
                 StopAllCoroutines();
                 textComponent.text = linesobj[index].lines;
-                setButton();
+                setEndButtonOrEventTrigger();
             }
         }
     }
@@ -76,12 +75,12 @@ public class Dialog : MonoBehaviour
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
-        setButton();
+        setEndButtonOrEventTrigger();
        
     }
 
 
-    public void setButton()
+    public void setEndButtonOrEventTrigger()
     {
         if(TargetButton != null)
         {
@@ -97,10 +96,21 @@ public class Dialog : MonoBehaviour
                 TargetButton.GetComponent<Animator>().SetBool("Blink", true);
             }
         }
+        else if(linesobj[index].eventEndTrigger != CustomEventTriggers.EventName.None)
+        {
+            TouchControls.EnableCameramovemntAndSelection(true);
+            CustomEventTriggers.GetEvent(linesobj[index].eventEndTrigger).onEventDelaget += NextLine;
+
+        }
 
     }
 
 
+    void NextLine(object soruce)
+    {
+        TouchControls.EnableCameramovemntAndSelection(false);
+        NextLine();
+    }
 
     void NextLine()
     {

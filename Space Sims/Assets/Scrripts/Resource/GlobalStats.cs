@@ -85,6 +85,7 @@ public class GlobalStats : MonoBehaviour
             Instance = this;
         }
     }
+
     void Start()
     {
         MaxStorage = _bassMaxStorage;
