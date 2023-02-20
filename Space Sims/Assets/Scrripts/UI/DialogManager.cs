@@ -7,6 +7,7 @@ public class DialogManager : MonoBehaviour
     public static DialogManager Instance;
 
     public GameObject[] DialogChat;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -18,9 +19,7 @@ public class DialogManager : MonoBehaviour
             Instance = this;
         }
     }
-
-    
-    
+  
     public void StartDiaglogIndex(int i)
     {
         if (i == 0)
@@ -29,5 +28,5 @@ public class DialogManager : MonoBehaviour
         }
         DialogChat[i].SetActive(true);
     }
-    
+
 }

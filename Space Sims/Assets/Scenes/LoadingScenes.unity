@@ -190,26 +190,32 @@ MonoBehaviour:
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: On the right is your quest data.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Click the button to Start the quest.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Now we wait for our crew member to finish the job!
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
 --- !u!114 &9479484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -790,57 +796,44 @@ MonoBehaviour:
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Good thing you unlocked that blueprint from the last quest.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Go ahead and tap on the build icon.
     button: {fileID: 1644581822}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Choose the location of your new room.
     button: {fileID: 0}
-    AltbuttonName: BuildRoomTemplate(Clone)
+    AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Choose the room to build, in this case the Fuel room.
     button: {fileID: 2084151699}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Now you will need to assign a crew member to the room for the construction
       to complete.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-  - lines: Let's take a moment to look at your crew.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: Click on the Crew List Icon.
-    button: {fileID: 9217279126325118346}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: This is where you can see every one of your crew members.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: You will notice there is a yellow border around the room you just built.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: What a coincidence! Wisdom is also yellow.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: I recommend you pick crew that have the highest wisdom to accompany fuel
-      for maximum productivity!
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 1
+    eventEndTrigger: 0
   - lines: Go ahead now, tap and hold on to a crew member and drag them to your new
       room.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 1
+  - lines: Wow so cool
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    eventEndTrigger: 0
 --- !u!114 &120875825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2736,7 +2729,7 @@ GameObject:
   - component: {fileID: 729384851}
   - component: {fileID: 729384850}
   m_Layer: 5
-  m_Name: Dialog_3
+  m_Name: Dialog_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2786,31 +2779,7 @@ MonoBehaviour:
   - See right there, go ahead and select the quest for the food blueprint.
   - Wonderful!... gurgle....Let's hope they get back soon.
   textSpeed: 0.05
-  linesobj:
-  - lines: 
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: 
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: 
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: 
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: 
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: 
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
+  linesobj: []
 --- !u!114 &729384851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4971,7 +4940,7 @@ GameObject:
   - component: {fileID: 1517099132}
   - component: {fileID: 1517099131}
   m_Layer: 5
-  m_Name: Already Used 3
+  m_Name: Dialog_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5021,32 +4990,7 @@ MonoBehaviour:
   - I recommend you pick crew that have the highest wisdom to accompany fuel for
     maximum productivity!
   textSpeed: 0.05
-  linesobj:
-  - lines: While that room is building, let's take a moment to look at your crew.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: Click on the Crew List Icon.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: This is where you can see every one of your crew members.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: You will notice there is a yellow border around the room you just built.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: What a coincidence! Wisdom is also yellow.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-  - lines: I recommend you pick crew that have the highest wisdom to accompany fuel
-      for maximum productivity!
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
+  linesobj: []
 --- !u!114 &1517099132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5387,7 +5331,7 @@ GameObject:
   - component: {fileID: 1623260081}
   - component: {fileID: 1623260080}
   m_Layer: 5
-  m_Name: Already Used 2
+  m_Name: Dialog_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6560,39 +6504,48 @@ MonoBehaviour:
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: My name is Greg, not Gregory.. just Greg.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: I am going to be your guide.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Please start by clicking the Quest Icon in the top left of the screen
       and select your first quest.
     button: {fileID: 986678642}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Click on the Available Quest.
     button: {fileID: 0}
     AltbuttonName: Lost in the Dark
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: QuestInsertBox(Clone)
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Choose your crew member.
     button: {fileID: 0}
     AltbuttonName: PersonBtn(Clone)
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: Tap the button to Start the quest.
     button: {fileID: 1352152931}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
   - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
+    eventEndTrigger: 0
 --- !u!114 &2069111489 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 435263007812607242, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
@@ -7169,10 +7122,6 @@ PrefabInstance:
       propertyPath: Reward
       value: 
       objectReference: {fileID: 918887583}
-    - target: {fileID: 435263007812607246, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 435263007972288618, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -7623,7 +7572,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5357491972321471959, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5501154661147611628, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_IsActive
@@ -8371,7 +8320,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279125749614992, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 540
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279125757535674, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8560,19 +8509,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126014929292, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126014929292, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126014929292, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126014929292, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126019443407, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.x
@@ -8648,19 +8597,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126183952528, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126183952528, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126183952528, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126183952528, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -390
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126185180537, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_IsActive
@@ -8772,19 +8721,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126255970341, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126255970341, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126255970341, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126255970341, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -330
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126292279629, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8928,19 +8877,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126554305697, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126554305697, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126554305697, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126554305697, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -270
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126609105493, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
@@ -8984,19 +8933,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126653769025, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126653769025, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126653769025, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126653769025, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -210
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126677588479, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9048,19 +8997,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126721668449, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126721668449, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126721668449, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126721668449, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -30
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126730685066, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9128,19 +9077,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126801952258, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126801952258, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126801952258, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126801952258, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -510
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279126818615764, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_Sprite
@@ -9424,19 +9373,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127013787454, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127013787454, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127013787454, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127013787454, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -450
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127189065716, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_LocalScale.x
@@ -9620,19 +9569,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127414240932, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127414240932, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127414240932, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 92
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127414240932, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9217279127427004022, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y

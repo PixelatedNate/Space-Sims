@@ -2,6 +2,7 @@ using RDG;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<RoomSaveData>
@@ -150,6 +151,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
         if (Workers.Count == RoomStat.MaxWorkers)
         {
             AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Room Full", Color.red);
+            //OnPersonAsginedToRoom.Invoke(this, person);
             return false;
         }
         if (Workers.Contains(person.PersonInfo))
@@ -169,6 +171,10 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
                 ResumeConstructionTimer(ConstructionTimer);
             }
             UpdateRoomStats();
+            if (CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget != null)
+            {
+                CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget.Invoke(this);
+            }
             return true;
         }
     }
