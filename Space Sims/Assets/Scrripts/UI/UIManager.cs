@@ -41,7 +41,6 @@ public class UIManager : MonoBehaviour
 
     private bool IsRightPanalOpen { get; set; }
 
-
     private BuildRoomButton selectedbtn = null;
     private GameObject MainLight { get; set; }
     private GameObject MainCamera { get; set; }
@@ -249,7 +248,6 @@ public class UIManager : MonoBehaviour
 
     public void DeselectAll()
     {
-
         CameraManager.Instance.ClearFollow();
         leftPanal.ClearAllView();
         rightPanal.ClearAllView();
@@ -287,6 +285,7 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundManager.Sound.UIclick);
         bool buildRoom = RoomGridManager.Instance.TogleBuildMode();
         DeselectAll(); // will clear either slecet item or build RoomMenu
+        
     }
 
     public void ToggleNavigation()

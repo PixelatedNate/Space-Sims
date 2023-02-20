@@ -8,6 +8,14 @@ public class ButtonManager : MonoBehaviour
     public enum ButtonName
     {
         Navigation,
+        Quests,
+        AvaliableQuest,
+        InprogressQuest,
+        CompletedQuest,
+        Milestones,
+        BuildRoom,
+        peoplelist,
+        Alets,
     }
 
 
@@ -34,6 +42,16 @@ public class ButtonManager : MonoBehaviour
         else
         {
             Instance = this;
+        }
+    }
+
+
+    public void SetAllButtons(bool enabled)
+    {
+        foreach (ButtonsReffrence buttonReffrence in buttons)
+        {
+                Color buttonColour = buttonReffrence.button.GetComponent<Button>().image.color;
+                buttonReffrence.button.GetComponent<Button>().interactable = enabled;           
         }
     }
 

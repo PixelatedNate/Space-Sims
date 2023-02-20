@@ -35,7 +35,11 @@ public class Dialog : MonoBehaviour
         textComponent.text = string.Empty;
         StartDialogue();
         TouchControls.EnableCameramovemntAndSelection(false);
+        UIManager.Instance.DeselectAll();
+        TouchControls.RecenterCamera();
+        RoomGridManager.Instance.SetBuildMode(false);
     }
+
     void Start()
     {
        
@@ -81,7 +85,7 @@ public class Dialog : MonoBehaviour
     {
         if(TargetButton != null)
         {
-            TargetButton.enabled = true;
+            TargetButton.interactable = true;
 
             TargetButton.onClick.AddListener(NextLine);
             if (TargetButton.GetComponent<Animator>() == null)
@@ -108,6 +112,7 @@ public class Dialog : MonoBehaviour
         if (TargetButton != null)
         {
             TargetButton.onClick.RemoveListener(NextLine);
+            TargetButton.interactable = false;
             if (TargetButton.GetComponent<Animator>() == null)
             {
                 TargetButton.GetComponentInParent<Animator>().SetBool("Blink", false);
@@ -131,17 +136,16 @@ public class Dialog : MonoBehaviour
     
            if(TargetButton != null)
            {
-               TargetButton.enabled = false;
+               TargetButton.interactable = false;
            }
-  
-            
+
             StartCoroutine(TypeLine());
-
-
 
         }
         else
         {
+            ButtonManager.Instance.SetAllButtons(true);
+            ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation,false);
             TouchControls.EnableCameramovemntAndSelection(true);
             gameObject.SetActive(false);
         }

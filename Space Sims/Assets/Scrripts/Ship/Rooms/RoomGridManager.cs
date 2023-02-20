@@ -148,11 +148,20 @@ public class RoomGridManager : MonoBehaviour
     public void SetBuildMode(bool mode)
     {
         if (mode == ShowBuildRoom) { return; }
-        foreach (var buildroom in BuildCellList)
+        if (BuildCellList.ContainsKey(new Vector3Int(1, 0, 0)))
         {
-            buildroom.Value.SetActive(mode);
+            BuildCellList[new Vector3Int(1, 0, 0)].SetActive(mode);
+        }
+        else
+        {
+            foreach (var buildroom in BuildCellList)
+            {
+                Debug.Log(buildroom.Key);
+                buildroom.Value.SetActive(mode);
+            }
         }
         ShowBuildRoom = mode;
+        return;
     }
 
 

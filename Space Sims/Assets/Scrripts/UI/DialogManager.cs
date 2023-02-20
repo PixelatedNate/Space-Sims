@@ -23,6 +23,10 @@ public class DialogManager : MonoBehaviour
     
     public void StartDiaglogIndex(int i)
     {
+        if (i == 0)
+        {
+            ButtonManager.Instance.SetAllButtons(false);
+        }
         DialogChat[i].SetActive(true);
     }
     
