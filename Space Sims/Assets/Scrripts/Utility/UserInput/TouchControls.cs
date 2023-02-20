@@ -352,4 +352,11 @@ public class TouchControls : MonoBehaviour
         TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
+    public static void RecenterCamera()
+    {
+        Camera.main.orthographicSize = 10;
+        Camera.main.transform.position = new Vector3(5, 8.5f, -10);
+    }
+
+
 }
