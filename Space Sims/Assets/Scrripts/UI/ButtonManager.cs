@@ -50,8 +50,8 @@ public class ButtonManager : MonoBehaviour
     {
         foreach (ButtonsReffrence buttonReffrence in buttons)
         {
-                Color buttonColour = buttonReffrence.button.GetComponent<Button>().image.color;
-                buttonReffrence.button.GetComponent<Button>().interactable = enabled;           
+            Color buttonColour = buttonReffrence.button.GetComponent<Button>().image.color;
+            buttonReffrence.button.GetComponent<Button>().interactable = enabled;
         }
     }
 

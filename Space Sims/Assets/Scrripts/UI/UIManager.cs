@@ -285,7 +285,7 @@ public class UIManager : MonoBehaviour
         SoundManager.Instance.PlaySound(SoundManager.Sound.UIclick);
         bool buildRoom = RoomGridManager.Instance.TogleBuildMode();
         DeselectAll(); // will clear either slecet item or build RoomMenu
-        
+
     }
 
     public void ToggleNavigation()

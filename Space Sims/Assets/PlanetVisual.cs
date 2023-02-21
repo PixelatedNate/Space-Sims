@@ -66,6 +66,6 @@ public class PlanetVisual : MonoBehaviour, IInteractables
                 ship.position = PlanetContainer.PlanetPosition;
             }
         }
-       
+
     }
 }

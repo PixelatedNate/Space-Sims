@@ -1,7 +1,7 @@
 using UnityEngine;
 
 public class AutoSaver : MonoBehaviour
- {
+{
     bool reset = false;
 
     private void OnApplicationQuit()

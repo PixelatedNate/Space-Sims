@@ -16,11 +16,23 @@ public class ClothCosmeticSelectionUI : MonoBehaviour
         _clothImageUI.sprite = cloth;
         Cloth = cloth;
         PersonInfo = personInfo;
+        if (!UnlocksManager.UnlockedCoths.Contains(Cloth.name))
+        {
+            _clothImageUI.color = Color.black;
+        }
     }
 
     public void SetPersonCloths()
     {
-        PersonInfo.SetCloths(Cloth);
-        UIManager.Instance.OpenPersonView(PersonInfo);
+        if (UnlocksManager.UnlockedCoths.Contains(Cloth.name))
+        {
+            PersonInfo.SetCloths(Cloth);
+            UIManager.Instance.OpenPersonView(PersonInfo);
+        }
+        else
+        {
+            AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Locked", Color.red);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
+        }
     }
 }

@@ -6,10 +6,6 @@ public abstract class QuestData : ScriptableObject
     [Serializable]
     public class Reward
     {
-        public Reward()
-        {
-            GameResourcesReward = new GameResources();
-        }
 
         [SerializeField]
         public GameResources GameResourcesReward;
@@ -23,16 +19,28 @@ public abstract class QuestData : ScriptableObject
         [SerializeField]
         public RoomType roomBlueprint;
 
+        [SerializeField]
+        public bool ClothUnlock;
+
+        [SerializeField]
+        public bool RandomCloths;
+  
+        [SerializeField]
+        public ClothRarity CLothRarity;
+
+        [SerializeField]
+        public Sprite Cloth;
+
         public override string ToString()
         {
             String str = GameResourcesReward.ToString();
-            if(people.Length != 0)
+            if (people.Length != 0)
             {
                 str += "\n" + Icons.GetPersonIconForTextMeshPro() + ":" + people.Length;
             }
-            if(roomBlueprintUnlock)
+            if (roomBlueprintUnlock)
             {
-                str += "\n" + Icons.GetBluePrintIconForTextMeshPro() + ":" +  roomBlueprint.ToString();
+                str += "\n" + Icons.GetBluePrintIconForTextMeshPro() + ":" + roomBlueprint.ToString();
             }
             return str;
         }

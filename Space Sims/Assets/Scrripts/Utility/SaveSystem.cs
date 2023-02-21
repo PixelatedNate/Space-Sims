@@ -8,7 +8,7 @@ public static class SaveSystem
     public static string RootPath { get { return Application.persistentDataPath + "/Save"; } }
     public static string SaveStatsPath { get { return Application.persistentDataPath + "/Save/GlobalData.gd"; } }
     public static string NavigationSavePath { get { return Application.persistentDataPath + "/Save/Navigation.gd"; } }
-   
+
     public static string RoomPath { get { return Application.persistentDataPath + "/Save/Rooms"; } }
     public static string PeoplePath { get { return Application.persistentDataPath + "/Save/People"; } }
     public static string PlanetPath { get { return Application.persistentDataPath + "/Save/Planet"; } }
@@ -70,7 +70,7 @@ public static class SaveSystem
         {
             System.IO.Directory.CreateDirectory(TransportQuestPath);
         }
-        var path = TransportQuestPath  + "/" + System.IO.Path.GetRandomFileName();
+        var path = TransportQuestPath + "/" + System.IO.Path.GetRandomFileName();
         SaveData<TransportQuestSaveData>(transportQuestSaveData, path);
     }
 
@@ -114,7 +114,7 @@ public static class SaveSystem
         SaveData<PlanetConttainerSaveData>(data, path);
     }
 
-   public static void Save(this QuestLineSaveData data)
+    public static void Save(this QuestLineSaveData data)
     {
         if (!Directory.Exists(QuestLinePath))
         {
@@ -127,7 +127,7 @@ public static class SaveSystem
 
     public static void ClearSave()
     {
-       if (Directory.Exists(RootPath))
+        if (Directory.Exists(RootPath))
         {
             Directory.Delete(RootPath, true);
         }

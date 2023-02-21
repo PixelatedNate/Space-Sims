@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public static class CustomEventTriggers
 {
 
@@ -12,13 +8,13 @@ public static class CustomEventTriggers
         OnQuestCompleted
 
     }
-    public class Event  
+    public class Event
     {
         EventName id = EventName.None;
         public delegate void eventDelaget(object souceObj);
         public eventDelaget onEventDelaget;
 
-       public Event(EventName name)
+        public Event(EventName name)
         {
             this.id = name;
         }
@@ -26,7 +22,7 @@ public static class CustomEventTriggers
 
     public static Event GetEvent(EventName name)
     {
-        if(name == EventName.OnQuestCompleted)
+        if (name == EventName.OnQuestCompleted)
         {
             return OnQuestCompleted;
         }
@@ -39,7 +35,7 @@ public static class CustomEventTriggers
     public static Event OnPersonAssginedToRoom = new Event(EventName.PersonAssginedToRoom);
     public static Event OnQuestCompleted = new Event(EventName.OnQuestCompleted);
 
-    }
+}
 
 
 

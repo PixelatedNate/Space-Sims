@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
-public class NavigationSaveData {
+public class NavigationSaveData
+{
 
     public bool InNavigation;
 
@@ -27,7 +25,7 @@ public class NavigationSaveData {
         this.planetId = new string[NavigationManager.PlanetList.Count];
 
         int index = 0;
-        foreach(var keyValuePair in NavigationManager.PlanetList)
+        foreach (var keyValuePair in NavigationManager.PlanetList)
         {
             var plantData = keyValuePair.Value.Save();
             if (this.InNavigation)
@@ -49,7 +47,7 @@ public class NavigationSaveData {
             index++;
         }
 
-        if(this.InNavigation)
+        if (this.InNavigation)
         {
             TimerSaveData timmerData = NavigationManager._navTimer.Save();
             this.timmerId = timmerData.ID;
@@ -57,6 +55,6 @@ public class NavigationSaveData {
 
         }
 
-      }
+    }
 
 }

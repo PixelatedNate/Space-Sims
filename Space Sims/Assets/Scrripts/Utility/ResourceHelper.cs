@@ -39,12 +39,31 @@ public static class ResourceHelper
             return headSprite;
         }
 
-        public static Sprite GetClothsFromSpriteName(PersonInfo personInfo, string spriteName)
+        public static Sprite GetClothFromSpriteName(PersonInfo personInfo, string spriteName)
         {
-            string clothPath = ClothsPath + personInfo.Gender + "/" + spriteName;
-            Sprite headSprite = Resources.Load<Sprite>(clothPath);
-            return headSprite;
+            string clothPath = ClothsPath + personInfo.Gender;
+            var values = Enum.GetValues(typeof(ClothRarity));
+            foreach (var value in values)
+            {
+                string fullPath = clothPath + "/" + value.ToString() + "/" + spriteName;
+                Sprite sprite = Resources.Load<Sprite>(fullPath);
+                if (sprite != null)
+                {
+                    return sprite;
+                }
+            }
+            //Sprite headSprite = Resources.Load<Sprite>(clothPath);
+            return null;
         }
+        public static Sprite[] GetAllCloths(PersonInfo personInfo, ClothRarity rarity)
+        {
+            string clothPath = ClothsPath + personInfo.Gender;
+            string fullPath = clothPath + "/" + rarity.ToString();
+            Sprite[] sprites = Resources.LoadAll<Sprite>(fullPath);
+            return sprites;
+        }
+
+
 
 
 
@@ -66,14 +85,14 @@ public static class ResourceHelper
             string bodyPath = PeopleArtWorkPath + race.ToString() + "/" + gender + "/Bodies";
             return (GetRandomSpriteFromPath(bodyPath));
         }
-        public static Sprite GetRandomCloths(PersonInfo personInfo)
+        public static Sprite GetRandomCloths(PersonInfo personInfo, ClothRarity rarity = ClothRarity.Basic)
         {
-            return (GetRandomCloths(personInfo.Gender));
+            return (GetRandomCloths(personInfo.Gender, rarity));
         }
 
-        public static Sprite GetRandomCloths(Gender gender)
+        public static Sprite GetRandomCloths(Gender gender, ClothRarity rarity)
         {
-            string clothPath = ClothsPath + gender;
+            string clothPath = ClothsPath + gender + "/" + rarity;
             return (GetRandomSpriteFromPath(clothPath));
         }
 
@@ -101,7 +120,7 @@ public static class ResourceHelper
             return questData;
         }
 
-       public static TransportQuestData GetTransprotQuestData(string name)
+        public static TransportQuestData GetTransprotQuestData(string name)
         {
             string path = TranpsortQuestPath + name;
             TransportQuestData questData = Resources.Load<TransportQuestData>(path);
@@ -119,7 +138,7 @@ public static class ResourceHelper
 
     }
 
-   public static class PlanetHelper
+    public static class PlanetHelper
     {
         private const string PlanetPath = "Planets/";
 
