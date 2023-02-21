@@ -8,6 +8,9 @@ using UnityEngine.Tilemaps;
 public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<RoomSaveData>
 {
 
+    public static event Action<AbstractRoom,Person> OnPersonAssgined;
+
+
     [SerializeField]
     private Vector2Int _size = new Vector2Int(1, 1);
 
@@ -171,10 +174,14 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
                 ResumeConstructionTimer(ConstructionTimer);
             }
             UpdateRoomStats();
-            if (CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget != null)
-            {
-                CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget.Invoke(this);
-            }
+
+
+            OnPersonAssgined?.Invoke(this,person);
+
+         //   if (CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget != null)
+           // {
+             //   CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget.Invoke(this);
+           // }
             return true;
         }
     }
