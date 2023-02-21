@@ -17,7 +17,7 @@ public class BuildRoomQuest : AbstractQuest, ISaveable<BuildRoomSaveData>
             TimeTickSystem.OnTick += CheckIfRequimentsAreMetOnTick;
         }
     }
-    
+
     public override QuestData QuestData => buildRoomData;
     public BuildRoomData buildRoomData;
 

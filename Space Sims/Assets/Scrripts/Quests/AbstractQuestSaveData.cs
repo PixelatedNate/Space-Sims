@@ -13,8 +13,8 @@ public abstract class AbstractQuestSaveData
     {
         this.QuestDataName = quest.QuestData.name;
         this.questStatus = (int)quest.questStaus;
-        
-        if(quest.questLine != null)
+
+        if (quest.questLine != null)
         {
             QuestLineSaveData questlineSaveData = quest.questLine.Save();
             this.QuestLineId = questlineSaveData.Id;

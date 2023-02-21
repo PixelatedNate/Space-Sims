@@ -114,7 +114,8 @@ public class GlobalStats : MonoBehaviour
 
     public void LoadData(GlobalStatsSaving saveData)
     {
-        GameResources saveResourceData = new GameResources() {
+        GameResources saveResourceData = new GameResources()
+        {
             Food = saveData.PlayerFood,
             Fuel = saveData.PlayerFuel,
             Minerals = saveData.PlayerMinerals,
@@ -125,11 +126,11 @@ public class GlobalStats : MonoBehaviour
         PlayerResources = saveResourceData;
         Debug.Log(PlayerResources.Food);
 
-        TimeSpan offlineTime = DateTime.UtcNow - new DateTime(saveData.SaveTimeTickUTC,DateTimeKind.Utc);
+        TimeSpan offlineTime = DateTime.UtcNow - new DateTime(saveData.SaveTimeTickUTC, DateTimeKind.Utc);
 
         long TicksMissed = (long)MathF.Floor((float)offlineTime.TotalSeconds / TimeTickSystem.TICK_TIMER);
 
-        foreach(int i in saveData.UnlockedRooms)
+        foreach (int i in saveData.UnlockedRooms)
         {
             UnlocksManager.UnlockRoom((RoomType)i);
         }
@@ -142,9 +143,9 @@ public class GlobalStats : MonoBehaviour
 
     private void SimulateTicks(long ticks)
     {
-        for(int i = 0; i < ticks; i++)
+        for (int i = 0; i < ticks; i++)
         {
-            Tick();    
+            Tick();
         }
 
 

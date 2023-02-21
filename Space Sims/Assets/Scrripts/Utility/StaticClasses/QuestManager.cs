@@ -40,14 +40,14 @@ public static class QuestManager
                 TransportQuest transportQuest = (TransportQuest)quest;
                 transportQuest.Save();
             }
-           if (quest.GetType() == typeof(BuildRoomQuest))
+            if (quest.GetType() == typeof(BuildRoomQuest))
             {
                 BuildRoomQuest buildroomQuest = (BuildRoomQuest)quest;
                 buildroomQuest.Save();
             }
 
 
-            
+
         }
     }
 
@@ -65,7 +65,7 @@ public static class QuestManager
             TransportQuest quest = new TransportQuest(savequest);
             AddNewQuest(quest);
         }
-        
+
         BuildRoomSaveData[] buildRoomQuestData = SaveSystem.GetAllSavedQuest<BuildRoomSaveData>(SaveSystem.BuildRoomQuestPath);
         foreach (BuildRoomSaveData savequest in buildRoomQuestData)
         {

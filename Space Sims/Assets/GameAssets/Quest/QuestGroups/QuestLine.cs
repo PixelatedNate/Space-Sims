@@ -13,7 +13,7 @@ public class QuestLine : ISaveable<QuestLineSaveData>
     }
 
 
-    public  int index = 0;
+    public int index = 0;
     public QuestLineData questLineData { get; set; }
 
     bool completed = false;

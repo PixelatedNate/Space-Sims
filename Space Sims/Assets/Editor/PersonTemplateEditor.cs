@@ -7,7 +7,7 @@ using UnityEngine;
 public class PersonTemplateEditor : Editor
 {
 
-    string clothesPath = "Artwork/Clothes/Male";
+    string clothesPath = "Artwork/Clothes/Male/Basic";
 
     Texture2D HeadTexture;
     Texture2D BodyTexture;
@@ -55,6 +55,7 @@ public class PersonTemplateEditor : Editor
         clothsSprites = GetSpriteFromPath(clothesPath);
         clothingSelection = FindMatchingIndex(personTemplateTarget.Clothes, clothsSprites);
         ClothingTexture = cloths[clothingSelection];
+
 
 
         GUI.DrawTexture(new Rect(50, 0, 256, 256), HeadTexture);

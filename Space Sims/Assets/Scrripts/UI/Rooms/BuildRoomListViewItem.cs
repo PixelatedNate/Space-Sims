@@ -64,7 +64,7 @@ public class BuildRoomListViewItem : MonoBehaviour
         }
         if (GlobalStats.Instance.PlayerResources >= getCost())
         {
-            GlobalStats.Instance.PlayerResources -=  getCost();
+            GlobalStats.Instance.PlayerResources -= getCost();
             AbstractRoom newRoom = RoomGridManager.Instance.BuildNewRoom(RoomPosition, _room.RoomType);
             UIManager.Instance.DeselectAll();
             newRoom.BuildRoom();

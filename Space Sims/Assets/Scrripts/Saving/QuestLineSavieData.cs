@@ -1,14 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
-public class QuestLineSaveData 
+public class QuestLineSaveData
 {
-   public string Id;
-   public int index;
-   public string QuestLineDataName;
+    public string Id;
+    public int index;
+    public string QuestLineDataName;
 
 
     public QuestLineSaveData(QuestLine questLine)

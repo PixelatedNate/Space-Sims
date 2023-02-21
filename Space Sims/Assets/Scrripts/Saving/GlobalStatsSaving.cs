@@ -1,14 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class GlobalStatsSaving
 {
 
     public long SaveTimeTickUTC;
- 
+
     public int PlayerFuel;
     public int PlayerFood;
     public int PlayerMinerals;
@@ -22,7 +19,7 @@ public class GlobalStatsSaving
     {
         this.PlayerFuel = playerResources.Fuel;
         this.PlayerFood = playerResources.Food;
-        this.PlayerMinerals  = playerResources.Minerals;
+        this.PlayerMinerals = playerResources.Minerals;
         this.PlayerPremimum = playerResources.Premimum;
         this.SaveTimeTickUTC = DateTime.UtcNow.Ticks;
 

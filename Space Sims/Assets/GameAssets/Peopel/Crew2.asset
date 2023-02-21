@@ -36,5 +36,5 @@ MonoBehaviour:
   Head: {fileID: 21300000, guid: 4eadcf893cf5eca4cae16fe4cfafe577, type: 3}
   RandomBody: 0
   Body: {fileID: 21300000, guid: 20aea54004cb744459d5627aa609c346, type: 3}
-  RandomCloths: 0
-  Clothes: {fileID: 21300000, guid: f77f7cd447748a245b50d7c3b9f116d3, type: 3}
+  RandomCloths: 1
+  Clothes: {fileID: 21300000, guid: 979a34c0cfe3ecc449b66ee572a31ddc, type: 3}
