@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
+using UnityEngine.Events;
 
 public class Dialog : MonoBehaviour
 {
@@ -17,20 +18,23 @@ public class Dialog : MonoBehaviour
     [Serializable]
     public class Lines
     {
+        public UnityEvent StartEvent;
         public string lines;
         [Tooltip("Leave Blank to be on touch")]
         public Button button;
         [Tooltip("Ifbutton is not pressent yet in game")]
         public string AltbuttonName;
         public bool CloseMenuAfter = false;
-        public CustomEventTriggers.EventName eventEndTrigger = CustomEventTriggers.EventName.None;
-
+        public bool ClearOnTouch = true;
+        public UnityEvent EndOfTextEvent;
+        public UnityEvent EndDialogEvent;
     }
 
     // Start is called before the first frame update
 
     void Awake()
     {
+        DialogManager.Instance.activeDialog = this;
         textComponent.text = string.Empty;
         StartDialogue();
         TouchControls.EnableCameramovemntAndSelection(false);
@@ -49,7 +53,7 @@ public class Dialog : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == linesobj[index].lines && TargetButton == null && linesobj[index].eventEndTrigger == CustomEventTriggers.EventName.None)
+            if(textComponent.text == linesobj[index].lines && TargetButton == null && linesobj[index].ClearOnTouch)
             {
                 NextLine();
             }
@@ -57,7 +61,7 @@ public class Dialog : MonoBehaviour
             {
                 StopAllCoroutines();
                 textComponent.text = linesobj[index].lines;
-                setEndButtonOrEventTrigger();
+                setEndButtonOrEventTriggerEndOfLineEvent();
             }
         }
     }
@@ -75,13 +79,12 @@ public class Dialog : MonoBehaviour
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
-        setEndButtonOrEventTrigger();
-       
+        setEndButtonOrEventTriggerEndOfLineEvent();     
     }
 
-
-    public void setEndButtonOrEventTrigger()
+    public void setEndButtonOrEventTriggerEndOfLineEvent()
     {
+        linesobj[index].EndOfTextEvent?.Invoke();
         if(TargetButton != null)
         {
             TargetButton.interactable = true;
@@ -96,27 +99,22 @@ public class Dialog : MonoBehaviour
                 TargetButton.GetComponent<Animator>().SetBool("Blink", true);
             }
         }
-        else if(linesobj[index].eventEndTrigger != CustomEventTriggers.EventName.None)
-        {
-            TouchControls.EnableCameramovemntAndSelection(true);
-            CustomEventTriggers.GetEvent(linesobj[index].eventEndTrigger).onEventDelaget += NextLine;
+    }
 
-        }
-
+    public bool HasAnotherLine()
+    {
+        return (index < linesobj.Length - 1);
     }
 
 
-    void NextLine(object soruce)
-    {
-        TouchControls.EnableCameramovemntAndSelection(false);
-        NextLine();
-    }
 
-    void NextLine()
+
+    public void NextLine()
     {
-        if(linesobj[index].CloseMenuAfter)
+        if (linesobj[index].CloseMenuAfter)
         {
             UIManager.Instance.DeselectAll();
+            linesobj[index].EndDialogEvent?.Invoke();
         }
 
         if (TargetButton != null)
@@ -139,25 +137,33 @@ public class Dialog : MonoBehaviour
             textComponent.text = string.Empty;
             TargetButton = linesobj[index].button;
 
-            if(linesobj[index].AltbuttonName != "")
-           {
-               TargetButton = GameObject.Find(linesobj[index].AltbuttonName).GetComponent<Button>();
-           }
-    
-           if(TargetButton != null)
-           {
-               TargetButton.interactable = false;
-           }
+            if (linesobj[index].AltbuttonName != "")
+            {
+                TargetButton = GameObject.Find(linesobj[index].AltbuttonName).GetComponent<Button>();
+            }
+
+            if (TargetButton != null)
+            {
+                TargetButton.interactable = false;
+            }
 
             StartCoroutine(TypeLine());
 
         }
         else
         {
+            EndDialog();
+        }
+    }
+
+        public void EndDialog()
+        {
+            DialogManager.Instance.activeDialog = null;
             ButtonManager.Instance.SetAllButtons(true);
             ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation,false);
             TouchControls.EnableCameramovemntAndSelection(true);
             gameObject.SetActive(false);
+
         }
-    }
-}
+
+   }
