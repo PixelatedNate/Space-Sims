@@ -186,36 +186,90 @@ MonoBehaviour:
   - You will be sending your crew on a lot of quests in Pocket Space Colony.
   textSpeed: 0.05
   linesobj:
-  - lines: Click on the Available Quest.
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Click on the Available Quest.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: On the right is your quest data.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: On the right is your quest data.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Click on the Empty slot to assign a crew member.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Click the button to Start the quest.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Click the button to Start the quest.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Now we wait for our crew member to finish the job!
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Now we wait for our crew member to finish the job!
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &9479484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -636,8 +690,9 @@ MonoBehaviour:
   DialogChat:
   - {fileID: 2036965736}
   - {fileID: 120875822}
-  - {fileID: 729384848}
+  - {fileID: 1623260078}
   - {fileID: 1517099129}
+  activeDialog: {fileID: 0}
 --- !u!1 &77863461
 GameObject:
   m_ObjectHideFlags: 0
@@ -792,68 +847,132 @@ MonoBehaviour:
   - Select this quest and choose start.
   textSpeed: 0.05
   linesobj:
-  - lines: Alright time to build your first fuel room.
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Alright time to build your first fuel room.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Good thing you unlocked that blueprint from the last quest.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Good thing you unlocked that blueprint from the last quest.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Go ahead and tap on the build icon.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Go ahead and tap on the build icon.
     button: {fileID: 1644581822}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Choose the location of your new room.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Choose the location of your new room.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Choose the room to build, in this case the Fuel room.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Choose the room to build, in this case the Fuel room.
     button: {fileID: 2084151699}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Let's take a moment to look at your crew.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Now you will need to assign a crew member to the room for the construction
+      to complete.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Tap on the Crew List Icon.
-    button: {fileID: 9217279126325118346}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: This is where you can see every one of your crew members.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: You will notice there is a yellow border around the room you just built.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: What a coincidence! Wisdom is also yellow.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: I recommend you pick crew that have the highest wisdom to accompany fuel
-      for maximum productivity!
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Go ahead now, tap and hold on to a crew member and drag them to your new
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Go ahead now, tap and hold on to a crew member and drag them to your new
       room.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
+    ClearOnTouch: 0
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 66472546}
+          m_TargetAssemblyTypeName: DialogManager, Assembly-CSharp
+          m_MethodName: WaitForPersonInFuelRoom
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: AHHHHHHHHH  I SAID THE FUEL ROOM AHHHHHH DON'T...... try again.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 0
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &120875825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2749,7 +2868,7 @@ GameObject:
   - component: {fileID: 729384851}
   - component: {fileID: 729384850}
   m_Layer: 5
-  m_Name: Dialog_3
+  m_Name: Dialog_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2799,12 +2918,7 @@ MonoBehaviour:
   - See right there, go ahead and select the quest for the food blueprint.
   - Wonderful!... gurgle....Let's hope they get back soon.
   textSpeed: 0.05
-  linesobj:
-  - lines: Hey, I dunno about you... but I'm hungry.
-    button: {fileID: 0}
-    AltbuttonName: 
-    CloseMenuAfter: 0
-    eventEndTrigger: 1
+  linesobj: []
 --- !u!114 &729384851
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4965,7 +5079,7 @@ GameObject:
   - component: {fileID: 1517099132}
   - component: {fileID: 1517099131}
   m_Layer: 5
-  m_Name: Already Used3
+  m_Name: Dialog_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5356,7 +5470,7 @@ GameObject:
   - component: {fileID: 1623260081}
   - component: {fileID: 1623260080}
   m_Layer: 5
-  m_Name: Already Used2
+  m_Name: Dialog_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6525,52 +6639,133 @@ MonoBehaviour:
     your first quest.
   textSpeed: 0.05
   linesobj:
-  - lines: Welcome to Pocket Space Colony!
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Welcome to Pocket Space Colony!
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: My name is Greg, not Gregory.. just Greg.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: My name is Greg, not Gregory.. just Greg.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: I am going to be your guide.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: I am going to be your guide.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Please start by clicking the Quest Icon in the top left of the screen
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Please start by clicking the Quest Icon in the top left of the screen
       and select your first quest.
     button: {fileID: 986678642}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Click on the Available Quest.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Click on the Available Quest.
     button: {fileID: 0}
     AltbuttonName: Lost in the Dark
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Click on the Empty slot to assign a crew member.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Click on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: QuestInsertBox(Clone)
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Choose your crew member.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Choose your crew member.
     button: {fileID: 0}
     AltbuttonName: PersonBtn(Clone)
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: Tap the button to Start the quest.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Tap the button to Start the quest.
     button: {fileID: 1352152931}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
-  - lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: You will be sending your crew on a lot of quests in Pocket Space Colony.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    eventEndTrigger: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &2069111489 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 435263007812607242, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}

@@ -8,6 +8,8 @@ public class DialogManager : MonoBehaviour
 
     public GameObject[] DialogChat;
 
+    public Dialog activeDialog = null;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -27,6 +29,25 @@ public class DialogManager : MonoBehaviour
             ButtonManager.Instance.SetAllButtons(false);
         }
         DialogChat[i].SetActive(true);
+    }
+
+    public void WaitForPersonInFuelRoom()
+    {
+        TouchControls.EnableCameramovemntAndSelection(true);
+        AbstractRoom.OnPersonAssgined += PeronInRoom;
+    }
+
+    public void PeronInRoom(AbstractRoom abstractRoom, Person person)
+    {
+         if(abstractRoom.RoomType == RoomType.Fuel)
+         {
+            activeDialog.EndDialog();
+            AbstractRoom.OnPersonAssgined -= PeronInRoom;
+         }
+         else if(activeDialog.HasAnotherLine())
+         {
+             activeDialog.NextLine();
+         }
     }
 
 }
