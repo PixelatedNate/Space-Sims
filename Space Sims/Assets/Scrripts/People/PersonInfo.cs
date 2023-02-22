@@ -107,7 +107,7 @@ public class PersonInfo : ISaveable<PersonSaveData>
 
         this.Head = ResourceHelper.PersonHelper.GetHeadFromSpriteName(this, saveData.HeadName);
         this.Body = ResourceHelper.PersonHelper.GetBodyFromSpriteName(this, saveData.BodyName);
-        this.Clothes = ResourceHelper.PersonHelper.GetClothsFromSpriteName(this, saveData.ClothsName);
+        this.Clothes = ResourceHelper.PersonHelper.GetClothFromSpriteName(this, saveData.ClothsName);
 
     }
 
@@ -122,6 +122,8 @@ public class PersonInfo : ISaveable<PersonSaveData>
         this.Head = template.RandomHead ? ResourceHelper.PersonHelper.GetRandomHead(this) : template.Head;
         this.Body = template.RandomBody ? ResourceHelper.PersonHelper.GetRandomBody(this) : template.Body;
         this.Clothes = template.RandomCloths ? ResourceHelper.PersonHelper.GetRandomCloths(this) : template.Clothes;
+
+        UnlocksManager.UnlockCloth(this.Clothes);
 
         foreach (SkillsList skill in Enum.GetValues(typeof(SkillsList)))
         {

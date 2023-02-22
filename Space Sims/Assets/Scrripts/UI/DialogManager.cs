@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogManager : MonoBehaviour
@@ -21,7 +19,7 @@ public class DialogManager : MonoBehaviour
             Instance = this;
         }
     }
-  
+
     public void StartDiaglogIndex(int i)
     {
         if (i == 0)
@@ -39,15 +37,15 @@ public class DialogManager : MonoBehaviour
 
     public void PeronInRoom(AbstractRoom abstractRoom, Person person)
     {
-         if(abstractRoom.RoomType == RoomType.Fuel)
-         {
+        if (abstractRoom.RoomType == RoomType.Fuel)
+        {
             activeDialog.EndDialog();
             AbstractRoom.OnPersonAssgined -= PeronInRoom;
-         }
-         else if(activeDialog.HasAnotherLine())
-         {
-             activeDialog.NextLine();
-         }
+        }
+        else if (activeDialog.HasAnotherLine())
+        {
+            activeDialog.NextLine();
+        }
     }
 
 }

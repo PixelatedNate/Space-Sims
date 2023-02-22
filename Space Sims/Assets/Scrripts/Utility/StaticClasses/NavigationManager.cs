@@ -69,35 +69,35 @@ public static class NavigationManager
     {
         InNavigation = saveData.InNavigation;
 
-        foreach(string s in saveData.planetId)
+        foreach (string s in saveData.planetId)
         {
             PlanetConttainerSaveData planetContainerSaveData = SaveSystem.LoadData<PlanetConttainerSaveData>(SaveSystem.PlanetPath + "/" + s + SaveSystem.PlanetPrefix);
             PlanetContainer plantContaire = new PlanetContainer(planetContainerSaveData);
             PlanetList.Add(plantContaire.planetData, plantContaire);
-            
-            if(s == saveData.currentPlanetNameId)
+
+            if (s == saveData.currentPlanetNameId)
             {
                 CurrentPlanet = plantContaire;
             }
-            if(s == saveData.TargetPalnetNameId)
+            if (s == saveData.TargetPalnetNameId)
             {
                 TargetPlanet = plantContaire;
             }
-            if(s == saveData.PreviousPalnetNameId)
+            if (s == saveData.PreviousPalnetNameId)
             {
                 PreviousPlanet = plantContaire;
             }
 
         }
 
-        if(InNavigation)
+        if (InNavigation)
         {
             _navTimer = TimeDelayManager.Timer.ReconstructTimer(saveData.timmerId, ArriveAtPlanet);
             BackgroundManager.Instance.setBackgroundToInTransit();
             UIManager.Instance.TrackNavTimer(_navTimer, TargetPlanet);
             ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, false);
         }
-        else if(CurrentPlanet != null)
+        else if (CurrentPlanet != null)
         {
             BackgroundManager.Instance.setBackground(CurrentPlanet.planetData.Background);
         }

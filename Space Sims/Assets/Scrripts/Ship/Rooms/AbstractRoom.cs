@@ -2,13 +2,12 @@ using RDG;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.Tilemaps;
 
 public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<RoomSaveData>
 {
 
-    public static event Action<AbstractRoom,Person> OnPersonAssgined;
+    public static event Action<AbstractRoom, Person> OnPersonAssgined;
 
 
     [SerializeField]
@@ -176,12 +175,12 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
             UpdateRoomStats();
 
 
-            OnPersonAssgined?.Invoke(this,person);
+            OnPersonAssgined?.Invoke(this, person);
 
-         //   if (CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget != null)
-           // {
-             //   CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget.Invoke(this);
-           // }
+            //   if (CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget != null)
+            // {
+            //   CustomEventTriggers.OnPersonAssginedToRoom.onEventDelaget.Invoke(this);
+            // }
             return true;
         }
     }

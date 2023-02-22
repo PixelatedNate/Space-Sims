@@ -1,10 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.UI;
 using System;
+using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class Dialog : MonoBehaviour
 {
@@ -45,7 +44,7 @@ public class Dialog : MonoBehaviour
 
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -53,11 +52,11 @@ public class Dialog : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == linesobj[index].lines && TargetButton == null && linesobj[index].ClearOnTouch)
+            if (textComponent.text == linesobj[index].lines && TargetButton == null && linesobj[index].ClearOnTouch)
             {
                 NextLine();
             }
-            else if(textComponent.text != linesobj[index].lines)
+            else if (textComponent.text != linesobj[index].lines)
             {
                 StopAllCoroutines();
                 textComponent.text = linesobj[index].lines;
@@ -73,19 +72,19 @@ public class Dialog : MonoBehaviour
     }
     IEnumerator TypeLine()
     {
-          foreach (char c in linesobj[index].lines.ToCharArray())
+        foreach (char c in linesobj[index].lines.ToCharArray())
         {
             SoundManager.Instance.PlaySound(SoundManager.Sound.CatChat);
             textComponent.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
-        setEndButtonOrEventTriggerEndOfLineEvent();     
+        setEndButtonOrEventTriggerEndOfLineEvent();
     }
 
     public void setEndButtonOrEventTriggerEndOfLineEvent()
     {
         linesobj[index].EndOfTextEvent?.Invoke();
-        if(TargetButton != null)
+        if (TargetButton != null)
         {
             TargetButton.interactable = true;
 
@@ -156,14 +155,14 @@ public class Dialog : MonoBehaviour
         }
     }
 
-        public void EndDialog()
-        {
-            DialogManager.Instance.activeDialog = null;
-            ButtonManager.Instance.SetAllButtons(true);
-            ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation,false);
-            TouchControls.EnableCameramovemntAndSelection(true);
-            gameObject.SetActive(false);
+    public void EndDialog()
+    {
+        DialogManager.Instance.activeDialog = null;
+        ButtonManager.Instance.SetAllButtons(true);
+        ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, false);
+        TouchControls.EnableCameramovemntAndSelection(true);
+        gameObject.SetActive(false);
 
-        }
+    }
 
-   }
+}

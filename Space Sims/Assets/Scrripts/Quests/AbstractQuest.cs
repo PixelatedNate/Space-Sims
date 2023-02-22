@@ -12,6 +12,21 @@ public abstract class AbstractQuest
 
     public virtual void CompleatQuest()
     {
+        if(QuestData.reward.ClothUnlock)
+        {
+            if(QuestData.reward.RandomCloths)
+            {
+                Sprite cloth = ResourceHelper.PersonHelper.GetRandomCloths(Gender.Male, QuestData.reward.CLothRarity);
+                UnlocksManager.UnlockCloth(cloth);
+            }
+            else if (QuestData.reward.Cloth != null)
+            {
+                UnlocksManager.UnlockCloth(QuestData.reward.Cloth);
+            }
+        }
+
+
+
         if (CustomEventTriggers.OnQuestCompleted.onEventDelaget != null)
         {
             CustomEventTriggers.OnQuestCompleted.onEventDelaget.Invoke(this);
@@ -24,7 +39,7 @@ public abstract class AbstractQuest
         {
             UnlocksManager.UnlockRoom(QuestData.reward.roomBlueprint);
         }
-        if(QuestData.DialogIndex != -1)
+        if (QuestData.DialogIndex != -1)
         {
             Debug.LogError("This sould be fixed post alpha");
             //Debug.l "This should be fixed post alpha"
@@ -35,9 +50,9 @@ public abstract class AbstractQuest
     protected void populateFromSave(AbstractQuestSaveData saveData)
     {
         this.questStaus = (QuestStatus)saveData.questStatus;
-        if(saveData.QuestLineId != null)
+        if (saveData.QuestLineId != null)
         {
-          QuestLineSaveData questLineData = SaveSystem.LoadData<QuestLineSaveData>(SaveSystem.QuestLinePath + "/" + saveData.QuestLineId + SaveSystem.QuestLinePrefix);
+            QuestLineSaveData questLineData = SaveSystem.LoadData<QuestLineSaveData>(SaveSystem.QuestLinePath + "/" + saveData.QuestLineId + SaveSystem.QuestLinePrefix);
             questLine = new QuestLine(questLineData);
         }
     }

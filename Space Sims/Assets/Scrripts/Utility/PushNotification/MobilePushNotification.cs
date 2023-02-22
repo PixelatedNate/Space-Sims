@@ -34,9 +34,9 @@ public class MobilePushNotification : MonoBehaviour
     void Start()
     {
         AndroidNotificationCenter.RegisterNotificationChannel(taskCompleteChannel);
-     //   sendNotification("Test", "this is a test");
-     //   sendNotification("Test", "this is a test", 15);
-    //    sendNotification("Test", "this is a test", 60);
+        //   sendNotification("Test", "this is a test");
+        //   sendNotification("Test", "this is a test", 15);
+        //    sendNotification("Test", "this is a test", 60);
         AndroidNotificationCenter.CancelAllScheduledNotifications();
 
     }

@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 [Serializable]
 public class PlanetConttainerSaveData
@@ -11,7 +8,7 @@ public class PlanetConttainerSaveData
     public string planetDataName;
     public float[] planetPosition = new float[3];
 
-    public PlanetConttainerSaveData (PlanetContainer planetContainer)
+    public PlanetConttainerSaveData(PlanetContainer planetContainer)
     {
         this.planetId = System.Guid.NewGuid().ToString();
 

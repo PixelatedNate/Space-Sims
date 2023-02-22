@@ -348,7 +348,7 @@ public class TouchControls : MonoBehaviour
 
     public static void EnableCameramovemntAndSelection(bool value)
     {
-        NewCameraMovemntEnabled = value;     
+        NewCameraMovemntEnabled = value;
         TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
