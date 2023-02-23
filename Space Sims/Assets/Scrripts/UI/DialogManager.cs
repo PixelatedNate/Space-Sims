@@ -41,6 +41,7 @@ public class DialogManager : MonoBehaviour
         {
             activeDialog.EndDialog();
             AbstractRoom.OnPersonAssgined -= PeronInRoom;
+            ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, true);
         }
         else if (activeDialog.HasAnotherLine())
         {

@@ -11,6 +11,15 @@ public class PlanetData : ScriptableObject
     public Sprite PlanetSprite;
     [SerializeField]
     public bool IsStartPlanet;
+
+    [SerializeField]
+    public int QuestRestTimeMinuits;
+
+    [SerializeField]
+    public int minNumberOfQuest;
+    [SerializeField]
+    public int maxNumberOfQuest;
+
     [SerializeField]
     public QuestData[] quest;
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: To Go, Please!
   m_EditorClassIdentifier: 
+  IsGeneric: 0
   Title: To Go, Please!
   Description: I'm gettin' hungry and I'm down to 9 fingers! See if you can find
     us the plans to build a food room.

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -105,6 +106,27 @@ public static class ResourceHelper
         private const string TranpsortQuestPath = "Quests/TransportQuests/";
         private const string questLinePath = "Quests/QuestLines/";
         private const string BuildQuestPath = "Quests/BuildRoomQuest/";
+
+        private const string GenericWaittingQuestPath = "Quests/Generic/WaittingQuests";
+
+
+        public static WaittingQuest getRandomGenericWaittingQuests()
+        {
+            return getRandomGenericWaittingQuests(1)[0];
+        }
+
+        public static WaittingQuest[] getRandomGenericWaittingQuests(int count)
+        {
+           List<WaitingQuestData> AllQuests = new List<WaitingQuestData>(Resources.LoadAll<WaitingQuestData>(GenericWaittingQuestPath));
+           WaittingQuest[] quests = new WaittingQuest[count];
+           for(int i = 0; i < count; i++)
+            {
+                int index = Random.Range(0, AllQuests.Count);
+                quests[i] = new WaittingQuest(AllQuests[index]);
+                AllQuests.RemoveAt(index);
+            }
+            return quests;
+        }
 
 
         public static WaitingQuestData GetWaittingQuestData(string name)
