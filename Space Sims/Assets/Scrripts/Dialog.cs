@@ -72,6 +72,7 @@ public class Dialog : MonoBehaviour
     }
     IEnumerator TypeLine()
     {
+        linesobj[index].StartEvent.Invoke();
         foreach (char c in linesobj[index].lines.ToCharArray())
         {
             SoundManager.Instance.PlaySound(SoundManager.Sound.CatChat);
