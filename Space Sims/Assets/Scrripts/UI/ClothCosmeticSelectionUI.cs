@@ -4,22 +4,33 @@ using UnityEngine.UI;
 public class ClothCosmeticSelectionUI : MonoBehaviour
 {
 
-    private Sprite Cloth { get; set; }
+    public Sprite Cloth { get; private set; }
 
     private PersonInfo PersonInfo { get; set; }
 
     [SerializeField]
     private Image _clothImageUI;
+    [SerializeField]
+    private GameObject newText;
 
     public void Setup(PersonInfo personInfo, Sprite cloth)
     {
-        _clothImageUI.sprite = cloth;
-        Cloth = cloth;
-        PersonInfo = personInfo;
-        if (!UnlocksManager.UnlockedCoths.Contains(Cloth.name))
+        if (UnlocksManager.UnlockedCoths.Contains(cloth.name))
+        {
+            transform.SetAsFirstSibling();
+            if(UnlocksManager.NewCoths.Contains(cloth.name))
+            {
+                newText.SetActive(true);
+            }
+        }
+        else
         {
             _clothImageUI.color = Color.black;
         }
+
+        _clothImageUI.sprite = cloth;
+        Cloth = cloth;
+        PersonInfo = personInfo;
     }
 
     public void SetPersonCloths()
@@ -34,5 +45,10 @@ public class ClothCosmeticSelectionUI : MonoBehaviour
             AlertOverLastTouch.Instance.PlayAlertOverLastTouch("Locked", Color.red);
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
         }
+    }
+
+    public void disableNewText()
+    {
+        newText.SetActive(false);
     }
 }

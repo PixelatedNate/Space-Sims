@@ -135,6 +135,11 @@ public class GlobalStats : MonoBehaviour
             UnlocksManager.UnlockRoom((RoomType)i);
         }
 
+        foreach (string cloth in saveData.UnlockedCloths)
+        {
+            UnlocksManager.UnlockedCoths.Add(cloth);
+        }
+
         SimulateTicks(TicksMissed);
 
         TimeTickSystem.OnTick += OnTick;
