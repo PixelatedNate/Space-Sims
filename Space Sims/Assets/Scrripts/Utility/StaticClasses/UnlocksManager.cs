@@ -7,6 +7,8 @@ public static class UnlocksManager
     //cosmetics
 
     public static List<string> UnlockedCoths { get; private set; } = new List<string>();
+    
+    public static List<string> NewCoths { get; private set; } = new List<string>();
 
     public static void UnlockRoom(RoomType roomType)
     {
@@ -27,7 +29,20 @@ public static class UnlocksManager
             return;
         }
         UnlockedCoths.Add(sprite.name);
+        NewCoths.Add(sprite.name);
         return;
     }
+    public static void UnlockCloth(string clothName)
+    {
+        if (UnlockedCoths.Contains(clothName))
+        {
+            Debug.LogWarning("Trying to unlock a cloth that is allready unlcoked");
+            return;
+        }
+        UnlockedCoths.Add(clothName);
+        NewCoths.Add(clothName);
+        return;
+    }
+
 
 }

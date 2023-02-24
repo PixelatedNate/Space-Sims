@@ -14,6 +14,7 @@ public class GlobalStatsSaving
 
     public int[] UnlockedRooms;
 
+    public string[] UnlockedCloths;
 
     public GlobalStatsSaving(GameResources playerResources)
     {
@@ -30,6 +31,14 @@ public class GlobalStatsSaving
             this.UnlockedRooms[index] = (int)room;
             index++;
         }
+        this.UnlockedCloths = new string[UnlocksManager.UnlockedCoths.Count];
+        index = 0;
+        foreach (string cloth in UnlocksManager.UnlockedCoths)
+        {
+            this.UnlockedCloths[index] = cloth;
+            index++;
+        }
+
     }
 
 
