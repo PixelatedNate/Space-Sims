@@ -18,6 +18,7 @@ public class TouchControls : MonoBehaviour
     private static bool NewCameraMovemntEnabled { get; set; } = true;
 
     private bool CameraMovemntEnabled { get; set; } = true;
+    private static bool CameraZoomEnabled { get; set; } = true;
 
     private Button _button;   // prevent trigering of UI buttons when panning or performing other touch related actions
 
@@ -74,6 +75,10 @@ public class TouchControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(!CameraZoomEnabled)
+        {
+            Zooming = false;
+        }
 
         if (!CameraMovemntEnabled)
         {
@@ -208,7 +213,10 @@ public class TouchControls : MonoBehaviour
         //if in editor can zoom with scrollwheel
 #if UNITY_EDITOR
 
-        Zoom(Input.GetAxis("Mouse ScrollWheel"));
+        if (CameraZoomEnabled)
+        {
+            Zoom(Input.GetAxis("Mouse ScrollWheel"));
+        }
 
 #endif
         CameraMovemntEnabled = NewCameraMovemntEnabled;
@@ -217,6 +225,10 @@ public class TouchControls : MonoBehaviour
 
     private void TouchZoom()
     {
+        if (!CameraZoomEnabled)
+        {
+            return;
+        }
         Zooming = true;
         ClickDuration = 0;
         Paning = false;
@@ -351,6 +363,12 @@ public class TouchControls : MonoBehaviour
         NewCameraMovemntEnabled = value;
         TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
+    public static void SetZoomActive(bool value)
+    {
+        CameraZoomEnabled = value;
+        TouchStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
 
     public static void RecenterCamera()
     {
