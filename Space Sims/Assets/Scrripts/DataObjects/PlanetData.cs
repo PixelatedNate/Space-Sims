@@ -10,6 +10,9 @@ public class PlanetData : ScriptableObject
     [SerializeField]
     public Sprite PlanetSprite;
     [SerializeField]
+    public PlanetType planetType;
+    
+    [SerializeField]
     public bool IsStartPlanet;
 
     [SerializeField]

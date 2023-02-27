@@ -15,5 +15,9 @@ MonoBehaviour:
   PlanetName: StartTest
   Background: {fileID: 21300000, guid: 69509b34285b9bf4dbe3b9fb6ee12461, type: 3}
   PlanetSprite: {fileID: 21300000, guid: 816a2c0b2ef03454987c720fcfeea77f, type: 3}
+  planetType: 6
   IsStartPlanet: 0
+  QuestRestTimeMinuits: 0
+  minNumberOfQuest: 2
+  maxNumberOfQuest: 4
   quest: []

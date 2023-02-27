@@ -24,6 +24,10 @@ public static class QuestManager
     {
         Quests.Add(quest);
     }
+    public static void RemoveQuest(AbstractQuest quest)
+    {
+        Quests.Remove(quest);
+    }
 
 
     public static void SaveQuests()

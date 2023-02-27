@@ -107,17 +107,19 @@ public static class ResourceHelper
         private const string questLinePath = "Quests/QuestLines/";
         private const string BuildQuestPath = "Quests/BuildRoomQuest/";
 
-        private const string GenericWaittingQuestPath = "Quests/Generic/WaittingQuests";
+        private const string GenericQuestPath = "Quests/Generic/";
 
 
-        public static WaittingQuest getRandomGenericWaittingQuests()
+        public static WaittingQuest getRandomGenericWaittingQuests(PlanetType planetType)
         {
-            return getRandomGenericWaittingQuests(1)[0];
+            return getRandomGenericWaittingQuests(1,planetType)[0];
         }
 
-        public static WaittingQuest[] getRandomGenericWaittingQuests(int count)
+        public static WaittingQuest[] getRandomGenericWaittingQuests(int count, PlanetType planetType)
         {
-           List<WaitingQuestData> AllQuests = new List<WaitingQuestData>(Resources.LoadAll<WaitingQuestData>(GenericWaittingQuestPath));
+           List<WaitingQuestData> AllQuests = new List<WaitingQuestData>(Resources.LoadAll<WaitingQuestData>(GenericQuestPath + "All/WaittingQuests"));
+           AllQuests.AddRange(Resources.LoadAll<WaitingQuestData>(GenericQuestPath + planetType.ToString() + "/WaittingQuests"));
+
            WaittingQuest[] quests = new WaittingQuest[count];
            for(int i = 0; i < count; i++)
             {
