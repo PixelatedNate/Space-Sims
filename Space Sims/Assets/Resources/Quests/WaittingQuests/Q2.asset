@@ -24,6 +24,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: c640e90fba54215448ee89134c38ffbb, type: 2}
     roomBlueprintUnlock: 0
     roomBlueprint: 3
+    ClothUnlock: 1
+    RandomCloths: 0
+    CLothRarity: 0
+    Cloth: {fileID: 21300000, guid: 979a34c0cfe3ecc449b66ee572a31ddc, type: 3}
   DialogIndex: -1
   QuestRequiments:
     Numpeople: 1
