@@ -15,5 +15,9 @@ MonoBehaviour:
   PlanetName: Prime1
   Background: {fileID: 21300000, guid: 49122040df5e797439941e8448167f38, type: 3}
   PlanetSprite: {fileID: 21300000, guid: bf162a96bf42a4749964e525006f041f, type: 3}
+  planetType: 0
   IsStartPlanet: 0
+  QuestRestTimeMinuits: 0
+  minNumberOfQuest: 2
+  maxNumberOfQuest: 4
   quest: []

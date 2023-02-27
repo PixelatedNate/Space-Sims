@@ -5,6 +5,8 @@ using UnityEngine;
 public static class NavigationManager
 {
 
+    public static List<PlanetContainer> vistedPlalnets = new List<PlanetContainer>();
+
     public static Dictionary<PlanetData, PlanetContainer> PlanetList { get; set; } = new Dictionary<PlanetData, PlanetContainer>();
     public static bool InNavigation { get; private set; } = false;
 
@@ -31,6 +33,7 @@ public static class NavigationManager
         BackgroundManager.Instance.setBackgroundToInTransit();
         DateTime ariveralTime = DateTime.Now.Add(CalcualteTravleTime(planet));
         PreviousPlanet = CurrentPlanet;
+        CurrentPlanet.LeavePlanet();
         CurrentPlanet = null;
         TargetPlanet = planet;
         InNavigation = true;
@@ -48,6 +51,8 @@ public static class NavigationManager
     {
         InNavigation = false;
         CurrentPlanet = TargetPlanet;
+        CurrentPlanet.ArriveAtPlanet();
+        vistedPlalnets.Add(CurrentPlanet);
         //  QuestManager.SetAvalibleQuest(CurrentPlanetQuests);
         TargetPlanet = null;
         BackgroundManager.Instance.setBackground(CurrentPlanet.planetData.Background);
@@ -63,7 +68,8 @@ public static class NavigationManager
                 }
             }
         }
-    }
+        
+        }
 
     public static void Load(NavigationSaveData saveData)
     {

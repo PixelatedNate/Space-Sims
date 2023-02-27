@@ -14,10 +14,26 @@ public class QuestDataEditor : Editor
 
     string clothesPath = "Artwork/Clothes/Male/";
 
+    string[] GenericPaths = new string[] { "Quests/Generic/WaittingQuests", "Quests/Generic/TransportQuests"};
+
     public override void OnInspectorGUI()
     {
 
         QuestData questDataTarget = (QuestData)target;
+        questDataTarget.IsGeneric = false;
+        foreach (string path in GenericPaths)
+        {
+            string fullPathToCheck = path + "/"  + questDataTarget.name;
+            if(Resources.Load<QuestData>(fullPathToCheck) != null)
+            {
+                questDataTarget.IsGeneric = true;
+                break;
+            }
+        }
+
+        EditorGUI.BeginDisabledGroup(true);
+        EditorGUILayout.Toggle("IsGeneric", questDataTarget.IsGeneric);
+        EditorGUI.EndDisabledGroup();
 
         EditorUtility.SetDirty(questDataTarget);
 

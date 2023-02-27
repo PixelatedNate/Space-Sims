@@ -48,6 +48,9 @@ public abstract class QuestData : ScriptableObject
     }
 
     [SerializeField]
+    public bool IsGeneric;
+
+    [SerializeField]
     public string Title;
 
     [SerializeField]
