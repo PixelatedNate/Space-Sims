@@ -691,7 +691,8 @@ MonoBehaviour:
   - {fileID: 2036965736}
   - {fileID: 120875822}
   - {fileID: 729384848}
-  - {fileID: 1517099129}
+  - {fileID: 859750244}
+  - {fileID: 362576577}
   activeDialog: {fileID: 0}
 --- !u!1 &77863461
 GameObject:
@@ -1071,7 +1072,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Click on the Crew List Icon.
+    lines: Tap on the Crew List Icon.
     button: {fileID: 9217279126325118346}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -1142,11 +1143,11 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Use the arrow keys to filter your peope to Wisdom.
+    lines: Tap on the arrows to filter your people to Wisdom.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    ClearOnTouch: 0
+    ClearOnTouch: 1
     EndOfTextEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -2182,7 +2183,7 @@ GameObject:
   - component: {fileID: 362576580}
   - component: {fileID: 362576579}
   m_Layer: 5
-  m_Name: Dialog_8
+  m_Name: Dialog_5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2230,7 +2231,107 @@ MonoBehaviour:
   - Excellent, now we can make our own shinies.
   - I think you know what to do
   textSpeed: 0.05
-  linesobj: []
+  linesobj:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Alright so I noticed we need those shiny minerals if we want to keep building
+      on this ship.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: See if you can find a quest with some blueprints to build a mineral room.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Okay chief, build a Mineral Room.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Excellent, now we can make our own shinies.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Congratulations, you have passed with flying colors!
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: You are now Travel Universe Technology Orbit Room Information Automated
+      Living Certified.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: '........or T.U.T.O.R.I.A.L '
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &362576580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3867,24 +3968,83 @@ MonoBehaviour:
   linesobj:
   - StartEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7957068511739355582, guid: feac673830432e44f9e99417c897956d, type: 3}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     lines: Hey, I dunno about you... but I'm hungry.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
-    ClearOnTouch: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: See if you can build us a food room.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Darn it's locked, gotta find a blueprint. Let's check and see if any quests
+      have one.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Tap on your quest icon.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: See right there, go ahead and select the quest for the food blueprint.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Wonderful!... gurgle....Let's hope they get back soon.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
     EndOfTextEvent:
       m_PersistentCalls:
         m_Calls: []
@@ -4082,7 +4242,7 @@ GameObject:
   - component: {fileID: 859750247}
   - component: {fileID: 859750246}
   m_Layer: 5
-  m_Name: Dialog_7
+  m_Name: Dialog_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4130,7 +4290,78 @@ MonoBehaviour:
   - Well look at that a bunch of minerals on that quest. Let's do it!
   - Good job! You're really getting the hang of this.
   textSpeed: 0.05
-  linesobj: []
+  linesobj:
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Good they're back let's build that room!
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Tap the build room icon.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Select Food Room.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Don't forget someone needs to be in the room to build it for you. Hey
+      I see someone new on the ship maybe let them do it!
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - StartEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    lines: Good job! You're really getting the hang of this.
+    button: {fileID: 0}
+    AltbuttonName: 
+    CloseMenuAfter: 0
+    ClearOnTouch: 1
+    EndOfTextEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    EndDialogEvent:
+      m_PersistentCalls:
+        m_Calls: []
 --- !u!114 &859750247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9555,8 +9786,8 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Please start by clicking the Quest Icon in the top left of the screen
-      and select your first quest.
+    lines: Please start by Tapping the Quest Icon in the top left of the screen and
+      select your first quest.
     button: {fileID: 986678642}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -9570,7 +9801,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Click on the Available Quest.
+    lines: Tap on the Available Quest.
     button: {fileID: 0}
     AltbuttonName: Lost in the Dark
     CloseMenuAfter: 0
@@ -9584,7 +9815,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Click on the Empty slot to assign a crew member.
+    lines: Tap on the Empty slot to assign a crew member.
     button: {fileID: 0}
     AltbuttonName: QuestInsertBox(Clone)
     CloseMenuAfter: 0
