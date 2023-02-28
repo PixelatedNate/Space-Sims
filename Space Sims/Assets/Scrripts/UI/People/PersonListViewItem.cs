@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class PersonListViewItem : MonoBehaviour
 {
-    PersonInfo person;
+    public PersonInfo person { get; private set; }
 
     [SerializeField]
     TextMeshProUGUI PersonName, Age, Strenght, Dexterity, Inteligence, Wisdom, Charisma, QuestText;
@@ -40,7 +40,6 @@ public class PersonListViewItem : MonoBehaviour
             QuestText.color = Color.red;
             QuestText.text = "Cargo for Quest";
         }
-
         else if (quest.PeopleAssgined.Contains(person))
         {
             GetComponent<Button>().interactable = false;
@@ -50,8 +49,12 @@ public class PersonListViewItem : MonoBehaviour
         else if (!quest.DosePersonMeetRequiment(person))
         {
             GetComponent<Button>().interactable = false;
-            QuestText.color = Color.green;
+            QuestText.color = Color.red;
             QuestText.text = "Missing Skill Requiment";
+        }
+        else
+        {
+            QuestText.text = "";
         }
 
     }

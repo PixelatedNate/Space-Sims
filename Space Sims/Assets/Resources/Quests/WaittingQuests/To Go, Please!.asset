@@ -30,7 +30,7 @@ MonoBehaviour:
     RandomCloths: 0
     CLothRarity: 0
     Cloth: {fileID: 0}
-  DialogIndex: -1
+  DialogIndex: 3
   QuestRequiments:
     Numpeople: 1
     SkillRequiment: 5

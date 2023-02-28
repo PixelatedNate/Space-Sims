@@ -41,7 +41,7 @@ public abstract class AbstractQuest
         }
         if (QuestData.DialogIndex != -1)
         {
-            Debug.LogError("This sould be fixed post alpha");
+         //   Debug.LogError("This sould be fixed post alpha");
             //Debug.l "This should be fixed post alpha"
             DialogManager.Instance.StartDiaglogIndex(QuestData.DialogIndex);
         }

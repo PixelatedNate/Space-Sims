@@ -16,6 +16,10 @@ public class ButtonManager : MonoBehaviour
         BuildRoom,
         peoplelist,
         Alets,
+        CloseAll,
+        PersonListFillterLeft,
+        PersonListFillterRight,
+        PersonListFillterInverse,
     }
 
 

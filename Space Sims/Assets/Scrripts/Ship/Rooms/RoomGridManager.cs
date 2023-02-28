@@ -156,7 +156,6 @@ public class RoomGridManager : MonoBehaviour
         {
             foreach (var buildroom in BuildCellList)
             {
-                Debug.Log(buildroom.Key);
                 buildroom.Value.SetActive(mode);
             }
         }

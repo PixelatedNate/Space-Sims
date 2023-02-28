@@ -44,26 +44,25 @@ public class WaitingQuestViewComponet : MonoBehaviour
     {
         questSelected = waittingQuest;
         SetRequiments();
-        startBtn.enabled = enabled;
         if (waittingQuest.questStaus == QuestStatus.Available)
         {
             ProgressBar.parent.parent.gameObject.SetActive(false);
+            SetButton();
         }
         else if (waittingQuest.questStaus == QuestStatus.InProgress)
         {
             TimeTickSystem.OnTick += OnTick;
-            startBtn.enabled = false;
+            startBtn.interactable = false;
             SetProgressBarAndText();
         }
         else if (waittingQuest.questStaus == QuestStatus.Completed)
         {
             ProgressBar.parent.parent.gameObject.SetActive(true);
             TimeTickSystem.OnTick -= OnTick;
-            startBtn.enabled = false;
+            startBtn.interactable = false;
             TimeLeft.text = "Completed";
             ProgressBar.localScale = new Vector3(1, 1, 1);
         }
-        SetButton();
         setLogs();
     }
 
@@ -72,6 +71,10 @@ public class WaitingQuestViewComponet : MonoBehaviour
         foreach (Transform child in RequimentPanel)
         {
             Destroy(child.gameObject);
+        }
+        if(questSelected.questStaus == QuestStatus.Completed)
+        {
+            return;
         }
         for (int i = 0; i < questSelected.WaittingQuestData.QuestRequiments.Numpeople; i++)
         {
@@ -155,10 +158,12 @@ public class WaitingQuestViewComponet : MonoBehaviour
     {
         if (questSelected.WaittingQuestData.QuestRequiments.Ismet(questSelected.PeopleAssgined.ToArray()))
         {
+            startBtn.interactable = true;
             buttonImge.sprite = ReadyButtonImg;
         }
         else
         {
+            startBtn.interactable = false;
             buttonImge.sprite = UnreadyButtonImg;
         }
     }

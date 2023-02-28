@@ -39,6 +39,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     SettingsUIMenu settingsMenu;
 
+
+    public static event Action OnBuildMenuOpen;
+
     private bool IsRightPanalOpen { get; set; }
 
     private BuildRoomButton selectedbtn = null;
@@ -159,6 +162,7 @@ public class UIManager : MonoBehaviour
 
     public void OpenBuildRoomMenu(Vector3Int roomCellPos, BuildRoomButton btn)
     {
+        OnBuildMenuOpen?.Invoke();
 
         if (selectedbtn == null)
         {

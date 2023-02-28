@@ -8,6 +8,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
 {
 
     public static event Action<AbstractRoom, Person> OnPersonAssgined;
+    public static event Action<AbstractRoom> OnRoomBuilt;
 
 
     [SerializeField]
@@ -470,6 +471,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
             int deltaMaxPeople = RoomStat.PoepleChange - _roomlevels[Level - 1].PoepleChange;
             GlobalStats.Instance.MaxPeople += deltaMaxPeople;
         }
+        OnRoomBuilt?.Invoke(this);
     }
 
     public void SetWallColor(Color color)

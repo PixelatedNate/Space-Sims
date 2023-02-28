@@ -31,6 +31,12 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     private void OnTick(object source, EventArgs e)
     {
+        SetColour();
+    }
+
+
+    public void SetColour()
+    {
         Color c = _buttonImg.color;
         if (GlobalStats.Instance.PlayerResources >= getCost())
         {
@@ -41,6 +47,7 @@ public class BuildRoomListViewItem : MonoBehaviour
             c.a = 0.8f;
         }
         _buttonImg.color = c;
+
     }
 
 
@@ -93,6 +100,7 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void UpdateItem()
     {
+        SetColour();
         if (!_room.IsUnlocked)
         {
             UnlockedView.SetActive(false);

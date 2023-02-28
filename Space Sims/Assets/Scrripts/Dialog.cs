@@ -12,8 +12,9 @@ public class Dialog : MonoBehaviour
     public float textSpeed;
     private int index;
     public Lines[] linesobj;
-    private Button TargetButton;
-
+    private Button TargetButton { get; set; }
+    public UnityEvent EndOfDialogEvent;
+  
     [Serializable]
     public class Lines
     {
@@ -26,8 +27,9 @@ public class Dialog : MonoBehaviour
         public bool CloseMenuAfter = false;
         public bool ClearOnTouch = true;
         public UnityEvent EndOfTextEvent;
-        public UnityEvent EndDialogEvent;
+
     }
+
 
     // Start is called before the first frame update
 
@@ -72,7 +74,7 @@ public class Dialog : MonoBehaviour
     }
     IEnumerator TypeLine()
     {
-        linesobj[index].StartEvent.Invoke();
+        linesobj[index].StartEvent?.Invoke();
         foreach (char c in linesobj[index].lines.ToCharArray())
         {
             SoundManager.Instance.PlaySound(SoundManager.Sound.CatChat);
@@ -85,6 +87,13 @@ public class Dialog : MonoBehaviour
     public void setEndButtonOrEventTriggerEndOfLineEvent()
     {
         linesobj[index].EndOfTextEvent?.Invoke();
+        
+        if(TargetButton == null && linesobj[index].AltbuttonName != "") // due to changes in obejcts getting destroyed and reordered in menus.
+        {
+            TargetButton = GameObject.Find(linesobj[index].AltbuttonName).GetComponent<Button>();
+        }
+
+       
         if (TargetButton != null)
         {
             TargetButton.interactable = true;
@@ -92,11 +101,11 @@ public class Dialog : MonoBehaviour
             TargetButton.onClick.AddListener(NextLine);
             if (TargetButton.GetComponent<Animator>() == null)
             {
-                TargetButton.GetComponentInParent<Animator>().SetBool("Blink", true);
+                TargetButton.GetComponentInParent<Animator>()?.SetBool("Blink", true);
             }
             else
             {
-                TargetButton.GetComponent<Animator>().SetBool("Blink", true);
+                TargetButton.GetComponent<Animator>()?.SetBool("Blink", true);
             }
         }
     }
@@ -114,7 +123,6 @@ public class Dialog : MonoBehaviour
         if (linesobj[index].CloseMenuAfter)
         {
             UIManager.Instance.DeselectAll();
-            linesobj[index].EndDialogEvent?.Invoke();
         }
 
         if (TargetButton != null)
@@ -123,11 +131,11 @@ public class Dialog : MonoBehaviour
             TargetButton.interactable = false;
             if (TargetButton.GetComponent<Animator>() == null)
             {
-                TargetButton.GetComponentInParent<Animator>().SetBool("Blink", false);
+                TargetButton.GetComponentInParent<Animator>()?.SetBool("Blink", false);
             }
             else
             {
-                TargetButton.GetComponent<Animator>().SetBool("Blink", false);
+                TargetButton.GetComponent<Animator>()?.SetBool("Blink", false);
             }
             TargetButton = null;
         }
@@ -158,10 +166,12 @@ public class Dialog : MonoBehaviour
 
     public void EndDialog()
     {
+
         DialogManager.Instance.activeDialog = null;
         ButtonManager.Instance.SetAllButtons(true);
         ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.Navigation, false);
         TouchControls.EnableCameramovemntAndSelection(true);
+        EndOfDialogEvent?.Invoke();
         gameObject.SetActive(false);
 
     }

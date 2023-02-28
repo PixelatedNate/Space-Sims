@@ -24,6 +24,8 @@ public class PersonListView : MonoBehaviour
     [SerializeField]
     Sprite DownFilterArrow, UpFilterArrow;
 
+    public static event Action<SkillsList?> OnFiltterChange;
+
     SkillsList? skillfilter = null;
 
     private bool Inverted { get; set; }
@@ -77,6 +79,7 @@ public class PersonListView : MonoBehaviour
 
     private void FilterListBySkill(SkillsList skill, bool inverse = false)
     {
+
         skillfilter = skill;
         Filterlable.text = skill.ToString() + " " + Icons.GetSkillIconForTextMeshPro(skill);
 
@@ -91,6 +94,7 @@ public class PersonListView : MonoBehaviour
             people.Sort((a, b) => b.skills.GetSkill(skill).CompareTo(a.skills.GetSkill(skill)));
         }
         PopulateList();
+        OnFiltterChange?.Invoke(skill);
     }
 
     private void FilterListByAge(bool inverse = false)
@@ -109,6 +113,7 @@ public class PersonListView : MonoBehaviour
         }
 
         PopulateList();
+        OnFiltterChange?.Invoke(null);
     }
 
 
@@ -173,18 +178,20 @@ public class PersonListView : MonoBehaviour
         {
             GameObject personViewItem = GameObject.Instantiate(PersonListItemTemplate, PersonScrollPanal);
             personViewItem.GetComponent<PersonListViewItem>().SetPerson(personInfo, skillfilter);
+            if(QuestSelected != null)
+            {
+                personViewItem.GetComponent<PersonListViewItem>().SetQuestText(QuestSelected);
+            }
+            
             if (OnSelectMethod != null)
             {
                 personViewItem.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(personInfo));
-                if (personInfo.IsQuesting)
-                {
-                    personViewItem.GetComponent<PersonListViewItem>().SetQuestText(QuestSelected);
-                }
             }
             else
             {
                 personViewItem.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.OpenPersonView(personInfo));
             }
+
         }
     }
 }

@@ -75,7 +75,7 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
 
     public bool DosePersonMeetRequiment(PersonInfo person)
     {
-        return person.skills.GetSkill(WaittingQuestData.QuestRequiments.SkillRequiment) > WaittingQuestData.QuestRequiments.skillValueMin;
+       return person.skills.GetSkill(WaittingQuestData.QuestRequiments.SkillRequiment) >= WaittingQuestData.QuestRequiments.skillValueMin;
     }
 
     public override bool StartQuest()

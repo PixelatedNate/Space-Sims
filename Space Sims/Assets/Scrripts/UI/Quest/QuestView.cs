@@ -64,7 +64,7 @@ public class QuestView : MonoBehaviour
             waitingQuestView.gameObject.SetActive(false);
             transprotQuestViewComponet.gameObject.SetActive(false);
             //transprotQuestViewComponet.SelectQuest((TransportQuest)quest);
-            startBtn.enabled = true;
+            startBtn.interactable = true;
             buttonImge.sprite = ReadyButtonImg;
         }
         questSelected = quest;
@@ -77,7 +77,7 @@ public class QuestView : MonoBehaviour
     {
         if (questSelected.StartQuest())
         {
-            startBtn.enabled = false;
+            startBtn.interactable = false;
             SelectQuest(questSelected);
             UIManager.Instance.OpenAvalibalQuestListView();
         }
