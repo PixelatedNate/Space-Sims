@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 7648138513347655458}
   - component: {fileID: 2561487086061868060}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BuildRoomButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

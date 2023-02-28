@@ -142,6 +142,11 @@ public class TimeDelayManager : MonoBehaviour
     public Timer AddTimer(Timer timer)
     {
         //timer.StartTime = DateTime.Now;
+
+#if UNITY_EDITOR
+        timer.EndTime = DateTime.Now + TimeSpan.FromSeconds(5);
+#endif
+
         ActiveTimers.Add(timer);
         ActiveTimers.Sort((timer1, timer2) => timer1.EndTime.CompareTo(timer2.EndTime));
         return timer;
