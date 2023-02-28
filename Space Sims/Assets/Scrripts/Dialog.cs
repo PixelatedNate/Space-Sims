@@ -75,11 +75,34 @@ public class Dialog : MonoBehaviour
     IEnumerator TypeLine()
     {
         linesobj[index].StartEvent?.Invoke();
+        bool isSprite = false;
+        string spriteText = "";
         foreach (char c in linesobj[index].lines.ToCharArray())
         {
-            SoundManager.Instance.PlaySound(SoundManager.Sound.CatChat);
-            textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            if (isSprite)
+            {
+                spriteText += c;
+                if (c == '>')
+                {
+                    isSprite = false;
+                    textComponent.text += spriteText;
+                    spriteText = "";                   
+                }
+            }
+            else
+            {
+                isSprite = c == '<';
+                if (isSprite)
+                {
+                    spriteText += c;
+                }
+                else if(c != '>')
+                {
+                    SoundManager.Instance.PlaySound(SoundManager.Sound.CatChat);
+                    textComponent.text += c;
+                    yield return new WaitForSeconds(textSpeed);
+                }
+            }
         }
         setEndButtonOrEventTriggerEndOfLineEvent();
     }
@@ -175,5 +198,7 @@ public class Dialog : MonoBehaviour
         gameObject.SetActive(false);
 
     }
+
+
 
 }
