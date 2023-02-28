@@ -76,6 +76,23 @@ public class AlertsUI : MonoBehaviour
 
     }
 
+    public void removeAllAlertsForPeopleWhoCantBeBotheredToTakeTheTimeToLookThroughThemAndUnderstandWhatImportentThingIsHapping()
+    {
+        List<Alert> alertsToRemeover = new List<Alert>();
+        foreach(Alert a in AlertsInView.Keys)
+        {
+            if(a.prority != Alert.AlertPrority.Permanet)
+            {
+                alertsToRemeover.Add(a);
+            }
+        }
+        foreach(Alert a in alertsToRemeover)
+        {
+            RemoveAlert(a);
+        }
+
+    }
+
 
 
 

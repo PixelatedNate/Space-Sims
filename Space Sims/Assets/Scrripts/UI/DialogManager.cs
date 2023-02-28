@@ -140,4 +140,11 @@ public class DialogManager : MonoBehaviour
         }
     }
 
+    public void EnableAllButtons()
+    {
+        ButtonManager.Instance.SetAllButtons(true);
+    }
+
+
+
 }

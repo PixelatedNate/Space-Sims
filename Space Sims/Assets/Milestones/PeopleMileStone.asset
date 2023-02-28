@@ -20,8 +20,8 @@ MonoBehaviour:
     requiment: 10
     resoureceRewared:
       Fuel: 0
-      Food: 50
-      Minerals: 0
+      Food: 0
+      Minerals: 500
       Premimum: 0
     completed: 0
   - MilstonIcon: {fileID: 21300000, guid: 5f024e3f2669a8b4db373d3cda98ced6, type: 3}
@@ -30,7 +30,7 @@ MonoBehaviour:
     requiment: 15
     resoureceRewared:
       Fuel: 0
-      Food: 100
-      Minerals: 0
+      Food: 0
+      Minerals: 1000
       Premimum: 0
     completed: 0

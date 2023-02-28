@@ -22,6 +22,9 @@ public class BuildRoomListViewItem : MonoBehaviour
     [SerializeField]
     Image _buttonImg;
 
+    [SerializeField]
+    Button button;
+
     void Start()
     {
         TimeTickSystem.OnTick += OnTick;
@@ -69,7 +72,7 @@ public class BuildRoomListViewItem : MonoBehaviour
             SoundManager.Instance.PlaySound(SoundManager.Sound.Error);
             return;
         }
-        if (GlobalStats.Instance.PlayerResources >= getCost())
+        else if (GlobalStats.Instance.PlayerResources >= getCost())
         {
             GlobalStats.Instance.PlayerResources -= getCost();
             AbstractRoom newRoom = RoomGridManager.Instance.BuildNewRoom(RoomPosition, _room.RoomType);
@@ -100,6 +103,8 @@ public class BuildRoomListViewItem : MonoBehaviour
 
     public void UpdateItem()
     {
+        button.interactable = true;
+
         SetColour();
         if (!_room.IsUnlocked)
         {
