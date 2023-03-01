@@ -562,6 +562,14 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
             {
                 AlertManager.Instance.SendAlert(constructionPusedAlert);
             }
+            if (Level != 0)
+            {
+                GlobalStats.Instance.MaxStorage += _roomlevels[Level - 1].Storage;
+            }
+        }
+        else
+        {
+        GlobalStats.Instance.MaxStorage += RoomStat.Storage;
         }
     }
 

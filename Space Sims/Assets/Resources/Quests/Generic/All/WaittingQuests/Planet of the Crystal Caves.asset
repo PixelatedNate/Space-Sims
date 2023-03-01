@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: Planet of the Crystal Caves
   m_EditorClassIdentifier: 
-  IsGeneric: 0
+  IsGeneric: 1
   Title: Planet of the Crystal Caves
   Description: Retrieve a rare crystal from a dangerous planet's caves.
   reward:
@@ -27,7 +27,7 @@ MonoBehaviour:
     roomBlueprint: 3
     ClothUnlock: 1
     RandomCloths: 1
-    CLothRarity: 1
+    CLothRarity: 2
     Cloth: {fileID: 21300000, guid: 6cfb113f194c6834499b2e3869a50b41, type: 3}
   DialogIndex: -1
   QuestRequiments:

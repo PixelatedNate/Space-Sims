@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: Rescue Mission
   m_EditorClassIdentifier: 
-  IsGeneric: 0
+  IsGeneric: 1
   Title: Rescue Mission
   Description: Save stranded researchers from a hostile alien species on a planet
     plagued by deadly storms.

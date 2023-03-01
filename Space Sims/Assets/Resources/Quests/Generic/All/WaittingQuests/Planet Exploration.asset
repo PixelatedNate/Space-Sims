@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: Planet Exploration
   m_EditorClassIdentifier: 
-  IsGeneric: 0
+  IsGeneric: 1
   Title: Planet Exploration
   Description: Travel to the unexplored planet and collect data on its atmosphere,
     terrain, and any signs of life.
@@ -28,7 +28,7 @@ MonoBehaviour:
     roomBlueprint: 3
     ClothUnlock: 1
     RandomCloths: 1
-    CLothRarity: 0
+    CLothRarity: 1
     Cloth: {fileID: 21300000, guid: 979a34c0cfe3ecc449b66ee572a31ddc, type: 3}
   DialogIndex: -1
   QuestRequiments:

@@ -13,7 +13,7 @@ public class planetView : MonoBehaviour
     Button TravelButton;
 
     [SerializeField]
-    TextMeshProUGUI Name, TravalTime, NumberOfQuest;
+    TextMeshProUGUI Name, TravalTime, NumberOfQuest, QuestRestTime;
 
     public void SetPlanet(PlanetContainer planet)
     {
@@ -47,6 +47,7 @@ public class planetView : MonoBehaviour
     {
         Name.text = SelectedPlanet.planetData.PlanetName;
         NumberOfQuest.text = SelectedPlanet.HasPlayerVisted ? SelectedPlanet.getAvalibleQuests().Length.ToString() : "?";
+        QuestRestTime.text = SelectedPlanet.NewQuestIn.RemainingDuration.ToString("h'h 'm'm'");
         //NumberOfQuest.text = SelectedPlanet. Quests.Length.ToString();
         if (NavigationManager.InNavigation)
         {

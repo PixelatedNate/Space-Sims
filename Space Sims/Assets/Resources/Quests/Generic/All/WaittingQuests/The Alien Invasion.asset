@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: The Alien Invasion
   m_EditorClassIdentifier: 
-  IsGeneric: 0
+  IsGeneric: 1
   Title: The Alien Invasion
   Description: Stop an alien invasion by infiltrating their base on a nearby planet
     and disabling their weapon systems.

@@ -6,6 +6,7 @@ public abstract class AbstractQuestSaveData
 
     public string QuestDataName;
     public int questStatus;
+    public bool IsGeneric;
 
     public string QuestLineId;
 
@@ -13,6 +14,7 @@ public abstract class AbstractQuestSaveData
     {
         this.QuestDataName = quest.QuestData.name;
         this.questStatus = (int)quest.questStaus;
+        this.IsGeneric = quest.QuestData.IsGeneric;
 
         if (quest.questLine != null)
         {

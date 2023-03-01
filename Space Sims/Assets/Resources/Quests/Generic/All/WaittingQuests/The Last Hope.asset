@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: The Last Hope
   m_EditorClassIdentifier: 
-  IsGeneric: 0
+  IsGeneric: 1
   Title: The Last Hope
   Description: Retrieve a plant with life-saving properties from a planet on the
     brink of destruction to save a dying civilization.
@@ -28,12 +28,12 @@ MonoBehaviour:
     roomBlueprint: 3
     ClothUnlock: 1
     RandomCloths: 1
-    CLothRarity: 0
+    CLothRarity: 1
     Cloth: {fileID: 21300000, guid: 979a34c0cfe3ecc449b66ee572a31ddc, type: 3}
   DialogIndex: -1
   QuestRequiments:
-    Numpeople: 0
-    SkillRequiment: 0
+    Numpeople: 5
+    SkillRequiment: 3
     skillValueMin: 0
   PossibleEncounters: []
   DurationHour: 0

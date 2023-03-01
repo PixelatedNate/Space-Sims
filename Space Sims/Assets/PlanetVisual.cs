@@ -54,6 +54,10 @@ public class PlanetVisual : MonoBehaviour, IInteractables
                 if (NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
                 {
                     NavigationManager.CurrentPlanet = PlanetContainer;
+                    NavigationManager.vistedPlalnets.Add(PlanetContainer);
+                    PlanetContainer.ArriveAtPlanet();
+                               
+
 
                 }
             }

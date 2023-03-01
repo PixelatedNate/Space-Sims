@@ -139,12 +139,15 @@ public class TimeDelayManager : MonoBehaviour
         TimeTickSystem.OnTick += OnTick;
     }
 
-    public Timer AddTimer(Timer timer)
+    public Timer AddTimer(Timer timer, bool isPalnetReset = false)
     {
         //timer.StartTime = DateTime.Now;
 
 #if UNITY_EDITOR
-        timer.EndTime = DateTime.Now + TimeSpan.FromSeconds(5);
+        if (!isPalnetReset)
+        {
+            timer.EndTime = DateTime.Now + TimeSpan.FromSeconds(5);
+        }
 #endif
 
         ActiveTimers.Add(timer);

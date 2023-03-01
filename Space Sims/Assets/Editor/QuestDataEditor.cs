@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEngine;
 
@@ -14,20 +15,30 @@ public class QuestDataEditor : Editor
 
     string clothesPath = "Artwork/Clothes/Male/";
 
-    string[] GenericPaths = new string[] { "Quests/Generic/WaittingQuests", "Quests/Generic/TransportQuests"};
+    string GenericPath = "Quests/Generic/";
 
     public override void OnInspectorGUI()
     {
 
         QuestData questDataTarget = (QuestData)target;
-        questDataTarget.IsGeneric = false;
-        foreach (string path in GenericPaths)
+        string fullPathToCheckWatting = GenericPath + "All/WaittingQuests/"  + questDataTarget.name;
+        string fullPathToCheckTransprot = GenericPath + "All/TransportQuests/"  + questDataTarget.name;
+        if (Resources.Load<QuestData>(fullPathToCheckWatting) != null || Resources.Load<QuestData>(fullPathToCheckTransprot) != null)
         {
-            string fullPathToCheck = path + "/"  + questDataTarget.name;
-            if(Resources.Load<QuestData>(fullPathToCheck) != null)
+            questDataTarget.IsGeneric = true;
+        }
+        else
+        {
+            questDataTarget.IsGeneric = false;
+            foreach (PlanetType planetType in Enum.GetValues(typeof(PlanetType)))
             {
-                questDataTarget.IsGeneric = true;
-                break;
+                fullPathToCheckWatting = GenericPath + "/" + planetType.ToString() + "/WaittingQuests/" + questDataTarget.name;
+                fullPathToCheckTransprot = GenericPath + "/" + planetType.ToString() + "/TransportQuests/" + questDataTarget.name;
+                if (Resources.Load<QuestData>(fullPathToCheckWatting) != null || Resources.Load<QuestData>(fullPathToCheckTransprot) != null)
+                {
+                    questDataTarget.IsGeneric = true;
+                    break;
+                }
             }
         }
 

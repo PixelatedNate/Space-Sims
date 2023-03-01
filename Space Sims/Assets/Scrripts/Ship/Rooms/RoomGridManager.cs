@@ -89,6 +89,7 @@ public class RoomGridManager : MonoBehaviour
                     PrefabSpawner.Instance.SpawnPerson(room, new PersonInfo(personData));
                 }
             }
+
             QuestManager.LoadQuests();
             GlobalStatsSaving saveStatas = SaveSystem.LoadData<GlobalStatsSaving>(SaveSystem.SaveStatsPath);
             Debug.Log(saveStatas.PlayerFood);

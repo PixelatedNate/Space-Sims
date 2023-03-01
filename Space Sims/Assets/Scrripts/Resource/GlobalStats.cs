@@ -325,7 +325,7 @@ public class GlobalStats : MonoBehaviour
         }
 
         PersonInfo personToLeave = peopleNotOnQuest[0];
-        Alert PersonLeaveAlert = new Alert(personToLeave.Name, "you coun't keep the person happy so they left", Alert.AlertPrority.High, Icons.GetMiscUIIcon(UIIcons.Person));
+        Alert PersonLeaveAlert = new Alert(personToLeave.Name, " left as you had no food", Alert.AlertPrority.High, Icons.GetMiscUIIcon(UIIcons.Person));
         AlertManager.Instance.SendAlert(PersonLeaveAlert);
         personToLeave.PersonMonoBehaviour.LeaveShipForGood();
     }
