@@ -10,30 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: GenericTest 1
+  m_Name: The Alien Invasion
   m_EditorClassIdentifier: 
   IsGeneric: 0
-  Title: test 2T
-  Description: TEST 235
+  Title: The Alien Invasion
+  Description: Stop an alien invasion by infiltrating their base on a nearby planet
+    and disabling their weapon systems.
   reward:
     GameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 300
       Premimum: 0
-    people: []
+    people:
+    - {fileID: 11400000, guid: c640e90fba54215448ee89134c38ffbb, type: 2}
     roomBlueprintUnlock: 0
     roomBlueprint: 3
-    ClothUnlock: 0
-    RandomCloths: 0
-    CLothRarity: 0
-    Cloth: {fileID: 0}
+    ClothUnlock: 1
+    RandomCloths: 1
+    CLothRarity: 3
+    Cloth: {fileID: 21300000, guid: fc5af7fd56d34ff4d9d247955caf56b0, type: 3}
   DialogIndex: -1
   QuestRequiments:
-    Numpeople: 0
-    SkillRequiment: 2
-    skillValueMin: 0
+    Numpeople: 2
+    SkillRequiment: 1
+    skillValueMin: 4
   PossibleEncounters: []
-  DurationHour: 0
-  DurationMinuits: 0
+  DurationHour: 1
+  DurationMinuits: 20
   DurationSeconds: 0

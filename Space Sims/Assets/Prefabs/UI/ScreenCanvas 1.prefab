@@ -2037,6 +2037,7 @@ MonoBehaviour:
   QuestListView: {fileID: 7510005809962899235}
   PersonListView: {fileID: 9217279127349314921}
   MilstonListView: {fileID: 1772151485}
+  clearAllButton: {fileID: 0}
   questView: {fileID: 435263007812607242}
   ClothUIMenu: {fileID: 6931241350023158753}
 --- !u!95 &2073627612393913662
@@ -26389,8 +26390,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.0008, y: -163.19368}
-  m_SizeDelta: {x: 201.57, y: 323.2997}
+  m_AnchoredPosition: {x: -0.0008, y: -201.1437}
+  m_SizeDelta: {x: 201.57, y: 399.1997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9217279125535172883
 MonoBehaviour:
@@ -26404,7 +26405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Content: {fileID: 9217279125535172895}
+  m_Content: {fileID: 9217279126606338815}
   m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 2
@@ -44238,7 +44239,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100.79, y: -0.00010681152}
+  m_AnchoredPosition: {x: 100.79, y: -0.00012207031}
   m_SizeDelta: {x: 201.57, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &9217279126606338813
@@ -52601,7 +52602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Content: {fileID: 9217279125535172895}
+  m_Content: {fileID: 0}
   m_Horizontal: 0
   m_Vertical: 1
   m_MovementType: 1
