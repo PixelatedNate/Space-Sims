@@ -60,6 +60,6 @@ public class Alert
 
 
 
-    public static Alert LowFoodAlert { get { return new Alert("LOW FOOD", "you have low food fix this you should", AlertPrority.Permanet, Icons.GetResourceIcon(ResourcesEnum.Food)); } }
+    public static Alert LowFoodAlert { get { return new Alert("LOW FOOD", "you have low food People will think about leaving", AlertPrority.Permanet, Icons.GetResourceIcon(ResourcesEnum.Food)); } }
     public static Alert LowFuelAlert { get { return new Alert("LOW Fuel", "you have low fuel fix this you should", AlertPrority.Permanet, Icons.GetResourceIcon(ResourcesEnum.Fuel)); } }
 }

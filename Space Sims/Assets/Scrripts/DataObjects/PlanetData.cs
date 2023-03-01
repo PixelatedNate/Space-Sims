@@ -25,4 +25,8 @@ public class PlanetData : ScriptableObject
 
     [SerializeField]
     public QuestData[] quest;
+
+    [SerializeField]
+    public int QuestResetPeriodHours = 6;
+
 }

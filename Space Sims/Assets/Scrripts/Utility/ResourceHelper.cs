@@ -12,6 +12,8 @@ public static class ResourceHelper
         private const string NamePath = "TextData/Names/People/";
         private const string PeopleArtWorkPath = "ArtWork/People/";
         private const string ClothsPath = "ArtWork/Clothes/";
+
+
         public static string GetRandomName(PersonInfo personInfo)
         {
             return GetRandomName(personInfo.Gender);
@@ -109,7 +111,6 @@ public static class ResourceHelper
 
         private const string GenericQuestPath = "Quests/Generic/";
 
-
         public static WaittingQuest getRandomGenericWaittingQuests(PlanetType planetType)
         {
             return getRandomGenericWaittingQuests(1,planetType)[0];
@@ -137,6 +138,33 @@ public static class ResourceHelper
             WaitingQuestData questData = Resources.Load<WaitingQuestData>(path);
             return questData;
         }
+
+        public static WaitingQuestData GetGenericWaittingQuestData(string name)
+        {
+            WaitingQuestData QuestData;
+            string fullPathToCheckWatting = GenericQuestPath + "All/WaittingQuests/" + name;
+            QuestData = Resources.Load<WaitingQuestData>(fullPathToCheckWatting);
+            if (QuestData != null)
+            {
+                return QuestData;
+            }
+            else
+            {
+                foreach (PlanetType planetType in Enum.GetValues(typeof(PlanetType)))
+                {
+                    fullPathToCheckWatting = GenericQuestPath + planetType.ToString() + "/WaittingQuests/" + name;
+                    QuestData = Resources.Load<WaitingQuestData>(fullPathToCheckWatting);
+                    if (QuestData != null)
+                    {
+                        return QuestData;
+                    }
+                }
+            }
+            return null;
+        }
+
+
+
         public static BuildRoomData GetBuildQuestData(string name)
         {
             string path = BuildQuestPath + name;

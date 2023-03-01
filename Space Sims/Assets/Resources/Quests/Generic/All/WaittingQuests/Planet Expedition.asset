@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: Planet Expedition
   m_EditorClassIdentifier: 
-  IsGeneric: 0
+  IsGeneric: 1
   Title: Planet Expedition
   Description: Embark on a journey to explore a newly discovered planet and gather
     important data. Beware of potential dangers!

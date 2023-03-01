@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: The Crystal Caves
   m_EditorClassIdentifier: 
-  IsGeneric: 0
+  IsGeneric: 1
   Title: The Crystal Caves
   Description: Explore the crystal caves on a remote planet to retrieve a valuable
     mineral needed for a scientific breakthrough.

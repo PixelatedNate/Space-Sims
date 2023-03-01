@@ -16,11 +16,13 @@ public class AutoSaver : MonoBehaviour
 
     private void OnApplicationPause(bool pause)
     {
+#if !UNITY_EDITOR
         if (pause && !reset)
         {
             SaveSystem.SaveAll();
             Application.Quit();
         }
+# endif
     }
 
 

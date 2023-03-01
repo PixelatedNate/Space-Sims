@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
   m_Name: Lost in Space
   m_EditorClassIdentifier: 
-  IsGeneric: 0
+  IsGeneric: 1
   Title: Lost in Space
   Description: Help the crew of the spaceship navigate through a dangerous asteroid
     belt to land on the mysterious planet below.

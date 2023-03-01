@@ -12,7 +12,7 @@ public static class NavigationManager
 
     public static TimeDelayManager.Timer _navTimer;
 
-    public static float UniversSpeedModifyer = 0.25f;
+    public static float UniversSpeedModifyer = 0.1f;
 
     public static PlanetContainer CurrentPlanet { get; set; }
     public static PlanetContainer TargetPlanet { get; set; }
@@ -126,8 +126,6 @@ public static class NavigationManager
     public static TimeSpan CalcualteTravleTime(Vector3 a, Vector3 b)
     {
         TimeSpan rawTime = TimeSpan.FromMinutes(UniversSpeedModifyer * Vector3.Distance(a, b));
-
-        return TimeSpan.FromSeconds(20);
 
         return TimeSpan.FromMinutes(Math.Round(rawTime.TotalSeconds)); // round to nearest second
     }

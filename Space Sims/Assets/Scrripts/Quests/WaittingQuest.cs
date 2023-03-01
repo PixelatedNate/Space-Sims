@@ -25,7 +25,16 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
     public WaittingQuest(WaittingQuestSaveData saveData)
     {
         populateFromSave(saveData);
-        this.WaittingQuestData = ResourceHelper.QuestHelper.GetWaittingQuestData(saveData.QuestDataName);
+        if (saveData.IsGeneric)
+        {
+            this.WaittingQuestData = ResourceHelper.QuestHelper.GetGenericWaittingQuestData(saveData.QuestDataName);
+        }
+        else
+        {
+            this.WaittingQuestData = ResourceHelper.QuestHelper.GetWaittingQuestData(saveData.QuestDataName);
+        }
+
+
         foreach (string personId in saveData.PeopleAssginedId)
         {
 
@@ -155,6 +164,7 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
 
     public WaittingQuestSaveData Save()
     {
+        Debug.Log(QuestData.IsGeneric);
         WaittingQuestSaveData saveData = new WaittingQuestSaveData(this);
         saveData.Save();
         return saveData;

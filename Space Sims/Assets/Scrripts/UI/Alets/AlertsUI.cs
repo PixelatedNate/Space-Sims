@@ -90,6 +90,10 @@ public class AlertsUI : MonoBehaviour
         {
             RemoveAlert(a);
         }
+        if(AlertsInView.Keys.Count == 0)
+        {
+            CloseAlerts();
+        }
 
     }
 

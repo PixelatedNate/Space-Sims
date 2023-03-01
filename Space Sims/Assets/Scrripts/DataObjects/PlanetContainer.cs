@@ -1,5 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static TimeDelayManager;
+using Random = UnityEngine.Random;
 
 public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
 {
@@ -7,6 +10,8 @@ public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
     public AbstractQuest[] quests;
 
     public bool HasPlayerVisted = false;
+
+    public Timer NewQuestIn;
 
     public PlanetContainer(PlanetData data, Vector3 pos)
     {
@@ -33,6 +38,8 @@ public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
     {
         int numberOfQuest = Random.Range(planetData.minNumberOfQuest, planetData.maxNumberOfQuest+1);
         quests = ResourceHelper.QuestHelper.getRandomGenericWaittingQuests(numberOfQuest, planetData.planetType);
+        NewQuestIn = new Timer(DateTime.Now.AddHours(planetData.QuestResetPeriodHours), SetQuests);
+        TimeDelayManager.Instance.AddTimer(NewQuestIn,true);
     }
 
     public PlanetContainer(PlanetConttainerSaveData saveData)
@@ -40,6 +47,7 @@ public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
         this.planetData = ResourceHelper.PlanetHelper.GetPlanetData(saveData.planetDataName);
         this.PlanetPosition = new Vector3(saveData.planetPosition[0], saveData.planetPosition[1], saveData.planetPosition[2]);
         this.HasPlayerVisted = saveData.HasPlayerVisted;
+        this.NewQuestIn = TimeDelayManager.Timer.ReconstructTimer(saveData.timmerId, new Action(SetQuests));
     }
 
     public PlanetData planetData { get; private set; }
