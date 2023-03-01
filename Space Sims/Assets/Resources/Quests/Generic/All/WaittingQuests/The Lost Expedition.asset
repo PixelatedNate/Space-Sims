@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8cdbd61b096ea9b49bed79bdbc01267d, type: 3}
-  m_Name: GenericTest 1
+  m_Name: The Lost Expedition
   m_EditorClassIdentifier: 
   IsGeneric: 0
-  Title: test 2T
-  Description: TEST 235
+  Title: The Lost Expedition
+  Description: Search for a missing expedition team on the uninhabited planet. Beware
+    of dangerous creatures.
   reward:
     GameResourcesReward:
       Fuel: 0
       Food: 0
-      Minerals: 0
+      Minerals: 300
       Premimum: 0
-    people: []
+    people:
+    - {fileID: 11400000, guid: c640e90fba54215448ee89134c38ffbb, type: 2}
     roomBlueprintUnlock: 0
     roomBlueprint: 3
     ClothUnlock: 0
@@ -30,10 +32,10 @@ MonoBehaviour:
     Cloth: {fileID: 0}
   DialogIndex: -1
   QuestRequiments:
-    Numpeople: 0
-    SkillRequiment: 2
-    skillValueMin: 0
+    Numpeople: 1
+    SkillRequiment: 1
+    skillValueMin: 2
   PossibleEncounters: []
   DurationHour: 0
-  DurationMinuits: 0
-  DurationSeconds: 0
+  DurationMinuits: 12
+  DurationSeconds: 30
