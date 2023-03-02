@@ -529,6 +529,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: IconSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fcdb1e1d904d4846a9933385e827a7e
+      internalID: 2120555848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -559,6 +580,7 @@ TextureImporter:
       IconSpriteSheet_17: -978777233
       IconSpriteSheet_9: -1665952460
       IconSpriteSheet_0: -530639999
+      IconSpriteSheet_19: 2120555848
   spritePackingTag: 
   pSDRemoveMatte: 0
   userData: 
