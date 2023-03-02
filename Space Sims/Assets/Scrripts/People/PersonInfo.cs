@@ -184,7 +184,7 @@ public class PersonInfo : ISaveable<PersonSaveData>
                 GameObject.Destroy(PersonMonoBehaviour.gameObject);
                 Room.RemoveWorker(PersonMonoBehaviour);
             }
-            Room = GlobalStats.Instance.QuestRoom;
+            Room = null;
             CurrentQuest = quest;
         }
     }
@@ -192,6 +192,7 @@ public class PersonInfo : ISaveable<PersonSaveData>
     public void CompleteQuest(Skills skills)
     {
         CurrentQuest = null;
+        Room = GlobalStats.Instance.QuestRoom;
         var newTemplate = PrefabSpawner.Instance.SpawnPerson();
         newTemplate.transform.position = Room.transform.position;
         PersonMonoBehaviour = newTemplate.GetComponent<Person>();

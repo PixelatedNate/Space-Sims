@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 public static class QuestManager
@@ -5,25 +6,31 @@ public static class QuestManager
     private static List<AbstractQuest> Quests { get; } = new List<AbstractQuest>();
     private static List<QuestLine> QuestLines { get; } = new List<QuestLine>();
 
+    public static event Action OnQuestAdded;
 
     public static void AddNewQuest(QuestData[] questDatas)
     {
         foreach (QuestData questData in questDatas)
         {
-            var quest = questData.CreateQuest();
-            Quests.Add(quest);
+            AddNewQuest(questData);
+          //  var quest = questData.CreateQuest();
+           // Quests.Add(quest);
         }
     }
 
     public static void AddNewQuest(QuestData questData)
     {
         Quests.Add(questData.CreateQuest());
+        OnQuestAdded?.Invoke();
+
     }
 
     public static void AddNewQuest(AbstractQuest quest)
     {
         Quests.Add(quest);
+        OnQuestAdded?.Invoke();
     }
+
     public static void RemoveQuest(AbstractQuest quest)
     {
         Quests.Remove(quest);

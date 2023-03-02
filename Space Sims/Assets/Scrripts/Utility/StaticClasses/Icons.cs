@@ -14,7 +14,9 @@ public static class Icons
     private const string IntelligenceIconPath = "ArtWork/Icons/Intelligence";
     private const string WisdomIconPath = "ArtWork/Icons/Wisdom";
 
+    private const string QuestIconPath = "ArtWork/Icons/QuestIcon";
     private const string QuestCompletIconPath = "ArtWork/Icons/QuestComplet";
+    private const string QuestAlertIconPath = "ArtWork/Icons/QuestAlert";
     private const string PersonIconPath = "ArtWork/Icons/Person";
     private const string RoomIconPath = "ArtWork/Icons/Room";
 
@@ -68,6 +70,10 @@ public static class Icons
     {
         return "<sprite=0>";
     }
+   public static string GetRandomClothingIconForTextMeshPro()
+    {
+        return "<sprite=19>";
+    }
 
     public static Sprite GetSkillIcon(SkillsList skillEnum)
     {
@@ -90,6 +96,9 @@ public static class Icons
             case UIIcons.QuestComplete: return Resources.Load<Sprite>(QuestCompletIconPath);
             case UIIcons.Person: return Resources.Load<Sprite>(PersonIconPath);
             case UIIcons.RoomIcon: return Resources.Load<Sprite>(RoomIconPath);
+            case UIIcons.QuestAlert: return Resources.Load<Sprite>(QuestAlertIconPath);
+            case UIIcons.QuestIcon : return Resources.Load<Sprite>(QuestIconPath);
+         
             default: throw new Exception("Enum UIIcons returned No corisponding value");
         }
     }

@@ -87,6 +87,7 @@ public class TipsAndToutorial : MonoBehaviour
 
     public void OpenTipMenu(ToutorialMenus tipMenu)
     {
+        return;
         if (!ToutorialEnabled)
         {
             return;

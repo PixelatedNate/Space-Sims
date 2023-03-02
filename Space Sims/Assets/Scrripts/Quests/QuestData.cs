@@ -42,6 +42,10 @@ public abstract class QuestData : ScriptableObject
             {
                 str += "\n" + Icons.GetBluePrintIconForTextMeshPro() + ":" + roomBlueprint.ToString();
             }
+            if(ClothUnlock)
+            {
+                str += "\n" + Icons.GetRandomClothingIconForTextMeshPro() + ":" + CLothRarity.ToString();
+            }
             return str;
         }
 

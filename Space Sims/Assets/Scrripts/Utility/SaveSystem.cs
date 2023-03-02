@@ -24,7 +24,7 @@ public static class SaveSystem
 
 
     public static Dictionary<PersonInfo, string> SavedPeople = new Dictionary<PersonInfo, string>();
-    public static Dictionary<string, PersonInfo> LoadedPeople = new Dictionary<string, PersonInfo>();
+    public static Dictionary<string, PersonInfo> LoadedPeople { get; set; } = new Dictionary<string, PersonInfo>();
 
     public static void Save(this RoomSaveData roomData)
     {
