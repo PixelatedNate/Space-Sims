@@ -120,9 +120,7 @@ public class GlobalStats : MonoBehaviour
             Premimum = saveData.PlayerPremimum
         };
 
-        Debug.Log(saveResourceData.Food);
         PlayerResources = saveResourceData;
-        Debug.Log(PlayerResources.Food);
 
         TimeSpan offlineTime = DateTime.UtcNow - new DateTime(saveData.SaveTimeTickUTC, DateTimeKind.Utc);
 

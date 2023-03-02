@@ -27,11 +27,11 @@ MonoBehaviour:
     _wisdom: 0
     _charisma: 0
   MaxSkills:
-    _strength: 6
-    _dexterity: 6
-    _intelligence: 6
-    _wisdom: 6
-    _charisma: 6
+    _strength: 10
+    _dexterity: 10
+    _intelligence: 10
+    _wisdom: 10
+    _charisma: 10
   RandomHead: 1
   Head: {fileID: 0}
   RandomBody: 1

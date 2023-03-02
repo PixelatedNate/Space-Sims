@@ -116,6 +116,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
+            ButtonManager.Instance.UpdateQuestImageToNormalQuest();
             OpenQuestListView();
         }
         rightPanal.ClearAllView();

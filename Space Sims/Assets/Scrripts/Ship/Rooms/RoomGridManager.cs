@@ -74,9 +74,13 @@ public class RoomGridManager : MonoBehaviour
             AbstractRoom ThirdRoom = BuildNewRoom(new Vector3Int(0, 1, 0), RoomType.QuestRoom);
             PrefabSpawner.Instance.SpawnPerson(fistRoom, StartingPeople);
             DialogManager.Instance.StartDiaglogIndex(0);
+            TimeDelayManager.Instance.StartTickerTimer();
         }
         else
         {
+            NavigationSaveData navSaveData = SaveSystem.LoadData<NavigationSaveData>(SaveSystem.NavigationSavePath);
+            NavigationManager.Load(navSaveData);
+
             foreach (RoomSaveData data in roomData)
             {
                 Vector3Int position = new Vector3Int(data.roomPosition[0], data.roomPosition[1], data.roomPosition[2]);
@@ -86,16 +90,15 @@ public class RoomGridManager : MonoBehaviour
                 {
                     var personpath = SaveSystem.PeoplePath + "/" + personId + ".person";
                     PersonSaveData personData = SaveSystem.LoadData<PersonSaveData>(personpath);
-                    PrefabSpawner.Instance.SpawnPerson(room, new PersonInfo(personData));
+                    PersonInfo loadedPerson = new PersonInfo(personData);
+                    PrefabSpawner.Instance.SpawnPerson(room, loadedPerson);
                 }
             }
 
             QuestManager.LoadQuests();
             GlobalStatsSaving saveStatas = SaveSystem.LoadData<GlobalStatsSaving>(SaveSystem.SaveStatsPath);
-            Debug.Log(saveStatas.PlayerFood);
             GlobalStats.Instance.LoadData(saveStatas);
-            NavigationSaveData navSaveData = SaveSystem.LoadData<NavigationSaveData>(SaveSystem.NavigationSavePath);
-            NavigationManager.Load(navSaveData);
+            TimeDelayManager.Instance.StartTickerTimer();
         }
 
 

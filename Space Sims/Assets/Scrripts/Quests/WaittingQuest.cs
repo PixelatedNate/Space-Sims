@@ -164,7 +164,6 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
 
     public WaittingQuestSaveData Save()
     {
-        Debug.Log(QuestData.IsGeneric);
         WaittingQuestSaveData saveData = new WaittingQuestSaveData(this);
         saveData.Save();
         return saveData;

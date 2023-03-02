@@ -49,6 +49,23 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        QuestManager.OnQuestAdded += UpdateQuestImageToNewQuest;   
+    }
+
+    public void UpdateQuestImageToNewQuest()
+    {
+        Button questButton = getButton(ButtonName.Quests);
+        questButton.transform.GetChild(0).GetComponent<Image>().sprite = Icons.GetMiscUIIcon(UIIcons.QuestAlert);
+    }
+    public void UpdateQuestImageToNormalQuest()
+    {
+        Button questButton = getButton(ButtonName.Quests);
+        questButton.transform.GetChild(0).GetComponent<Image>().sprite = Icons.GetMiscUIIcon(UIIcons.QuestIcon);
+    }
+
+
 
     public void SetAllButtons(bool enabled)
     {
@@ -62,14 +79,24 @@ public class ButtonManager : MonoBehaviour
 
     public void SetButtonEnabled(ButtonName name, bool enabled)
     {
+        Button b = getButton(name);
+        Color buttonColour = b.GetComponent<Button>().image.color;
+        b.GetComponent<Button>().interactable = enabled;                  
+    }
+
+
+    private Button getButton(ButtonName name)
+    {
         foreach (ButtonsReffrence buttonReffrence in buttons)
         {
             if (buttonReffrence.name == name)
             {
-                Color buttonColour = buttonReffrence.button.GetComponent<Button>().image.color;
-                buttonReffrence.button.GetComponent<Button>().interactable = enabled;
+                return buttonReffrence.button;
+                //Color buttonColour = buttonReffrence.button.GetComponent<Button>().image.color;
+               // buttonReffrence.button.GetComponent<Button>().interactable = enabled;
             }
         }
+        return null;
     }
 
 }

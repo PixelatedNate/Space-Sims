@@ -136,6 +136,11 @@ public class TimeDelayManager : MonoBehaviour
 
     void Start()
     {
+    }
+
+    public void StartTickerTimer()
+    {
+        OnTick(this, null);
         TimeTickSystem.OnTick += OnTick;
     }
 
@@ -168,12 +173,12 @@ public class TimeDelayManager : MonoBehaviour
             if (t.EndTime >= DateTime.Now) { break; }
             else if (!t.IsPause)
             {
-                t.EndMethod.Invoke();
                 SpentTimer.Add(t);
             }
         }
         foreach (Timer t in SpentTimer)
         {
+            t.EndMethod.Invoke();
             ActiveTimers.Remove(t);
         }
     }
