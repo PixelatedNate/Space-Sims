@@ -38,4 +38,4 @@ MonoBehaviour:
   PossibleEncounters: []
   DurationHour: 0
   DurationMinuits: 0
-  DurationSeconds: 10
+  DurationSeconds: 15

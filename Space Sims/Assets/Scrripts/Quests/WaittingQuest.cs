@@ -180,5 +180,14 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
 
     }
 
+    public override void CancalQuest()
+    {
+        foreach (PersonInfo p in PeopleAssgined)
+        {
+            p.CompleteQuest(new Skills());
+        }
+        TimeDelayManager.Instance.RemoveTimer(QuestTimer);
+        QuestManager.RemoveQuest(this);
+        }
 }
 

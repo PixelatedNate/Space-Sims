@@ -55,4 +55,9 @@ public class BuildRoomQuest : AbstractQuest, ISaveable<BuildRoomSaveData>
     {
         throw new NotImplementedException();
     }
+
+    public override void CancalQuest()
+    {
+        throw new NotImplementedException();
+    }
 }

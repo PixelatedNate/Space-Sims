@@ -34,6 +34,27 @@ public class planetView : MonoBehaviour
 
     public void TravelToPlanet()
     {
+        if(NavigationManager.CurrentPlanet == SelectedPlanet)
+        {
+            return;
+        }
+        else if (QuestManager.GetQuestsByStaus(QuestStatus.InProgress).Count != 0)
+        {
+            UIManager.Instance.Conformation(CancalQuestAndTravelToPlanet, "This will cancal all you're inprogress quest");
+        }
+        else
+        {
+            NavigationManager.NavigateToTargetPlanet(SelectedPlanet);
+        }
+    }
+
+    public void CancalQuestAndTravelToPlanet()
+    {
+        AbstractQuest[] questsInProgress = QuestManager.GetQuestsByStaus(QuestStatus.InProgress).ToArray();
+        foreach(AbstractQuest quest in questsInProgress)
+        {
+            quest.CancalQuest();
+        }
         NavigationManager.NavigateToTargetPlanet(SelectedPlanet);
     }
 
