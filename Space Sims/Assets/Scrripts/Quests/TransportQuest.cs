@@ -82,4 +82,9 @@ public class TransportQuest : AbstractQuest, ISaveable<TransportQuestSaveData>
     {
         throw new System.NotImplementedException();
     }
+
+    public override void CancalQuest()
+    {
+        throw new System.NotImplementedException();
+    }
 }

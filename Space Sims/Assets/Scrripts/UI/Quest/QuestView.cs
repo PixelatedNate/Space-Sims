@@ -7,7 +7,7 @@ public class QuestView : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI Title;
     [SerializeField]
-    TextMeshProUGUI Discription, TimeLeft, Reward;
+    TextMeshProUGUI Discription, TimeLeft, Reward, OverFlowReward;
     [SerializeField]
     Transform RequimentPanel, ProgressBar;
 
@@ -87,6 +87,21 @@ public class QuestView : MonoBehaviour
 
     private void setRewaredText()
     {
-        Reward.text = questSelected.QuestData.reward.ToString();
+        Reward.text = "";
+        OverFlowReward.text = "";
+
+        string rewardStr = questSelected.QuestData.reward.ToString();
+        string[] lines = rewardStr.Split("\n");
+        for (int i = 0; i < lines.Length; i++)
+        {
+            if (i < 2)
+            {
+                Reward.text += lines[i] + "\n";
+            }
+            else
+            {
+                OverFlowReward.text += lines[i];
+            }
+        }
     }
 }

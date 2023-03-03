@@ -37,5 +37,5 @@ MonoBehaviour:
     skillValueMin: 5
   PossibleEncounters: []
   DurationHour: 0
-  DurationMinuits: 2
-  DurationSeconds: 0
+  DurationMinuits: 0
+  DurationSeconds: 30

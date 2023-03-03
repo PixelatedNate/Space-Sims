@@ -20,6 +20,7 @@ public class ButtonManager : MonoBehaviour
         PersonListFillterLeft,
         PersonListFillterRight,
         PersonListFillterInverse,
+        PersonMagnifigyGlassIcon,
     }
 
 

@@ -293,6 +293,7 @@ public class Person : MonoBehaviour, IInteractables
         SoundManager.Instance.PlaySound(SoundManager.VoiceSounds.PickVoiceLines, PersonVoice.GetPitch(PersonInfo));
         Vibration.VibratePredefined(Vibration.PredefinedEffect.EFFECT_HEAVY_CLICK);
         RoomUnderMouseOnDrag = null;
+        RoomMovePath = null;
         IsBeingHeld = true;
         return true;
     }

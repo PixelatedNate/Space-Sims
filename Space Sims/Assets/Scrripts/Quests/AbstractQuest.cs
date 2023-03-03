@@ -10,6 +10,8 @@ public abstract class AbstractQuest
 
     public abstract bool StartQuest();
 
+    public abstract void CancalQuest();
+
     public virtual void CompleatQuest()
     {
         if(QuestData.reward.ClothUnlock)
