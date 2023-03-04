@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class AbstractQuest
@@ -26,8 +27,6 @@ public abstract class AbstractQuest
                 UnlocksManager.UnlockCloth(QuestData.reward.Cloth);
             }
         }
-
-
 
         if (CustomEventTriggers.OnQuestCompleted.onEventDelaget != null)
         {

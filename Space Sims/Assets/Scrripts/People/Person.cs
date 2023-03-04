@@ -55,7 +55,7 @@ public class Person : MonoBehaviour, IInteractables
     {
         if (PersonInfo != null)
         {
-            //       throw new Exception("Trying to assgin a person who allready has a personholder");
+            throw new Exception("Trying to assgin a person who allready has a personholder");
         }
         gameObject.name = person.Name;
         _personInfo = person;
