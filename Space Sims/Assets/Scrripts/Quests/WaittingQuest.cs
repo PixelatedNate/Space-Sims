@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using static TimeDelayManager;
 using Random = UnityEngine.Random;
@@ -138,8 +140,13 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
         QuestLog.Add(qe);
     }
 
-    public override void CompleatQuest()
+    public async override void CompleatQuest()
     {
+        while(UIManager.Instance.IsNavigation)
+        {
+            await Task.Delay(1);
+        }
+
         base.CompleatQuest();
 
         SoundManager.Instance.PlaySound(SoundManager.Sound.QuestCompleted);
@@ -180,14 +187,18 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
 
     }
 
-    public override void CancalQuest()
+    public async override void CancalQuest()
     {
+        while(UIManager.Instance.IsNavigation)
+        {
+            await Task.Delay(1);
+        }
         foreach (PersonInfo p in PeopleAssgined)
         {
             p.CompleteQuest(new Skills());
         }
         TimeDelayManager.Instance.RemoveTimer(QuestTimer);
         QuestManager.RemoveQuest(this);
-        }
+    }
 }
 
