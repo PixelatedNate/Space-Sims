@@ -25,7 +25,10 @@ public class MilestoneView : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        resetMilstone();
+        if (GlobalStats.Instance.PlyaerRooms.Count <= 3)
+        {
+            resetMilstone();
+        }
     }
 
     // Update is called once per frame

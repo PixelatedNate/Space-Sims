@@ -187,7 +187,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
         }
     }
 
-    public void RemoveWorker(Person person)
+    public virtual void RemoveWorker(Person person)
     {
 
         if (Workers.Count == 0 || !Workers.Contains(person.PersonInfo))
