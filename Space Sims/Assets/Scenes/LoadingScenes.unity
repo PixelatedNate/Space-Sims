@@ -13670,7 +13670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6693351445006385520, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6931241348637745958, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
@@ -14334,7 +14334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9133112860675421946, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -41.345
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9133112860675421947, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: _room
@@ -14358,7 +14358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9133112860828290636, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -124.035
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9133112860828290637, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: button
