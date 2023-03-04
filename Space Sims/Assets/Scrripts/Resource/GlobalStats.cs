@@ -248,11 +248,17 @@ public class GlobalStats : MonoBehaviour
             }
             NegativeFood = NegativeFood - PlayerResources.Food;
 
-            if (NegativeFood >= NegativeFoodPersonLevelVlue)
+            List<PersonInfo> peopleNotOnQuest = PlayersPeople.FindAll(p => p.IsQuesting == false);
+
+            if (peopleNotOnQuest.Count <= 4)
+            {
+                NegativeFood = 0;
+            }
+
+            else if (NegativeFood >= NegativeFoodPersonLevelVlue)
             {
                 RandomPersonLeave();
                 NegativeFood = 0;
-
             }
 
             PlayerResources.Food = 0;
