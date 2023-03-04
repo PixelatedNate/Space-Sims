@@ -15,7 +15,16 @@ public class RoomStats
 
     [SerializeField]
     private double _buildTime;
-    public double BuildTime { get { return _buildTime; } }
+    public double BuildTime { get {
+            if (GlobalStats.Instance.PlyaerRooms.Count < 5)
+            {
+                return _buildTime;
+            }
+            else
+            {
+                return 2 * Mathf.Round(GlobalStats.Instance.PlyaerRooms.Count);
+            }
+        } }
 
     [SerializeField]
     private GameResources _outPut;

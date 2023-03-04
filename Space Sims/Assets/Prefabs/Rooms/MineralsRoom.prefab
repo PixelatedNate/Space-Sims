@@ -3146,7 +3146,7 @@ MonoBehaviour:
       Minerals: 1000
       Premimum: 0
     _maxWorkers: 2
-    _buildTime: 1
+    _buildTime: 0.5
     _outPut:
       Fuel: 0
       Food: 0
