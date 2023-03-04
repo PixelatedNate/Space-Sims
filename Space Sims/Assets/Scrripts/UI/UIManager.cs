@@ -293,6 +293,12 @@ public class UIManager : MonoBehaviour
 
     }
 
+    public void CloseAllButton()
+    {
+        DeselectAll();
+        RoomGridManager.Instance.SetBuildMode(false);
+    }
+
     public void ToggleNavigation()
     {
         if (IsNavigation)

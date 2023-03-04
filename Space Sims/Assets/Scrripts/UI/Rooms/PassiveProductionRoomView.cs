@@ -37,7 +37,7 @@ public class PassiveProductionRoomView : MonoBehaviour
 
     private void UpdateText()
     {
-        _modifer.text = SelectedRoom.DesiredSkill.ToString();
+        _modifer.text = Icons.GetSkillIconForTextMeshPro(SelectedRoom.DesiredSkill);
         _maxPeopel.text = SelectedRoom.RoomStat.MaxWorkers.ToString();
         _currentPeople.text = SelectedRoom.Workers.Count.ToString();
     }

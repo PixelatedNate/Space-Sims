@@ -12,7 +12,7 @@ public static class NavigationManager
 
     public static TimeDelayManager.Timer _navTimer;
 
-    public static float UniversSpeedModifyer = 0.05f;
+    public static float UniversSpeedModifyer = 0.02f;
 
     public static PlanetContainer CurrentPlanet { get; set; }
     public static PlanetContainer TargetPlanet { get; set; }
