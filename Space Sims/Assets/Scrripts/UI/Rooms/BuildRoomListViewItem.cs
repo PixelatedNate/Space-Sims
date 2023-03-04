@@ -117,7 +117,7 @@ public class BuildRoomListViewItem : MonoBehaviour
         LockedView.SetActive(false);
         _roomName.text = _room.RoomName;
         _roomDiscription.text = _room.RoomDiscription;
-        _buildCost.text = getCost().Minerals.ToString();
+        _buildCost.text = "-" + getCost().Minerals.ToString();
 
         TimeSpan buildTime = new TimeSpan(0, (int)_room.RoomStat.BuildTime, 0);
         _buildTimeText.text = buildTime.ToString();
