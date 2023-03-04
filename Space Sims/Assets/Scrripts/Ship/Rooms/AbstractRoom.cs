@@ -122,6 +122,7 @@ public abstract class AbstractRoom : MonoBehaviour, IInteractables, ISaveable<Ro
         BuildOrUpgradeRoom(0);
     }
 
+
     public void UpgradeRoom()
     {
         if (IsUnderConstruction)
