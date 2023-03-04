@@ -3150,7 +3150,7 @@ MonoBehaviour:
     _outPut:
       Fuel: 0
       Food: 0
-      Minerals: 5
+      Minerals: 10
       Premimum: 0
     _Upkeep:
       Fuel: 5
