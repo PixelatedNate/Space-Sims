@@ -14304,6 +14304,10 @@ PrefabInstance:
       propertyPath: button
       value: 
       objectReference: {fileID: 203441214}
+    - target: {fileID: 9133112859203098555, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9133112859673796202, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -14311,6 +14315,10 @@ PrefabInstance:
     - target: {fileID: 9133112860110114450, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9133112860414388988, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9133112860675421946, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
