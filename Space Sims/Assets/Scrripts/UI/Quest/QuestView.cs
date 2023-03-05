@@ -96,11 +96,11 @@ public class QuestView : MonoBehaviour
         {
             if (i < 2)
             {
-                Reward.text += lines[i] + "\n";
+                Reward.text += lines[i] + "\n" + "\n";
             }
             else
             {
-                OverFlowReward.text += lines[i];
+                OverFlowReward.text += lines[i] + "\n" + "\n";
             }
         }
     }
