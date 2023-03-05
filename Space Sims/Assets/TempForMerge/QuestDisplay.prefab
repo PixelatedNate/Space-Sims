@@ -334,8 +334,8 @@ MonoBehaviour:
     PageIcon: {fileID: 7485742304547364666}
   - page: {fileID: 4839140054761513000}
     PageIcon: {fileID: 7485742302818040382}
-  - page: {fileID: 7485742302546863780}
-    PageIcon: {fileID: 7485742304020384555}
+  - page: {fileID: 0}
+    PageIcon: {fileID: 0}
   PageSelected: 0
 --- !u!1 &7485742302430593083
 GameObject:
@@ -1424,6 +1424,7 @@ MonoBehaviour:
   targetLocation: {fileID: 7485742303557533998}
   transprotNumber: {fileID: 7485742304392038599}
   TransportIconImage: {fileID: 7485742303372952541}
+  PlanetSpriteImage: {fileID: 0}
 --- !u!1 &7485742303265734026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1659,6 +1660,7 @@ MonoBehaviour:
   Discription: {fileID: 7485742302735049044}
   TimeLeft: {fileID: 0}
   Reward: {fileID: 7818507354629441898}
+  OverFlowReward: {fileID: 0}
   RequimentPanel: {fileID: 7485742304278575423}
   ProgressBar: {fileID: 0}
   startBtn: {fileID: 7485742302611951733}
@@ -2768,7 +2770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 70.15, y: -65.02515}
+  m_AnchoredPosition: {x: 66.73971, y: -65.02515}
   m_SizeDelta: {x: 152, y: 130.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7485742304278575421
