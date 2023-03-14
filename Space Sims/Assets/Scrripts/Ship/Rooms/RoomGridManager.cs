@@ -75,6 +75,7 @@ public class RoomGridManager : MonoBehaviour
             PrefabSpawner.Instance.SpawnPerson(fistRoom, StartingPeople);
             DialogManager.Instance.StartDiaglogIndex(0);
             TimeDelayManager.Instance.StartTickerTimer();
+            AutoSaver.reset = true;
         }
         else
         {

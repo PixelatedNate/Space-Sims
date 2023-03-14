@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e6692eef65e83b408c3b30806f27f37, type: 3}
-  m_Name: StartPlanet 3
+  m_Name: Xarmet
   m_EditorClassIdentifier: 
-  PlanetName: Tinku
-  Background: {fileID: 21300000, guid: 38f0a618ead613542b4ff0d67e492f12, type: 3}
-  PlanetSprite: {fileID: 21300000, guid: 538d6722aaa3e174cb6afb63a748bc97, type: 3}
-  planetType: 1
-  IsStartPlanet: 0
+  PlanetName: Xarmet
+  Background: {fileID: 21300000, guid: 229370c694279e145953b2b7d8eb14a8, type: 3}
+  PlanetSprite: {fileID: 21300000, guid: f0ca32f5d9157dd48a39a3c55c9c606e, type: 3}
+  planetType: 2
+  IsStartPlanet: 1
   QuestRestTimeMinuits: 0
   minNumberOfQuest: 2
   maxNumberOfQuest: 4
