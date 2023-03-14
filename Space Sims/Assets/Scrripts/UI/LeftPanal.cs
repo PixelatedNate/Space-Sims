@@ -41,6 +41,7 @@ public class LeftPanal : MonoBehaviour
         PersonView,
         RoomView,
         PersonList,
+        MileStones,
     }
 
 
@@ -67,6 +68,7 @@ public class LeftPanal : MonoBehaviour
     public void OpenMilston()
     {
         DisableActiveView();
+        activeLSideView = ActiveLSideView.MileStones;
         uiButton.LeftTabSlideOut();
         SetActiveView(MilstonListView);
     }

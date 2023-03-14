@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlanetVisual : MonoBehaviour, IInteractables
@@ -7,6 +8,9 @@ public class PlanetVisual : MonoBehaviour, IInteractables
 
     [SerializeField]
     Transform ship;
+
+    public static event Action<PlanetData> OnPlaentSelected;
+
 
     //[SerializeField]
     private Material _orignalMaterial;
@@ -31,9 +35,14 @@ public class PlanetVisual : MonoBehaviour, IInteractables
 
     public void OnSelect()
     {
-        UIManager.Instance.OpenPlanetView(PlanetContainer);
         _orignalMaterial = GetComponent<SpriteRenderer>().material;
-        GetComponent<SpriteRenderer>().material = MaterialFinder.GetOutlineResourceMaterial();
+        if (NavigationManager.ReachedFirstPlanet || planetData.IsStartPlanet)
+        {
+            OnPlaentSelected?.Invoke(planetData);
+            UIManager.Instance.OpenPlanetView(PlanetContainer);
+            _orignalMaterial = GetComponent<SpriteRenderer>().material;
+            GetComponent<SpriteRenderer>().material = MaterialFinder.GetOutlineResourceMaterial();
+        }
     }
 
     // Start is called before the first frame update
@@ -49,18 +58,6 @@ public class PlanetVisual : MonoBehaviour, IInteractables
             PlanetContainer = new PlanetContainer(planetData, transform.position);
             NavigationManager.PlanetList.Add(planetData, PlanetContainer);
             transform.GetComponent<SpriteRenderer>().sprite = planetData.PlanetSprite;
-            if (planetData.IsStartPlanet)
-            {
-                if (NavigationManager.CurrentPlanet == null && !NavigationManager.InNavigation)
-                {
-                    NavigationManager.CurrentPlanet = PlanetContainer;
-                    NavigationManager.vistedPlalnets.Add(PlanetContainer);
-                    PlanetContainer.ArriveAtPlanet();
-                               
-
-
-                }
-            }
         }
 
         if (NavigationManager.CurrentPlanet != null)

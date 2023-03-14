@@ -8,6 +8,7 @@ public class NavigationSaveData
 
     public string timmerId;
 
+    public bool ReachedFirstPlanet;
 
     public string[] planetId;
 
@@ -21,6 +22,7 @@ public class NavigationSaveData
     {
         this.InNavigation = NavigationManager.InNavigation;
 
+        this.ReachedFirstPlanet = NavigationManager.ReachedFirstPlanet;
 
         this.planetId = new string[NavigationManager.PlanetList.Count];
 

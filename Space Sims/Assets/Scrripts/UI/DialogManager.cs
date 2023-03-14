@@ -126,6 +126,27 @@ public class DialogManager : MonoBehaviour
         UIManager.OnBuildMenuOpen += OnBuildMenuOpen;
     }
 
+    public void WaitUntillPlanetIsSelected()
+    {
+        TouchControls.EnableCameramovemntAndSelection(true);
+        PlanetVisual.OnPlaentSelected += OnPlanetSelected;
+    }
+
+    public void EnableSaving()
+    {
+            AutoSaver.reset = false;
+    }
+
+    private void OnPlanetSelected(PlanetData planetData)
+    {
+        TouchControls.EnableCameramovemntAndSelection(false);
+        activeDialog.NextLine();
+        PlanetVisual.OnPlaentSelected -= OnPlanetSelected;
+    }
+
+
+
+
     public void DisableCrewWisdom()
     {
         var peopleLUList = GameObject.FindObjectsOfType<PersonListViewItem>();

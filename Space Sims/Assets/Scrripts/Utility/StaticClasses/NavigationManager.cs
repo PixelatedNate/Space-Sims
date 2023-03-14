@@ -7,6 +7,11 @@ public static class NavigationManager
 
     public static List<PlanetContainer> vistedPlalnets = new List<PlanetContainer>();
 
+    public static bool ReachedFirstPlanet { private set; get; } = false;
+ 
+ //   public static event Action<PlanetContainer> OnArriveAtPlanet;
+
+
     public static Dictionary<PlanetData, PlanetContainer> PlanetList { get; set; } = new Dictionary<PlanetData, PlanetContainer>();
     public static bool InNavigation { get; private set; } = false;
 
@@ -33,7 +38,7 @@ public static class NavigationManager
         BackgroundManager.Instance.setBackgroundToInTransit();
         DateTime ariveralTime = DateTime.Now.Add(CalcualteTravleTime(planet));
         PreviousPlanet = CurrentPlanet;
-        CurrentPlanet.LeavePlanet();
+        CurrentPlanet?.LeavePlanet();
         CurrentPlanet = null;
         TargetPlanet = planet;
         InNavigation = true;
@@ -68,12 +73,19 @@ public static class NavigationManager
                 }
             }
         }
-        
+
+        if (!ReachedFirstPlanet)
+        {
+            DialogManager.Instance.StartDiaglogIndex(7);
+            ReachedFirstPlanet = true;
+        }
+
         }
 
     public static void Load(NavigationSaveData saveData)
     {
         InNavigation = saveData.InNavigation;
+        ReachedFirstPlanet = saveData.ReachedFirstPlanet;
 
         foreach (string s in saveData.planetId)
         {
@@ -117,6 +129,10 @@ public static class NavigationManager
 
     public static TimeSpan CalcualteTravleTime(PlanetContainer a, PlanetContainer b)
     {
+        if(a == null)
+        {
+            return TimeSpan.FromMinutes(5);
+        }
         return CalcualteTravleTime(a.PlanetPosition, b.PlanetPosition);
     }
     public static TimeSpan CalcualteTravleTime(Vector3 a, PlanetContainer b)

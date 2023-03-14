@@ -104,7 +104,14 @@ public class UIManager : MonoBehaviour
 
     public void OpenMilestoneView()
     {
-        leftPanal.OpenMilston();
+        if (leftPanal.activeLSideView == LeftPanal.ActiveLSideView.MileStones)
+        {
+            leftPanal.ClearAllView();
+        }
+        else
+        {
+            leftPanal.OpenMilston();
+        }
     }
 
     public void OpenQuestListViewBtn()
