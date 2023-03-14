@@ -136,7 +136,14 @@ public class GlobalStats : MonoBehaviour
             UnlocksManager.UnlockedCoths.Add(cloth);
         }
 
+        int maxMinerals = saveData.PlayerMinerals + 5000;
+
         SimulateTicks(TicksMissed);
+
+        if(PlayerResources.Minerals >= maxMinerals)
+        {
+            PlayerResources.Minerals = maxMinerals;
+        }
 
         TimeTickSystem.OnTick += OnTick;
     }

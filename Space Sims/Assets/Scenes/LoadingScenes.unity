@@ -7910,7 +7910,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4060501249098322793, guid: ef7e9dfd74ce10b47b87b28bf92d0d43, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
@@ -13315,6 +13315,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 435263007812607247, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
   m_PrefabInstance: {fileID: 9217279126325118338}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2080668971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4060501249098322806, guid: ef7e9dfd74ce10b47b87b28bf92d0d43, type: 3}
+  m_PrefabInstance: {fileID: 1297078101}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2084151699 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9133112859662519467, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
@@ -13837,7 +13848,7 @@ PrefabInstance:
       objectReference: {fileID: 1110035256}
     - target: {fileID: 435263007812607246, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 435263007972288618, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y
@@ -14271,6 +14282,10 @@ PrefabInstance:
       propertyPath: startBtn
       value: 
       objectReference: {fileID: 1352152931}
+    - target: {fileID: 3645321503880178821, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: TotalTime
+      value: 
+      objectReference: {fileID: 2080668971}
     - target: {fileID: 3741105778421694702, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: UiButton
       value: 

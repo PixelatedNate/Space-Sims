@@ -19,7 +19,7 @@ public class WaitingQuestViewComponet : MonoBehaviour
     Button startBtn;
 
     [SerializeField]
-    TextMeshProUGUI TimeLeft;
+    TextMeshProUGUI TimeLeft, TotalTime;
 
     private List<QuestRequimentBoxView> QuestRequimentBoxViews = new List<QuestRequimentBoxView>();
     private QuestRequimentBoxView SelectedQuestRequiment;
@@ -72,10 +72,16 @@ public class WaitingQuestViewComponet : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        TotalTime.text = "";
         if(questSelected.questStaus == QuestStatus.Completed)
         {
             return;
         }
+        else if(questSelected.questStaus == QuestStatus.Available)
+        {
+            TotalTime.text = questSelected.WaittingQuestData.Duration.ToString("h'h 'm'm 's's'");
+        }
+
         for (int i = 0; i < questSelected.WaittingQuestData.QuestRequiments.Numpeople; i++)
         {
             GameObject QuestRequimentItem = GameObject.Instantiate(RequimentTemplate, RequimentPanel);
