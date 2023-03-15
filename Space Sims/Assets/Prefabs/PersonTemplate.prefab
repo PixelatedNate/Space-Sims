@@ -605,7 +605,7 @@ MonoBehaviour:
   TESTICON: {fileID: 0}
   HeadRender: {fileID: 5306872157971662188}
   BodyRender: {fileID: 5306872157769727578}
-  HairRender: {fileID: 0}
+  HairRender: {fileID: 6375083385428195090}
   ClothesRender: {fileID: 1256350654047703989}
   SelectOutline: {fileID: 1000238303228266051}
   TempSelected: {fileID: 4891307746359028935}
@@ -728,6 +728,6 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

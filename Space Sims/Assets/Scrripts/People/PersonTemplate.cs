@@ -34,6 +34,10 @@ public class PersonTemplate : ScriptableObject
     [SerializeField]
     public Sprite Head;
     [SerializeField]
+    public bool RandomHair;
+    [SerializeField]
+    public Sprite Hair;
+    [SerializeField]
     public bool RandomBody;
     [SerializeField]
     public Sprite Body;

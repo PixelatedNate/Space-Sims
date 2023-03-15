@@ -25,6 +25,7 @@ public class PersonSaveData
 
 
     public string HeadName;
+    public string HairName;
     public string BodyName;
     public string ClothsName;
 
@@ -54,6 +55,7 @@ public class PersonSaveData
         this.charisma = personInfo.skills.Charisma;
 
         this.HeadName = personInfo.Head.name;
+        this.HairName = personInfo.Hair.name;
         this.BodyName = personInfo.Body.name;
         this.ClothsName = personInfo.Clothes.name;
 

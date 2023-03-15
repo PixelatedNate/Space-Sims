@@ -26,7 +26,6 @@ public class AutoSaver : MonoBehaviour
 # endif
     }
 
-
     public void HardReset()
     {
         SaveSystem.ClearSave();

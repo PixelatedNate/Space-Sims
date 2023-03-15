@@ -9,7 +9,7 @@ public class PersonListViewItem : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI PersonName, Age, Strenght, Dexterity, Inteligence, Wisdom, Charisma, QuestText;
     [SerializeField]
-    Image head, Body, Clothes;
+    Image head, Hair, Body, Clothes;
 
     public void SetPerson(PersonInfo person, SkillsList? filter)
     {
@@ -21,6 +21,8 @@ public class PersonListViewItem : MonoBehaviour
     {
         head.sprite = person.Head;
         head.color = person.SkinColor;
+        Hair.sprite = person.Hair;
+        Hair.color = person.HairColor;
         Body.sprite = person.Body;
         Body.color = person.SkinColor;
         Clothes.sprite = person.Clothes;

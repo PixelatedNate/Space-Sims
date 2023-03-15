@@ -137,6 +137,11 @@ public class DialogManager : MonoBehaviour
             AutoSaver.reset = false;
     }
 
+    public void backUpSaveAfterToutoiral()
+    {
+        SaveSystem.saveAfterToutorial();
+    }
+
     private void OnPlanetSelected(PlanetData planetData)
     {
         TouchControls.EnableCameramovemntAndSelection(false);
