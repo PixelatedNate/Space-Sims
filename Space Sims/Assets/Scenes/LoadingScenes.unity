@@ -7793,6 +7793,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 66472546}
+        m_TargetAssemblyTypeName: DialogManager, Assembly-CSharp
+        m_MethodName: backUpSaveAfterToutoiral
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1245825245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14641,6 +14653,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2073627612393913633, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -442.4585
+      objectReference: {fileID: 0}
     - target: {fileID: 2073627612416352867, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -14735,7 +14751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2073627612436019296, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 72.58838
+      value: 72.58789
       objectReference: {fileID: 0}
     - target: {fileID: 2073627612775890860, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_Sprite
@@ -14747,7 +14763,7 @@ PrefabInstance:
       objectReference: {fileID: 1133336933}
     - target: {fileID: 2073627612808617056, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 440.34
+      value: 440.34033
       objectReference: {fileID: 0}
     - target: {fileID: 2073627612808617057, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_Enabled
@@ -16189,6 +16205,10 @@ PrefabInstance:
       propertyPath: m_fontColor32.rgba
       value: 4278246143
       objectReference: {fileID: 0}
+    - target: {fileID: 7510005810109333131, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.000122
+      objectReference: {fileID: 0}
     - target: {fileID: 7510005810195698860, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -107.9
@@ -16368,6 +16388,10 @@ PrefabInstance:
     - target: {fileID: 7510005811078831142, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -523.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7510005811282330047, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 14.000122
       objectReference: {fileID: 0}
     - target: {fileID: 7510005811347892411, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}
       propertyPath: m_AnchorMax.y

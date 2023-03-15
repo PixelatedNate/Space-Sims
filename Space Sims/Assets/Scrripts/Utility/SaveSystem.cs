@@ -176,6 +176,16 @@ public static class SaveSystem
     }
 
 
+    public static void saveAfterToutorial()
+    {
+        SaveAll();
+        if (Directory.Exists(PostToutoiralRootPath))
+        {
+            Directory.Delete(PostToutoiralRootPath, true);
+        }
+        CopyDirectory(RootPath, PostToutoiralRootPath, true);
+    }
+
     public static void SaveAll()
     {
         if (Directory.Exists(RootPath))
@@ -191,6 +201,7 @@ public static class SaveSystem
         saveData.Save();
         NavigationSaveData navData = new NavigationSaveData();
         navData.Save();
+        SavedPeople.Clear();
     }
 
     public static RoomSaveData[] GetAllSavedRoomData()

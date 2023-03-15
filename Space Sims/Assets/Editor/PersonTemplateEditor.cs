@@ -10,19 +10,22 @@ public class PersonTemplateEditor : Editor
     string clothesPath = "Artwork/Clothes/Male/Basic";
 
     Texture2D HeadTexture;
+    Texture2D HairTexture;
     Texture2D BodyTexture;
     Texture2D ClothingTexture;
 
-    Texture2D[] heads, bodies, cloths;
-    Sprite[] headSprites, bodySprites, clothsSprites;
+    Texture2D[] heads, hairs, bodies, cloths;
+    Sprite[] headSprites, hairSprites, bodySprites, clothsSprites;
 
 
     bool ShowHeads = false;
+    bool ShowHair = false;
     bool ShowCloths = false;
     bool showBodies = false;
     bool showSkills = false;
 
     int HeadSelection = 0;
+    int HairSelection = 0;
     int BodySelection = 0;
     int clothingSelection = 0;
 
@@ -38,13 +41,19 @@ public class PersonTemplateEditor : Editor
         EditorUtility.SetDirty(personTemplateTarget);
 
         string HeadPath = "ArtWork/People/" + personTemplateTarget.Race + "/" + personTemplateTarget.Gender + "/Heads";
+        string HairPath = "ArtWork/People/" + personTemplateTarget.Race + "/" + personTemplateTarget.Gender + "/Hair";
         string BodyPath = "ArtWork/People/" + personTemplateTarget.Race + "/" + personTemplateTarget.Gender + "/Bodies";
-
 
         heads = GetTextureFromPath(HeadPath);
         headSprites = GetSpriteFromPath(HeadPath);
         HeadSelection = FindMatchingIndex(personTemplateTarget.Head, headSprites);
         HeadTexture = heads[HeadSelection];
+
+        hairs = GetTextureFromPath(HairPath);
+        hairSprites = GetSpriteFromPath(HairPath);
+        HairSelection = FindMatchingIndex(personTemplateTarget.Hair, hairSprites);
+        HairTexture = hairs[HairSelection];
+
 
         bodies = GetTextureFromPath(BodyPath);
         bodySprites = GetSpriteFromPath(BodyPath);
@@ -58,6 +67,7 @@ public class PersonTemplateEditor : Editor
 
 
 
+        GUI.DrawTexture(new Rect(50, 0, 256, 256), HairTexture);
         GUI.DrawTexture(new Rect(50, 0, 256, 256), HeadTexture);
         GUI.DrawTexture(new Rect(50, 0, 256, 256), BodyTexture);
         GUI.DrawTexture(new Rect(50, 0, 256, 256), ClothingTexture);
@@ -121,6 +131,25 @@ public class PersonTemplateEditor : Editor
             personTemplateTarget.Head = headSprites[HeadSelection];
         }
         #endregion
+
+        #region Hair
+        EditorGUILayout.BeginHorizontal();
+        ShowHair = EditorGUILayout.Foldout(ShowHair, "Hair");
+        EditorGUI.BeginDisabledGroup(personTemplateTarget.RandomRace || personTemplateTarget.RandomGender);
+        if (personTemplateTarget.RandomRace || personTemplateTarget.RandomGender)
+        {
+            personTemplateTarget.RandomHair = true;
+        }
+        personTemplateTarget.RandomHair = EditorGUILayout.Toggle("Random", personTemplateTarget.RandomHair);
+        EditorGUI.EndDisabledGroup();
+        EditorGUILayout.EndHorizontal();
+        if (ShowHair && !personTemplateTarget.RandomHair)
+        {
+            HairSelection = GUILayout.SelectionGrid(HairSelection, hairs, 6);
+            personTemplateTarget.Hair = hairSprites[HairSelection];
+        }
+        #endregion
+
 
         #region Body
         EditorGUILayout.BeginHorizontal();

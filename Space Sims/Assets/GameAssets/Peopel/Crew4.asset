@@ -34,6 +34,8 @@ MonoBehaviour:
     _charisma: 2
   RandomHead: 0
   Head: {fileID: 21300000, guid: f0e5718039e6acb4d804c0028d733dd3, type: 3}
+  RandomHair: 0
+  Hair: {fileID: 21300000, guid: 55cfea7e5c6f6e14ebe420a2abe28de2, type: 3}
   RandomBody: 0
   Body: {fileID: 21300000, guid: f82e6cefca30790438294ea3f10df875, type: 3}
   RandomCloths: 0

@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83372185c486aab42886c8b975b64a51, type: 3}
-  m_Name: Crew2
+  m_Name: Data
   m_EditorClassIdentifier: 
-  RandomName: 1
+  RandomName: 0
   PersonName: 
   RandomGender: 0
   Gender: 1
   RandomRace: 0
-  Race: 6
-  MinAge: 25
-  MaxAge: 44
+  Race: 4
+  MinAge: 0
+  MaxAge: 0
   MinSkills:
     _strength: 2
     _dexterity: 2
     _intelligence: 2
-    _wisdom: 8
+    _wisdom: 2
     _charisma: 2
   MaxSkills:
     _strength: 2
     _dexterity: 2
     _intelligence: 2
-    _wisdom: 8
+    _wisdom: 2
     _charisma: 2
   RandomHead: 0
-  Head: {fileID: 21300000, guid: 4eadcf893cf5eca4cae16fe4cfafe577, type: 3}
+  Head: {fileID: 0}
   RandomHair: 0
-  Hair: {fileID: 21300000, guid: 71562562ca9e3054a8572f731f29d920, type: 3}
+  Hair: {fileID: 21300000, guid: 010f14f96a77ff04d9217df05f37b0e7, type: 3}
   RandomBody: 0
-  Body: {fileID: 21300000, guid: 20aea54004cb744459d5627aa609c346, type: 3}
-  RandomCloths: 1
-  Clothes: {fileID: 21300000, guid: 979a34c0cfe3ecc449b66ee572a31ddc, type: 3}
+  Body: {fileID: 0}
+  RandomCloths: 0
+  Clothes: {fileID: 0}

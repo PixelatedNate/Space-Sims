@@ -104,8 +104,10 @@ public class PersonInfo : ISaveable<PersonSaveData>
         //this.SkinColor = PersonSkin.GetRandomColor(this.Race);
 
         this.SkinColor = new Color(saveData.r, saveData.g, saveData.b);
+        this.HairColor = Color.green;
 
         this.Head = ResourceHelper.PersonHelper.GetHeadFromSpriteName(this, saveData.HeadName);
+        this.Hair = ResourceHelper.PersonHelper.GetHairFromSpriteName(this, saveData.HairName);
         this.Body = ResourceHelper.PersonHelper.GetBodyFromSpriteName(this, saveData.BodyName);
         this.Clothes = ResourceHelper.PersonHelper.GetClothFromSpriteName(this, saveData.ClothsName);
 
@@ -120,6 +122,8 @@ public class PersonInfo : ISaveable<PersonSaveData>
 
         this.SkinColor = PersonSkin.GetRandomColor(this.Race);
         this.Head = template.RandomHead ? ResourceHelper.PersonHelper.GetRandomHead(this) : template.Head;
+        this.Hair = template.RandomHair ? ResourceHelper.PersonHelper.GetRandomHair(this) : template.Hair;
+        this.HairColor = Color.green;
         this.Body = template.RandomBody ? ResourceHelper.PersonHelper.GetRandomBody(this) : template.Body;
         this.Clothes = template.RandomCloths ? ResourceHelper.PersonHelper.GetRandomCloths(this) : template.Clothes;
 

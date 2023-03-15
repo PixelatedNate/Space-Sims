@@ -35,6 +35,13 @@ public static class ResourceHelper
             Sprite headSprite = Resources.Load<Sprite>(headPath);
             return headSprite;
         }
+      public static Sprite GetHairFromSpriteName(PersonInfo personInfo, string SpriteName)
+        {
+            string hairPath = PeopleArtWorkPath + personInfo.Race.ToString() + "/" + personInfo.Gender.ToString() + "/Hair/" + SpriteName;
+            Sprite hairSptire = Resources.Load<Sprite>(hairPath);
+            return hairSptire;
+        }
+
         public static Sprite GetBodyFromSpriteName(PersonInfo personInfo, string spriteName)
         {
             string bodyPath = PeopleArtWorkPath + personInfo.Race.ToString() + "/" + personInfo.Gender.ToString() + "/Bodies/" + spriteName;
@@ -82,6 +89,17 @@ public static class ResourceHelper
         {
             return (GetRandomBody(personInfo.Race, personInfo.Gender));
         }
+        public static Sprite GetRandomHair(PersonInfo personInfo)
+        {
+            return (GetRandomHair(personInfo.Race, personInfo.Gender));
+        }
+
+        public static Sprite GetRandomHair(Race race, Gender gender)
+        {
+            string HairPath = PeopleArtWorkPath + race.ToString() + "/" + gender + "/Hair";
+            return (GetRandomSpriteFromPath(HairPath));
+        }
+
 
         public static Sprite GetRandomBody(Race race, Gender gender)
         {
