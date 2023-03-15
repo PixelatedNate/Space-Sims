@@ -19,19 +19,28 @@ public class SceneGUInspector : Editor
 
         GUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
-        GUILayout.Label("Save");
+        GUILayout.Label("Save Tools");
         GUILayout.FlexibleSpace();
         GUILayout.EndHorizontal();
 
         GUILayout.BeginHorizontal();
         GUI.backgroundColor = Color.red;
-
         if (GUILayout.Button("ClearSave"))
         {
             SaveSystem.ClearSave();
         }
+        GUILayout.EndHorizontal();
+
+        GUILayout.BeginHorizontal();
+        GUI.backgroundColor = Color.green;
+
+        if (GUILayout.Button("Load From After Toutoriol"))
+        {
+            SaveSystem.LoadPostToutorial();
+        }
 
         GUILayout.EndHorizontal();
+
 
         EditorGUILayout.EndVertical();
 
