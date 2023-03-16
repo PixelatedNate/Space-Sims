@@ -67,7 +67,25 @@ public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
         this.planetData = ResourceHelper.PlanetHelper.GetPlanetData(saveData.planetDataName);
         this.PlanetPosition = new Vector3(saveData.planetPosition[0], saveData.planetPosition[1], saveData.planetPosition[2]);
         this.HasPlayerVisted = saveData.HasPlayerVisted;
-        this.NewQuestIn = TimeDelayManager.Timer.ReconstructTimer(saveData.timmerId, new Action(SetQuests));
+        this.NewQuestIn = TimeDelayManager.Timer.ReconstructPlanetTimer(saveData.timmerId, new Action(SetQuests));
+
+        if(this != NavigationManager.CurrentPlanet)
+        {
+            List<AbstractQuest> loadedQuests = new List<AbstractQuest>();
+            foreach(string wQuestName in saveData.WaittingQuestsName)
+            {
+                loadedQuests.Add(new WaittingQuest(ResourceHelper.QuestHelper.GetGenericWaittingQuestData(wQuestName)));
+            }
+            foreach(string tQuestName in saveData.TransportQuestsName)
+            {
+                loadedQuests.Add(new TransportQuest(ResourceHelper.QuestHelper.GetGenericTransportQuestData(tQuestName)));
+            }
+            quests = loadedQuests.ToArray();
+        }
+        else if(this == NavigationManager.CurrentPlanet)
+        {
+            quests = QuestManager.GetQuestsByStaus(QuestStatus.Available).ToArray(); // only the AvailableQuest matter as they are the only one's that can get remvoed when leaving a plaent.u
+        }
     }
 
     public PlanetData planetData { get; private set; }

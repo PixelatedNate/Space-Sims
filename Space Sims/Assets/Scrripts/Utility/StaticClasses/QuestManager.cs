@@ -83,9 +83,6 @@ public static class QuestManager
             BuildRoomQuest quest = new BuildRoomQuest(savequest);
             AddNewQuest(quest);
         }
-
-
-
     }
 
 

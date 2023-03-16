@@ -47,6 +47,15 @@ public class TimeDelayManager : MonoBehaviour
             IsPause = false;
         }
 
+        public static Timer ReconstructPlanetTimer(string saveTimerName, Action endMethod)
+        {
+            string Timmerpath = SaveSystem.TimerPath + "/" + saveTimerName + SaveSystem.TimerPrefix;
+            TimerSaveData timerData = SaveSystem.LoadData<TimerSaveData>(Timmerpath);
+            Timer t = new Timer(timerData, endMethod, true);
+            return t;
+        }
+
+
         public static Timer ReconstructTimer(string saveTimerName, Action endMethod)
         {
             string Timmerpath = SaveSystem.TimerPath + "/" + saveTimerName + SaveSystem.TimerPrefix;
@@ -55,7 +64,7 @@ public class TimeDelayManager : MonoBehaviour
             return t;
         }
 
-        public Timer(TimerSaveData saveData, Action endMethod)
+        public Timer(TimerSaveData saveData, Action endMethod, bool isPlanet = false)
         {
             this.EndTime = new DateTime(saveData.EndYear, saveData.EndMonth, saveData.EndDay, saveData.EndHour, saveData.EndMinuit, saveData.EndSecond);
             this.TotalDuration = new TimeSpan(saveData.DurationHour, saveData.DurationMinuit, saveData.DurationSecond);
@@ -68,7 +77,7 @@ public class TimeDelayManager : MonoBehaviour
 
             // add puase stuff
 
-            TimeDelayManager.Instance.AddTimer(this);
+            TimeDelayManager.Instance.AddTimer(this,isPlanet);
         }
 
         public Timer(DateTime endTime, Action endMethod)

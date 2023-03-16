@@ -96,6 +96,7 @@ public static class NavigationManager
             if (s == saveData.currentPlanetNameId)
             {
                 CurrentPlanet = plantContaire;
+                plantContaire.quests = QuestManager.GetQuestsByStaus(QuestStatus.Available).ToArray(); // only the AvailableQuest matter as they are the only one's that can get remvoed when leaving a plaent.u
             }
             if (s == saveData.TargetPalnetNameId)
             {
