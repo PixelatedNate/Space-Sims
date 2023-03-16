@@ -20,12 +20,14 @@ public class WaittingQuest : AbstractQuest, ISaveable<WaittingQuestSaveData>
 
     public WaittingQuest(WaitingQuestData questdata, QuestLine questLine = null)
     {
+        this.questType = QuestType.Waitting;
         this.WaittingQuestData = questdata;
         this.questLine = questLine;
     }
 
     public WaittingQuest(WaittingQuestSaveData saveData)
     {
+        this.questType = QuestType.Waitting;
         populateFromSave(saveData);
         if (saveData.IsGeneric)
         {

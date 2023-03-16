@@ -38,7 +38,7 @@ public class planetView : MonoBehaviour
         {
             return;
         }
-        else if (QuestManager.GetQuestsByStaus(QuestStatus.InProgress).Count != 0)
+        else if (QuestManager.GetQuestsByTypeAndStaus(QuestType.Waitting,QuestStatus.InProgress).Count != 0)
         {
             UIManager.Instance.Conformation(CancalQuestAndTravelToPlanet, "This will cancal all you're inprogress quest");
         }

@@ -102,6 +102,17 @@ public static class QuestManager
     {
         return Quests.FindAll((a) => a.questStaus == status);
     }
+ 
+    public static List<AbstractQuest> GetQuestsByType(QuestType type)
+    {
+        return Quests.FindAll((a) => a.questType == type);
+    }
+    public static List<AbstractQuest> GetQuestsByTypeAndStaus(QuestType type, QuestStatus status)
+    {
+        return Quests.FindAll((a) => a.questType == type && a.questStaus == status);
+    }
+
+
 
     public static void SetAvalibleQuest(AbstractQuest[] quests)
     {

@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
 {
 
-    public AbstractQuest[] quests;
+    public AbstractQuest[] quests { get; set; }
 
     public bool HasPlayerVisted = false;
 
@@ -37,7 +37,27 @@ public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
     private void SetQuests()
     {
         int numberOfQuest = Random.Range(planetData.minNumberOfQuest, planetData.maxNumberOfQuest+1);
-        quests = ResourceHelper.QuestHelper.getRandomGenericWaittingQuests(numberOfQuest, planetData.planetType);
+
+        List<AbstractQuest> questList = new List<AbstractQuest>();
+        AbstractQuest[] waittingQuests = ResourceHelper.QuestHelper.getRandomGenericWaittingQuests(numberOfQuest, planetData.planetType);
+        questList.AddRange(waittingQuests);        
+
+        // every planet has a 25% chance to have a tranpsort quest.
+        int number = Random.Range(0, 4);
+        if (number == 0)
+        {
+            AbstractQuest transportQuest = ResourceHelper.QuestHelper.getRandomGenericTranpsortQuest(planetData.planetType, planetData);
+            questList.Add(transportQuest);        
+        }
+        else // for testing give every planet a transprot quest
+        {
+            AbstractQuest transportQuest = ResourceHelper.QuestHelper.getRandomGenericTranpsortQuest(planetData.planetType, planetData);
+            questList.Add(transportQuest);        
+
+        }
+
+        quests = questList.ToArray();
+
         NewQuestIn = new Timer(DateTime.Now.AddHours(planetData.QuestResetPeriodHours), SetQuests);
         TimeDelayManager.Instance.AddTimer(NewQuestIn,true);
     }

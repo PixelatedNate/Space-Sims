@@ -8,14 +8,25 @@ public class TransportQuest : AbstractQuest, ISaveable<TransportQuestSaveData>
 
     public TransportQuest(TransportQuestData questdata, QuestLine questLine = null)
     {
+        this.questType = QuestType.Transport;
         this.transportQuestData = questdata;
         this.questLine = questLine;
     }
 
     public TransportQuest(TransportQuestSaveData saveData)
     {
+        this.questType = QuestType.Transport;
         populateFromSave(saveData);
-        this.transportQuestData = ResourceHelper.QuestHelper.GetTransprotQuestData(saveData.QuestDataName);
+
+        if (saveData.IsGeneric)
+        {
+            this.transportQuestData = ResourceHelper.QuestHelper.GetGenericTransportQuestData(saveData.QuestDataName);
+        }
+        else
+        {
+            this.transportQuestData = ResourceHelper.QuestHelper.GetTransprotQuestData(saveData.QuestDataName);
+        }
+
         foreach (string personId in saveData.peopleOnShipId)
         {
             PersonInfo person;
