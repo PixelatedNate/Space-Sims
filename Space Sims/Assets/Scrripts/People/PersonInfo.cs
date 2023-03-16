@@ -104,7 +104,7 @@ public class PersonInfo : ISaveable<PersonSaveData>
         //this.SkinColor = PersonSkin.GetRandomColor(this.Race);
 
         this.SkinColor = new Color(saveData.r, saveData.g, saveData.b);
-        this.HairColor = Color.green;
+        this.HairColor = PersonHairColor.getColor(Race);
 
         this.Head = ResourceHelper.PersonHelper.GetHeadFromSpriteName(this, saveData.HeadName);
         this.Hair = ResourceHelper.PersonHelper.GetHairFromSpriteName(this, saveData.HairName);
