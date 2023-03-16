@@ -30,9 +30,14 @@ public class PersonSaveData
     public string ClothsName;
 
 
-    public float r;
-    public float g;
-    public float b;
+    public float SkinColourR;
+    public float SkinColourG;
+    public float SkinColourB;
+
+    public float HairColourR;
+    public float HairColourG;
+    public float HairColourB;
+
 
     public PersonSaveData(PersonInfo personInfo)
     {
@@ -59,9 +64,15 @@ public class PersonSaveData
         this.BodyName = personInfo.Body.name;
         this.ClothsName = personInfo.Clothes.name;
 
-        this.r = personInfo.SkinColor.r;
-        this.g = personInfo.SkinColor.g;
-        this.b = personInfo.SkinColor.b;
+        this.SkinColourR = personInfo.SkinColor.r;
+        this.SkinColourG = personInfo.SkinColor.g;
+        this.SkinColourB = personInfo.SkinColor.b;
+
+        this.HairColourR = personInfo.HairColor.r;
+        this.HairColourG = personInfo.HairColor.g;
+        this.HairColourB = personInfo.HairColor.b;
+
     }
+
 
 }
