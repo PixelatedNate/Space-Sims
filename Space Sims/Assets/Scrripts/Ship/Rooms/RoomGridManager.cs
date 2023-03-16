@@ -79,8 +79,6 @@ public class RoomGridManager : MonoBehaviour
         }
         else
         {
-            NavigationSaveData navSaveData = SaveSystem.LoadData<NavigationSaveData>(SaveSystem.NavigationSavePath);
-            NavigationManager.Load(navSaveData);
 
             foreach (RoomSaveData data in roomData)
             {
@@ -97,6 +95,8 @@ public class RoomGridManager : MonoBehaviour
             }
 
             QuestManager.LoadQuests();
+            NavigationSaveData navSaveData = SaveSystem.LoadData<NavigationSaveData>(SaveSystem.NavigationSavePath);
+            NavigationManager.Load(navSaveData);
             GlobalStatsSaving saveStatas = SaveSystem.LoadData<GlobalStatsSaving>(SaveSystem.SaveStatsPath);
             GlobalStats.Instance.LoadData(saveStatas);
             TimeDelayManager.Instance.StartTickerTimer();
