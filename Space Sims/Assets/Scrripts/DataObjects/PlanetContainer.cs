@@ -82,10 +82,6 @@ public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
             }
             quests = loadedQuests.ToArray();
         }
-        else if(this == NavigationManager.CurrentPlanet)
-        {
-            quests = QuestManager.GetQuestsByStaus(QuestStatus.Available).ToArray(); // only the AvailableQuest matter as they are the only one's that can get remvoed when leaving a plaent.u
-        }
     }
 
     public PlanetData planetData { get; private set; }

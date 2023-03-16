@@ -272,7 +272,7 @@ public class Person : MonoBehaviour, IInteractables
             SelectOutline.gameObject.SetActive(true);
             SelectOutline.sharedMaterial.SetTexture("_Head", PersonInfo.Head.texture);
             SelectOutline.sharedMaterial.SetTexture("_Cloths", PersonInfo.Clothes.texture);
-            //     SelectOutline.sharedMaterial.SetTexture("_Hair", PersonInfo.Hair.texture);
+            SelectOutline.sharedMaterial.SetTexture("_Hair", PersonInfo.Hair.texture);
         }
         else
         {
