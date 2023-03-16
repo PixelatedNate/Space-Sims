@@ -445,7 +445,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 45c9137e1a12a3545a737b51936b570e, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -1058,7 +1058,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Alright time to build your first fuel room.
+    lines: Alright time to build your first fuel room <sprite=4>.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -1069,7 +1069,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Good thing you unlocked that blueprint from the last quest.
+    lines: Good thing you unlocked that blueprint <sprite=12> from the last quest.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -1080,7 +1080,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Go ahead and tap on the build icon.
+    lines: 'Go ahead and tap on the build icon. <sprite=10> '
     button: {fileID: 1644581822}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -1102,7 +1102,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Choose the room to build, in this case the Fuel room.
+    lines: 'Choose the room to build, in this case the Fuel room. <sprite=4> '
     button: {fileID: 2084151699}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -1181,7 +1181,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: What a coincidence! Wisdom <sprite=9>  is also yellow.
+    lines: What a coincidence! Wisdom <sprite=9> is also yellow.
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -1227,7 +1227,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Go ahead and tap on the crew member with the highest Wisdom  <sprite=9>.
+    lines: Go ahead and tap on the crew member with the highest Wisdom <sprite=9>.
     button: {fileID: 0}
     AltbuttonName: WisdomPerson
     CloseMenuAfter: 0
@@ -2364,7 +2364,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 45c9137e1a12a3545a737b51936b570e, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -2670,7 +2670,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Okay chief, let's get  that Mineral Room built.
+    lines: Okay chief, let's get  that Mineral Room built. <sprite=6>
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -4718,7 +4718,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    lines: See if you can build us a food room.
+    lines: 'See if you can build us a food room. <sprite=3> '
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -4741,7 +4741,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Darn it's locked, gotta find a blueprint.
+    lines: 'Darn it''s locked, gotta find a blueprint. <sprite=12> '
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 1
@@ -4787,7 +4787,8 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: See right there, go ahead and select the quest for the food blueprint.
+    lines: 'See right there, go ahead and select the quest for the food blueprint.
+      <sprite=3>  <sprite=12> '
     button: {fileID: 0}
     AltbuttonName: To Go, Please!
     CloseMenuAfter: 0
@@ -5172,7 +5173,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Tap the build room icon.
+    lines: 'Tap the build room icon. <sprite=10> '
     button: {fileID: 1644581822}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -5183,7 +5184,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Select Food Room.
+    lines: 'Select Food Room. <sprite=3> '
     button: {fileID: 1191305272}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -6015,7 +6016,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 45c9137e1a12a3545a737b51936b570e, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -6582,7 +6583,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 45c9137e1a12a3545a737b51936b570e, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -11233,8 +11234,8 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Alright so I noticed we need those shiny minerals if we want to keep building
-      on this ship.
+    lines: 'Alright so I noticed we need those shiny minerals if we want to keep
+      building on this ship. <sprite=6> '
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -11245,7 +11246,8 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: See if you can find a quest with some blueprints to build a mineral room.
+    lines: 'See if you can find a quest with some blueprints to build a mineral room.
+      <sprite=6> <sprite=12> '
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -12029,7 +12031,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 45c9137e1a12a3545a737b51936b570e, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -12130,7 +12132,7 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: Excellent, now we can make our own shinies.
+    lines: Excellent, now we can make our own shinies. <sprite=6>
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
@@ -12141,7 +12143,8 @@ MonoBehaviour:
   - StartEvent:
       m_PersistentCalls:
         m_Calls: []
-    lines: It's a good Idea to to keep all your resources positve.
+    lines: 'It''s a good Idea to to keep all your resources positve. <sprite=6> <sprite=3>
+      <sprite=6> '
     button: {fileID: 0}
     AltbuttonName: 
     CloseMenuAfter: 0
