@@ -9,6 +9,8 @@ public abstract class AbstractQuest
     public QuestStatus questStaus { get; set; }
     public QuestLine questLine;
 
+    public QuestType questType;
+
     public abstract bool StartQuest();
 
     public abstract void CancalQuest();

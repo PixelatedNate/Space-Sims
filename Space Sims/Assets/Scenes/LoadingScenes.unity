@@ -7225,6 +7225,8 @@ MonoBehaviour:
     button: {fileID: 374286471}
   - name: 13
     button: {fileID: 1419164677}
+  - name: 14
+    button: {fileID: 1984246691}
 --- !u!224 &1135065530 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9217279125392508386, guid: b7c2fc625f9ce8c4b9adf680f0e08183, type: 3}

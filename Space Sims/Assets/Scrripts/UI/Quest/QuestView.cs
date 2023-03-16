@@ -57,6 +57,7 @@ public class QuestView : MonoBehaviour
             waitingQuestView.gameObject.SetActive(false);
             transprotQuestViewComponet.gameObject.SetActive(true);
             transprotQuestViewComponet.SelectQuest((TransportQuest)quest);
+            startBtn.interactable = true;
             buttonImge.sprite = ReadyButtonImg;
         }
         if (quest.GetType() == typeof(BuildRoomQuest))

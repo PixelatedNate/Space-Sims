@@ -129,7 +129,31 @@ public static class ResourceHelper
 
         private const string GenericQuestPath = "Quests/Generic/";
 
-        public static WaittingQuest getRandomGenericWaittingQuests(PlanetType planetType)
+        public static TransportQuest getRandomGenericTranpsortQuest(PlanetType planetType, PlanetData startPlanet)
+        {
+            return getRandomGenericTranpsortQuests(1, planetType, startPlanet)[0];
+        }
+
+
+        public static TransportQuest[] getRandomGenericTranpsortQuests(int count, PlanetType planetType, PlanetData startPlanet)
+        {
+           List<TransportQuestData> AllTranportQuests = new List<TransportQuestData>(Resources.LoadAll<TransportQuestData>(GenericQuestPath + "All/TransportQuests"));
+           AllTranportQuests.AddRange(Resources.LoadAll<TransportQuestData>(GenericQuestPath + planetType.ToString() + "/TransportQuests"));
+
+            AllTranportQuests.RemoveAll(tq => tq.TargetPlanetData == startPlanet);
+
+           TransportQuest[] quests = new TransportQuest[count];
+           for(int i = 0; i < count; i++)
+            {
+                int index = Random.Range(0, AllTranportQuests.Count);
+                quests[i] = new TransportQuest(AllTranportQuests[index]);
+                AllTranportQuests.RemoveAt(index);
+            }
+            return quests;
+        }
+
+
+        public static WaittingQuest getRandomGenericWaittingQuest(PlanetType planetType)
         {
             return getRandomGenericWaittingQuests(1,planetType)[0];
         }
@@ -180,6 +204,30 @@ public static class ResourceHelper
             }
             return null;
         }
+        public static TransportQuestData GetGenericTransportQuestData(string name)
+        {
+            TransportQuestData QuestData;
+            string fullPathToCheckTransport = GenericQuestPath + "All/TransportQuests/" + name;
+            QuestData = Resources.Load<TransportQuestData>(fullPathToCheckTransport);
+            if (QuestData != null)
+            {
+                return QuestData;
+            }
+            else
+            {
+                foreach (PlanetType planetType in Enum.GetValues(typeof(PlanetType)))
+                {
+                    fullPathToCheckTransport = GenericQuestPath + planetType.ToString() + "/TransportQuests/" + name;
+                    QuestData = Resources.Load<TransportQuestData>(fullPathToCheckTransport);
+                    if (QuestData != null)
+                    {
+                        return QuestData;
+                    }
+                }
+            }
+            return null;
+        }
+
 
 
 

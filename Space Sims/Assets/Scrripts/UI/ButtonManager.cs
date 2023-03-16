@@ -21,6 +21,7 @@ public class ButtonManager : MonoBehaviour
         PersonListFillterRight,
         PersonListFillterInverse,
         PersonMagnifigyGlassIcon,
+        TravelToBtn 
     }
 
 
