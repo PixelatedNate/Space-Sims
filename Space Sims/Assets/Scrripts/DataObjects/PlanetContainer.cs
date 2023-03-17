@@ -36,6 +36,17 @@ public class PlanetContainer : ISaveable<PlanetConttainerSaveData>
 
     private void SetQuests()
     {
+        if (NavigationManager.CurrentPlanet == this)
+        {
+            foreach (AbstractQuest quest in quests)
+            {
+                if(quest.questStaus == QuestStatus.Available)
+                {
+                    QuestManager.RemoveQuest(quest);
+                }
+            }
+            quests = null; // crear old quest
+        }
         int numberOfQuest = Random.Range(planetData.minNumberOfQuest, planetData.maxNumberOfQuest+1);
 
         List<AbstractQuest> questList = new List<AbstractQuest>();
