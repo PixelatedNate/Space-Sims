@@ -5,28 +5,27 @@ using UnityEngine;
 [Serializable]
 public class Skills
 {
+    private float MaxSkillValue = 10f;
 
     [SerializeField]
     private float _strength = 2;
-    public float Strength { get { return Mathf.Floor(_strength); } set { _strength = value; } }
+    public float Strength { get { return Mathf.Floor(_strength); } set { _strength = Mathf.Clamp(value ,0, MaxSkillValue); } }
 
     [SerializeField]
     private float _dexterity = 2;
-    public float Dexterity { get { return Mathf.Floor(_dexterity); } set { _dexterity = value; } }
+    public float Dexterity { get { return Mathf.Floor(_dexterity); } set { _dexterity = Mathf.Clamp(value ,0, MaxSkillValue); } }
     [SerializeField]
     private float _intelligence = 2;
-    public float Intelligence { get { return Mathf.Floor(_intelligence); } set { _intelligence = value; } }
+    public float Intelligence { get { return Mathf.Floor(_intelligence); } set { _intelligence = Mathf.Clamp(value ,0, MaxSkillValue); } }
 
     [SerializeField]
     private float _wisdom = 2;
-    public float Wisdom { get { return Mathf.Floor(_wisdom); } set { _wisdom = value; } }
+    public float Wisdom { get { return Mathf.Floor(_wisdom); } set { _wisdom = Mathf.Clamp(value ,0, MaxSkillValue); } }
 
     [SerializeField]
     private float _charisma = 2;
-    public float Charisma { get { return Mathf.Floor(_charisma); } set { _charisma = value; } }
+    public float Charisma { get { return Mathf.Floor(_charisma); } set { _charisma = Mathf.Clamp(value ,0, MaxSkillValue); } }
 
-    private float _s2 = 2;
-    public float S2 { get { return Mathf.Floor(_s2); } set { S2 = value; } }
 
     public float GetSkill(SkillsList skill)
     {
@@ -76,7 +75,6 @@ public class Skills
         }
     }
 
-
     public void AddToSkill(SkillsList skill, float value)
     {
         if (skill == SkillsList.Strength)
@@ -90,6 +88,28 @@ public class Skills
     }
 
     #region Comparators
+    public static Skills operator +(Skills a, Skills b)
+    {
+        return new Skills
+        { Strength = a.Strength + b.Strength,
+            Dexterity = a.Dexterity + b.Dexterity,
+            Intelligence = a.Intelligence + b.Intelligence,
+            Wisdom = a.Wisdom + b.Wisdom,
+            Charisma = a.Charisma + b.Charisma
+        };
+    }
+    public static Skills operator -(Skills a, Skills b)
+    {
+        return new Skills
+        { Strength = a.Strength - b.Strength,
+            Dexterity = a.Dexterity - b.Dexterity,
+            Intelligence = a.Intelligence - b.Intelligence,
+            Wisdom = a.Wisdom - b.Wisdom,
+            Charisma = a.Charisma - b.Charisma
+        };
+    }
+
+
     public static bool operator >(Skills a, Skills b)
     {
         return ((a.Strength > b.Strength) &&

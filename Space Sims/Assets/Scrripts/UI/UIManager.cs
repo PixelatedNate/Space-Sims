@@ -210,6 +210,19 @@ public class UIManager : MonoBehaviour
             IsRightPanalOpen = true;
         }
     }
+    public void OpenGearListelector(PersonInfo personInfo)
+    {
+        if (rightPanal.activeRSideView == RightPanal.ActiveRSideView.GearSkillFinterList)
+        {
+            ClearRightPanal();
+        }
+        else
+        {
+            rightPanal.OpenGearList(personInfo);
+            IsRightPanalOpen = true;
+        }
+    }
+
     public void OpenPersonBackStory(PersonInfo personInfo)
     {
         if (rightPanal.activeRSideView == RightPanal.ActiveRSideView.BackStory)

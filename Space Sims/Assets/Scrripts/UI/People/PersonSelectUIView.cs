@@ -7,7 +7,7 @@ public class PersonSelectUIView : MonoBehaviour
     PersonInfo SelectedPerson;
 
     [SerializeField]
-    Image Head, Body, Hair, Cloths;
+    Image Head, Body, Hair, Cloths, Gear;
 
     [SerializeField]
     TextMeshProUGUI Name, Age, Room;
@@ -35,6 +35,14 @@ public class PersonSelectUIView : MonoBehaviour
         else
         {
             QuestLinkBtn.SetActive(false);
+        }
+        if(person.HasGear)
+        {
+            Gear.sprite = person.Gear.SkillBostingGear.Image;
+        }
+        else
+        {
+            Gear.sprite = null;
         }
     }
 
@@ -115,7 +123,14 @@ public class PersonSelectUIView : MonoBehaviour
         {
             if (i < SelectedPerson.skills.GetSkill(skill))
             {
-                skillDots.GetChild(i).GetComponent<Image>().color = SkillColourMap.GetSkillColour(skill);
+                if (SelectedPerson.HasGear)
+                {
+                    if(SelectedPerson.skills.GetSkill(skill) - SelectedPerson.Gear.SkillBostingGear.skills.GetSkill(skill) < i)
+                }
+                else
+                {
+                    skillDots.GetChild(i).GetComponent<Image>().color = SkillColourMap.GetSkillColour(skill);
+                }
             }
             else
             {
@@ -128,6 +143,13 @@ public class PersonSelectUIView : MonoBehaviour
     {
         UIManager.Instance.OpenPersonCosmetics(SelectedPerson);
     }
+
+    public void ToggleGearSelectView()
+    {
+        UIManager.Instance.OpenGearListelector(SelectedPerson);
+    }
+
+
 
     public void TogglePersonBackStory()
     {

@@ -11,9 +11,6 @@ public class ClothSelectionMenuUIView : MonoBehaviour
 
     private ClothRarity raritySelected = ClothRarity.Basic;
 
-    private const string clothesMalePath = "Artwork/Clothes/Male";
-    private const string clothesFemalePath = "Artwork/Clothes/Female";
-
     [SerializeField]
     private Transform _BasicScrolPanal, _CommonScrolPanal, _RareScrolPanal, _EpicScrolPanal;
 
@@ -171,12 +168,6 @@ public class ClothSelectionMenuUIView : MonoBehaviour
             UnlocksManager.NewCoths.Remove(clothUI.Cloth.name);
         }
         newCloths[rarity].Clear();
-    }
-
-
-    private Sprite[] GetAllClothsFromPath(string path)
-    {
-        return Resources.LoadAll<Sprite>(path);
     }
 
 }

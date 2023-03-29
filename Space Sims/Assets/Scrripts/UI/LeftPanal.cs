@@ -18,7 +18,8 @@ public class LeftPanal : MonoBehaviour
     [SerializeField]
     QuestListView QuestListView;
     [SerializeField]
-    PersonListView PersonListView;
+    PersonSkillListFilterView PersonListView;
+    //PersonListView PersonListView;
     [SerializeField]
     GameObject MilstonListView;
 
