@@ -7,7 +7,7 @@ public class PersonSelectUIView : MonoBehaviour
     PersonInfo SelectedPerson;
 
     [SerializeField]
-    Image Head, Body, Hair, Cloths;
+    Image Head, Body, Hair, Cloths, Gear;
 
     [SerializeField]
     TextMeshProUGUI Name, Age, Room;
@@ -35,6 +35,14 @@ public class PersonSelectUIView : MonoBehaviour
         else
         {
             QuestLinkBtn.SetActive(false);
+        }
+        if(person.HasGear)
+        {
+            Gear.sprite = person.Gear.SkillBostingGear.Image;
+        }
+        else
+        {
+            Gear.sprite = null;
         }
     }
 
@@ -113,13 +121,21 @@ public class PersonSelectUIView : MonoBehaviour
         // add my room code here to get skills from an enum;
         for (int i = 0; i < skillDots.childCount; i++)
         {
+            skillDots.GetChild(i).GetComponent<Image>().color = Color.black;
             if (i < SelectedPerson.skills.GetSkill(skill))
             {
-                skillDots.GetChild(i).GetComponent<Image>().color = SkillColourMap.GetSkillColour(skill);
+                skillDots.GetChild(i).GetChild(0).GetComponent<Image>().color = SkillColourMap.GetSkillColour(skill);
+                if (SelectedPerson.HasGear)
+                {
+                    if(SelectedPerson.skills.GetSkill(skill) - SelectedPerson.Gear.SkillBostingGear.skills.GetSkill(skill) <= i)
+                    {
+                        skillDots.GetChild(i).GetComponent<Image>().color = new Color(255, 215, 0); // RGB value for gold
+                    }
+                }
             }
             else
             {
-                skillDots.GetChild(i).GetComponent<Image>().color = Color.gray;
+                skillDots.GetChild(i).GetChild(0).GetComponent<Image>().color = Color.gray;
             }
         }
     }
@@ -128,6 +144,13 @@ public class PersonSelectUIView : MonoBehaviour
     {
         UIManager.Instance.OpenPersonCosmetics(SelectedPerson);
     }
+
+    public void ToggleGearSelectView()
+    {
+        UIManager.Instance.OpenGearListelector(SelectedPerson);
+    }
+
+
 
     public void TogglePersonBackStory()
     {

@@ -20,6 +20,8 @@ public static class SaveSystem
     public static string QuestLinePath { get { return Application.persistentDataPath + "/Save/Quests/QuestLines"; } }
     public static string QuestLinePrefix = ".QL";
 
+    public static string GearPath { get { return Application.persistentDataPath + "/Save/Gear"; } }
+
     public static string TimerPath { get { return Application.persistentDataPath + "/Save/Timers"; } }
     public static string TimerPrefix = ".Timer";
 
@@ -36,14 +38,10 @@ public static class SaveSystem
         var path = RoomPath + "/" + System.IO.Path.GetRandomFileName();
         SaveData<RoomSaveData>(roomData, path);
     }
-
     public static void Save(this NavigationSaveData data)
     {
         SaveData<NavigationSaveData>(data, NavigationSavePath);
     }
-
-
-
     public static void Save(this PersonSaveData personData, PersonInfo personInfo)
     {
         if (!Directory.Exists(PeoplePath))
@@ -64,7 +62,6 @@ public static class SaveSystem
         var path = WaittingQuestPath + "/" + System.IO.Path.GetRandomFileName();
         SaveData<WaittingQuestSaveData>(waittingQuestData, path);
     }
-
     public static void Save(this TransportQuestSaveData transportQuestSaveData)
     {
         if (!Directory.Exists(TransportQuestPath))
@@ -74,7 +71,6 @@ public static class SaveSystem
         var path = TransportQuestPath + "/" + System.IO.Path.GetRandomFileName();
         SaveData<TransportQuestSaveData>(transportQuestSaveData, path);
     }
-
     public static void Save(this BuildRoomSaveData QuestSaveData)
     {
         if (!Directory.Exists(BuildRoomQuestPath))
@@ -85,11 +81,6 @@ public static class SaveSystem
         SaveData<BuildRoomSaveData>(QuestSaveData, path);
 
     }
-
-
-
-
-
     public static void Save(this TimerSaveData timerData)
     {
         if (!Directory.Exists(TimerPath))
@@ -99,12 +90,10 @@ public static class SaveSystem
         var path = TimerPath + "/" + timerData.ID.ToString() + TimerPrefix;
         SaveData<TimerSaveData>(timerData, path);
     }
-
     public static void Save(this GlobalStatsSaving data)
     {
         SaveData<GlobalStatsSaving>(data, SaveStatsPath);
     }
-
     public static void Save(this PlanetConttainerSaveData data)
     {
         if (!Directory.Exists(PlanetPath))
@@ -114,7 +103,6 @@ public static class SaveSystem
         var path = PlanetPath + "/" + data.planetId.ToString() + PlanetPrefix;
         SaveData<PlanetConttainerSaveData>(data, path);
     }
-
     public static void Save(this QuestLineSaveData data)
     {
         if (!Directory.Exists(QuestLinePath))
@@ -124,6 +112,16 @@ public static class SaveSystem
         var path = QuestLinePath + "/" + data.Id.ToString() + QuestLinePrefix;
         SaveData<QuestLineSaveData>(data, path);
     }
+    public static void Save(this EquipableGearSaveData data)
+    {
+        if (!Directory.Exists(GearPath))
+        {
+            System.IO.Directory.CreateDirectory(GearPath);
+        }
+        var path = GearPath + "/" + System.IO.Path.GetRandomFileName();
+        SaveData<EquipableGearSaveData>(data, path);
+    }
+
 
 
     public static void ClearSave()
@@ -197,6 +195,7 @@ public static class SaveSystem
             room.Save();
         }
         QuestManager.SaveQuests();
+        GearManager.SaveGear();
         GlobalStatsSaving saveData = new GlobalStatsSaving(GlobalStats.Instance.PlayerResources);
         saveData.Save();
         NavigationSaveData navData = new NavigationSaveData();
@@ -233,6 +232,23 @@ public static class SaveSystem
         }
         return questsaveData.ToArray();
     }
+
+    public static EquipableGearSaveData[] GetAllSavedEquipableGear()
+    {
+        if (!Directory.Exists(GearPath))
+        {
+            return new EquipableGearSaveData[0];
+        }
+        List<EquipableGearSaveData> equipableGearSaveData = new List<EquipableGearSaveData>();
+        foreach (string fullPath in Directory.GetFiles(GearPath))
+        {
+            EquipableGearSaveData data = LoadData<EquipableGearSaveData>(fullPath);
+            equipableGearSaveData.Add(data);
+        }
+        return equipableGearSaveData.ToArray();
+    }
+
+
 
 
     public static PersonSaveData GetPersonData(string personId)

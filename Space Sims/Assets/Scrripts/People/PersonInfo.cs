@@ -33,6 +33,7 @@ public class PersonInfo : ISaveable<PersonSaveData>
 
     public Race Race { get; set; }
     public short Age { get; set; }
+   
     [SerializeField]
     public Skills skills = new Skills();
     public GameResources Upkeep { get; set; } = new GameResources { Food = -5 };
@@ -43,6 +44,15 @@ public class PersonInfo : ISaveable<PersonSaveData>
 
     public Color SkinColor { get; set; }
     public Color HairColor { get; set; }
+
+    public Person PersonMonoBehaviour { get; set; }
+    public AbstractRoom Room { get; set; }
+
+    public bool IsInRoom {get { return Room != null; } }
+
+    public EquipableGear Gear { get; set; } = null;
+
+    public bool HasGear { get { return Gear != null; } }
 
 
     private WaittingQuest AssginedQuest = null; // is a person aassgined to a quest that hasn't started yet
@@ -72,11 +82,6 @@ public class PersonInfo : ISaveable<PersonSaveData>
             else return false;
         }
     }
-
-    public Person PersonMonoBehaviour { get; set; }
-
-    public AbstractRoom Room { get; set; }
-
     public PersonInfo(PersonSaveData saveData)
     {
         SaveSystem.LoadedPeople.Add(saveData.personId, this);
@@ -171,6 +176,38 @@ public class PersonInfo : ISaveable<PersonSaveData>
     public void UnassignQuest()
     {
         AssginedQuest = null;
+    }
+
+    public void AddGear(EquipableGear gear)
+    {
+        if(gear.IsEquipedToPerson)
+        {
+            gear.PersonEquipedTo.RemoveGear();
+        }
+        RemoveGear();
+        this.Gear = gear;
+        gear.PersonEquipedTo = this;
+        this.skills += Gear.SkillBostingGear.skills;
+        UIManager.Instance.OpenPersonView(this);
+        if(IsInRoom)
+        {
+            Room.UpdateRoomStats();
+        }
+    }
+
+    public void RemoveGear()
+    {
+        if(HasGear)
+        {
+            this.skills -= Gear.SkillBostingGear.skills;
+            Gear.PersonEquipedTo = null;
+            Gear = null;
+            if(IsInRoom)
+            {
+                Room.UpdateRoomStats();
+            }
+        }
+
     }
 
 

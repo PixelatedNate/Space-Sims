@@ -16,11 +16,15 @@ public class RightPanal : MonoBehaviour
     [SerializeField]
     PersonBackStoryView backStoryView;
 
+    [SerializeField]
+    GearSkillFilterList GearSkillFilterList;
+
     public enum ActiveRSideView
     {
         Quest,
         Cosmetic,
-        BackStory
+        BackStory,
+        GearSkillFinterList
     }
 
     public ActiveRSideView? activeRSideView { get; private set; } = null;
@@ -57,6 +61,14 @@ public class RightPanal : MonoBehaviour
         SetActiveView(backStoryView.gameObject);
         backStoryView.SetBackStory(personInfo);
     }
+    public void OpenGearList(PersonInfo personInfo)
+    {
+        activeRSideView = ActiveRSideView.GearSkillFinterList;
+        UiButton.RightTabSlideOut();
+        SetActiveView(GearSkillFilterList.gameObject);
+        GearSkillFilterList.SetView(personInfo);
+    }
+
 
 
 

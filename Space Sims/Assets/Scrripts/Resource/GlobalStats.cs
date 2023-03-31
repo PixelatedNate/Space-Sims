@@ -86,8 +86,20 @@ public class GlobalStats : MonoBehaviour
         }
     }
 
+    [SerializeField]
+    SkillBostingGearData[] equipableGearsData;
+
     void Start()
     {
+        // for testing 
+        foreach(SkillBostingGearData gear in equipableGearsData)
+        {
+            GearManager.EquipableGears.Add(new EquipableGear(gear));
+        }
+
+        //for testing
+
+
         MaxStorage = _bassMaxStorage;
         RoomSaveData[] roomData = SaveSystem.GetAllSavedRoomData();
         if (roomData.Length == 0)

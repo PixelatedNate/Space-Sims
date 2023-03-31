@@ -119,6 +119,18 @@ public static class ResourceHelper
 
     }
 
+    public static class GearHelper
+    {
+        private const string EquipableGearPath = "Gear/EquipableGear/";
+        public static SkillBostingGearData GetSkillBostingGear(string name)
+        {
+            string path = EquipableGearPath + name;
+            SkillBostingGearData gearData = Resources.Load<SkillBostingGearData>(path);
+            return gearData;
+        }
+
+
+    }
 
     public static class QuestHelper
     {
