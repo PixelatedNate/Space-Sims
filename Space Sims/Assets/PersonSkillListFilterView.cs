@@ -57,6 +57,7 @@ public class PersonSkillListFilterView : AbstractSkillFilterList<PersonInfo>
          if(QuestSelected != null)
          {
              personViewItem.GetComponent<PersonListViewItem>().SetQuestText(QuestSelected);
+            this.QuestSelected = null;
          }
          
          if (OnSelectMethod != null)
@@ -65,7 +66,7 @@ public class PersonSkillListFilterView : AbstractSkillFilterList<PersonInfo>
          }
          else
          {
-             personViewItem.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.OpenPersonView(item));
+            personViewItem.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.OpenPersonView(item)); ;
          }
     }
 

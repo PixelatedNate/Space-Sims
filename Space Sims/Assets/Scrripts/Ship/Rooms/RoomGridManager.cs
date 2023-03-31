@@ -97,6 +97,9 @@ public class RoomGridManager : MonoBehaviour
             QuestManager.LoadQuests();
             NavigationSaveData navSaveData = SaveSystem.LoadData<NavigationSaveData>(SaveSystem.NavigationSavePath);
             NavigationManager.Load(navSaveData);
+
+            GearManager.LoadGear();
+
             GlobalStatsSaving saveStatas = SaveSystem.LoadData<GlobalStatsSaving>(SaveSystem.SaveStatsPath);
             GlobalStats.Instance.LoadData(saveStatas);
             TimeDelayManager.Instance.StartTickerTimer();

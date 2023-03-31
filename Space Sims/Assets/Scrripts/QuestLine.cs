@@ -6,6 +6,7 @@ public class QuestLine : ISaveable<QuestLineSaveData>
         questLineData = data;
         index = 0;
     }
+
     public QuestLine(QuestLineSaveData data)
     {
         questLineData = ResourceHelper.QuestHelper.GetQuestLineData(data.QuestLineDataName);

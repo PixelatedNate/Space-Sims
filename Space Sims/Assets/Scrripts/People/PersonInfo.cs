@@ -48,6 +48,8 @@ public class PersonInfo : ISaveable<PersonSaveData>
     public Person PersonMonoBehaviour { get; set; }
     public AbstractRoom Room { get; set; }
 
+    public bool IsInRoom {get { return Room != null; } }
+
     public EquipableGear Gear { get; set; } = null;
 
     public bool HasGear { get { return Gear != null; } }
@@ -178,19 +180,32 @@ public class PersonInfo : ISaveable<PersonSaveData>
 
     public void AddGear(EquipableGear gear)
     {
+        if(gear.IsEquipedToPerson)
+        {
+            gear.PersonEquipedTo.RemoveGear();
+        }
+        RemoveGear();
         this.Gear = gear;
         gear.PersonEquipedTo = this;
         this.skills += Gear.SkillBostingGear.skills;
         UIManager.Instance.OpenPersonView(this);
+        if(IsInRoom)
+        {
+            Room.UpdateRoomStats();
+        }
     }
 
     public void RemoveGear()
     {
         if(HasGear)
         {
+            this.skills -= Gear.SkillBostingGear.skills;
             Gear.PersonEquipedTo = null;
             Gear = null;
-            this.skills -= Gear.SkillBostingGear.skills;
+            if(IsInRoom)
+            {
+                Room.UpdateRoomStats();
+            }
         }
 
     }

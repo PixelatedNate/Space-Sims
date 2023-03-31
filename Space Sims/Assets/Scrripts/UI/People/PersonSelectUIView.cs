@@ -121,20 +121,21 @@ public class PersonSelectUIView : MonoBehaviour
         // add my room code here to get skills from an enum;
         for (int i = 0; i < skillDots.childCount; i++)
         {
+            skillDots.GetChild(i).GetComponent<Image>().color = Color.black;
             if (i < SelectedPerson.skills.GetSkill(skill))
             {
+                skillDots.GetChild(i).GetChild(0).GetComponent<Image>().color = SkillColourMap.GetSkillColour(skill);
                 if (SelectedPerson.HasGear)
                 {
-                    if(SelectedPerson.skills.GetSkill(skill) - SelectedPerson.Gear.SkillBostingGear.skills.GetSkill(skill) < i)
-                }
-                else
-                {
-                    skillDots.GetChild(i).GetComponent<Image>().color = SkillColourMap.GetSkillColour(skill);
+                    if(SelectedPerson.skills.GetSkill(skill) - SelectedPerson.Gear.SkillBostingGear.skills.GetSkill(skill) <= i)
+                    {
+                        skillDots.GetChild(i).GetComponent<Image>().color = new Color(255, 215, 0); // RGB value for gold
+                    }
                 }
             }
             else
             {
-                skillDots.GetChild(i).GetComponent<Image>().color = Color.gray;
+                skillDots.GetChild(i).GetChild(0).GetComponent<Image>().color = Color.gray;
             }
         }
     }
