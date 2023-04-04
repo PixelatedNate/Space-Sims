@@ -8,4 +8,5 @@ public enum RoomType
     Minerals,
     CrewQuaters,
     QuestRoom,
+    AirLock,
 }

@@ -58,7 +58,15 @@ public abstract class AbstractSkillFilterList<T> : MonoBehaviour
             skillfilter = SkillsList.Strength;
             FilterListBySkill((SkillsList)skillfilter, Inverted);
         }
+        ResetStatsForInheratedStuff();
     }
+
+    protected virtual void ResetStatsForInheratedStuff() // this is becuse quests need to be cleared from people list
+    {
+
+    }
+
+
 
     protected void FilterListBySkill(SkillsList skill, bool inverse = false)
     {
@@ -163,25 +171,6 @@ public abstract class AbstractSkillFilterList<T> : MonoBehaviour
         foreach (T item in Items)
         {
             SpawnNewUIItemConponent(item, skillfilter);
-
-            /*
-            GameObject personViewItem = GameObject.Instantiate(PersonListItemTemplate, PersonScrollPanal);
-            personViewItem.GetComponent<PersonListViewItem>().SetPerson(personInfo, skillfilter);
-            if(QuestSelected != null)
-            {
-                personViewItem.GetComponent<PersonListViewItem>().SetQuestText(QuestSelected);
-            }
-            
-            if (OnSelectMethod != null)
-            {
-                personViewItem.GetComponent<Button>().onClick.AddListener(() => OnSelectMethod(personInfo));
-            }
-            else
-            {
-                personViewItem.GetComponent<Button>().onClick.AddListener(() => UIManager.Instance.OpenPersonView(personInfo));
-            }
-            */
-
         }
     }
 

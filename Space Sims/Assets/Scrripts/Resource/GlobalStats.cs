@@ -98,6 +98,7 @@ public class GlobalStats : MonoBehaviour
         }
 
         //for testing
+        UnlocksManager.UnlockRoom(RoomType.AirLock);
 
 
         MaxStorage = _bassMaxStorage;
