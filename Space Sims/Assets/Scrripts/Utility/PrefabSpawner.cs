@@ -29,6 +29,8 @@ public class PrefabSpawner : MonoBehaviour
     private GameObject CrewQuaterRoomTemplate;
     [SerializeField]
     private GameObject QuestRoomTemplate;
+    [SerializeField]
+   private GameObject AirLocktemplate;
 
     public GameObject SpawnPerson()
     {
@@ -127,6 +129,7 @@ public class PrefabSpawner : MonoBehaviour
             case (RoomType.Minerals): return GameObject.Instantiate(MineralsRoomTemplate);
             case (RoomType.CrewQuaters): return GameObject.Instantiate(CrewQuaterRoomTemplate);
             case (RoomType.QuestRoom): return GameObject.Instantiate(QuestRoomTemplate);
+            case (RoomType.AirLock): return GameObject.Instantiate(AirLocktemplate);
             default: throw new Exception(roomType.ToString() + ": roomTypeCanNotBeFound");
         }
     }

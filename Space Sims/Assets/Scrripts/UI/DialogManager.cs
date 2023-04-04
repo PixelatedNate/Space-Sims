@@ -91,7 +91,8 @@ public class DialogManager : MonoBehaviour
     {
         ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.PersonListFillterLeft, true);
         ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.PersonListFillterRight, true);
-        PersonListView.OnFiltterChange += FilterByWisdom;
+        PersonSkillListFilterView.OnFiltterChange += FilterByWisdom;
+     //   PersonListView.OnFiltterChange += FilterByWisdom;
     }
 
     private void FilterByWisdom(SkillsList? skill)
@@ -102,7 +103,8 @@ public class DialogManager : MonoBehaviour
             ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.PersonListFillterLeft, false);
             ButtonManager.Instance.SetButtonEnabled(ButtonManager.ButtonName.PersonListFillterRight, false);
             activeDialog.NextLine();
-            PersonListView.OnFiltterChange -= FilterByWisdom;
+            PersonSkillListFilterView.OnFiltterChange -= FilterByWisdom;
+            TouchControls.EnableCameramovemntAndSelection(true);
         }
     }
 
@@ -162,7 +164,6 @@ public class DialogManager : MonoBehaviour
                 people.gameObject.name = "WisdomPerson";
             }
             people.GetComponent<Button>().interactable = false;
-
         }
     }
 

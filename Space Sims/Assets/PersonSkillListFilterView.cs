@@ -25,14 +25,6 @@ public class PersonSkillListFilterView : AbstractSkillFilterList<PersonInfo>
         // ApplyDetailForQuest(quest);
     }
 
-    private void ApplyDetailForQuest(WaittingQuest quest)
-    {
-        foreach (Transform child in ScrollPanal)
-        {
-            child.GetComponent<PersonListViewItem>().SetQuestText(quest);
-        }
-    }
-
     public override List<PersonInfo> GetAllItems()
     {
         return GlobalStats.Instance.PlayersPeople;
@@ -48,6 +40,13 @@ public class PersonSkillListFilterView : AbstractSkillFilterList<PersonInfo>
         return a.Age.CompareTo(b.Age);
     }
 
+
+    protected override void ResetStatsForInheratedStuff()
+    {
+        OnSelectMethod = null;
+        QuestSelected = null;
+
+    }
 
 
     protected override void SpawnNewUIItemConponent(PersonInfo item, SkillsList? skill)
